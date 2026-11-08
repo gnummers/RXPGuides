@@ -1,4 +1,4 @@
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Shaman SoD
@@ -2259,7 +2259,7 @@ step
 step
     .goto Ashenvale,11.56,34.28
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Je'neu Sancrea|r
-    .turnin 78506 >>Turnin Elemental Distress
+    .turnin 78506 >>Turn in Elemental Distress
     .accept 78537 >>Accept Elixir of Insight
     .accept 78537 >>Turnin Elixir of Insight
     .accept 78561 >>Accept Elixir of Insight
@@ -2392,7 +2392,7 @@ step
     .zone Orgrimmar >>Travel to |cFFfa9602Orgrimmar|r
 step
     .goto Orgrimmar,38.94,38.39
-    .gossip 4047 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Zor Lonetree|r and select the dialogoption
+    .gossip 4047 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Zor Lonetree|r and select the dialog option
     -- .gossipoption --x insert id
     .target Zor Lonetree
 step
@@ -2400,13 +2400,13 @@ step
     .zone Thunder Bluff >>Travel to |cFFfa9602Thunder Bluff|r
 step
     .goto Thunder Bluff,78.61,28.55
-    .gossip 5769 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Arch Druid Hamuul Runetotem|r and select the dialogoption
+    .gossip 5769 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Arch Druid Hamuul Runetotem|r and select the dialog option
     -- .gossipoption --x insert id
     .target Arch Druid Hamuul Runetotem
 step
     -- .gossipoption --x insert id
     .goto Thunder Bluff,47.00,49.82
-    .gossip 2995 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tal|r and select the dialogoption to fly to Moonglade
+    .gossip 2995 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tal|r and select the dialog option to fly to Moonglade
     .target Tal
 step
     #completewith next
@@ -2470,7 +2470,7 @@ step
 step
     .train 410100,1
     .goto Alterac Mountains,80.499,66.923
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk |cRXP_FRIENDLY_Bath'rah the Windwatcher|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bath'rah the Windwatcher|r
     .turnin 79360 >>Turn in Elemental Aid
     .accept 79361 >>Accept Power of da Wind
     .accept 79362 >>Accept Power of da Earth
@@ -2547,7 +2547,7 @@ step
 step
     .train 410100,1
     .goto Alterac Mountains,80.499,66.923
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk |cRXP_FRIENDLY_Bath'rah the Windwatcher|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bath'rah the Windwatcher|r
     .turnin 79361 >>Turn in Power of da Wind
     .turnin 79362 >>Turn in Power of da Earth
     .turnin 79363 >>Turn in Power of da Water
@@ -2596,7 +2596,7 @@ step
 step
     .train 410100,1
     .goto Alterac Mountains,80.499,66.923
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk |cRXP_FRIENDLY_Bath'rah the Windwatcher|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bath'rah the Windwatcher|r
     .turnin 79442 --Catching up
     .target Bath'rah the Windwatcher
 step
@@ -2689,7 +2689,7 @@ step
     .waypoint Thousand Needles,26.29,52.79,15,0
     .waypoint Thousand Needles,27.23,54.04,15,0
     .waypoint Thousand Needles,26.55,55.77,15,0
-    >>Kill cRXP_ENEMY_Screeching Harpies|r. Loot them for their |cRXP_LOOT_Strong Harpy Feathers|r
+    >>Kill |cRXP_ENEMY_Screeching Harpies|r. Loot them for their |cRXP_LOOT_Strong Harpy Feathers|r
     .collect 213701,10 --Strong Harpy Feather (10x)
     .mob Screeching Harpy
     .mob Screeching Roguefeather
@@ -2742,7 +2742,7 @@ step
 step
     #completewith next
     .train 410103,1
-    .goto Thousand Needles,46.17,52.95,20 >>Travel to the start of the lower bride just south of Freewind Post
+    .goto Thousand Needles,46.17,52.95,20 >>Travel to the start of the lower bridge just south of Freewind Post
 step
     .train 410103,1
     .goto Thousand Needles,46.82,53.52
@@ -2964,7 +2964,7 @@ step
     .train 432241,1
 step
     .goto The Hinterlands,51.2,47.0
-    >>Kill |cRXP_ENEMY_Corrupt Moderate Manifestation of Air|r then >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Moderate Manifestation of Earth.|r
+    >>Kill |cRXP_ENEMY_Corrupt Moderate Manifestation of Air|r then >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Moderate Manifestation of Air.|r
     .turnin 81960 >>Turn in Clarifying Air
     .accept 81968 >>Accept Answering Air's Call
     .mob Corrupt Moderate Manifestation of Air
@@ -3179,8 +3179,8 @@ RXPGuides.RegisterGuide([[
 << Shaman SoD
 #group RestedXP Rune & Books Guide
 #subgroup Cloak
-#title Feral Sprit
-#name Feral Sprit - 60 (Winterspring)
+#title Feral Spirit
+#name Feral Spirit - 60 (Winterspring)
 
 step
     .train 440630,1

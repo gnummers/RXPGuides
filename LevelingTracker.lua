@@ -7,18 +7,10 @@ local fmt, smatch, strsub, tinsert, srep, mmax, abs = string.format, string.matc
 local UnitLevel, GetRealZoneText, IsInGroup, tonumber, GetTime, GetServerTime, UnitXP = UnitLevel, GetRealZoneText,
                                                                                         IsInGroup, tonumber, GetTime,
                                                                                         GetServerTime, UnitXP
-
 local AceGUI = LibStub("AceGUI-3.0")
 local LibDeflate = LibStub("LibDeflate")
 local L = addon.locale.Get
-local LibDD = LibStub:GetLibrary("LibUIDropDownMenu-4.0", true)
-local EasyMenu = function(...)
-    if _G.EasyMenu then
-        _G.EasyMenu(...)
-    else
-        LibDD:EasyMenu(...)
-    end
-end
+local EasyMenu = function(...) addon:ShowMenu(...) end
 local UnitName = addon.GetUnitName
 
 addon.tracker = addon:NewModule("LevelingTracker", "AceEvent-3.0", "AceComm-3.0", "AceSerializer-3.0")
@@ -30,7 +22,7 @@ addon.tracker.ui = {}
 addon.tracker._commPrefix = "RXPLTComms"
 addon.tracker.fonts = {["splits"] = "Fonts\\ARIALN.ttf"}
 
-local playerName = UnitName("player")
+local playerName = addon.player.name
 
 -- Silence our /played yellow text
 local ReportPlayedTimeToChat = false
@@ -95,12 +87,14 @@ function addon.tracker:SetupTracker()
         self.db.profile.trackedGuid = addon.player.guid
     end
 
-    self:RegisterEvent("CHAT_MSG_COMBAT_XP_GAIN")
     self:RegisterEvent("TIME_PLAYED_MSG")
-    self:RegisterEvent("PLAYER_LEVEL_UP")
-    self:RegisterEvent("QUEST_TURNED_IN")
-    self:RegisterEvent("PLAYER_DEAD")
     self:RegisterEvent("PLAYER_ENTERING_WORLD")
+    if self.playerLevel < self.maxLevel then
+        self:RegisterEvent("CHAT_MSG_COMBAT_XP_GAIN")
+        self:RegisterEvent("PLAYER_LEVEL_UP")
+        self:RegisterEvent("QUEST_TURNED_IN")
+        self:RegisterEvent("PLAYER_DEAD")
+    end
 
     self:SetupInspections()
 
@@ -206,6 +200,7 @@ function addon.tracker:CHAT_MSG_COMBAT_XP_GAIN(_, text, ...)
     -- Exclude "You gain 360 experience" from quest turnin, doubles up on mob kill
     -- TODO use _G.COMBATLOG_XPGAIN_FIRSTPERSON or _G.COMBATLOG_XPGAIN_FIRSTPERSON_UNNAMED
     -- TODO won't track zhCN
+    if addon.IsSecretValue(text) then return end
     if 'You' == strsub(text, 0, #'You') then return end
 
     local xpGained = tonumber(smatch(text, "%d+"))
@@ -299,6 +294,7 @@ function addon.tracker:TIME_PLAYED_MSG(_, totalTimePlayed, timePlayedThisLevel)
         self:UpdateLevelSplits("full")
         self.waitingForTimePlayed = false
     end
+
 end
 
 function addon.tracker:PLAYER_LEVEL_UP(_, level)
@@ -384,7 +380,7 @@ function addon.tracker.UpdateReportLevels(levelData, playerLevel, target, attach
                 addon.tracker:UpdateReport(l, target, attachment)
 
                 trackerUi.levelButton:SetText(text)
-                _G.CloseDropDownMenus()
+                addon:CloseMenu()
             end
         }
 
@@ -426,8 +422,8 @@ function addon.tracker:CreateGui(attachment, target)
     local attachmentName = attachment.GetName and attachment:GetName()
     if not attachmentName then return end
     if addon.tracker.ui[attachmentName] then return end
-
-    local offset = {x = -38, y = -32, tabsHeight = _G.CharacterFrameTab1:GetHeight()}
+    local h = _G.CharacterFrameTab1 and _G.CharacterFrameTab1:GetHeight() or _G.CharacterFrame:GetHeight()
+    local offset = {x = -38, y = -32, tabsHeight = h}
     local padding = 4
     local levelData, playerLevel
 
@@ -924,7 +920,7 @@ function addon.tracker:UpdateSplitsMenu(menuFrame, button)
             addon.comms.OpenBrandedExport(L"Export Level Splits",
                                           L"Export string for Importing into another character's comparison data",
                                           addon.tracker:BuildSplitsExport(), 20, 200)
-            _G.CloseDropDownMenus()
+            addon:CloseMenu()
         end
     })
 
@@ -936,7 +932,7 @@ function addon.tracker:UpdateSplitsMenu(menuFrame, button)
                                           addon.tracker.ImportSplits)
             -- Regenerate menu on next load
             addon.tracker.state.splitsMenu = nil
-            _G.CloseDropDownMenus()
+            addon:CloseMenu()
         end
     })
 
@@ -949,7 +945,7 @@ function addon.tracker:UpdateSplitsMenu(menuFrame, button)
                 arg1 = k,
                 func = function(_, key)
                     addon.tracker.state.splitsComparisonKey = key
-                    _G.CloseDropDownMenus()
+                    addon:CloseMenu()
                     addon.tracker:UpdateLevelSplits("full")
                 end,
                 checked = function() return k == self.state.splitsComparisonKey end
@@ -961,7 +957,7 @@ function addon.tracker:UpdateSplitsMenu(menuFrame, button)
         text = _G.NONE,
         func = function()
             addon.tracker.state.splitsComparisonKey = nil
-            _G.CloseDropDownMenus()
+            addon:CloseMenu()
             addon.tracker:UpdateLevelSplits("full")
         end,
         checked = function() return not self.state.splitsComparisonKey end
@@ -1026,7 +1022,7 @@ function addon.tracker:CreateLevelSplits()
     -- Disable background texture for now, inconsistently loads
     --[[
     f.bg = f:CreateTexture("RXPLevelSplitsFrameBG", "BACKGROUND")
-    f.bg:SetTexture(addon.GetTexture("rxp-banner"))
+    f.bg:SetTexture(addon.GetV1Texture("rxp-banner"))
     f.bg:SetPoint("TOPLEFT", 4, -2)
     f.bg:SetPoint("BOTTOMRIGHT", -2, 4)
     ]]
@@ -1043,7 +1039,7 @@ function addon.tracker:CreateLevelSplits()
     -- Disable background texture for now, inconsistently loads
     --[[
     f.title.bg = f.title:CreateTexture("$parent_titleBG", "BACKGROUND")
-    f.title.bg:SetTexture(addon.GetTexture("rxp-banner"))
+    f.title.bg:SetTexture(addon.GetV1Texture("rxp-banner"))
     f.title.bg:SetPoint("TOPLEFT", 4, -2)
     f.title.bg:SetPoint("BOTTOMRIGHT", -2, 4)
     ]]
@@ -1059,7 +1055,7 @@ function addon.tracker:CreateLevelSplits()
     f.title.cog:SetWidth(18)
     f.title.cog:SetHeight(18)
     f.title.cog:SetPoint("LEFT", f.title, "LEFT", -9, 0)
-    f.title.cog:SetNormalTexture(addon.GetTexture("rxp_cog-32"))
+    f.title.cog:SetNormalTexture(addon.GetV1Texture("rxp_cog-32"))
     f.title.cog:SetHighlightTexture("Interface/MINIMAP/UI-Minimap-ZoomButton-Highlight", "ADD")
     f.title.cog:Show()
 
@@ -1130,6 +1126,8 @@ function addon.tracker:ToggleLevelSplits()
 end
 
 function addon.tracker:RefreshSplitsSummary()
+    if self.playerLevel >= self.maxLevel then return end
+
     if not self.state.lastSplitsUpdate then
         self.state.lastSplitsUpdate = GetTime()
         addon.tracker:UpdateLevelSplits("full")

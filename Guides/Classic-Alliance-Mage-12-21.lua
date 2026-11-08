@@ -1,7 +1,7 @@
 local faction = UnitFactionGroup("player")
 if faction == "Horde" then return end
 
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #classic
 #tbc
@@ -1152,7 +1152,7 @@ step
     .goto Redridge Mountains,27.09,45.65
 .target Darcy
 >>Talk to |cRXP_FRIENDLY_Darcy|r
-    .turnin 131 >>Turn in Delivering Daffodil
+    .turnin 131 >>Turn in Delivering Daffodils
 step
     .goto Redridge Mountains,27.01,44.81
     .vendor >> Buy level 15 drink

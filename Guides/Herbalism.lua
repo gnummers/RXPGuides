@@ -1,9 +1,10 @@
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #wotlk
 #group +Profession Leveling
 << Horde
 #name 1-450 Herbalism (H)
+#guideKind profession
 #displayname 1-450 Herbalism
 
 step << Mage
@@ -330,6 +331,7 @@ RXPGuides.RegisterGuide([[
 #group +Profession Leveling
 << Alliance
 #name 1-450 Herbalism (A)
+#guideKind profession
 #displayname 1-450 Herbalism
 
 

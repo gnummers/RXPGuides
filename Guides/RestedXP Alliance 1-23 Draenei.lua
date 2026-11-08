@@ -1,7 +1,7 @@
 local faction = UnitFactionGroup("player")
 if faction == "Horde" then return end
 
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #tbc
 #wotlk
@@ -9,6 +9,7 @@ RXPGuides.RegisterGuide([[
 #name 1-12 Azuremyst Isle
 #version 1
 #group RestedXP Alliance 1-20
+#groupid RXP-SRGCE-A1
 #defaultfor Draenei
 #next 11-20 Bloodmyst (Draenei)
 step
@@ -1006,6 +1007,7 @@ RXPGuides.RegisterGuide([[
 #name 11-20 Bloodmyst (Draenei)
 #version 1
 #group RestedXP Alliance 1-20
+#groupid RXP-SRGCE-A1
 #defaultfor Draenei
 #next RestedXP Alliance 20-32\20-21 Darkshore (Draenei)
 step
@@ -1346,7 +1348,7 @@ step
     --TODO: ??? bugged on wotlk beta
 step
     .goto Bloodmyst Isle,37.0,78.7
-	>>Kill Satyrs and Felsworn in the area. You may have to kill Rogues to force the respawns of the satyr's you need.
+	>>Kill Satyrs and Felsworn in the area. You may have to kill Rogues to force the respawns of the Satyrs you need.
     .complete 9594,1 --Kill Nazzivus Satyr (x8)
     .complete 9594,2 --Kill Nazzivus Felsworn (x8)
 step << Shaman
@@ -2260,6 +2262,7 @@ RXPGuides.RegisterGuide([[
 #name 20-21 Darkshore (Draenei)
 #version 1
 #group RestedXP Alliance 20-32
+#groupid RXP-SRGCE-A1
 #defaultfor Draenei
 #next 21-23 Ashenvale (Draenei)
 step
@@ -2574,6 +2577,7 @@ RXPGuides.RegisterGuide([[
 #name 21-23 Ashenvale (Draenei)
 #version 1
 #group RestedXP Alliance 20-32
+#groupid RXP-SRGCE-A1
 #defaultfor Draenei
 #next RestedXP Alliance 20-32\23-24 Wetlands;RestedXP Alliance 20-32\24-27 Redridge/Duskwood
 step

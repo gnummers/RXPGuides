@@ -1,4 +1,4 @@
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Warrior SoD
@@ -636,7 +636,7 @@ step << Undead
 step
     #season 2
     .goto Tirisfal Glades,24.60,59.45
-    >>Loot the |cRXP_PICK_Lost Stache|r inside the cave for the |T134419:0|t[|cRXP_FRIENDLY_Rune of Victory Rush|r]
+    >>Loot the |cRXP_PICK_Lost Stash|r inside the cave for the |T134419:0|t[|cRXP_FRIENDLY_Rune of Victory Rush|r]
     .collect 204806,1 --Rune of Victory Rush (1)
     .train 403470,1
 step
@@ -1404,7 +1404,7 @@ step
     .goto Badlands,41.92,26.26,20,0
     .goto Badlands,41.383,27.964
     >>Click on the |cRXP_PICK_Tapped Shadowforge Keg|r. Loot it for the |cRXP_LOOT_Balmy Brew|r
-    >>|cRXP_WARN_Stay at maximum range to avoid agroing|r |cRXP_ENEMY_Ambassador Infernus|r
+    >>|cRXP_WARN_Stay at maximum range to avoid aggroing|r |cRXP_ENEMY_Ambassador Infernus|r
     .complete 79677,3 --Balmy Brew (1x)
 step
     .train 416004,1
@@ -1676,7 +1676,7 @@ step
     .goto The Hinterlands,23.6,57.4
     .goto The Hinterlands,36.6,66.2,0
     .goto The Hinterlands,31.6,59.8,0
-    >>Kill any of the |cRXP_ENEMY_Witherbark Trolls|r in the western part of the map untill you loot a |T133054:0|t|cRXP_LOOT_Geode Hammer|r from them
+    >>Kill any of the |cRXP_ENEMY_Witherbark Trolls|r in the western part of the map until you loot a |T133054:0|t|cRXP_LOOT_Geode Hammer|r from them
     .collect 220912,1 --Geode Hammer 1/1
     .mob Witherbark Sadist
     .mob Witherbark Scalper
@@ -1685,15 +1685,15 @@ step
     .mob Witherbark Venomblood
     .train 427084,1
 step
-    .equip 16,220912 >>Equip the |T133054:0|t|cRXP_LOOT_Geode Hammer|r as your mainhand weapon. Continue fighting mobs untill the hammer breaks and turns into a |T133054:0|t|cRXP_LOOT_Broken Geode Hammer|r
+    .equip 16,220912 >>Equip the |T133054:0|t|cRXP_LOOT_Geode Hammer|r as your mainhand weapon. Continue fighting mobs until the hammer breaks and turns into a |T133054:0|t|cRXP_LOOT_Broken Geode Hammer|r
     .collect 220914,1 --Broken Geode Hammer
     .train 427084,1
 step
-    >>Right click on the |T133054:0|t|cRXP_LOOT_Broken Geode Hammer|r to loot it for |T134419:0|t[|cRXP_FRIENDLY_Rune of the Demolition|r]
-    .collect 220913,1 --Rune of the Demolition
+    >>Right click on the |T133054:0|t|cRXP_LOOT_Broken Geode Hammer|r to loot it for |T134419:0|t[|cRXP_FRIENDLY_Rune of Demolition|r]
+    .collect 220913,1 --Rune of Demolition
     .train 427084,1
 step
-    .train 427084 >> |cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of the Demolition|r] |cRXP_WARN_to learn|r |T132364:0|t[Wrecking Crew]
+    .train 427084 >> |cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Demolition|r] |cRXP_WARN_to learn|r |T132364:0|t[Wrecking Crew]
     .use 220913
 ]])
 
@@ -1711,7 +1711,7 @@ step
 step
     #sticky
     #completewith summonIodax
-    >>|cRXP_WARN_To complete this quest you will need to summon and kill a lvl 50 elite golem with around 12k hp. It's possible to solo however I'd recommend finding a group. In order to summon the golem you need to colect 4 parts from the Slag Pits in Searing Gorge. However you don't need to collect them if you can find someone else to summon the boss for you. In that case you can skip straight to step 13|r
+    >>|cRXP_WARN_To complete this quest you will need to summon and kill a lvl 50 elite golem with around 12k hp. It's possible to solo however I'd recommend finding a group. In order to summon the golem you need to collect 4 parts from the Slag Pits in Searing Gorge. However you don't need to collect them if you can find someone else to summon the boss for you. In that case you can skip straight to step 13|r
     .collect 221258,1 --Right Foot of the Obliterator
     .collect 221256,1 --Right Arm of the Obliterator
     .collect 221259,1 --Left Foot of the Obliterator

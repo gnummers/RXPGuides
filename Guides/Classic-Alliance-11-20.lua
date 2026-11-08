@@ -4,7 +4,7 @@ if faction == "Horde" then return end
 ----Start of <1.5x Westfall----
 ----Night Elves and Hunters stay in Darkshore and Grind----
 
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #xprate <1.5
 #classic
@@ -15,6 +15,7 @@ RXPGuides.RegisterGuide([[
 #name 13-15 Westfall
 #displayname 14-15 Westfall << Dwarf/Gnome
 #group RestedXP Alliance 1-20
+#groupid RXP-SRGCE-A1
 #next 14-16 Darkshore
 #defaultfor !NightElf !Hunter
 
@@ -516,13 +517,13 @@ step << Human Rogue
 step << Human Rogue
     .goto Ironforge,62.375,88.679
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brenwyn Wintersteel|r down stairs
-    >>|cRXP_BUY_Buy a|r |T135425:0|t[Keen Throwing Dagger]
-    .collect 3107,100 -- Keen Throwing Dagger
+    >>|cRXP_BUY_Buy a|r |T135425:0|t[Keen Throwing Knife]
+    .collect 3107,100 -- Keen Throwing Knife
     .target Brenwyn Wintersteel
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<6.30
 step << Human Rogue
     #completewith next
-    +|cRXP_WARN_Equip the|r |T135425:0|t[Keen Throwing Dagger]
+    +|cRXP_WARN_Equip the|r |T135425:0|t[Keen Throwing Knife]
     .use 3107
     .itemcount 3107,1
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<6.29
@@ -734,6 +735,7 @@ RXPGuides.RegisterGuide([[
 #version 1
 << Alliance
 #group RestedXP Alliance 1-20
+#groupid RXP-SRGCE-A1
 #name 14-16 Darkshore
 #displayname 11-16 Darkshore << NightElf
 #displayname 13-16 Darkshore << Dwarf Hunter
@@ -745,6 +747,8 @@ RXPGuides.RegisterGuide([[
 -- #displayname 15-17 Darkshore << !NightElf !Dwarf/!Hunter !SoD
 -- #displayname 13-18 Darkshore << Dwarf Hunter/!NightElf sod
 
+step
+    #label start --hidden step for #include
 step << NightElf
     #label WashedA
     .goto 1439,36.621,45.596
@@ -872,6 +876,13 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Terenthis|r
     .accept 984 >> Accept How Big a Threat?
     .target Terenthis
+step
+    #optional
+    .goto Darkshore,37.04,44.13
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shaussiy|r downstairs
+    .home >> Set your Hearthstone to Auberdine
+    .target Innkeeper Shaussiy
+    .bindlocation 442
 step << !NightElf
     #label WashedA
     .goto 1439,36.701,45.122,8,0
@@ -1489,6 +1500,9 @@ step << NightElf/Dwarf Hunter
     .xp 13 >> Grind to level 13
 step
     #optional
+    #label HCHunterEnd --hidden step for #include
+step
+    #optional
     #completewith AuberdineTurnin2 << NightElf/Hunter/Druid/Warrior
     #completewith AmethStart << !NightElf !Hunter !Druid !Warrior
     .goto 1439,43.509,33.207,0
@@ -1653,7 +1667,7 @@ step << NightElf Hunter
     .goto Darkshore,37.4,40.6
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dalmond|r
     >>|cRXP_WARN_Buy up to 2000|r |T132382:0|t[Sharp Arrows] |cRXP_WARN_from him. You will need them for a grinding section soon|r
-    .collect 2515,2000 --Sharp Arrow (35)
+    .collect 2515,2000 --Sharp Arrow (2000)
     .target Dalmond
     .subzoneskip 442,1 --skip if you leave Auber
     .isQuestTurnedIn 4811 --show step if you turned in red crystal
@@ -1912,6 +1926,9 @@ step << NightElf/Hunter/Druid/Warrior
     .complete 985,2 -- Blackwood Windtalker (5)
     .mob +Blackwood Windtalker
     .isQuestTurnedIn 4811
+step
+    #optional
+    #label HCHunterStart --hidden step for #include
 step << NightElf/Hunter/Druid/Warrior
     #xprate <1.5 --<< !NightElf/Hunter
     #optional
@@ -2114,6 +2131,9 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sentinel Tysha Moonblade|r
     .turnin 953 >> Turn in The Fall of Ameth'Aran
     .target Sentinel Tysha Moonblade
+step
+    #optional
+    #label HCHunterEndTwo --hidden step for #include
 step << !sod/Warrior/Rogue
     #optional
     #completewith FurbolgGrind
@@ -2180,7 +2200,7 @@ step
     >>Grind |cRXP_ENEMY_Furlbogs|r in the camp. |cRXP_WARN_This is a hyperspawn area|r meaning that the game will force respawns if enough mobs are dead. This makes it an |cRXP_WARN_EXTREMELY efficient grinding spot|r for the level (xp/hr is comparable to questing)
     >>|cRXP_WARN_Completing this grind will allow you to quest through the entirety of Darkshore later without having to struggle with higher level mobs|r
     >>Be careful as the |cRXP_ENEMY_Blackwood Pathfinders|r |T132152:0|t[Thrash] and can hit you up to 3 times at once
-    >>|cRXP_ENEMY_Blackwood Windtalkers|r cast |T136022:0|t[Gust of Wind] a meele range stun, |cRXP_WARN_move out of meele range when they are casting it|r to avoid getting stunned
+    >>|cRXP_ENEMY_Blackwood Windtalkers|r cast |T136022:0|t[Gust of Wind] a melee range stun, |cRXP_WARN_move out of melee range when they are casting it|r to avoid getting stunned
     .xp 15+11875 >> Grind to 11875+/14400xp
     .mob Blackwood Pathfinder
     .mob Blackwood Windtalker
@@ -2203,7 +2223,7 @@ step
     >>Grind |cRXP_ENEMY_Furlbogs|r in the camp. |cRXP_WARN_This is a hyperspawn area|r meaning that the game will force respawns if enough mobs are dead. This makes it an |cRXP_WARN_EXTREMELY efficient grinding spot|r for the level (xp/hr is comparable to questing)
     >>|cRXP_WARN_Completing this grind will allow you to quest through the entirety of Darkshore later without having to struggle with higher level mobs|r
     >>Be careful as the |cRXP_ENEMY_Blackwood Pathfinders|r |T132152:0|t[Thrash] and can hit you up to 3 times at once
-    >>|cRXP_ENEMY_Blackwood Windtalkers|r cast |T136022:0|t[Gust of Wind] a meele range stun, |cRXP_WARN_move out of meele range when they are casting it|r to avoid getting stunned
+    >>|cRXP_ENEMY_Blackwood Windtalkers|r cast |T136022:0|t[Gust of Wind] a melee range stun, |cRXP_WARN_move out of melee range when they are casting it|r to avoid getting stunned
     .xp 15+11000 >> Grind to 11000+/14400xp
     .mob Blackwood Pathfinder
     .mob Blackwood Windtalker
@@ -2226,7 +2246,7 @@ step
     >>Grind |cRXP_ENEMY_Furlbogs|r in the camp. |cRXP_WARN_This is a hyperspawn area|r meaning that the game will force respawns if enough mobs are dead. This makes it an |cRXP_WARN_EXTREMELY efficient grinding spot|r for the level (xp/hr is comparable to questing)
     >>|cRXP_WARN_Completing this grind will allow you to quest through the entirety of Darkshore later without having to struggle with higher level mobs|r
     >>Be careful as the |cRXP_ENEMY_Blackwood Pathfinders|r |T132152:0|t[Thrash] and can hit you up to 3 times at once
-    >>|cRXP_ENEMY_Blackwood Windtalkers|r cast |T136022:0|t[Gust of Wind] a meele range stun, |cRXP_WARN_move out of meele range when they are casting it|r to avoid getting stunned
+    >>|cRXP_ENEMY_Blackwood Windtalkers|r cast |T136022:0|t[Gust of Wind] a melee range stun, |cRXP_WARN_move out of melee range when they are casting it|r to avoid getting stunned
     .xp 15+600 >> Grind to 600+/14400xp
     .mob Blackwood Pathfinder
     .mob Blackwood Windtalker
@@ -2249,7 +2269,7 @@ step
     >>Grind |cRXP_ENEMY_Furlbogs|r in the camp. |cRXP_WARN_This is a hyperspawn area|r meaning that the game will force respawns if enough mobs are dead. This makes it an |cRXP_WARN_EXTREMELY efficient grinding spot|r for the level (xp/hr is comparable to questing)
     >>|cRXP_WARN_Completing this grind will allow you to quest through the entirety of Darkshore later without having to struggle with higher level mobs|r
     >>Be careful as the |cRXP_ENEMY_Blackwood Pathfinders|r |T132152:0|t[Thrash] and can hit you up to 3 times at once
-    >>|cRXP_ENEMY_Blackwood Windtalkers|r cast |T136022:0|t[Gust of Wind] a meele range stun, |cRXP_WARN_move out of meele range when they are casting it|r to avoid getting stunned
+    >>|cRXP_ENEMY_Blackwood Windtalkers|r cast |T136022:0|t[Gust of Wind] a melee range stun, |cRXP_WARN_move out of melee range when they are casting it|r to avoid getting stunned
     .xp 14+12210 >> Grind to 12210+/12900xp
     .mob Blackwood Pathfinder
     .mob Blackwood Windtalker
@@ -2324,7 +2344,7 @@ step
 step
     .goto 1439,37.703,43.393
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sentinel Glynda Nal'Shea|r
-    .turnin 4812 >> Turn As Water Cascades
+    .turnin 4812 >> Turn in As Water Cascades
     .target Sentinel Glynda Nal'Shea
     .isQuestComplete 4812
 step
@@ -3089,6 +3109,7 @@ RXPGuides.RegisterGuide([[
 #version 1
 << Alliance
 #group RestedXP Alliance 1-20
+#groupid RXP-SRGCE-A1
 #name 16-19 Darkshore
 #next 19-20 Redridge;20-21 Darkshore/Ashenvale << !Hunter
 #next 19-21 Darkshore/Ashenvale << Hunter
@@ -3124,6 +3145,7 @@ step << NightElf Warrior
     .goto Darnassus,57.56,46.72
     #season 0
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ilyenia Moonfire|r
+    .skipgossip 11866,1
     .train 2567 >> Train Thrown
     .target Ilyenia Moonfire
 step << NightElf Hunter
@@ -3470,14 +3492,14 @@ step << Hunter
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Remtravel|r. This will start an escort
     .accept 731,1 >> Accept The Absent Minded Prospector
     >>|cRXP_WARN_This quest is VERY difficult. You can skip this step and come back at level 19|r
-    .link https://youtu.be/3d-htESNztE >> |cRXP_WARN_Click here for a video guide|r
+    .link https://www.youtube.com/watch?v=crQAvyRIceU >> |cRXP_WARN_Click here for a video guide|r
     .target Prospector Remtravel
 step << Hunter
     #requires prospector
     #season 0
     >>|cRXP_WARN_Escort |cRXP_FRIENDLY_Prospector Remtravel|r through the Excavation|r
     >>|cRXP_WARN_This quest is VERY difficult. You can skip this step and come back at level 19|r
-    .link https://youtu.be/3d-htESNztE >> |cRXP_WARN_Click here for a video guide|r
+    .link https://www.youtube.com/watch?v=crQAvyRIceU >> |cRXP_WARN_Click here for a video guide|r
     .complete 731,1
     .isOnQuest 731
 step << Hunter
@@ -3486,7 +3508,7 @@ step << Hunter
     .goto 1439,31.251,87.419
     >>Click the |cRXP_PICK_Beached Sea Creature|r
     .accept 4733 >> Accept Beached Sea Creature
-    >>|cRXP_WARN_This quest can be VERY difficult. Engage the |cRXP_ENEMY_Murlocs|r 1 by 1, otherwise you may agro multiple at the same time|r
+    >>|cRXP_WARN_This quest can be VERY difficult. Engage the |cRXP_ENEMY_Murlocs|r 1 by 1, otherwise you may aggro multiple at the same time|r
     >>|cRXP_WARN_Be aware of |cRXP_ENEMY_Greymist Oracles|r'|r |T136048:0|t[Lightning Bolt] |cRXP_WARN_damage, they can also heal with|r |T136052:0|t[Healing Wave]|r
     .link https://youtu.be/lfQM3Q-Ag5A >> |cRXP_WARN_Click here for a video guide|r
 step
@@ -3521,7 +3543,7 @@ step
     #season 0
     .goto 1439,31.690,83.700
     >>|cRXP_WARN_Be aware of |cRXP_ENEMY_Greymist Oracles|r'|r |T136048:0|t[Lightning Bolt] |cRXP_WARN_damage, they can also heal with|r |T136052:0|t[Healing Wave]|r
-    >>Care as |cRXP_ENEMY_Greymist Tidehunters|r can cast |T136016:0|t[|cRXP_FRIENDLY_Poison|r] while in meele leaving a dot dealing 13 damage per 3 seconds for 30 seconds
+    >>Care as |cRXP_ENEMY_Greymist Tidehunters|r can cast |T136016:0|t[|cRXP_FRIENDLY_Poison|r] while in melee leaving a dot dealing 13 damage per 3 seconds for 30 seconds
     >>Click the |cRXP_PICK_Beached Sea Turtle|r
     .accept 4731 >> Accept Beached Sea Turtle
 step << !Hunter
@@ -3737,7 +3759,7 @@ step
     .goto Darkshore,52.38,33.39,0
     .goto Darkshore,50.66,34.94
     >>Open the |cRXP_PICK_Blackwood Grain Stores|r. Loot it for the |T134059:0|t|cRXP_LOOT_[Blackwood Grain Sample]|r
-    >>|cRXP_WARN_Looting this will spawn 2 |cRXP_ENEMY_Blackwood Furbolgs|r that will agro and run towards you. Be ready to fight them or reset them|r
+    >>|cRXP_WARN_Looting this will spawn 2 |cRXP_ENEMY_Blackwood Furbolgs|r that will aggro and run towards you. Be ready to fight them or reset them|r
     >>|cRXP_WARN_If you see |cRXP_ENEMY_Xabraxxis|r yell in chat or see someone fighting him, help them. Open the |cRXP_PICK_Xabraxxis' Demon Bag|r he drops on the ground. Loot it for the|r |cRXP_LOOT_Talisman of Corruption|r
     .collect 12342,1,4763,1 -- Blackwood Grain Stores (1)
     .complete 4763,1 --Talisman of Corruption (1)
@@ -3747,7 +3769,7 @@ step
     .goto Darkshore,52.60,36.65,45,0
     .goto Darkshore,51.48,38.26
     >>Kill |cRXP_ENEMY_Den Mother|r
-    >>|cRXP_WARN_Be careful as the |cRXP_ENEMY_Thistle Cubs|r can cast|r |T132152:0|t[Ravage]|cRXP_WARN_, a meele instant attack which stuns you for 2 seconds|r
+    >>|cRXP_WARN_Be careful as the |cRXP_ENEMY_Thistle Cubs|r can cast|r |T132152:0|t[Ravage]|cRXP_WARN_, a melee instant attack which stuns you for 2 seconds|r
     .complete 2139,1 --Den Mother (1)
     .mob Den Mother
 step
@@ -3758,7 +3780,7 @@ step
     .goto Darkshore,52.38,33.39,0
     .goto Darkshore,51.83,33.50
     >>Open the |cRXP_PICK_Blackwood Nut Stores|r. Loot it for the |T133944:0|t|cRXP_LOOT_[Blackwood Nut Sample]|r
-    >>|cRXP_WARN_Looting this will spawn 2 |cRXP_ENEMY_Blackwood Furbolgs|r that will agro and run towards you. Be ready to fight them or reset them|r
+    >>|cRXP_WARN_Looting this will spawn 2 |cRXP_ENEMY_Blackwood Furbolgs|r that will aggro and run towards you. Be ready to fight them or reset them|r
     >>|cRXP_WARN_If you see |cRXP_ENEMY_Xabraxxis|r yell in chat or see someone fighting him, help them. Open the |cRXP_PICK_Xabraxxis' Demon Bag|r he drops on the ground. Loot it for the|r |cRXP_LOOT_Talisman of Corruption|r
     .collect 12343,1,4763,1 -- Blackwood Nut Sample (1)
     .complete 4763,1 --Talisman of Corruption (1)
@@ -3772,7 +3794,7 @@ step
     .goto Darkshore,52.38,33.39,0
     .goto Darkshore,52.86,33.41
     >>Open the |cRXP_PICK_Blackwood Fruit Stores|r. Loot it for the |T134013:0|t|cRXP_LOOT_[Blackwood Fruit Sample]|r
-    >>|cRXP_WARN_Looting this will spawn 2 |cRXP_ENEMY_Blackwood Furbolgs|r that will agro and run towards you. Be ready to fight them or reset them|r
+    >>|cRXP_WARN_Looting this will spawn 2 |cRXP_ENEMY_Blackwood Furbolgs|r that will aggro and run towards you. Be ready to fight them or reset them|r
     >>|cRXP_WARN_If you see |cRXP_ENEMY_Xabraxxis|r yell in chat or see someone fighting him, help them. Open the |cRXP_PICK_Xabraxxis' Demon Bag|r he drops on the ground. Loot it for the|r |cRXP_LOOT_Talisman of Corruption|r
     .collect 12341,1,4763,1 -- Blackwood Fruit Sample (1)
     .complete 4763,1 --Talisman of Corruption (1)
@@ -3924,7 +3946,7 @@ step
     .goto Darkshore,54.93,12.19
     >>Kill |cRXP_ENEMY_Greymist Oracles|r and |cRXP_ENEMY_Greymist Tidehunters|r. Loot them for the |cRXP_LOOT_Middle of Gelkak's Key|r
     >>|cRXP_WARN_Be aware of |cRXP_ENEMY_Greymist Oracles|r'|r |T136048:0|t[Lightning Bolt] |cRXP_WARN_damage and they can also heal with|r |T136052:0|t[Healing Wave]|r
-    >>Care as |cRXP_ENEMY_Greymist Tidehunters|r can cast |T136016:0|t[|cRXP_FRIENDLY_Poison|r] while in meele leaving a dot dealing 13 damage per 3 seconds for 30 seconds
+    >>Care as |cRXP_ENEMY_Greymist Tidehunters|r can cast |T136016:0|t[|cRXP_FRIENDLY_Poison|r] while in melee leaving a dot dealing 13 damage per 3 seconds for 30 seconds
     >>|cRXP_WARN_You can LoS (Line of Sight) the |cRXP_ENEMY_Greymist Oracles|r'|r  |T136048:0|t[Lightning Bolts] |cRXP_WARN_around the sunken ship to avoid taking its damage|r
     .complete 2098,2 -- Middle of Gelkak's Key (1)
     .mob Greymist Tidehunter
@@ -5559,7 +5581,7 @@ step << NightElf Warrior
     #completewith NEWarRogNoDMIFPP
     .goto 1455,62.378,88.671
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brenwyn Wintersteel|r downstairs
-    >>|cRXP_BUY_Buy the|r |T135427:0|t[Heavy Throwing Knives] |cRXP_BUY_from her|r
+    >>|cRXP_BUY_Buy the|r |T135427:0|t[Heavy Throwing Dagger] |cRXP_BUY_from her|r
     .collect 3108,200 --Collect Heavy Throwing Knife (200)
     .target Brenwyn Wintersteel
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<11.7
@@ -5574,7 +5596,7 @@ step << NightElf Warrior
     #requires NEWarRogNoDMNoFP4
     #label NEWarRogNoDMNoFP5
     #completewith NEWarRogNoDMIFPP
-    +|cRXP_WARN_Equip the|r |T135427:0|t[Heavy Throwing Knives]
+    +|cRXP_WARN_Equip the|r |T135427:0|t[Heavy Throwing Dagger]
     .use 3108
     .itemcount 3108,1
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<11.7
@@ -5829,6 +5851,7 @@ step << Dwarf Hunter
 step << Dwarf Hunter
     #xprate <1.59
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ilyenia Moonfire|r
+    .skipgossip 11866,1
     .goto Darnassus,57.56,46.72
     .train 264 >> Train Bows
     .train 227 >> Train Staves
@@ -7996,7 +8019,7 @@ step << NightElf Warrior
     #completewith NEIFFP
     .goto 1455,62.378,88.671
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brenwyn Wintersteel|r downstairs
-    >>|cRXP_BUY_Buy the|r |T135427:0|t[Heavy Throwing Knives] |cRXP_BUY_from her|r
+    >>|cRXP_BUY_Buy the|r |T135427:0|t[Heavy Throwing Dagger] |cRXP_BUY_from her|r
     .collect 3108,200 --Collect Heavy Throwing Knife (200)
     .target Brenwyn Wintersteel
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<11.7
@@ -8006,7 +8029,7 @@ step << NightElf Warrior
     #requires DeeprunDMNoFP4
     #label DeeprunDMNoFP5
     #completewith NEIFFP
-    +|cRXP_WARN_Equip the|r |T135427:0|t[Heavy Throwing Knives]
+    +|cRXP_WARN_Equip the|r |T135427:0|t[Heavy Throwing Dagger]
     .use 3108
     .itemcount 3108,1
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<11.7
@@ -8332,6 +8355,7 @@ RXPGuides.RegisterGuide([[
 #version 1
 << Alliance !Hunter
 #group RestedXP Alliance 1-20
+#groupid RXP-SRGCE-A1
 #name 19-20 Redridge
 #next 20-21 Darkshore/Ashenvale
 
@@ -9831,7 +9855,7 @@ step
     .accept 122 >> Accept Underbelly Scales
 step
     #label FlyR
-	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Magistrate Soloman|r
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Magistrate Solomon|r
 	.target Magistrate Solomon
     .goto Redridge Mountains,29.31,45.33,15,0
     .goto Redridge Mountains,29.98,44.45
@@ -9983,6 +10007,7 @@ RXPGuides.RegisterGuide([[
 #season 0
 << Alliance Hunter
 #group RestedXP Alliance 1-20
+#groupid RXP-SRGCE-A1
 #name 19-21 Darkshore/Ashenvale
 #next RestedXP Alliance 20-30\21-23 Ashenvale/Stonetalon
 
@@ -10048,7 +10073,7 @@ step
     .goto 1439,31.251,87.419
     >>Click the |cRXP_PICK_Beached Sea Creature|r
     .accept 4733 >> Accept Beached Sea Creature
-    >>|cRXP_WARN_This quest can be VERY difficult. Engage the |cRXP_ENEMY_Murlocs|r 1 by 1, otherwise you may agro multiple at the same time|r
+    >>|cRXP_WARN_This quest can be VERY difficult. Engage the |cRXP_ENEMY_Murlocs|r 1 by 1, otherwise you may aggro multiple at the same time|r
     .link https://youtu.be/lfQM3Q-Ag5A >> |cRXP_WARN_Click here for a video guide|r
 step
     #optional
@@ -10088,14 +10113,14 @@ step
     >>This will start an escort
     .accept 731,1 >> Accept The Absent Minded Prospector
     >>|cRXP_WARN_This quest is VERY difficult. Skip this step if you're unable to find a group or solo it|r
-    .link https://youtu.be/3d-htESNztE >> |cRXP_WARN_Click here for a video guide|r
+    .link https://www.youtube.com/watch?v=crQAvyRIceU >> |cRXP_WARN_Click here for a video guide|r
     .target Prospector Remtravel
     .isQuestAvailable 731
 step
     #requires prospector
     >>|cRXP_WARN_Escort |cRXP_FRIENDLY_Prospector Remtravel|r through the Excavation|r
     >>|cRXP_WARN_This quest is VERY difficult. Skip this step if you're unable to find a group or solo it|r
-    .link https://youtu.be/3d-htESNztE >> |cRXP_WARN_Click here for a video guide|r
+    .link https://www.youtube.com/watch?v=crQAvyRIceU >> |cRXP_WARN_Click here for a video guide|r
     .complete 731,1
     .isOnQuest 731
 step
@@ -10126,7 +10151,7 @@ step
     .goto 1439,31.251,87.419
     >>Click the |cRXP_PICK_Beached Sea Creature|r
     .accept 4733 >> Accept Beached Sea Creature
-    >>|cRXP_WARN_This quest can be VERY difficult. Engage the |cRXP_ENEMY_Murlocs|r 1 by 1, otherwise you may agro multiple at the same time|r
+    >>|cRXP_WARN_This quest can be VERY difficult. Engage the |cRXP_ENEMY_Murlocs|r 1 by 1, otherwise you may aggro multiple at the same time|r
     .link https://youtu.be/lfQM3Q-Ag5A >> |cRXP_WARN_Click here for a video guide|r
 step
     #xprate <1.5
@@ -10274,7 +10299,7 @@ step
     .complete 5321,2
     .isOnQuest 5321
 step
-	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Liadris Moonriver|r
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Liladris Moonriver|r
 	.target Liladris Moonriver
     .goto Ashenvale,27.26,35.58
     .turnin 5321 >> Turn in The Sleeper Has Awakened
@@ -10317,7 +10342,7 @@ step
     .isOnQuest 1010
 step
     .goto Ashenvale,31.25,30.70
-    .xp 20-1650 >>Keep killing |cRXP_ENEMY_Dark Strand mobs|r untill you have enough xp to reach level 20
+    .xp 20-1650 >>Keep killing |cRXP_ENEMY_Dark Strand mobs|r until you have enough xp to reach level 20
     .mob Dark Strand Cultist
     .mob Dark Strand Adept
     .mob Dark Strand Enforcer
@@ -10422,12 +10447,16 @@ step
     .goto Ashenvale,36.61,49.58
     .accept 991 >> Accept Raene's Cleansing
     .accept 1054 >> Accept Culling the Threat
+step
+    #label HCHunterNoHS --hidden step for #include
 step << !Dwarf/!Hunter
     #xprate <1.59
     .goto Ashenvale,36.99,49.22
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Kimlya|r
     .home >> Set your Hearthstone to Astranaar
     .target Innkeeper Kimlya
+step
+    #label HCHunterNoHSStart --hidden step for #include
 step
     #xprate <1.59
     .goto Ashenvale,36.6,49.8
@@ -10500,6 +10529,8 @@ step
     .target Delgren the Purifier
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Delgren the Purifier|r
     .turnin 973 >> Turn in The Tower of Althalaxx
+step
+    #label HCHunterEnd --hidden step for #include
 step
     #xprate <1.59
     #sticky
@@ -10715,6 +10746,7 @@ step << Dwarf Hunter
     #xprate <1.59
 -- #xprate >1.59
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ilyenia Moonfire|r
+    .skipgossip 11866,1
     .goto Darnassus,57.56,46.72
     .train 264 >> Train Bows
     .train 227 >> Train Staves
@@ -10768,6 +10800,7 @@ RXPGuides.RegisterGuide([[
 << Alliance !Hunter
 #season 0
 #group RestedXP Alliance 1-20
+#groupid RXP-SRGCE-A1
 #name 20-21 Darkshore/Ashenvale
 #next RestedXP Alliance 20-30\21-23 Stonetalon/Ashenvale;RestedXP Alliance 20-30\21-22 Ashenvale SoD
 
@@ -10979,14 +11012,14 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Remtravel|r. This will start an escort
     .accept 731,1 >> Accept The Absent Minded Prospector
     >>|cRXP_WARN_This quest is VERY difficult. Skip this step if you're unable to find a group or solo it|r
-    .link https://youtu.be/3d-htESNztE >> |cRXP_WARN_Click here for a video guide|r
+    .link https://www.youtube.com/watch?v=crQAvyRIceU >> |cRXP_WARN_Click here for a video guide|r
     .target Prospector Remtravel
     .isQuestAvailable 731
 step
     #requires prospector
     >>|cRXP_WARN_Escort |cRXP_FRIENDLY_Prospector Remtravel|r through the Excavation|r
     >>|cRXP_WARN_This quest is VERY difficult. Skip this step if you're unable to find a group or solo it|r
-    .link https://youtu.be/3d-htESNztE >> |cRXP_WARN_Click here for a video guide|r
+    .link https://www.youtube.com/watch?v=crQAvyRIceU >> |cRXP_WARN_Click here for a video guide|r
     .complete 731,1
     .isOnQuest 731
 step
@@ -11049,7 +11082,7 @@ step
     .goto 1439,31.251,87.419
     >>Click the |cRXP_PICK_Beached Sea Creature|r
     .accept 4733 >> Accept Beached Sea Creature
-    >>|cRXP_WARN_This quest can be VERY difficult. Engage the |cRXP_ENEMY_Murlocs|r 1 by 1, otherwise you may agro multiple at the same time|r
+    >>|cRXP_WARN_This quest can be VERY difficult. Engage the |cRXP_ENEMY_Murlocs|r 1 by 1, otherwise you may aggro multiple at the same time|r
     .link https://youtu.be/lfQM3Q-Ag5A >> |cRXP_WARN_Click here for a video guide|r
 step
     #xprate <1.5
@@ -11153,7 +11186,7 @@ step
 #xprate <1.5
     #completewith volcorEnd
     .goto Ashenvale,27.26,35.58
-    +|cRXP_FRIENDLY_Kerlonian|r will follow you and ocasionally help in combat. |cRXP_WARN_Make sure you don't lose him as he will stop moving when he falls asleep. You have 25 minutes to reach Ashenvale and complete this quest|r
+    +|cRXP_FRIENDLY_Kerlonian|r will follow you and occasionally help in combat. |cRXP_WARN_Make sure you don't lose him as he will stop moving when he falls asleep. You have 25 minutes to reach Ashenvale and complete this quest|r
     .use 13536 >> |cRXP_WARN_Use the|r |T134229:0|t[|cRXP_LOOT_Horn of Awakening|r] |cRXP_WARN_whenever |cRXP_FRIENDLY_Kerlonian|r falls asleep while standing next to him to wake him up|r
     >>|cRXP_WARN_Avoid running on the main road as much as possible. Enemies will only spawn if you're on the road|r
     .isOnQuest 5321
@@ -11197,7 +11230,7 @@ step
     .isOnQuest 5321
 step
 #xprate <1.5
-	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Liadris Moonriver|r
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Liladris Moonriver|r
 	.target Liladris Moonriver
     .goto Ashenvale,27.26,35.58
     .turnin 5321 >> Turn in The Sleeper Has Awakened
@@ -11259,7 +11292,7 @@ step
     .mob Dark Strand Adept
 step
     .goto Ashenvale,31.25,30.70
-    .xp 20-1650 >>Keep killing |cRXP_ENEMY_Dark Strand mobs|r untill you have enough xp to reach level 20
+    .xp 20-1650 >>Keep killing |cRXP_ENEMY_Dark Strand mobs|r until you have enough xp to reach level 20
     .mob Dark Strand Cultist
     .mob Dark Strand Adept
     .mob Dark Strand Enforcer
@@ -11272,7 +11305,7 @@ step
     .goto Ashenvale,31.89,22.53
     >>Open the |cRXP_PICK_Plant Bundles|r in the ground. Loot them for |cRXP_LOOT_Bathran's Hairs|r
     >>|cRXP_WARN_They look like small brown sacks and can be partially buried into the ground. They can be hard to see|r
-    >>|cRXP_WARN_Make sure you have|r |T134916:0|t[Track Herbs] |cRXP_WARN_enabled to see them on the minimap|r
+    >>|cRXP_WARN_Make sure you have|r |T134916:0|t[Find Herbs] |cRXP_WARN_enabled to see them on the minimap|r
     .complete 1010,1 --Bathran's Hair (5)
     .isOnQuest 1010
     .skill herbalism,<1,1
@@ -11327,7 +11360,7 @@ step
     .goto Ashenvale,31.89,22.53
     >>Open the |cRXP_PICK_Plant Bundles|r in the ground. Loot them for |cRXP_LOOT_Bathran's Hairs|r
     >>|cRXP_WARN_They look like small brown sacks and can be partially buried into the ground. They can be hard to see|r
-    >>|cRXP_WARN_Make sure you have|r |T134916:0|t[Track Herbs] |cRXP_WARN_enabled to see them on the minimap|r
+    >>|cRXP_WARN_Make sure you have|r |T134916:0|t[Find Herbs] |cRXP_WARN_enabled to see them on the minimap|r
     .complete 1010,1 --Bathran's Hair (5)
     .skill herbalism,<1,1
 step

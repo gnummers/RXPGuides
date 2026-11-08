@@ -3,7 +3,7 @@ if addon.gameVersion < 40000 or addon.player.faction == 'Alliance' then return e
 local faction = UnitFactionGroup("player")
 if faction == "Alliance" then return end
 
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #cata
 #mop
@@ -14,7 +14,7 @@ RXPGuides.RegisterGuide([[
 --#group RXP Cataclysm (H) << cata
 #defaultfor BloodElf
 #group RXP Cataclysm 1-80 (H) << cata
-#group RXP MoP 1-60 (H) << mop
+#group RXP MoP 1-80 (H) << mop
 #subweight 10000
 
 
@@ -124,11 +124,11 @@ step << Priest !cata
     .target Matron Arena
 step << Rogue
     .goto Eversong Woods,38.93,20.01
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pathstalker Avoker|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pathstalker Avokor|r
     .turnin 9392 >>Turn in Rogue Training
     .accept 10071 >>Accept Evisceration
     .train 2098 >>Train |T132292:0|t[Eviscerate] << Cata
-    .target Pathstalker Avoker
+    .target Pathstalker Avokor
 step << Warlock cata
     .goto Eversong Woods,38.94,21.45
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Summoner Teli'Larien|r
@@ -249,9 +249,9 @@ step << Priest !cata
     .target Matron Arena
 step << Rogue
     .goto Eversong Woods,38.93,20.01
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pathstalker Avoker|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pathstalker Avokor|r
     .turnin 10071 >>Turn in Evisceration
-    .target Pathstalker Avoker
+    .target Pathstalker Avokor
 step << Warlock cata
     .goto Eversong Woods,38.94,21.45
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Summoner Teli'Larien|r
@@ -471,9 +471,9 @@ step << Priest Cata
     .xp <5,1
 step << Rogue Cata
     .goto Eversong Woods,38.93,20.01
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pathstalker Avoker|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pathstalker Avokor|r
     .train 1784 >>Train |T132320:0|t[Stealth]
-    .target Pathstalker Avoker
+    .target Pathstalker Avokor
     .xp <5,1
 step << Warlock Cata
     .goto Eversong Woods,38.94,21.45
@@ -530,7 +530,7 @@ RXPGuides.RegisterGuide([[
 
 #defaultfor BloodElf/Undead
 #group RXP Cataclysm 1-80 (H) << cata
-#group RXP MoP 1-60 (H) << mop
+#group RXP MoP 1-80 (H) << mop
 #subweight 10000
 
 step << Undead

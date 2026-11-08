@@ -1,11 +1,11 @@
 local _,addon = ...
 if addon.gameVersion < 40000 or addon.player.faction == 'Horde' then return end
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 
 #version 1
 #group RXP Cataclysm 1-80 (A) << cata
-#group RXP MoP 1-60 (A) << mop
+#group RXP MoP 1-80 (A) << mop
 #cata
 #mop
 #name 20-25 Duskwood
@@ -38,7 +38,7 @@ step
 step
     .goto 47,75.56,45.37,8,0
     .goto 47,75.83,45.26
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to inside the house
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Madame Eva|r inside the house
     .turnin 26653 >>Turn in Supplies from Darkshire
     .accept 26652 >>Accept Ghost Hair Thread
 	.target Madame Eva
@@ -189,7 +189,7 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mary|r inside the house
     .turnin 26652 >>Turn in Ghost Hair Thread
     .accept 26654 >>Accept Return the Comb
-    .turnin 26683 >>Turn in Turn in Look To The Stars
+    .turnin 26683 >>Turn in Look To The Stars
     .accept 26684 >>Accept The Insane Ghoul
 	.target Blind Mary
 step
@@ -209,7 +209,7 @@ step
 step
     .goto 47,75.56,45.37,8,0
     .goto 47,75.83,45.26
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to inside the house
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Madame Eva|r inside the house
     .turnin 26654 >>Turn in Return the Comb
     .accept 26655 >>Accept Deliver the Thread
 	.target Madame Eva
@@ -705,7 +705,7 @@ step
     .maxlevel 28
 step
     .goto 47,74.17,46.47
-    >>Kill |cRXP_ENEMY_Stiches.|r
+    >>Kill |cRXP_ENEMY_Stitches.|r
     .complete 26727,1 --1/1 Stitches slain
 	.mob Stitches
     .maxlevel 28

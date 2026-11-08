@@ -1,7 +1,7 @@
 local faction = UnitFactionGroup("player")
 if faction == "Alliance" then return end
 
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #classic
 #tbc
@@ -11,6 +11,7 @@ RXPGuides.RegisterGuide([[
 #displayname 14-18 The Barrens << Undead/Troll Rogue/Orc Rogue/Orc Warlock/Troll Mage/Troll Priest
 #version 11
 #group RestedXP Horde 1-22
+#groupid RXP-SRGCE-H1
 #next 17-22 Stonetalon/Barrens/Ashenvale
 
 
@@ -173,7 +174,7 @@ step << Tauren Hunter
 step << Tauren Hunter
     #optional
     #completewith DisruptTheAttacks
-    +|cRXP_WARN_Equip th|re |T135613:0|t[Hunter's Boomstick]
+    +|cRXP_WARN_Equip the|r |T135613:0|t[Hunter's Boomstick]
     .use 2511
     .itemcount 2511,1
     .itemStat 18,QUALITY,<7
@@ -1045,7 +1046,7 @@ step << Undead Warrior
 step << Undead Warrior
     #optional
     #completewith BaronLongshore
-    +|cRXP_WARN_Equip th|re |T135353:0|t[Espadon] |cRXP_WARN_when you are level 16|r
+    +|cRXP_WARN_Equip the|r |T135353:0|t[Espadon] |cRXP_WARN_when you are level 16|r
     .use 2024
     .itemcount 2024,1
     .itemStat 16,QUALITY,<7
@@ -1549,7 +1550,7 @@ step << Druid
     .train 416049,1
 step
     .goto The Barrens,45.06,22.54
-    >>Dive underwater to the |cRXP_PICK_Bubble Fissure|r
+    >>Dive underwater to the |cRXP_PICK_Bubbling Fissure|r
     .complete 870,1 --Explore the waters of the Forgotten Pools
 step
     #label Barak
@@ -1869,7 +1870,7 @@ step
 step
     #label Ignition
     .goto The Barrens,56.52,7.45
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to|r |cRXP_FRIENDLY_Wizzlecrank's Shredder|r in The Sludge Ven
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to|r |cRXP_FRIENDLY_Wizzlecrank's Shredder|r in The Sludge Fen
     >>|cRXP_FRIENDLY_Wizzlecrank's Shredder|r |cRXP_WARN_has a long respawn timer. Consider skipping this quest if there is a lot of competition|r
     .accept 858 >>Accept Ignition
     .target Wizzlecrank's Shredder
@@ -2239,7 +2240,7 @@ step << Tauren Hunter
 step << Troll Warrior/Tauren Warrior/Undead Warrior
     .goto Orgrimmar,81.52,19.60
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hanashi|r
-    .train 172 >>Train Two-Handed Axes
+    .train 197 >>Train Two-Handed Axes
     .train 227 >>Train Staves
     .target Hanashi
 step << Hunter
@@ -2590,7 +2591,7 @@ step
 step
     #label TestSeeds
     .goto The Barrens,55.61,42.75
-    >>Click the |cRXP_PICK_Bubble Fissure|r underwater
+    >>Click the |cRXP_PICK_Bubbling Fissure|r underwater
     .complete 877,1 --Test the Dried Seeds (1)
 step << Druid/Mage
     #optional
@@ -2999,7 +3000,8 @@ step
     .goto The Barrens,46.08,40.68,50,0
     .goto The Barrens,45.71,40.56,50,0
     .goto The Barrens,45.64,38.16,50,0
-    >>Find & kill |cRXP_ENEMY_Hezrul Bloodmark|r, he patrols around the lake. Loot him for his |cRXP_LOOT_Head|r
+    >>Find & kill |cRXP_ENEMY_Hezrul Bloodmark|r. Loot him for his |cRXP_LOOT_Head|r
+    >>|cRXP_ENEMY_Hezrul|r |cRXP_WARN_patrols around the lake|r
     .complete 852,1 --Hezrul's Head
     .unitscan Hezrul Bloodmark
     .isQuestTurnedIn 851
@@ -3110,6 +3112,7 @@ step
     >>Kill |cRXP_ENEMY_Warlord Krom'zar|r once he appears. Loot the |cRXP_PICK_Banner|r that he drops on the ground
     >>|cRXP_WARN_Be careful! He is a strong elite and is guarded by at least two|r |cRXP_ENEMY_Kolkar|r |cRXP_WARN_mobs|r
     >>|cRXP_WARN_It can take up to 3 minutes until he spawns|r
+    .link https://www.youtube.com/watch?v=xrm0PWe5wf4 >>|cRXP_WARN_Click here for a guide video on how you can kite|r |cRXP_ENEMY_Warlord Krom'zar|r
     .complete 4021,1 --Piece of Krom'zar's Banner (1)
     .unitscan Warlord Krom'zar
     .isOnQuest 4021
@@ -3215,6 +3218,7 @@ RXPGuides.RegisterGuide([[
 #displayname 18-22 Stonetalon/Barrens/Ashenvale << Undead/Troll Rogue/Orc Rogue/Orc Warlock/Troll Mage/Troll Priest
 #version 11
 #group RestedXP Horde 1-22
+#groupid RXP-SRGCE-H1
 #next RestedXP Horde 22-30\22-24 Hillsbrad
 
 
@@ -3690,7 +3694,7 @@ step
     .mob Stormsnout
 step
     #completewith next
-    >>Kill |cRXP_ENEMY_Bristleback Quillboars|r. Loot them for their |cRXP_LOOT_Tusks|r. Save the |T134128:0|t[|cRXP_LOOT_Blood Shards|r] you get
+    >>Kill |cRXP_ENEMY_Bristleback Quilboars|r. Loot them for their |cRXP_LOOT_Tusks|r. Save the |T134128:0|t[|cRXP_LOOT_Blood Shards|r] you get
 	.complete 878,1 --Kill Bristleback Water Seeker (x6)
     .mob +Bristleback Water Seeker
     .complete 878,2 --Kill Bristleback Thornweaver (x12)
@@ -3747,7 +3751,7 @@ step
     .goto The Barrens,52.41,53.07,60,0
     .goto The Barrens,52.32,53.71,60,0
     .goto The Barrens,51.39,54.22,60,0
-    >>Kill |cRXP_ENEMY_Bristleback Quillboars|r. Loot them for their |cRXP_LOOT_Tusks|r. Save the |T134128:0|t[|cRXP_LOOT_Blood Shards|r] you get
+    >>Kill |cRXP_ENEMY_Bristleback Quilboars|r. Loot them for their |cRXP_LOOT_Tusks|r. Save the |T134128:0|t[|cRXP_LOOT_Blood Shards|r] you get
 	.complete 878,1 --Kill Bristleback Water Seeker (x6)
     .mob +Bristleback Water Seeker
     .complete 878,2 --Kill Bristleback Thornweaver (x12)
@@ -4192,7 +4196,7 @@ step << Rogue
     .xp <20,1
     .dungeon DM
 step << Warlock
-    .goto Undercity,48.47,45.42
+    .goto Orgrimmar,47.98,45.93
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Zevrost|r
     .train 1014 >> Train your class spells
 	.target Zevrost
@@ -4201,7 +4205,7 @@ step << Warlock
     .dungeon DM
 step << Warlock
     #optional
-    .goto Undercity,48.47,45.42
+    .goto Orgrimmar,47.98,45.93
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Zevrost|r
     .train 706 >> Train your class spells
 	.target Zevrost
@@ -4437,7 +4441,7 @@ step
     .subzoneskip 380,1
 step
     .goto The Barrens,44.55,59.27
-    >>Kill |cRXP_ENEMY_Bristleback Quillboars|r. Loot them for a |T134128:0|t[|cRXP_LOOT_Blood Shard|r
+    >>Kill |cRXP_ENEMY_Bristleback Quilboars|r. Loot them for a |T134128:0|t[|cRXP_LOOT_Blood Shard|r]
     .collect 5075,1,5052,1 --Blood Shard (1)
     .mob Bristleback Water Seeker
     .mob Bristleback Thornweaver
@@ -4622,7 +4626,7 @@ step
 step << !Tauren !Shaman !Warrior/Undead
     .goto The Barrens,44.55,59.27
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mangletooth|r
-    .aura 16618 >>|cRXP_WARN_If you have 10|r |T134128:0|t[|cRXP_LOOT_Blood Shards|r |cRXP_WARN_left, use them to obtain|r |T136022:0|t[Spirit of the Wind] |cRXP_WARN_from|r |cRXP_FRIENDLY_Mangletooth|r
+    .aura 16618 >>|cRXP_WARN_If you have 10|r |T134128:0|t[|cRXP_LOOT_Blood Shards|r] |cRXP_WARN_left, use them to obtain|r |T136022:0|t[Spirit of the Wind] |cRXP_WARN_from|r |cRXP_FRIENDLY_Mangletooth|r
     >>|cRXP_WARN_Skip this step if you have the Thunder Bluff flight path|r
     .itemcount 5075,10
     .target Mangletooth
@@ -4676,6 +4680,7 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Chesmu|r
     .bankdeposit 5075 >> Deposit your |T134128:0|t[Blood Shards]
     .target Chesmu
+    .isNotOnQuest 868
 step
     .goto Thunder Bluff,45.83,64.74
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Pala|r
@@ -4693,7 +4698,7 @@ step
     #completewith DeathDUPpickup
     .goto Thunder Bluff,28.55,25.64
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Clarice|r
-    .accept 264 >> Until Death Do Us Part
+    .accept 264 >> Accept Until Death Do Us Part
     .target Clarice Foster
 step
     .goto Thunder Bluff,22.82,20.88
@@ -4814,7 +4819,7 @@ step << Druid
     #completewith next
     .goto Moonglade,54.30,55.68
     .collect 15877,1,28,1 >>Loot the |cRXP_PICK_Bauble Container|r at the bottom of the lake for a|T134125:0|t[Shrine Bauble]
-    >>|cRXP_WARN_Do not go underwater untill you arive right above the Bauble|r
+    >>|cRXP_WARN_Do not go underwater until you arive right above the Bauble|r
 step << Druid
     .goto Moonglade,36.40,42.01
     .cast 19719 >> |cRXP_WARN_Use the|r |T134125:0|t[Shrine Bauble] |cRXP_WARN_at the Shrine of Remulos|r
@@ -5257,7 +5262,7 @@ step
     .dungeon WC
 step
     #optional
-    >>Kill |cRXP_ENEMY_Deviate Ravagers|r, |cRXP_ENEMY_Vipers|r, |cRXP_ENEMY_Shamblers|r and |cRXP_ENEMY_Dreadfangs|r. . Loot them for their |cRXP_ENEMY_Hides|r
+    >>Kill |cRXP_ENEMY_Deviate Ravagers|r, |cRXP_ENEMY_Vipers|r, |cRXP_ENEMY_Shamblers|r and |cRXP_ENEMY_Dreadfangs|r. Loot them for their |cRXP_ENEMY_Hides|r
     .complete 1487,1 --Deviate Ravager (7)
     .mob +Deviate Ravager
     .complete 1487,2 --Deviate Viper (7)
@@ -5547,6 +5552,7 @@ step
     >>Kill |cRXP_ENEMY_Warlord Krom'zar|r once he appears. Loot the |cRXP_PICK_Banner|r that he drops on the ground
     >>|cRXP_WARN_Be careful! He is a strong elite and is guarded by at least two|r |cRXP_ENEMY_Kolkar|r |cRXP_WARN_mobs|r
     >>|cRXP_WARN_It can take up to 3 minutes until he spawns|r
+    .link https://www.youtube.com/watch?v=xrm0PWe5wf4 >>|cRXP_WARN_Click here for a guide video on how you can kite|r |cRXP_ENEMY_Warlord Krom'zar|r
     .complete 4021,1 --Piece of Krom'zar's Banner (1)
     .unitscan Warlord Krom'zar
     .isQuestTurnedIn 852
@@ -5908,7 +5914,7 @@ step
     #xprate <1.5
     .goto Stonetalon Mountains,71.87,60.00
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Piznik|r
-    .turnin 1090 >> Turnin Gerenzo's Orders
+    .turnin 1090 >> Turn in Gerenzo's Orders
     .accept 1092 >> Accept Gerenzo's Orders
     .target Piznik
     .group
@@ -6071,8 +6077,8 @@ step
 step
     #xprate <1.5
     #completewith next
-   >>Kill |cRXP_ENEMY_Wraithtail Nagas|r. Loot them for their |cRXP_LOOT_Heads|r
-   .complete 6442,1 --Wraithtail Head (20)
+   >>Kill |cRXP_ENEMY_Wrathtail Nagas|r. Loot them for their |cRXP_LOOT_Heads|r
+   .complete 6442,1 --Wrathtail Head (20)
    .mob Wrathtail Razortail
    .mob Wrathtail Wave Rider
    .mob Wrathtail Sorceress
@@ -6125,8 +6131,8 @@ step
 	.goto Ashenvale,11.22,31.04,50,0
 	.goto Ashenvale,10.38,29.60,50,0
 	.goto Ashenvale,11.01,28.57,50,0
-   >>Kill |cRXP_ENEMY_Wraithtail Nagas|r. Loot them for their |cRXP_LOOT_Heads|r
-   .complete 6442,1 --Wraithtail Head (20)
+   >>Kill |cRXP_ENEMY_Wrathtail Nagas|r. Loot them for their |cRXP_LOOT_Heads|r
+   .complete 6442,1 --Wrathtail Head (20)
    .mob Wrathtail Razortail
    .mob Wrathtail Wave Rider
    .mob Wrathtail Sorceress
@@ -6260,9 +6266,9 @@ step << Priest
 step << Priest
     #xprate <1.5
     #season 0,1
-    >>Kill |cRXP_ENEMY_Lorguss Jett |r
-    .complete 6565,1 --Lorguss Jett slain (1)
-    .mob Lorguss Jett
+    >>Kill |cRXP_ENEMY_Lorgus Jett|r
+    .complete 6565,1 --Lorgus Jett slain (1)
+    .mob Lorgus Jett
     .isOnQuest 6565
     .dungeon BFD
 step << Priest
@@ -6588,7 +6594,7 @@ step << Rogue/Druid
     .zoneskip The Barrens
 step << Rogue/Druid
     #completewith MissionProbable
-    .goto The Barrens,57.63,7.48,120 >> Travel toward the Sludge Ven
+    .goto The Barrens,57.63,7.48,120 >> Travel toward The Sludge Fen
 step << Druid
     .goto The Barrens,56.67,8.32
     >>Loot the |cRXP_PICK_Strange Lockbox|r in the water for the |T133443:0|t[Half Pendant of Aquatic Agility]
@@ -6778,6 +6784,7 @@ RXPGuides.RegisterGuide([[
 #name 13-20 The Barrens
 #version 1
 #group RestedXP Horde 1-22
+#groupid RXP-SRGCE-H1
 #next 20-24 Stonetalon/Barrens
 
 
@@ -6996,7 +7003,7 @@ step << Warlock
     #sticky
     #completewith BarrensEnd
     #label ExplorerImp
-    >>As you're questing cast |T136163:0|t|cRXP_FRIENDLY_[Drain Soul]|r on mobs untill you receive an |T133257:0|t|cRXP_LOOT_Explorer's Soul|r. |cRXP_WARN_Use it to learn how to summon an|r |T236294:0|t|cRXP_FRIENDLY_[Explorer Imp]|r
+    >>As you're questing cast |T136163:0|t|cRXP_FRIENDLY_[Drain Soul]|r on mobs until you receive an |T133257:0|t|cRXP_LOOT_Explorer's Soul|r. |cRXP_WARN_Use it to learn how to summon an|r |T236294:0|t|cRXP_FRIENDLY_[Explorer Imp]|r
     .train 445459 >>|cRXP_WARN_Use|r |T133257:0|t|cRXP_LOOT_Explorer's Soul|r |cRXP_WARN_to learn how to summon an|r |T236294:0|t[|cRXP_FRIENDLY_Explorer Imp|r]
     .train 445459,1 --Skips if you already have Explorer Imp
     .train 1120,3 --Skips if you don't have drain soul
@@ -7009,7 +7016,7 @@ step << Warlock/Mage
     #label FelPortalRune
     >>You are in a zone with |cRXP_FRIENDLY_Fel Portals|r present. If you find one summon your |T236294:0|t[|cRXP_FRIENDLY_Explorer Imp|r] and talk to it while next to a portal to send it on an expedition. After 10-20 minutes it will return with loot and a chance to award you with |T134419:0|t[|cRXP_FRIENDLY_Rune of the Felguard|r] << Warlock
     >>You are in a zone with |cRXP_FRIENDLY_Fel Portals|r present. If you find one close it using a |T134945:0|t[|cRXP_LOOT_Scroll of Spatial Mending|r]. This will award you with |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r] << Mage
-    >>|cRXP_WARN_Be on the lookout for the portals untill you get the rune|r
+    >>|cRXP_WARN_Be on the lookout for the portals until you get the rune|r
     .collect 221499,1 << Warlock --rune of the felguard
     .collect 223147,1 << Mage --Spell Notes: Balefire Bolt
     .itemcount 220792,1 << Mage --Scroll of Spatial Mending
@@ -7031,7 +7038,7 @@ step << Warlock/Mage
     .itemcount 221499,1 << Warlock --Rune of the Felguard
     .itemcount 223147,1 << Mage --Spell Notes: Balefire Bolt
     .train 431756 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of the Felguard|r] |cRXP_WARN_to learn|r |T136216:0|t[Summon Felguard] << Warlock
-    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt] << Mage
+    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r] |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt] << Mage
     .use 221499 << Warlock
     .use 223147 << Mage
 step
@@ -8570,7 +8577,7 @@ step << Druid
     .train 416049,1
 step
     .goto The Barrens,45.06,22.54
-    >>Dive underwater to the |cRXP_PICK_Bubble Fissure|r
+    >>Dive underwater to the |cRXP_PICK_Bubbling Fissure|r
     .complete 870,1 --Explore the waters of the Forgotten Pools
 step
     #label Barak
@@ -9012,7 +9019,7 @@ step
 step
     #label Ignition
     .goto The Barrens,56.52,7.45
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to|r |cRXP_FRIENDLY_Wizzlecrank's Shredder|r in The Sludge Ven
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to|r |cRXP_FRIENDLY_Wizzlecrank's Shredder|r in The Sludge Fen
     >>|cRXP_FRIENDLY_Wizzlecrank's Shredder|r |cRXP_WARN_has a long respawn timer. Consider skipping this quest if there is a lot of competition|r
     .accept 858 >>Accept Ignition
     .target Wizzlecrank's Shredder
@@ -9430,7 +9437,7 @@ step << Tauren Hunter
 step << Tauren Warrior/Undead Warrior
     .goto Orgrimmar,81.52,19.60
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hanashi|r
-    .train 172 >>Train Two-Handed Axes
+    .train 197 >>Train Two-Handed Axes
     .train 227 >>Train Staves
     .target Hanashi
 step << Hunter
@@ -9836,7 +9843,7 @@ step
 step
     #label TestSeeds
     .goto The Barrens,55.61,42.75
-    >>Click the |cRXP_PICK_Bubble Fissure|r underwater
+    >>Click the |cRXP_PICK_Bubbling Fissure|r underwater
     .complete 877,1 --Test the Dried Seeds (1)
 step << Druid
     #xprate <2.1
@@ -10172,7 +10179,8 @@ step
     .goto The Barrens,46.09,40.98,50,0
     .goto The Barrens,46.08,40.68,50,0
     .goto The Barrens,45.71,40.56,50,0
-    >>Find & kill |cRXP_ENEMY_Hezrul Bloodmark|r, he patrols around the lake. Loot him for his |cRXP_LOOT_Head|r
+    >>Find & kill |cRXP_ENEMY_Hezrul Bloodmark|r. Loot him for his |cRXP_LOOT_Head|r
+    >>|cRXP_ENEMY_Hezrul|r |cRXP_WARN_patrols around the lake|r
     .complete 852,1 --Hezrul's Head
     .unitscan Hezrul Bloodmark
     .isQuestTurnedIn 851
@@ -10282,6 +10290,7 @@ step
     >>Kill |cRXP_ENEMY_Warlord Krom'zar|r once he appears. Loot the |cRXP_PICK_Banner|r that he drops on the ground
     >>|cRXP_WARN_Be careful! He is a strong elite and is guarded by at least two|r |cRXP_ENEMY_Kolkar|r |cRXP_WARN_mobs|r
     >>|cRXP_WARN_It can take up to 3 minutes until he spawns|r
+    .link https://www.youtube.com/watch?v=xrm0PWe5wf4 >>|cRXP_WARN_Click here for a guide video on how you can kite|r |cRXP_ENEMY_Warlord Krom'zar|r
     .complete 4021,1 --Piece of Krom'zar's Banner (1)
     .unitscan Warlord Krom'zar
     .isOnQuest 4021
@@ -10387,6 +10396,7 @@ RXPGuides.RegisterGuide([[
 #name 20-24 Stonetalon/Barrens
 #version 1
 #group RestedXP Horde 1-22
+#groupid RXP-SRGCE-H1
 #next 24-26 Southern Barrens << !Rogue !Shaman
 #next 23-24 Hillsbrad Class Quests << Rogue/Shaman
 
@@ -10990,7 +11000,7 @@ step << Warlock
     #sticky
     #completewith CounterattackTurnin3
     #label ExplorerImp
-    >>As you're questing cast |T136163:0|t|cRXP_FRIENDLY_[Drain Soul]|r on mobs untill you receive an |T133257:0|t|cRXP_LOOT_Explorer's Soul|r. |cRXP_WARN_Use it to learn how to summon an|r |T236294:0|t|cRXP_FRIENDLY_[Explorer Imp]|r
+    >>As you're questing cast |T136163:0|t|cRXP_FRIENDLY_[Drain Soul]|r on mobs until you receive an |T133257:0|t|cRXP_LOOT_Explorer's Soul|r. |cRXP_WARN_Use it to learn how to summon an|r |T236294:0|t|cRXP_FRIENDLY_[Explorer Imp]|r
     .train 445459 >>|cRXP_WARN_Use|r |T133257:0|t|cRXP_LOOT_Explorer's Soul|r |cRXP_WARN_to learn how to summon an|r |T236294:0|t[|cRXP_FRIENDLY_Explorer Imp|r]
     .train 445459,1 --Skips if you already have Explorer Imp
     .train 1120,3 --Skips if you don't have drain soul
@@ -11003,7 +11013,7 @@ step << Warlock/Mage
     #label FelPortalRune
     >>You are in a zone with |cRXP_FRIENDLY_Fel Portals|r present. If you find one summon your |T236294:0|t[|cRXP_FRIENDLY_Explorer Imp|r] and talk to it while next to a portal to send it on an expedition. After 10-20 minutes it will return with loot and a chance to award you with |T134419:0|t[|cRXP_FRIENDLY_Rune of the Felguard|r] << Warlock
     >>You are in a zone with |cRXP_FRIENDLY_Fel Portals|r present. If you find one close it using a |T134945:0|t[|cRXP_LOOT_Scroll of Spatial Mending|r]. This will award you with |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r] << Mage
-    >>|cRXP_WARN_Be on the lookout for the portals untill you get the rune|r
+    >>|cRXP_WARN_Be on the lookout for the portals until you get the rune|r
     .collect 221499,1 << Warlock --rune of the felguard
     .collect 223147,1 << Mage --Spell Notes: Balefire Bolt
     .itemcount 220792,1 << Mage --Scroll of Spatial Mending
@@ -11025,7 +11035,7 @@ step << Warlock/Mage
     .itemcount 221499,1 << Warlock --Rune of the Felguard
     .itemcount 223147,1 << Mage --Spell Notes: Balefire Bolt
     .train 431756 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of the Felguard|r] |cRXP_WARN_to learn|r |T136216:0|t[Summon Felguard] << Warlock
-    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt] << Mage
+    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r] |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt] << Mage
     .use 221499 << Warlock
     .use 223147 << Mage
 step
@@ -11035,7 +11045,7 @@ step
     .mob Stormsnout
 step
     #completewith next
-    >>Kill |cRXP_ENEMY_Bristleback Quillboars|r. Loot them for their |cRXP_LOOT_Tusks|r. Save the |T134128:0|t[|cRXP_LOOT_Blood Shards|r] you get
+    >>Kill |cRXP_ENEMY_Bristleback Quilboars|r. Loot them for their |cRXP_LOOT_Tusks|r. Save the |T134128:0|t[|cRXP_LOOT_Blood Shards|r] you get
 	.complete 878,1 --Kill Bristleback Water Seeker (x6)
     .mob +Bristleback Water Seeker
     .complete 878,2 --Kill Bristleback Thornweaver (x12)
@@ -11089,7 +11099,7 @@ step
     .goto The Barrens,52.41,53.07,60,0
     .goto The Barrens,52.32,53.71,60,0
     .goto The Barrens,51.39,54.22,60,0
-    >>Kill |cRXP_ENEMY_Bristleback Quillboars|r. Loot them for their |cRXP_LOOT_Tusks|r. Save the |T134128:0|t[|cRXP_LOOT_Blood Shards|r] you get
+    >>Kill |cRXP_ENEMY_Bristleback Quilboars|r. Loot them for their |cRXP_LOOT_Tusks|r. Save the |T134128:0|t[|cRXP_LOOT_Blood Shards|r] you get
 	.complete 878,1 --Kill Bristleback Water Seeker (x6)
     .mob +Bristleback Water Seeker
     .complete 878,2 --Kill Bristleback Thornweaver (x12)
@@ -11547,7 +11557,7 @@ step << Rogue
     .xp <20,1
     .dungeon DM
 step << Warlock
-    .goto Undercity,48.47,45.42
+    .goto Orgrimmar,47.98,45.93
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Zevrost|r
     .train 1014 >> Train your class spells
 	.target Zevrost
@@ -11556,7 +11566,7 @@ step << Warlock
     .dungeon DM
 step << Warlock
     #optional
-    .goto Undercity,48.47,45.42
+    .goto Orgrimmar,47.98,45.93
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Zevrost|r
     .train 706 >> Train your class spells
 	.target Zevrost
@@ -11830,7 +11840,7 @@ step << Warlock
     .target Grunt Logmar
 step
     .goto The Barrens,44.55,59.27
-    >>Kill |cRXP_ENEMY_Bristleback Quillboars|r. Loot them for a |T134128:0|t[|cRXP_LOOT_Blood Shard|r
+    >>Kill |cRXP_ENEMY_Bristleback Quilboars|r. Loot them for a |T134128:0|t[|cRXP_LOOT_Blood Shard|r]
     .collect 5075,1,5052,1 --Blood Shard (1)
     .mob Bristleback Water Seeker
     .mob Bristleback Thornweaver
@@ -12034,7 +12044,7 @@ step
 step << !Tauren
     .goto The Barrens,44.55,59.27
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mangletooth|r
-    .aura 16618 >>|cRXP_WARN_If you have 10|r |T134128:0|t[|cRXP_LOOT_Blood Shards|r |cRXP_WARN_left, use them to obtain|r |T136022:0|t[Spirit of the Wind] |cRXP_WARN_from|r |cRXP_FRIENDLY_Mangletooth|r
+    .aura 16618 >>|cRXP_WARN_If you have 10|r |T134128:0|t[|cRXP_LOOT_Blood Shards|r] |cRXP_WARN_left, use them to obtain|r |T136022:0|t[Spirit of the Wind] |cRXP_WARN_from|r |cRXP_FRIENDLY_Mangletooth|r
     >>|cRXP_WARN_Skip this step if you have the Thunder Bluff flight path|r
     .itemcount 5075,10
     .target Mangletooth
@@ -12083,7 +12093,7 @@ step << Rogue/Shaman
     #completewith DeathDUPpickup
     .goto Thunder Bluff,28.55,25.64
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Clarice|r
-    .accept 264 >> Until Death Do Us Part
+    .accept 264 >> Accept Until Death Do Us Part
     .target Clarice Foster
 step
     .goto Thunder Bluff,22.82,20.88
@@ -12279,7 +12289,7 @@ step << Rogue
 step << Rogue
     #season 2
     .goto Thunder Bluff,53.00,56.63
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_Talk to|r |cRXP_FRIENDLY_Kard|r|cRXP_BUY_. Buy one or two|r |T135342:0|t[Kris] |cRXP_BUY_from him|rr
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_Talk to|r |cRXP_FRIENDLY_Kard|r|cRXP_BUY_. Buy one or two|r |T135342:0|t[Kris] |cRXP_BUY_from him|r
     .collect 2209,1,493,1 --Collect Kris (1)
     .money <0.7115
     .target Kard Ragetotem
@@ -12649,7 +12659,7 @@ step
     .dungeon WC
 step
     #optional
-    >>Kill |cRXP_ENEMY_Deviate Ravagers|r, |cRXP_ENEMY_Vipers|r, |cRXP_ENEMY_Shamblers|r and |cRXP_ENEMY_Dreadfangs|r. . Loot them for their |cRXP_ENEMY_Hides|r
+    >>Kill |cRXP_ENEMY_Deviate Ravagers|r, |cRXP_ENEMY_Vipers|r, |cRXP_ENEMY_Shamblers|r and |cRXP_ENEMY_Dreadfangs|r. Loot them for their |cRXP_ENEMY_Hides|r
     .complete 1487,1 --Deviate Ravager (7)
     .mob +Deviate Ravager
     .complete 1487,2 --Deviate Viper (7)
@@ -12919,6 +12929,7 @@ step
     >>Kill |cRXP_ENEMY_Warlord Krom'zar|r once he appears. Loot the |cRXP_PICK_Banner|r that he drops on the ground
     >>|cRXP_WARN_Be careful! He is a strong elite and is guarded by at least two|r |cRXP_ENEMY_Kolkar|r |cRXP_WARN_mobs|r
     >>|cRXP_WARN_It can take up to 3 minutes until he spawns|r
+    .link https://www.youtube.com/watch?v=xrm0PWe5wf4 >>|cRXP_WARN_Click here for a guide video on how you can kite|r |cRXP_ENEMY_Warlord Krom'zar|r
     .complete 4021,1 --Piece of Krom'zar's Banner (1)
     .unitscan Warlord Krom'zar
     .isQuestTurnedIn 852
@@ -13061,6 +13072,7 @@ step
     >>Kill |cRXP_ENEMY_Warlord Krom'zar|r once he appears. Loot the |cRXP_PICK_Banner|r that he drops on the ground
     >>|cRXP_WARN_Be careful! He is a strong elite and is guarded by at least two|r |cRXP_ENEMY_Kolkar|r |cRXP_WARN_mobs|r
     >>|cRXP_WARN_It can take up to 3 minutes until he spawns|r
+    .link https://www.youtube.com/watch?v=xrm0PWe5wf4 >>|cRXP_WARN_Click here for a guide video on how you can kite|r |cRXP_ENEMY_Warlord Krom'zar|r
     .complete 4021,1 --Piece of Krom'zar's Banner (1)
     .unitscan Warlord Krom'zar
     .isQuestTurnedIn 852
@@ -13243,7 +13255,7 @@ step << Rogue
     .zoneskip The Barrens
 step << Rogue
     #completewith MissionProbable
-    .goto The Barrens,57.63,7.48,120 >> Travel toward the Sludge Ven
+    .goto The Barrens,57.63,7.48,120 >> Travel toward The Sludge Fen
 step << Rogue
     #completewith next
     .goto The Barrens,55.70,5.89

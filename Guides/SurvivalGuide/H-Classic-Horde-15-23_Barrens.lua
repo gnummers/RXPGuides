@@ -1,7 +1,7 @@
 local faction = UnitFactionGroup("player")
 if faction == "Alliance" then return end
 
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #hardcore
 #classic
@@ -1116,7 +1116,7 @@ step
     .complete 848,1 --Collect Fungal Spores (x4)
 step
     .goto The Barrens,45.06,22.54
-    >>Dive underwater to the |cRXP_PICK_Bubble Fissure|r
+    >>Dive underwater to the |cRXP_PICK_Bubbling Fissure|r
     .complete 870,1 --Explore the waters of the Forgotten Pools
 step
     .goto The Barrens,42.82,23.52
@@ -1604,11 +1604,11 @@ step
 step
     #sticky
     #completewith Slugs
-    >>Loot |cRXP_PICK_Tool Buckets|r from the ground around The Sludge Ven
+    >>Loot |cRXP_PICK_Tool Buckets|r from the ground around The Sludge Fen
     .complete 3922,1 --Nugget Slugs (15)
 step
     .goto The Barrens,56.52,7.45
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to|r |cRXP_FRIENDLY_Wizzlecrank's Shredder|r in The Sludge Ven
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to|r |cRXP_FRIENDLY_Wizzlecrank's Shredder|r in The Sludge Fen
     .accept 858 >>Accept Ignition
     .target Wizzlecrank's Shredder
 step
@@ -1656,7 +1656,7 @@ step
 	.goto The Barrens,56.72,6.92,25,0
 	.goto The Barrens,56.17,6.80,25,0
 	.goto The Barrens,55.69,6.94,25,0
-    >>Loot |cRXP_PICK_Tool Buckets|r from the ground around The Sludge Ven
+    >>Loot |cRXP_PICK_Tool Buckets|r from the ground around The Sludge Fen
     .complete 3922,1 --Nugget Slugs (15)
 step
 	#completewith NuggetSlugsTurnIn
@@ -1708,7 +1708,7 @@ step
     .goto The Barrens,49.05,11.16
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Wenikee|r
     .turnin 3922 >>Turn in Nugget Slugs
-    .accept 3923 >>Accept Rilly Greasygob
+    .accept 3923 >>Accept Rilli Greasygob
     .target Wenikee Boltbucket
 step
     #loop
@@ -1758,7 +1758,7 @@ step
 step
     #completewith FoodandWater1
     .goto The Barrens,52.09,30.43,120 >>Travel to The Crossroads
-    >>|cRXP_WARN_You can also grind untill your|r |T134414:0|t[Hearthstone] |cRXP_WARN_is back up|r
+    >>|cRXP_WARN_You can also grind until your|r |T134414:0|t[Hearthstone] |cRXP_WARN_is back up|r
     .cooldown item,6948,<0
     .subzoneskip 380
 step
@@ -1913,7 +1913,7 @@ step
 step
     #label TestSeeds
     .goto The Barrens,55.61,42.75
-    >>Dive underwater in the middle of the lake and click the |cRXP_PICK_Bubble Fissure|r
+    >>Dive underwater in the middle of the lake and click the |cRXP_PICK_Bubbling Fissure|r
     .complete 877,1 --Test the Dried Seeds (1)
 step
     #completewith next
@@ -2014,7 +2014,7 @@ step
 step
     #label LizardHorn
     #completewith SetCampTaurajoHS
-    >>Kill |cRXP_ENEMY_Stormstouts|r. Loot them for a |cRXP_LOOT_Horn|r. This does not have to be completed now
+    >>Kill |cRXP_ENEMY_Stormsnout|r. Loot them for a |cRXP_LOOT_Horn|r. This does not have to be completed now
     .complete 821,3 --Thunder Lizard Horn (1)
     .mob Stormsnout
 step
@@ -2476,12 +2476,12 @@ step
     .target Jorn Skyseer
 step
 	#completewith LakotaMani
-    >>Kill |cRXP_ENEMY_Stormstouts|r. Loot them for a |cRXP_LOOT_Horn|r
+    >>Kill |cRXP_ENEMY_Stormsnout|r. Loot them for a |cRXP_LOOT_Horn|r
     .complete 821,3 --Thunder Lizard Horn (1)
     .mob Stormsnout
 step
     #completewith next
-    >>Kill |cRXP_ENEMY_Bristleback Quillboars|r. Loot them for their |cRXP_LOOT_Tusks|r. Save the |T134128:0|t[|cRXP_LOOT_Blood Shards|r] you get
+    >>Kill |cRXP_ENEMY_Bristleback Quilboars|r. Loot them for their |cRXP_LOOT_Tusks|r. Save the |T134128:0|t[|cRXP_LOOT_Blood Shards|r] you get
 	.complete 878,1 --Kill Bristleback Water Seeker (x6)
     .mob +Bristleback Water Seeker
     .complete 878,2 --Kill Bristleback Thornweaver (x12)
@@ -2513,7 +2513,7 @@ step
     .unitscan Lakota'mani
 step
     #completewith next
-    >>Kill |cRXP_ENEMY_Stormstouts|r. Loot them for a |cRXP_LOOT_Horn|r
+    >>Kill |cRXP_ENEMY_Stormsnout|r. Loot them for a |cRXP_LOOT_Horn|r
     .complete 821,3 --Thunder Lizard Horn (1)
     .mob Stormsnout
 step
@@ -2538,7 +2538,7 @@ step
     .goto The Barrens,52.41,53.07,60,0
     .goto The Barrens,52.32,53.71,60,0
     .goto The Barrens,51.39,54.22,60,0
-    >>Kill |cRXP_ENEMY_Bristleback Quillboars|r. Loot them for their |cRXP_LOOT_Tusks|r. Save the |T134128:0|t[|cRXP_LOOT_Blood Shards|r] you get
+    >>Kill |cRXP_ENEMY_Bristleback Quilboars|r. Loot them for their |cRXP_LOOT_Tusks|r. Save the |T134128:0|t[|cRXP_LOOT_Blood Shards|r] you get
 	.complete 878,1 --Kill Bristleback Water Seeker (x6)
     .mob +Bristleback Water Seeker
     .complete 878,2 --Kill Bristleback Thornweaver (x12)
@@ -2558,7 +2558,7 @@ step
     .goto The Barrens,49.54,55.08,50,0
     .goto The Barrens,49.03,56.24,50,0
     .goto The Barrens,49.72,56.13,50,0
-    >>Kill |cRXP_ENEMY_Stormstouts|r. Loot them for a |cRXP_LOOT_Horn|r
+    >>Kill |cRXP_ENEMY_Stormsnout|r. Loot them for a |cRXP_LOOT_Horn|r
     .complete 821,3 --Thunder Lizard Horn (1)
     .mob Stormsnout
 step
@@ -2863,7 +2863,7 @@ step << Rogue
     .xp <20,1
     .dungeon DM
 step << Warlock
-    .goto Undercity,48.47,45.42
+    .goto Orgrimmar,47.98,45.93
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Zevrost|r
     .train 1014 >> Train your class spells
 	.target Zevrost
@@ -2872,7 +2872,7 @@ step << Warlock
     .dungeon DM
 step << Warlock
     #optional
-    .goto Undercity,48.47,45.42
+    .goto Orgrimmar,47.98,45.93
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Zevrost|r
     .train 706 >> Train your class spells
 	.target Zevrost
@@ -3118,7 +3118,7 @@ step << !Shaman
     .subzoneskip 380,1
 step
     .goto The Barrens,44.55,59.27
-    >>Kill |cRXP_ENEMY_Bristleback Quillboars|r. Loot them for a |T134128:0|t[|cRXP_LOOT_Blood Shard|r
+    >>Kill |cRXP_ENEMY_Bristleback Quilboars|r. Loot them for a |T134128:0|t[|cRXP_LOOT_Blood Shard|r]
     .collect 5075,1,5052,1 --Blood Shard (1)
     .mob Bristleback Water Seeker
     .mob Bristleback Thornweaver
@@ -3233,7 +3233,7 @@ step
     .target Jorn Skyseer
 step << !Tauren
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mangletooth|r
-    .aura 16618 >>|cRXP_WARN_If you have 10|r |T134128:0|t[|cRXP_LOOT_Blood Shards|r |cRXP_WARN_left, use them to obtain|r |T136022:0|t[Spirit of the Wind] |cRXP_WARN_from|r |cRXP_FRIENDLY_Mangletooth|r
+    .aura 16618 >>|cRXP_WARN_If you have 10|r |T134128:0|t[|cRXP_LOOT_Blood Shards|r] |cRXP_WARN_left, use them to obtain|r |T136022:0|t[Spirit of the Wind] |cRXP_WARN_from|r |cRXP_FRIENDLY_Mangletooth|r
     >>|cRXP_WARN_Skip this step if you have the Thunder Bluff flight path|r
     .itemcount 5075,10
     .target Mangletooth
@@ -3294,7 +3294,7 @@ step
     #completewith DeathDUPpickup
     .goto Thunder Bluff,28.55,25.64
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Clarice|r
-    .accept 264 >> Until Death Do Us Part
+    .accept 264 >> Accept Until Death Do Us Part
     .target Clarice Foster
     .dungeon !WC
 step
@@ -3416,7 +3416,7 @@ step << Druid
     #completewith next
     .goto Moonglade,54.30,55.68
     .collect 15877,1,28,1 >>Loot the |cRXP_PICK_Bauble Container|r at the bottom of the lake for a|T134125:0|t[Shrine Bauble]
-    >>|cRXP_WARN_Do not go underwater untill you arive right above the Bauble|r
+    >>|cRXP_WARN_Do not go underwater until you arive right above the Bauble|r
 step << Druid
     .goto Moonglade,36.40,42.01
     .cast 19719 >> |cRXP_WARN_Use the|r |T134125:0|t[Shrine Bauble] |cRXP_WARN_at the Shrine of Remulos|r
@@ -3628,7 +3628,8 @@ step
     .goto The Barrens,46.09,40.98,50,0
     .goto The Barrens,46.08,40.68,50,0
     .goto The Barrens,45.71,40.56,50,0
-    >>Find & kill |cRXP_ENEMY_Hezrul Bloodmark|r, he patrols around the lake. Loot him for his |cRXP_LOOT_Head|r
+    >>Find & kill |cRXP_ENEMY_Hezrul Bloodmark|r. Loot him for his |cRXP_LOOT_Head|r
+    >>|cRXP_ENEMY_Hezrul|r |cRXP_WARN_patrols around the lake|r
     .complete 852,1 --Hezrul's Head
     .unitscan Hezrul Bloodmark
     .isQuestTurnedIn 851
@@ -3810,7 +3811,7 @@ step
     .dungeon WC
 step
     #optional
-    >>Kill |cRXP_ENEMY_Deviate Ravagers|r, |cRXP_ENEMY_Vipers|r, |cRXP_ENEMY_Shamblers|r and |cRXP_ENEMY_Dreadfangs|r. . Loot them for their |cRXP_ENEMY_Hides|r
+    >>Kill |cRXP_ENEMY_Deviate Ravagers|r, |cRXP_ENEMY_Vipers|r, |cRXP_ENEMY_Shamblers|r and |cRXP_ENEMY_Dreadfangs|r. Loot them for their |cRXP_ENEMY_Hides|r
     .complete 1487,1 --Deviate Ravager (7)
     .mob +Deviate Ravager
     .complete 1487,2 --Deviate Viper (7)
@@ -3976,7 +3977,7 @@ step
     .dungeon WC
 step
     .goto Kalimdor,51.91,55.42
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nalpak|
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nalpak|r
     >>|cRXP_WARN_He is located above the the Wailing Caverns cave entrance|r
     .turnin 1486 >> Turn in Deviate Hides
     .target Nalpak
@@ -4014,7 +4015,7 @@ step
 step
     .goto Thunder Bluff,28.55,25.64
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Clarice|r
-    .accept 264 >> Until Death Do Us Part
+    .accept 264 >> Accept Until Death Do Us Part
     .target Clarice Foster
     .dungeon WC
 step
@@ -4381,7 +4382,7 @@ step
 step
     .goto Stonetalon Mountains,71.87,60.00
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Piznik|r
-    .turnin 1090 >> Turnin Gerenzo's Orders
+    .turnin 1090 >> Turn in Gerenzo's Orders
     .accept 1092 >> Accept Gerenzo's Orders
     .target Piznik
     .group
@@ -4393,7 +4394,7 @@ step << skip
 step
     .goto Stonetalon Mountains,58.99,62.60
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ziz|r
-    .turnin 1092 >> Turnin Gerenzo's Orders
+    .turnin 1092 >> Turn in Gerenzo's Orders
     .target Ziz Fizziks
     .isQuestTurnedIn 1090
     .group
@@ -4528,8 +4529,8 @@ step
 	.goto Ashenvale,11.22,31.04,50,0
 	.goto Ashenvale,10.38,29.60,50,0
 	.goto Ashenvale,11.01,28.57,50,0
-    >>Kill |cRXP_ENEMY_Wraithtail Nagas|r. Loot them for their |cRXP_LOOT_Heads|r
-    .complete 6442,1 --Wraithtail Head (20)
+    >>Kill |cRXP_ENEMY_Wrathtail Nagas|r. Loot them for their |cRXP_LOOT_Heads|r
+    .complete 6442,1 --Wrathtail Head (20)
     .mob Wrathtail Razortail
     .mob Wrathtail Wave Rider
     .mob Wrathtail Sorceress
@@ -4851,7 +4852,7 @@ step << Rogue/Druid
     .zoneskip The Barrens
 step << Rogue/Druid
     #completewith MissionProbable
-    .goto The Barrens,57.63,7.48,120 >> Travel toward the Sludge Ven
+    .goto The Barrens,57.63,7.48,120 >> Travel toward The Sludge Fen
 step << Druid
     .goto The Barrens,56.67,8.32
     >>Loot the |cRXP_PICK_Strange Lockbox|r in the water for the |T133443:0|t[Half Pendant of Aquatic Agility]

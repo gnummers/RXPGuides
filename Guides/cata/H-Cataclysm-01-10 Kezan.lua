@@ -1,7 +1,7 @@
 local _,addon = ...
 if addon.gameVersion < 40000 or addon.player.faction == 'Alliance' then return end
 
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #cata
 #mop
@@ -13,7 +13,7 @@ RXPGuides.RegisterGuide([[
 
 #defaultfor Goblin
 #group RXP Cataclysm 1-80 (H) << cata
-#group RXP MoP 1-60 (H) << mop
+#group RXP MoP 1-80 (H) << mop
 #subweight 10000
 
 
@@ -569,8 +569,8 @@ step
     .vehicle 34840 >>|cFFFCDC00Make sure to use Keys to the Hot Rod|r.
 step
     #completewith KezanWaltzRightIn
-    +|cFFFCDC00Avoid patrolling|r |cFFFF5722Villa Mooks|r |cFFFCDC00and|r |cFFFF5722Keesnout Potbellys|r |cFFFCDC00because they can detect and kill you|r
-    .mob Keesnout Potbellys
+    +|cFFFCDC00Avoid patrolling|r |cFFFF5722Villa Mooks|r |cFFFCDC00and|r |cFFFF5722Keensnout Potbellies|r |cFFFCDC00because they can detect and kill you|r
+    .mob Keensnout Potbelly
 step
     .goto 194,24.20,40.67,30,0
     .goto 194,19.89,30.65
@@ -594,11 +594,11 @@ step
     .complete 14123,1 --1/1 Maldy's Falcon
 step
     #completewith next
-    >>Jump out of the window and run into hostile |cFFFF5722Villa Mooks|r or |cFFFF5722Keesnout Potbellys|r
+    >>Jump out of the window and run into hostile |cFFFF5722Villa Mooks|r or |cFFFF5722Keensnout Potbellies|r
     .deathskip >>Die and respawn at the |cFF00FF25Spirit Healer|r
     .goto 194,17.65,45.94,5,0
     .goto 194,17.00,33.96
-    .mob Keesnout Potbelly
+    .mob Keensnout Potbelly
 step
     #completewith next
     .goto 194,61.89,54.13,25,0
@@ -685,7 +685,7 @@ RXPGuides.RegisterGuide([[
 
 #defaultfor Goblin
 #group RXP Cataclysm 1-80 (H) << cata
-#group RXP MoP 1-60 (H) << mop
+#group RXP MoP 1-80 (H) << mop
 #subweight 10000
 
 step
@@ -911,7 +911,7 @@ step
     .waypoint 174,29.589,62.824,50,0
     .waypoint 174,33.536,64.171,50,0
     >>Kill |cRXP_ENEMY_SI:7 Assassins|r
-    >>|cRXP_WARN_Use your|r |T133149:0|t[Infraread Heat Focals] |cRXP_WARN_to see them|r
+    >>|cRXP_WARN_Use your|r |T133149:0|t[Infrared Heat Focals] |cRXP_WARN_to see them|r
     .use 49611
     .complete 14238,1 --10/10 SI:7 Assassin slain
     .mob SI:7 Assassin
@@ -1335,7 +1335,7 @@ step
     .mob Teloch
 step
     #label TheLostIslesGaahl
-    >>Kill |cRXP_ENEMY_Gaahl
+    >>Kill |cRXP_ENEMY_Gaahl|r
     .goto 174,59.59,40.20
     .complete 24945,1 --1/1 Gaahl slain
     .mob Gaahl

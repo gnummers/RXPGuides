@@ -1,7 +1,7 @@
 local faction = UnitFactionGroup("player")
 if faction == "Alliance" then return end
 
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #hardcore
 #classic
@@ -999,6 +999,7 @@ step << Warlock
     .vendor >>Vendor Trash
     .target Hraug
     .money <0.03
+    .train 6307,1 --Blood Pact (Rank 1)
 step << Warlock
     .goto Durotar,40.65,68.52
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nartok|r
@@ -1011,11 +1012,6 @@ step << Warlock
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nartok|r
     .train 695 >> Train |T136197:0|t[Shadow Bolt]
     .target Nartok
-step << Warlock
-    #completewith Leave
-    .train 20397 >> |cRXP_WARN_Use the|r |T133738:0|t[Grimoire of Blood Pact]
-    .itemcount 16321,1
-    .use 16321
 step << Shaman
     #completewith CallOE1
     #label Shrine
@@ -1878,16 +1874,12 @@ step << Shaman
     .train 8044 >> Train your class spells
     .target Swart
 step << Warlock
-    #completewith next
     .goto Durotar,54.70,41.49
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kitha|r and buy |T133738:0|t[Firebolt Rank 2]
     .collect 16302,1,818,1 --Grimoire of Firebolt (Rank 2) (1)
     .target Kitha
     .money <0.01
-step << Warlock
-    #completewith Tools
-    .train 20270 >> |cRXP_WARN_Use the|r |T133738:0|t[Grimoire of Firebolt Rank 2]
-    .use 16302
+    .train 7799,1
 step << Hunter
     .goto Durotar,51.85,43.49
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thotar|r
@@ -2242,15 +2234,12 @@ step << Warlock
     .target Dhugru Gorelust
     .xp <10,1
 step << Warlock
-    #completewith next
     .goto Durotar,54.70,41.49
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kitha|r and buy |T133738:0|t[Firebolt Rank 2]
     .collect 16302,1,837,1 --Grimoire of Firebolt (Rank 2) (1)
     .target Kitha
     .money <0.01
-step << Warlock
-    .train 20270 >> |cRXP_WARN_Use the|r |T133738:0|t[Grimoire of Firebolt Rank 2]
-    .use 16302
+    .train 7799,1
 step << Rogue
     .goto Durotar,51.98,43.69
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kaplak|r
@@ -3531,7 +3520,7 @@ step << Hunter
     .goto Orgrimmar,68.02,38.69,30 >> Travel to the Valley of Honor
 step << Hunter
     .goto Orgrimmar,66.06,18.50
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ormakl|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ormak|r
     .train 14281 >> Train your class spells
     .target Ormak Grimshot
     .xp <12,1
@@ -3658,6 +3647,7 @@ step << skip --Orc Rogue/Troll Rogue
 step << Orc Rogue/Troll Rogue
     #completewith next
     .zone Tirisfal Glades >>Exit Undercity
+    .zoneskip Undercity,1
 step
     #completewith next
     .goto Tirisfal Glades,61.52,53.20,80 >> Travel to Brill
@@ -3705,7 +3695,7 @@ step << Undead Rogue
 step << Mage
     .goto Tirisfal Glades,61.96,52.47
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cain|r inside the inn
-    .accept 1881 >> Accept Speak with Anatasia
+    .accept 1881 >> Accept Speak with Anastasia
     .target Cain Firesong
     .xp <10,1
 step << !Mage
@@ -3985,7 +3975,7 @@ step << Undead Rogue
 step << Mage
     .goto Tirisfal Glades,61.96,52.47
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cain|r inside the inn
-    .accept 1881 >> Accept Speak with Anatasia
+    .accept 1881 >> Accept Speak with Anastasia
     .target Cain Firesong
 step << Warlock/Mage
     #completewith UCflightpath1
@@ -4029,7 +4019,7 @@ step << Mage
 step << Mage
     .goto Undercity,85.12,10.07
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anastasia|r in the Magic Quarter
-    .turnin 1881 >> Turn in Speak with Anatasia
+    .turnin 1881 >> Turn in Speak with Anastasia
     .accept 1882 >> Accept The Balnir Farmstead
     .target Anastasia Hartwell
 step << Undead Priest
@@ -5322,7 +5312,7 @@ step << Priest/Warlock
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<11.3
 step << Priest/Warlock
     .goto Undercity,70.76,30.67
-    >>|cRXP_WARN_Turn all your|r |T132889:0|t[Linen Cloth] |cRXP_WARN_into|r |T132890:0|t[Bolt of linen Linen Cloth]
+    >>|cRXP_WARN_Turn all your|r |T132889:0|t[Linen Cloth] |cRXP_WARN_into|r |T132890:0|t[Bolt of Linen Cloth]
     .collect 2996,30,435,1 --Bolt of Linen Cloth (30)
     .itemStat 18,QUALITY,<7
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<11.3

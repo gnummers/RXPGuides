@@ -1,4 +1,4 @@
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #classic
 #group RestedXP Rune & Books Guide
@@ -208,7 +208,7 @@ step
     #label IceLance1
     #completewith Stashbox
     .goto 1411,45.363,55.673
-    .subzone 365 >>Enter the Burning Blade Covern
+    .subzone 365 >>Enter the Burning Blade Coven
     .train 401760,1
     .xp <2,1
 step
@@ -239,7 +239,7 @@ step
     .goto 1411,43.241,55.384,12,0
     .goto 1411,44.103,55.254,12,0
     .goto 1411,45.306,55.177,12,0
-    .goto 1411,45.245,56.520,15 >>Exit the Burning Blade Covern
+    .goto 1411,45.245,56.520,15 >>Exit the Burning Blade Coven
     .isQuestComplete 77643
     .subzoneskip 363
     .train 401760,1
@@ -1257,7 +1257,7 @@ step
     .isQuestAvailable 79535
 step
     .goto Stranglethorn Vale,41.0,51.0
-    >>Click on the |cRXP_PICK_Researchnotes|r on the bench to receive the Book |T237162:0|t[Basilisks: Should Petrification be Feared?]
+    >>Click on the |cRXP_PICK_Research Notes|r on the bench to receive the Book |T237162:0|t[Basilisks: Should Petrification be Feared?]
     .collect 213165,1
     .isQuestAvailable 79535
 step
@@ -1551,7 +1551,7 @@ step
     .goto 1421,63.08,63.99,5,0
     .goto 1421,63.08,63.48,5,0
     .goto 1421,63.54,63.13
-    >>Click on the |cRXP_PICK_Book|r |cFFfa9602inside the Amber Hill Main Castle on a book shelf in Silverpine Forest|r to obtain |T134917:0|t[The Dalaran Digest vol 23.]
+    >>Click on the |cRXP_PICK_Book|r |cFFfa9602inside the Ambermill Main Castle on a book shelf in Silverpine Forest|r to obtain |T134917:0|t[The Dalaran Digest vol 23.]
     .collect 209844,1
     .isQuestAvailable 78127
 step
@@ -1577,7 +1577,7 @@ step
     .accept 79094 >>Turn in The Lessons of Ta'zo
     .accept 79095 >>Turn in The Apothecary's Metaphysical Primer
     .accept 79096 >>Turn in Ataeric: On Arcane Curiosities
-    .accept 79097 >>Turn in Ataeric: Baxtan: On Destructive Magics
+    .accept 79097 >>Turn in Baxtan: On Destructive Magics
     .accept 79535 >>Turn in Basilisks: Should Petrification be Feared?
     .accept 79947 >>Turn in Geomancy: The Stone-Cold Truth
     .accept 79948 >>Turn in Defensive Magics 101
@@ -1737,7 +1737,7 @@ step
     .isQuestAvailable 81952
 step
     #completewith next
-    .zone Darkshore >>Travel to |cFFfa9602Darkshore|r on foot|cRXP_WARNif you have neither flightpath. _|r
+    .zone Darkshore >>Travel to |cFFfa9602Darkshore|r on foot |cRXP_WARN_if you have neither flightpath.|r
     .disablecheckbox
     .isQuestAvailable 78124
 step
@@ -1820,7 +1820,7 @@ step
     .goto 1421,63.08,63.99,5,0
     .goto 1421,63.08,63.48,5,0
     .goto 1421,63.54,63.13
-    >>Click on the |cRXP_PICK_Book|r |cFFfa9602inside the Amber Hill Main Castle in Silverpine Forest|r to obtain |T134917:0|t[The Dalaran Digest vol 23.]
+    >>Click on the |cRXP_PICK_Book|r |cFFfa9602inside the Ambermill Main Castle in Silverpine Forest|r to obtain |T134917:0|t[The Dalaran Digest vol 23.]
     .collect 209844,1
     .isQuestAvailable 78127
 step
@@ -1955,7 +1955,7 @@ step
     .isQuestAvailable 79535
 step
     .goto Stranglethorn Vale,41.0,51.0
-    >>Click on the |cRXP_PICK_Researchnotes|r on the bench to receive the Book |T237162:0|t[Basilisks: Should Petrification be Feared?]
+    >>Click on the |cRXP_PICK_Research Notes|r on the bench to receive the Book |T237162:0|t[Basilisks: Should Petrification be Feared?]
     .collect 213165,1
     .isQuestAvailable 79535
 step
@@ -2001,7 +2001,7 @@ step
     .accept 79094 >>Turn in The Lessons of Ta'zo
     .accept 79095 >>Turn in The Apothecary's Metaphysical Primer
     .accept 79096 >>Turn in Ataeric: On Arcane Curiosities
-    .accept 79097 >>Turn in Ataeric: Baxtan: On Destructive Magics
+    .accept 79097 >>Turn in Baxtan: On Destructive Magics
     .accept 79535 >>Turn in Basilisks: Should Petrification be Feared?
     .accept 79947 >>Turn in Geomancy: The Stone-Cold Truth
     .accept 79948 >>Turn in Defensive Magics 101
@@ -2474,7 +2474,7 @@ step
     >>Interact with the |cRXP_PICK_Dusty Shelf|r |cRXP_WARN_inside the castle in the top left tower (go left after the first staircase)|r
     .goto Silverpine Forest,65.3,24.8
     .turnin 461 >>Turn in The Hidden Niche
-    .accept 491 >>Accept Want to Bethor
+    .accept 491 >>Accept Wand to Bethor
     .target Dusty Shelf
 step
     .train 415936,1
@@ -2483,7 +2483,7 @@ step
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bethor Iceshard|r.
     .goto Undercity,83.8,16.2
-    .turnin 491 >>Turn in Want to Bethor
+    .turnin 491 >>Turn in Wand to Bethor
     .accept 78277 >>Accept A Token of Gratitude
     .turnin 78277 >>Turn in A Token of Gratitude
     .train 415936 >>|cRXP_WARN_You will automatically train the rune by turning in the quest|r
@@ -2659,7 +2659,7 @@ step
     .train 2121,1 -- flamestrike r2
     .train 8422,1 -- flamestrike r3
     .train 8423,1 -- flamestrike r4
-    .train 2120 >> |cRXP_WARN_You must have|r |T135826:0|t[Flamestrike] |cRXP_WARN_trained in order to aquire the|r |T236218:0|t[Hot Streak] |cRXP_WARN_rune|r
+    .train 2120 >> |cRXP_WARN_You must have|r |T135826:0|t[Flamestrike] |cRXP_WARN_trained in order to acquire the|r |T236218:0|t[Hot Streak] |cRXP_WARN_rune|r
 step
     .train 401749,1
     .goto Alterac Mountains,60.510,46.286
@@ -2892,7 +2892,7 @@ step
     .collect 223147,1 --Spell Notes: Balefire Bolt
     .mob Fel Interloper
 step
-    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt]
+    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r] |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt]
     .use 223147
 ]])
 
@@ -2945,7 +2945,7 @@ step
     .collect 223147,1 --Spell Notes: Balefire Bolt
     .mob Fel Interloper
 step
-    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt.]
+    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r] |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt.]
     .use 223147
 ]])
 
@@ -2998,7 +2998,7 @@ step
     .collect 223147,1 --Spell Notes: Balefire Bolt
     .mob Fel Interloper
 step
-    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt.]
+    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r] |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt.]
     .use 223147
 ]])
 
@@ -3049,7 +3049,7 @@ step
     .collect 223147,1 --Spell Notes: Balefire Bolt
     .mob Fel Interloper
 step
-    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt.]
+    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r] |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt.]
     .use 223147
 ]])
 
@@ -3100,7 +3100,7 @@ step
     .collect 223147,1 --Spell Notes: Balefire Bolt
     .mob Fel Interloper
 step
-    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt.]
+    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r] |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt.]
     .use 223147
 ]])
 
@@ -3159,7 +3159,7 @@ step
     .collect 223147,1 --Spell Notes: Balefire Bolt
     .mob Fel Interloper
 step
-    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt.]
+    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r] |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt.]
     .use 223147
 ]])
 
@@ -3210,7 +3210,7 @@ step
     .collect 223147,1 --Spell Notes: Balefire Bolt
     .mob Fel Interloper
 step
-    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt.]
+    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r] |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt.]
     .use 223147
 ]])
 
@@ -3261,7 +3261,7 @@ step
     .collect 223147,1 --Spell Notes: Balefire Bolt
     .mob Fel Interloper
 step
-    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt.]
+    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r] |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt.]
     .use 223147
 ]])
 
@@ -3325,7 +3325,7 @@ step
     .collect 223147,1 --Spell Notes: Balefire Bolt
     .mob Fel Interloper
 step
-    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt.]
+    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r] |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt.]
     .use 223147
 ]])
 
@@ -3375,7 +3375,7 @@ step
     .collect 223147,1 --Spell Notes: Balefire Bolt
     .mob Fel Interloper
 step
-    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt.]
+    .train 429311 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Balefire Bolt|r] |cRXP_WARN_to train|r |T135809:0|t[Balefire Bolt.]
     .use 223147
 ]])
 
@@ -3533,7 +3533,7 @@ step
 step
     .train 401722,1
     .goto 1415,48.388,63.626
-    >>|cRXP_WARN_Drop down the chain and head towards the Blackrock Depths enterance|r
+    >>|cRXP_WARN_Drop down the chain and head towards the Blackrock Depths entrance|r
     >>Loot the |cRXP_LOOT_Magma or Lava?|r book on the ground
     .collect 228133,1
     .isQuestAvailable 84396

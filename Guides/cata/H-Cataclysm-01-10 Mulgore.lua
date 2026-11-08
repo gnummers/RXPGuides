@@ -1,7 +1,7 @@
 local _,addon = ...
 if addon.gameVersion < 40000 or addon.player.faction == 'Alliance' then return end
 
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #cata
 #mop
@@ -13,7 +13,7 @@ RXPGuides.RegisterGuide([[
 
 #defaultfor Tauren
 #group RXP Cataclysm 1-80 (H) << cata
-#group RXP MoP 1-60 (H) << mop
+#group RXP MoP 1-80 (H) << mop
 #subweight 10000
 
 step << !Tauren
@@ -96,7 +96,7 @@ step
     .accept 14461 >>Accept Feed of Evil
     .goto 7,46.18,82.61
     .accept 31165 >>Accept Calligraphed Note << Monk
-    .accept 3092 >>Accept Accept Etched Note << Hunter
+    .accept 3092 >>Accept Etched Note << Hunter
     .accept 3091 >>Accept Simple Note << Warrior
     .accept 27015 >>Accept Consecrated Note << Paladin
     .accept 3094 >>Accept Verdant Note << Druid
@@ -362,7 +362,7 @@ RXPGuides.RegisterGuide([[
 
 #defaultfor Tauren
 #group RXP Cataclysm 1-80 (H) << cata
-#group RXP MoP 1-60 (H) << mop
+#group RXP MoP 1-80 (H) << mop
 #subweight 10000
 
 
@@ -578,7 +578,7 @@ step
 step
     .goto 7,48.77,58.80
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Harken|r
-    .turnin 761 >>Turn in Swoop Huntin
+    .turnin 761 >>Turn in Swoop Hunting
     .target Harken Windtotem
     .isQuestComplete 761
 step
@@ -870,7 +870,7 @@ step
 step
     .goto 7,48.77,58.80
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Harken|r
-    .turnin 761 >>Turn in Swoop Huntin
+    .turnin 761 >>Turn in Swoop Hunting
     .target Harken Windtotem
 step << Warrior Cata
     .goto 7,49.55,59.97

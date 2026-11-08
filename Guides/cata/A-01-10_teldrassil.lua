@@ -1,10 +1,10 @@
 local _,addon = ...
 if addon.gameVersion < 40000 or addon.player.faction == 'Horde' then return end
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #version 1
 #group RXP Cataclysm 1-80 (A) << cata
-#group RXP MoP 1-60 (A) << mop
+#group RXP MoP 1-80 (A) << mop
 #cata
 #mop
 #name 1-6 Shadowglen
@@ -124,9 +124,9 @@ step << Mage
     .goto 1438/1,793.29999,10397.10059,-1
     .goto 1438/1,787.40002,10393.00000,-1
     .goto 1438/1,781.90002,10389.90039,-1
-    >>|cRXP_WARN_Cast|r |T135812:0|t[Fireball] |cRXP_WARN_on the |cRXP_ENEMY_Training Dummy|r until you get a|r |T135731:0|t[Arcane Missles!] |cRXP_WARN_proc, then cast|r |T136096:0|t[Arcane Missiles]|cRXP_WARN_. Repeat this twice|r
-    .complete 26940,1 << cata -- Practice Arcane Missles (1)
-    .complete 26940,2 << !cata -- Practice Arcane Missles (1)
+    >>|cRXP_WARN_Cast|r |T135812:0|t[Fireball] |cRXP_WARN_on the |cRXP_ENEMY_Training Dummy|r until you get a|r |T135731:0|t[Arcane Missiles!] |cRXP_WARN_proc, then cast|r |T136096:0|t[Arcane Missiles]|cRXP_WARN_. Repeat this twice|r
+    .complete 26940,1 << cata -- Practice Arcane Missiles (1)
+    .complete 26940,2 << !cata -- Practice Arcane Missiles (1)
     .mob Training Dummy
 step << Mage
     #completewith next
@@ -334,7 +334,7 @@ RXPGuides.RegisterGuide([[
 
 #version 1
 #group RXP Cataclysm 1-80 (A) << cata
-#group RXP MoP 1-60 (A) << mop
+#group RXP MoP 1-80 (A) << mop
 #cata
 #mop
 #name 6-10 Teldrassil
@@ -859,7 +859,7 @@ step
     .turnin 930 >>Turn in The Glowing Fruit
 step
     .goto 57,56.74,53.51
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nyoma.|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nyoma|r
     .accept 6344 >>Accept Reminders of Home
 	.target Nyoma
 step

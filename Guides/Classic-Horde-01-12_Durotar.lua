@@ -1,7 +1,7 @@
 local faction = UnitFactionGroup("player")
 if faction == "Alliance" then return end
 
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #classic
 #tbc
@@ -10,6 +10,7 @@ RXPGuides.RegisterGuide([[
 #name 1-6 Durotar
 #version 11
 #group RestedXP Horde 1-22
+#groupid RXP-SRGCE-H1
 #defaultfor Troll/Orc
 #next 6-10 Durotar
 
@@ -1275,7 +1276,6 @@ step
     .goto Durotar,44.70,52.47
     .deathskip >> |cRXP_WARN_Die and respawn at the |cRXP_FRIENDLY_Spirit Healer|r near the arrow|r
     .target Spirit Healer
-    .subzoneskip 362
 step
     #softcore
     #label Betrayers
@@ -1455,6 +1455,7 @@ step << Warlock
     .vendor >>Vendor Trash
     .target Hraug
     .money <0.03
+    .train 6307,1 --Blood Pact (Rank 1)
 step << Warlock
     #season 2
     .goto Durotar,40.65,68.52
@@ -1485,11 +1486,6 @@ step << Warlock
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nartok|r
     .train 695 >> Train |T136197:0|t[Shadow Bolt]
     .target Nartok
-step << Warlock
-    #completewith Leave
-    .train 20397 >> |cRXP_WARN_Use the|r |T133738:0|t[Grimoire of Blood Pact]
-    .itemcount 16321,1
-    .use 16321
 step << Shaman
     #completewith CallOE1
     #label Shrine
@@ -1545,6 +1541,7 @@ RXPGuides.RegisterGuide([[
 #name 6-10 Durotar
 #version 11
 #group RestedXP Horde 1-22
+#groupid RXP-SRGCE-H1
 #defaultfor Troll/Orc
 #next 10-12 Durotar
 
@@ -2625,16 +2622,12 @@ step << Warlock
     .train 1120 >> Train your class spells
     .target Dhugru Gorelust
 step << Warlock
-    #completewith next
     .goto Durotar,54.70,41.49
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kitha|r and buy |T133738:0|t[Firebolt Rank 2]
     .collect 16302,1,825,1 --Grimoire of Firebolt (Rank 2) (1)
     .target Kitha
     .money <0.01
-step << Warlock
-    #completewith Tools
-    .train 20270 >> |cRXP_WARN_Use the|r |T133738:0|t[Grimoire of Firebolt Rank 2]
-    .use 16302
+    .train 7799,1
 step << Hunter
     .goto Durotar,51.85,43.49
     >>Go inside the bunker
@@ -3089,16 +3082,12 @@ step << Warlock
     .target Dhugru Gorelust
 step << Warlock
     #xprate >1.49
-    #completewith next
     .goto Durotar,54.70,41.49
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kitha|r and buy |T133738:0|t[Firebolt Rank 2]
     .collect 16302,1,837,1 --Grimoire of Firebolt (Rank 2) (1)
     .target Kitha
     .money <0.01
-step << Warlock
-    #xprate >1.49
-    .train 20270 >> |cRXP_WARN_Use the|r |T133738:0|t[Grimoire of Firebolt Rank 2]
-    .use 16302
+    .train 7799,1
 step << Priest
     #xprate >1.49
     .goto Durotar,54.26,42.93
@@ -3455,7 +3444,7 @@ step
     .goto Durotar,42.28,25.45,30,0
     .goto Durotar,41.66,25.68,20 >>Jump into Thunder Ridge << !Hunter !Warlock
     .goto Durotar,41.66,25.68,20 >>|cRXP_WARN_Dismiss your|r |T136218:0|t[Imp] |cRXP_WARN_by right clicking its unit frame and clicking dismiss|r << Warlock
-    .cast 2641 |cRXP_WARN_Cast|r |T136095:0|t[Dismiss Pet] |cRXP_WARN_and then jump into Thunder Ridge|r << Hunter
+    .cast 2641 >> |cRXP_WARN_Cast|r |T136095:0|t[Dismiss Pet] |cRXP_WARN_and then jump into Thunder Ridge|r << Hunter
 step
     #xprate <1.5 << Shaman/Warrior
     #softcore
@@ -3743,16 +3732,12 @@ step << Warlock
     .target Dhugru Gorelust
 step << Warlock
     #xprate <1.5
-    #completewith next
     .goto Durotar,54.70,41.49
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kitha|r and buy |T133738:0|t[Firebolt Rank 2]
     .collect 16302,1,837,1 --Grimoire of Firebolt (Rank 2) (1)
     .target Kitha
     .money <0.01
-step << Warlock
-    #xprate <1.5
-    .train 20270 >> |cRXP_WARN_Use the|r |T133738:0|t[Grimoire of Firebolt Rank 2]
-    .use 16302
+    .train 7799,1
 step << Priest
     #xprate <1.5
     .goto Durotar,54.26,42.93
@@ -3783,6 +3768,7 @@ RXPGuides.RegisterGuide([[
 #name 10-12 Durotar
 #version 11
 #group RestedXP Horde 1-22
+#groupid RXP-SRGCE-H1
 #defaultfor Troll/Orc
 #next 10-12 Tirisfal << Troll Rogue/Orc Rogue/Orc Warlock/Troll Mage/Troll Priest
 #next 12-17 The Barrens << Troll !Rogue !Mage !Priest/Orc !Rogue !Warlock
@@ -3892,7 +3878,7 @@ step << Warrior/Shaman
     .complete 848,1 --Collect Fungal Spores (x4)
 step << Warrior/Shaman
     .goto The Barrens,45.06,22.54
-    >>Dive underwater to the |cRXP_PICK_Bubble Fissure|r
+    >>Dive underwater to the |cRXP_PICK_Bubbling Fissure|r
     .complete 870,1 --Explore the waters of the Forgotten Pools
 step << Warrior/Shaman
     #loop
@@ -4332,8 +4318,8 @@ step << Warrior/Shaman
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Morin|r
     >>|cRXP_WARN_He patrols along the eastern road|r
     .turnin 751 >> Turn in The Ravaged Caravan
-    .accept 764 >> The Venture Co
-    .accept 765 >> Supervisor Fizsprocket
+    .accept 764 >> Accept The Venture Co
+    .accept 765 >> Accept Supervisor Fizsprocket
 	.unitscan Morin Cloudstalker
 step << Warrior/Shaman
     #completewith Fizsprocket
@@ -5193,6 +5179,7 @@ RXPGuides.RegisterGuide([[
 #name 10-12 Tirisfal
 #version 11
 #group RestedXP Horde 1-22
+#groupid RXP-SRGCE-H1
 #defaultfor Troll Rogue/Orc Rogue/Orc Warlock/Troll Mage/Troll Priest
 #next 12-14 Silverpine Forest << Undead/Troll Rogue/Orc Rogue/Orc Warlock/Troll Mage/Troll Priest
 
@@ -5277,6 +5264,7 @@ step << skip --Orc Rogue/Troll Rogue
 step
     #completewith next
     .zone Tirisfal Glades >>Exit Undercity
+    .zoneskip Undercity,1
 step
     #completewith DeliverytoSPF
     .goto Tirisfal Glades,61.52,53.20,80 >> Travel to Brill
@@ -5321,7 +5309,7 @@ step << Undead Rogue
 step << Mage
     .goto Tirisfal Glades,61.96,52.47
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cain|r inside the inn
-    .accept 1881 >> Accept Speak with Anatasia
+    .accept 1881 >> Accept Speak with Anastasia
     .target Cain Firesong
 step << !Mage
     .goto Tirisfal Glades,61.71,52.06
@@ -5674,7 +5662,7 @@ step << Mage
 step << Mage
     .goto Undercity,85.12,10.07
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anastasia|r in the Magic Quarter
-    .turnin 1881 >> Turn in Speak with Anatasia
+    .turnin 1881 >> Turn in Speak with Anastasia
     .accept 1882 >> Accept The Balnir Farmstead
     .target Anastasia Hartwell
 step << Undead Priest
@@ -6920,7 +6908,7 @@ step << Priest
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<11.3
 step << Priest
     .goto Undercity,70.76,30.67
-    >>|cRXP_WARN_Turn all your|r |T132889:0|t[Linen Cloth] |cRXP_WARN_into|r |T132890:0|t[Bolt of linen Linen Cloth]
+    >>|cRXP_WARN_Turn all your|r |T132889:0|t[Linen Cloth] |cRXP_WARN_into|r |T132890:0|t[Bolt of Linen Cloth]
     .collect 2996,30,435,1 --Bolt of Linen Cloth (30)
     .itemStat 18,QUALITY,<7
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<11.3
@@ -7021,6 +7009,7 @@ RXPGuides.RegisterGuide([[
 #name 1-7 Durotar
 #version 1
 #group RestedXP Horde 1-22
+#groupid RXP-SRGCE-H1
 #defaultfor Troll/Orc
 #next 7-13 Durotar
 
@@ -7095,7 +7084,7 @@ step
     .train 401768 >> Use the |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Living Flame|r] to train |T135820:0|t[Living Flame]  << Mage
     .train 410121 >> Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of the Chimera|r] to train |T236176:0|t[Chimera Shot] << Hunter
     .train 410122 >> Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Lone Wolf|r] to train |T132266:0|t[Lone Wolf] << Hunter
-    .train 416086 >> Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Close Combat|r] to train |T132394:0|t[Meele Specialist] << Hunter
+    .train 416086 >> Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Close Combat|r] to train |T132394:0|t[Melee Specialist] << Hunter
     .train 440563 >> Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Guerrilla|r] to train |T132171:0|t[Hit and Run] << Hunter
     .train 415423 >> Use the |T133739:0|t[|cRXP_FRIENDLY_Treatise on Aspect of the Viper|r] to train |T132160:0|t[Aspect of the Viper]|r] << Hunter
     .train 416009 >> Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Tactics|r] to train |T136150:0|t[Demonic Tactics] << Warlock
@@ -7194,7 +7183,7 @@ step << Priest
     .goto Durotar,42.36,68.81
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ken'jai|r
     .accept 77642 >>Accept Wisdom of the Loa
-    .turnin 77642 >>Turn in Wisom of the Loa
+    .turnin 77642 >>Turn in Wisdom of the Loa
     .target Ken'jai
 step << Priest
     #season 2
@@ -7419,7 +7408,7 @@ step << Hunter
     #optional
     >>|cRXP_WARN_Be on the lookout for any|r Chest/Belt/Cloak |cRXP_WARN_drops|r|cRXP_WARN_. Equip them and engrave the respective runes|r
     .engrave 5 >> Engrave |T132266:0|t[Lone Wolf] on your |T132724:0|t[Chest]
-    .engrave 6 >> Engrave |T132394:0|t[Meele Specialist] on your |T132513:0|t[Belt]
+    .engrave 6 >> Engrave |T132394:0|t[Melee Specialist] on your |T132513:0|t[Belt]
     .engrave 15 >> Engrave |T132171:0|t[Hit and Run] on your |T133771:0|t[Cloak]
 step << Rogue
     #season 2
@@ -7619,7 +7608,7 @@ step << !Rogue
     .collect 2512,1000,6394,1 << Hunter --Rough Arrow (1000)
     .vendor >> Vendor Trash
     .target Duokna
-    .money >0.1 << Rogue/Warrior
+    .money >0.01 << Rogue/Warrior
     .itemcount 159,<15 << !Rogue !Warrior !Hunter !Shaman
 step << !Rogue
     #xprate >1.49
@@ -8214,7 +8203,6 @@ step
     .goto Durotar,44.70,52.47
     .deathskip >> |cRXP_WARN_Die and respawn at the |cRXP_FRIENDLY_Spirit Healer|r near the arrow|r
     .target Spirit Healer
-    .subzoneskip 362
 step
     #softcore
     #label Betrayers
@@ -8405,6 +8393,7 @@ step << Warlock
     .vendor >>Vendor Trash
     .target Hraug
     .money <0.03
+    .train 6307,1 --Blood Pact (Rank 1)
 step << Warlock
     #season 2
     .goto Durotar,40.65,68.52
@@ -8435,11 +8424,6 @@ step << Warlock
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nartok|r
     .train 695 >> Train |T136197:0|t[Shadow Bolt]
     .target Nartok
-step << Warlock
-    #completewith Leave
-    .train 20397 >> Use the |T133738:0|t[Grimoire of Blood Pact]
-    .itemcount 16321,1
-    .use 16321
 step << Shaman
     #completewith CallOE1
     #label Shrine
@@ -8495,6 +8479,7 @@ RXPGuides.RegisterGuide([[
 #name 7-13 Durotar
 #version 1
 #group RestedXP Horde 1-22
+#groupid RXP-SRGCE-H1
 #defaultfor Troll/Orc
 #next 13-20 The Barrens
 
@@ -9463,16 +9448,12 @@ step << Warlock
     .target Dhugru Gorelust
 step << Warlock
     #xprate >1.49
-    #completewith next
     .goto Durotar,54.70,41.49
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kitha|r and buy |T133738:0|t[Firebolt Rank 2]
     .collect 16302,1,837,1 --Grimoire of Firebolt (Rank 2) (1)
     .target Kitha
     .money <0.01
-step << Warlock
-    #xprate >1.49
-    .train 20270 >> |cRXP_WARN_Use the|r |T133738:0|t[Grimoire of Firebolt Rank 2]
-    .use 16302
+    .train 7799,1
 step << Priest
     #xprate >1.49
     .goto Durotar,54.26,42.93

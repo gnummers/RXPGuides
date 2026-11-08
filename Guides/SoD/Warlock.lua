@@ -1,4 +1,4 @@
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Warlock SoD
@@ -101,7 +101,7 @@ step << Undead
 step
     #season 2
     .goto Tirisfal Glades,24.60,59.45
-    >>Loot the |cRXP_PICK_Lost Stache|r inside the cave for the |T134419:0|t[|cRXP_FRIENDLY_Rune of Haunting|r]
+    >>Loot the |cRXP_PICK_Lost Stash|r inside the cave for the |T134419:0|t[|cRXP_FRIENDLY_Rune of Haunting|r]
     .collect 205230,1 --Rune of Haunting (1)
     .train 403919,1
 step
@@ -223,7 +223,7 @@ step
     .collect 205183,1
 step
     .train 416009,1
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Carentin Halgar|r in Undercity
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Carendin Halgar|r in Undercity
     .goto Undercity,85.0,25.6
     .collect 205215,1
     .skipgossip 5675,1
@@ -405,7 +405,7 @@ step
     .goto Hillsbrad Foothills,58.2,19.6,40,0
     .goto Hillsbrad Foothills,57.5,36.4,50,0
     .goto Hillsbrad Foothills,51.1,46.4,40,0
-    >>Look for |cRXP_FRIENDLY_Zixil|r. He patrolls between Tarren Mill and Southshore. Buy the |T133709:0|t[Demolition Explosives] from him |cRXP_WARN_for 1 gold|r
+    >>Look for |cRXP_FRIENDLY_Zixil|r. He patrols between Tarren Mill and Southshore. Buy the |T133709:0|t[Demolition Explosives] from him |cRXP_WARN_for 1 gold|r
     .collect 211487,1
     .target Zixil
 step
@@ -775,7 +775,7 @@ step
     .target Raszel Ander
 step
     .train 426445,1
-    >>|cRXP_WARN_Acquire the following materials and have an Engeineer make a|r |T133254:0|t[Soul Vessel] |cRXP_WARN_for you. Note the|r |T134133:0|t[Black Vitriol] |cRXP_WARN_and|r |T134074:0|t[Shadowgem] |cRXP_WARN_can be bought from the Auction House and the|r |T134337:0|t[Demonic Figurine] |cRXP_WARN_from a|r |cRXP_FRIENDLY_Reagent Vendor|r
+    >>|cRXP_WARN_Acquire the following materials and have an Engineer make a|r |T133254:0|t[Soul Vessel] |cRXP_WARN_for you. Note the|r |T134133:0|t[Black Vitriol] |cRXP_WARN_and|r |T134074:0|t[Shadowgem] |cRXP_WARN_can be bought from the Auction House and the|r |T134337:0|t[Demonic Figurine] |cRXP_WARN_from a|r |cRXP_FRIENDLY_Reagent Vendor|r
     .collect 9262,1,78914,1,1 -- Black Vitriol
     .collect 1210,4,78914,1,1 -- Shadowgem
     .collect 16583,1,78914,1,1 -- Demonic Figurine
@@ -796,7 +796,7 @@ step
 step
     .train 426445,1
     .goto Desolace,51.171,82.425
-    .gossip 215850,1 >> Talk to |cRXP_FRIENDLY_Raszel Ander|r to begin the ritaul
+    .gossip 215850,1 >> Talk to |cRXP_FRIENDLY_Raszel Ander|r to begin the ritual
     .timer 14,Tempting Fate RP
     .skipgossip
 step
@@ -1260,7 +1260,7 @@ step
 step
     #completewith next
     .train 426443,1
-    .goto Arathi Highlands,29.292,62.283,10 >> |cRXP_WARN_Enter the large house on the lower level of Stromgade Keep, and head up to the 2nd floor|r
+    .goto Arathi Highlands,29.292,62.283,10 >> |cRXP_WARN_Enter the large house on the lower level of Stromgarde Keep, and head up to the 2nd floor|r
 step
     #completewith next
     .train 426443,1
@@ -1391,7 +1391,7 @@ step
     .goto Ashenvale,93.5,38.0,100 >> Head to the Ashenvale Nightmare Incursion area marked on your map
     .train 431758,1
 step
-    >>Kill the demons outside the portal untill you loot all of the three items listed below
+    >>Kill the demons outside the portal until you loot all of the three items listed below
     .collect 221972,1 >>|T132839:0|t|cRXP_LOOT_Dreampyre Fire|r dropped by |cRXP_ENEMY_Dreampyre Imps|r
     .collect 221971,1 >>|T237396:0|t|cRXP_LOOT_Dreamsworn Horn|r dropped by |cRXP_ENEMY_Emberspark Dreamsworn|r
     .collect 221973,1 >>|T133724:0|t|cRXP_LOOT_Dreamhunter Fang|r dropped by |cRXP_ENEMY_Dreampyre Hounds|r
@@ -1445,7 +1445,7 @@ step
     .zoneskip Azshara
     .zoneskip Blasted Lands
 step
-    >>Look for |cRXP_FRIENDLY_Fel Portals|r in the locations pinned on your map. Once you find one summon your |T236294:0|t|cRXP_FRIENDLY_Explorer Imp|r and complete its dialogue while standing next to the portal. The Imp will begin exploring it and you will receive an |T136164:0|t|cRXP_FRIENDLY_Imp on a Mission|r buff. After around 10-20 minutes your Imp will either return to you or you will be able to resummon it and talk to it again to turn in a repeatable quest rewarding |T133639:0|t|cRXP_LOOT_Otherworldly Treasure|r. Upon opening it you will receive loot and have a chance to receive the |T134419:0|t[|cRXP_FRIENDLY_Rune of the Felguard|r]. Keep looking for rifts and looting treasures untill you find it
+    >>Look for |cRXP_FRIENDLY_Fel Portals|r in the locations pinned on your map. Once you find one summon your |T236294:0|t|cRXP_FRIENDLY_Explorer Imp|r and complete its dialogue while standing next to the portal. The Imp will begin exploring it and you will receive an |T136164:0|t|cRXP_FRIENDLY_Imp on a Mission|r buff. After around 10-20 minutes your Imp will either return to you or you will be able to resummon it and talk to it again to turn in a repeatable quest rewarding |T133639:0|t|cRXP_LOOT_Otherworldly Treasure|r. Upon opening it you will receive loot and have a chance to receive the |T134419:0|t[|cRXP_FRIENDLY_Rune of the Felguard|r]. Keep looking for rifts and looting treasures until you find it
     .goto Westfall,28.6,44.0,0
     .goto Westfall,29.0,47.8,0
     .goto Westfall,29.0,58.2,0

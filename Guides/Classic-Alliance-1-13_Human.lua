@@ -1,7 +1,7 @@
 local faction = UnitFactionGroup("player")
 if faction == "Horde" then return end
 
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #classic
 #tbc
@@ -10,6 +10,7 @@ RXPGuides.RegisterGuide([[
 #name 1-6 Northshire
 #version 1
 #group RestedXP Alliance 1-20
+#groupid RXP-SRGCE-A1
 #defaultfor Human
 #next 6-11 Elwynn Forest
 
@@ -1175,6 +1176,7 @@ RXPGuides.RegisterGuide([[
 #version 1
 << Alliance
 #group RestedXP Alliance 1-20
+#groupid RXP-SRGCE-A1
 #name 6-11 Elwynn Forest
 #displayname 6-13 Elwynn Forest << SoD
 #next 11-13 Loch Modan
@@ -1188,7 +1190,7 @@ step
 step
     #hardcore
     .goto Elwynn Forest,42.105,65.927
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Marshall Dughan|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Marshal Dughan|r
     .turnin 54 >> Turn in Report to Goldshire
     .accept 62 >> Accept The Fargodeep Mine
     .target Marshal Dughan
@@ -1263,7 +1265,7 @@ step << Mage/Priest/Warlock
 step
     #label Goldshire
     .goto Elwynn Forest,42.105,65.927
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Marshall Dughan|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Marshal Dughan|r
     .turnin 54 >> Turn in Report to Goldshire
     .accept 62 >> Accept The Fargodeep Mine
     .target Marshal Dughan
@@ -2068,7 +2070,7 @@ step << Rogue
     .waypoint 1429,55.523,66.707,50,0
     .waypoint 1429,55.203,66.171,50,0
     .waypoint 1429,54.236,66.888,50,0
-    >>|T133644:0|t[Pick Pocket] |cRXP_ENEMY_Murloc Steamrunners|r and |cRXP_ENEMY_Murlocs|r. Loot them for the |T134269:0|t|cRXP_LOOT_[Bottom-Right Map Piece]|r
+    >>|T133644:0|t[Pick Pocket] |cRXP_ENEMY_Murloc Streamrunners|r and |cRXP_ENEMY_Murlocs|r. Loot them for the |T134269:0|t|cRXP_LOOT_[Bottom-Right Map Piece]|r
     >>|cRXP_WARN_You must be|r |T132320:0|t[Stealthed] |cRXP_WARN_to use|r |T133644:0|t[Pick Pocket]
 --   >>|cRXP_WARN_Note: This can also come from any other |cRXP_ENEMY_Murloc|r in Elwynn Forest|r
     .collect 203786,1 -- Bottom-Right Map Piece (1)
@@ -2658,7 +2660,7 @@ step
     #label PrincessC
     .goto Elwynn Forest,69.3,79.0
     >>Kill |cRXP_ENEMY_Princess|r. Loot her for her |cRXP_LOOT_Collar|r
-    >>|cRXP_ENEMY_Princess|r |cRXP_WARN_will agro with both of her|r |cRXP_ENEMY_Porcine Entourage|r
+    >>|cRXP_ENEMY_Princess|r |cRXP_WARN_will aggro with both of her|r |cRXP_ENEMY_Porcine Entourage|r
     >>|cRXP_ENEMY_Princess|r |cRXP_WARN_will also cast|r |T132368:0|t[Rushing Charge] |cRXP_WARN_which deals heavy damage|r
     >>|cRXP_WARN_Pool 100 Rage before you engage|r |cRXP_ENEMY_Princess|r << Warrior
     >>|cRXP_WARN_Be sure |T136205:0|t[Evasion] |cRXP_WARN_is ready. If you're struggling, you can use the Fence with Throwing Weapons to abuse pathing and buy time|r << Rogue
@@ -3426,7 +3428,7 @@ step << skip --Rogue
     >>|T133644:0|t[Pick Pocket] the |cRXP_ENEMY_Defias Scout|r for the |T134419:0|t[|cRXP_FRIENDLY_Rune of Saber Slash|r]
     >>|cRXP_WARN_You must be in|r |T132320:0|t[Stealth] |cRXP_WARN_to use|r |T133644:0|t[Pick Pocket]
     >>|cRXP_WARN_There is a very high chance that the|r |T133644:0|t[Pick Pocket] |cRXP_WARN_will fail because your are underleved. If it does, skip this step and fly to Stormwind. You will complete it in Loch Modan shortly|r
-    >>|cRXP_WARN_DO NOT AGRO THE |cRXP_ENEMY_Defias Scout|r OTHERWISE IT WILL|r |T132331:0|t[Vanish] |cRXP_WARN_AND DESPAWN FOR 3-5 MINUTES. ENSURE TO GO IN|r |T132320:0|t[Stealth] |cRXP_WARN_EARLY!|r
+    >>|cRXP_WARN_DO NOT aggro THE |cRXP_ENEMY_Defias Scout|r OTHERWISE IT WILL|r |T132331:0|t[Vanish] |cRXP_WARN_AND DESPAWN FOR 3-5 MINUTES. ENSURE TO GO IN|r |T132320:0|t[Stealth] |cRXP_WARN_EARLY!|r
     >>|cRXP_WARN_The |cRXP_ENEMY_Defias Scout|r can spawn on hills|r
     .collect 208772,1 -- Rune of Saber Slash (1)
     .unitscan Defias Scout
@@ -4672,7 +4674,7 @@ step
     .goto Dun Morogh,61.36,47.07,40 >>Go up the dirt path
     .isQuestAvailable 314
 step
-    #completewith next
+    #completewith VagashEnd
     #requires Dirt
     .goto 1426,62.778,54.591,0
     .goto 1426,62.538,46.195,0
@@ -4939,6 +4941,7 @@ RXPGuides.RegisterGuide([[
 #version 1
 << Alliance
 #group RestedXP Alliance 1-20
+#groupid RXP-SRGCE-A1
 #name 11-13 Loch Modan
 #displayname 13-15 Loch Modan << SoD
 #next 13-15 Westfall; 14-16 Darkshore
@@ -6010,15 +6013,15 @@ step << Rogue
     #xprate >1.49
     .goto Ironforge,62.375,88.679
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brenwyn Wintersteel|r down stairs
-    >>|cRXP_BUY_Buy a|r |T135425:0|t[Keen Throwing Dagger] |cRXP_BUY_from her|r
-    .collect 3107,100 -- Keen Throwing Dagger
+    >>|cRXP_BUY_Buy a|r |T135425:0|t[Keen Throwing Knife] |cRXP_BUY_from her|r
+    .collect 3107,100 -- Keen Throwing Knife
     .target Brenwyn Wintersteel
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<6.3
 step << Rogue
     #xprate >1.49
     #optional
     #completewith next
-    +|cRXP_WARN_Equip the|r |T135425:0|t[Keen Throwing Dagger]
+    +|cRXP_WARN_Equip the|r |T135425:0|t[Keen Throwing Knife]
     .use 3107
     .itemcount 3107,1
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<6.3

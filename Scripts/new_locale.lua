@@ -1,4 +1,5 @@
 --
+
 -- ActiveItemFrame.lua file
 
 L["Active Items"] = ""
@@ -54,7 +55,7 @@ L["Uma Bartulm"] = ""
 L["Logannas"] = ""
 L["Bronk"] = ""
 L["Cawind Trueaim"] = ""
-L["Worb Strongstich"] = ""
+L["Worb Strongstitch"] = ""
 L["Starn & Montarr"] = ""
 L["Evie Whirlbrew"] = ""
 L["Augustus the Touched"] = ""
@@ -62,7 +63,7 @@ L["Selina Weston"] = ""
 L["Bro'Kin"] = ""
 L["Alexandre, Andrea, Nadia & Edwin"] = ""
 L["Wallace the Blind"] = ""
-L["Kirs Legace"] = ""
+L["Kris Legace"] = ""
 L["Zixil"] = ""
 L["Ott"] = ""
 L["Robert & Nandar"] = ""
@@ -91,7 +92,7 @@ L["Thultazor & Rartar"] = ""
 L["Kzixx"] = ""
 L["Bliztik"] = ""
 L["Avette Fellwood"] = ""
-L["Morg & Gaving Gnarltree"] = ""
+L["Morg & Gavin Gnarltree"] = ""
 L["Defias Profiteer"] = ""
 L["William MacGregor"] = ""
 L["Nina Lightbrew"] = ""
@@ -135,6 +136,118 @@ L["Melaris"] = ""
 L["Alchemist Gribble"] = ""
 L["Altaa"] = ""
 L["Skreah"] = ""
+
+-- DB\classic\db.lua file
+
+L["Mining & Engineering"] = ""
+L["Mining & Blacksmithing"] = ""
+L["Herbalism & Alchemy"] = ""
+L["Skinning & Leatherworking"] = ""
+L["Mining & Skinning"] = ""
+L["Mining & Herbalism"] = ""
+L["Herbalism & Skinning"] = ""
+L["Skinning"] = ""
+L["Herbalism"] = ""
+L["Mining "] = ""
+L["None"] = ""
+L["Loot: %s"] = ""
+L["Quest XP: %s"] = ""
+L["Travel Speed: %s"] = ""
+L["Terrible"] = ""
+L["Bad"] = ""
+L["Good"] = ""
+L["Excellent"] = ""
+
+-- DB\classic\rares.lua file
+
+L["Evalcharr\", \"Fantôme de Varo"] = ""
+
+-- DB\mainline\db.lua file
+
+L["RestedXP Speed Leveling"] = ""
+L["a) Exile's Reach"] = ""
+L["ab) Shadowglen"] = ""
+L["ab) Northshire Valley"] = ""
+L["ab) New Tinkertown"] = ""
+L["ab) Ammen Vale"] = ""
+L["ab) Worgen Intro"] = ""
+L["a) Pandaren Intro"] = ""
+L["a) Dracthyr Intro"] = ""
+L["a) VoidElf Intro"] = ""
+L["a) LightforgedDraenei Intro"] = ""
+L["a) EarthenDwarf Intro"] = ""
+L["a) KulTiran Intro"] = ""
+L["a) Mechagnome Intro"] = ""
+L["a) DarkIronDwarf Intro"] = ""
+L["a) DK Intro"] = ""
+L["a) New DK Intro"] = ""
+L["ab) Deathknell"] = ""
+L["ab) Camp Narache"] = ""
+L["ab) Sunstrider Isle"] = ""
+L["ab) Goblin Intro"] = ""
+L["a) Nightborne Intro"] = ""
+L["a) HighmountainTauren"] = ""
+L["a) MagharOrc Intro"] = ""
+L["a) ZandalariTroll Intro"] = ""
+L["a) Vulpera Intro"] = ""
+L["a) DH Intro"] = ""
+L["a) Intro"] = ""
+L["a) Arathi Highlands Returning Player"] = ""
+L["a) Haranir Intro"] = ""
+L["ab) Dwarf Coldridge Vallley"] = ""
+
+-- DB\mop\rares.lua file
+
+L["Displays Pandaria rare mobs on your map"] = ""
+L["Displays Pandaria treasures on your map"] = ""
+
+-- DB\questDB.lua file
+
+L["Showing expected Quest Log, scroll down to view backup quests"] = ""
+L["Quest Priority"] = ""
+L["Turn-in Route"] = ""
+L["Preparation Guide"] = ""
+L["\n\n--- Backup Quests ---"] = ""
+L["Click to view the %d best quests"] = ""
+L["Southshore"] = ""
+L["Darnassus"] = ""
+L["Cenarion Hold"] = ""
+L["Everlook"] = ""
+L["Grom'gol Base Camp"] = ""
+L["Orgrimmar"] = ""
+L["Set your Hearthstone to |cRXP_WARN_%s|r"] = ""
+L["RestedXP Preparation Guide: Quest Database"] = ""
+L["Refresh"] = ""
+L["Missing"] = ""
+L["Prepared Quests"] = ""
+L["Not Prepared"] = ""
+L["All Quests"] = ""
+L["RestedXP Preparation Guide: Quest Priority"] = ""
+L["Use Recommended"] = ""
+L["Apply Changes"] = ""
+L["This will reload the UI to apply changes"] = ""
+L["RestedXP Preparation Guide: Turn in route"] = ""
+L["Gnomish Engineering"] = ""
+L["Goblin Engineering"] = ""
+L["Mage Portals"] = ""
+L["Wrath of the Blue Flight Teleport"] = ""
+L["If you have this quest available you get a free teleport from Winterspring to Western Plaguelands"] = ""
+L["Silithus Start"] = ""
+L["Burning Steppes Start"] = ""
+L["Turn in Route"] = ""
+L["Step skipped: This is part of a quest you don't have"] = ""
+L["%dxp %s (%d)"] = ""
+L["TBC"] = ""
+L["Quest Log Quests not yet prepared"] = ""
+L["Quests not yet prepared"] = ""
+L["Total XP: %s\n%s"] = ""
+
+-- DB\shared.lua file
+
+L["RXP MoP 1-80 (A)"] = ""
+L["RXP MoP 1-60 (A)"] = ""
+L["RXP MoP 1-80 (H)"] = ""
+L["RXP MoP 1-60 (H)"] = ""
 
 -- functions.lua file
 
@@ -189,31 +302,37 @@ L["Attempting to withdraw"] = ""
 L[" or event == "] = ""
 L["Skip to step %d if you are level %d or above"] = ""
 L["(Skip this step if you are level %d or above)"] = ""
+L["Toy"] = ""
 L["Do NOT attempt this quest unless you are in a group of at least %d"] = ""
 L["This step is meant to be completed as a group, be careful"] = ""
 L["Step skipped: Wrong scenario"] = ""
 L["Step skipped: Quest is not being offered"] = ""
+L["Learn dual spec"] = ""
 
 -- GuideLoader.lua file
 
 L["Failed to ReadCacheData"] = ""
+L["Failed integrity check"] = ""
 L["Account mismatch, import string does not apply to current account"] = ""
 L["Error: Guide has no contents"] = ""
-L["Incomplete or invalid encoded string"] = ""
-L["Incompatible guide game %d version vs %d"] = ""
-L["Incompatible guide, for %d version vs %d"] = ""
-L["Failed integrity check"] = ""
-L["Total guides loaded: %d/%s"] = ""
-L["Loading Guides"] = ""
-L["Guides Loaded Successfully"] = ""
 L["Unable to decode cached guide (%s), removed"] = ""
 L["Error parsing "] = ""
 L["Guide has no name"] = ""
 L["Classic"] = ""
+L["RestedXP Speedrun Guide (A)"] = ""
+L["RestedXP Speedrun Guide (H)"] = ""
+L["Incomplete or invalid encoded string"] = ""
+L["Total guides loaded: %d/%s"] = ""
+L["Incompatible guide game %d version vs %d"] = ""
+L["Incompatible guide, for %d version vs %d"] = ""
+L["Loading Guides"] = ""
+L["Guide import failed due to a Lua error."] = ""
+L["Guides Loaded Successfully"] = ""
 
 -- GuideWindow.lua file
 
 L["Welcome to RestedXP Guides\nRight click to pick a guide"] = ""
+L["Skip step"] = ""
 L["Hide tips"] = ""
 L["Step %d"] = ""
 L["Go to step"] = ""
@@ -229,9 +348,15 @@ L["Deactivate Hardcore mode"] = ""
 L["Activate Hardcore mode"] = ""
 L["Activate the Quest Guide mode"] = ""
 L["Activate the Gold Assistant mode"] = ""
+L["Run Guide Configurator"] = ""
 L["Import guide"] = ""
 L["Leveling report"] = ""
 L["Open Feedback Form"] = ""
+L["Show Active Party Steps"] = ""
+L["Show Background"] = ""
+L["Hide Background"] = ""
+L["Disable Active Party Steps"] = ""
+L["Hide"] = ""
 
 -- Help.lua file
 
@@ -248,18 +373,15 @@ L["Disable it if you're experiencing navigation issues."] = ""
 L["has known incompatibilities with Proximity targeting TargetUnit() calls."] = ""
 L["Install BugSack or disable Targeting -> 'Only show when in range'."] = ""
 
--- HSBatching.lua file
-
-
 -- InventoryManager.lua file
 
+L["Delete Cheapest Junk Item"] = ""
 L["|c%sSorting arrows/bullets|r"] = ""
 L["|c%sInventory is full, sorting arrows/bullets|r"] = ""
 L["|c%sSet %s as useful|r"] = ""
 L["|c%sSet %s as junk|r"] = ""
 L["|c%sDeleting %sx%s|r"] = ""
 L["|c%sInventory is full, deleting %sx%s|r"] = ""
-L["Delete Cheapest Junk Item"] = ""
 L["|c%sSold junk items for|r %s"] = ""
 
 -- ItemUpgrades.lua file
@@ -319,8 +441,11 @@ L["Invalid data"] = ""
 L["Error Importing: "] = ""
 L["Importing %s"] = ""
 
--- Locale.lua file
+-- locale\enUS.lua file
 
+L["Active Item Button %d"] = ""
+L["Active Friendly Target Button %d"] = ""
+L["Active Enemy Target Button %d"] = ""
 
 -- map.lua file
 
@@ -352,49 +477,40 @@ L["You can't do that in combat."] = ""
 -- RXPGuides.lua file
 
 L["Development"] = ""
+L["Guide progress was saved by another character. Reset it?"] = ""
 
 -- SettingsPanel.lua file
 
 L["Migrating %s = %s"] = ""
 L["Character profile (%s) already migrated"] = ""
-L["Please restart your game client and try again"] = ""
-L["Failed to Import Guides: Invalid Import String"] = ""
-L["none"] = ""
-L["Press Ctrl+V to paste a piece of the string (%d)\nPress ESC to cancel\n\nThis process is slow and should only be used if your operating system have clipboard length restrictions"] = ""
-L["Import Error - Invalid String Header"] = ""
-L["Guide Import"] = ""
-L["Paste encoded strings"] = ""
-L["Guides to import"] = ""
-L["Currently loaded imported guides"] = ""
-L["Delete imported guide"] = ""
-L["Remove"] = ""
-L["Purge All Data"] = ""
-L["This action will remove ALL guides from the database\nAre you sure?"] = ""
-L["Reload guides and UI"] = ""
-L["Import Spliced String"] = ""
-L["Battle.net unreachable, please exit your client, restart Battle.net, and try again"] = ""
-L["Loaded %d characters into import buffer, %d shown"] = ""
-L["Loaded %d characters into import buffer"] = ""
+L[" (Beta)"] = ""
 L["This requires a reload to take effect, continue?"] = ""
 L["Join Discord"] = ""
-L["Run Guide Configurator"] = ""
+L["Import Guides"] = ""
+L["Reset Guide Progress"] = ""
+L["Clear guide progress for current character"] = ""
 L["Show all Enabled Frames"] = ""
 L["Toggles all addon frames on or off"] = ""
 L["Lock Frames"] = ""
 L["Disable dragging/resizing, use alt+left click on the main window to resize it"] = ""
 L["Autohide in Raids"] = ""
 L["Automatically hide when in a raid, and unhide when you leave a raid"] = ""
+L["Enable Standby Mode"] = ""
+L["Pause guide processing when addon is hidden."] = ""
 L["Enable Minimap Button"] = ""
 L["Add main options menu to minimap"] = ""
 L["Enable World Map Button"] = ""
 L["Add options menu to map"] = ""
 L["Hide Window"] = ""
 L["Hides the main window"] = ""
+L["Enable Standby Mode"] = ""
+L["Pause guide processing when addon is hidden."] = ""
 L["Hide waypoint arrow"] = ""
 L["Hide Active Item window"] = ""
 L["Vendor Treasures"] = ""
 L["Enable embedded Cpt. Stadics' Vendor Treasures"] = ""
 L["Show Flight Timers"] = ""
+L["Enable Group Settings"] = ""
 L["Automation"] = ""
 L["Quest auto accept/turn in"] = ""
 L["Holding the Control key modifier also toggles the quest auto accept feature on and off"] = ""
@@ -408,6 +524,14 @@ L["Innkeeper Bind automation"] = ""
 L["Allows the guide to automatically set your home at an Innkeeper"] = ""
 L["Skip Gossip"] = ""
 L["Allows the guide to automatically skip gossip for NPCs"] = ""
+L["Interface Version 2 (Beta)"] = ""
+L["Enable V2 Interface"] = ""
+L["Replace the legacy guide window with the V2 interface"] = ""
+L["Display Quest Link"] = ""
+L["Display quest tooltips on steps"] = ""
+L["Brand Menus"] = ""
+L["Apply the V2 style to RestedXP menus"] = ""
+L["Enable Inventory Manager"] = ""
 L["Show junk item indicator"] = ""
 L["Any items marked as junk will display a gold coin icon on the top left corner of the item icon within your bags"] = ""
 L["Discard junk items if bag is full"] = ""
@@ -422,6 +546,9 @@ L["Automatically set Soul Shard as junk if you have more than the amount specifi
 L["You must input an integer number"] = ""
 L["Delete Cheapest Junk Item Keybind"] = ""
 L["Click to set a keybind"] = ""
+L["Reset Junk List"] = ""
+L["Click to reset the discard list for this character"] = ""
+L["This action will unmark all junk items.\nAre you sure?"] = ""
 L["Enable Talents Guides"] = ""
 L["Enable Talent Previews"] = ""
 L["Enable Talent Plan"] = ""
@@ -455,20 +582,21 @@ L["Hardcore mode"] = ""
 L["Adjust the leveling routes to the deathless ruleset"] = ""
 L["Season"] = ""
 L["Adjust the leveling routes to the current season"] = ""
-L["None"] = ""
 L["Season of Mastery"] = ""
 L["Season of Discovery"] = ""
 L["Multibox mode"] = ""
-L["Removes sections that require attention from all clients\nGuides that support this feature:\n"] = ""
+L["Removes sections that require attention from all clients\nGuides that support this feature:"] = ""
 L["Select Recommended Dungeons"] = ""
 L["Factor only the high impact dungeons into the route"] = ""
 L["Select all Dungeons"] = ""
+L["Enabled Dungeons"] = ""
 L["Routes in quests for the selected dungeon\nGuides that support this feature:\n"] = ""
 L["Professions"] = ""
 L["Level professions along with the guide\nGuides that support this feature:\n"] = ""
 L["Quest Cleanup"] = ""
 L["Cleanup obsolete or leftover quests"] = ""
 L["Abandon the following quests?"] = ""
+L["Enable Targeting"] = ""
 L["Create Active Targets frame"] = ""
 L["Maximize Nameplate Distance"] = ""
 L["Automatically maximize nameplate visibility distance for better target detection (Requires reload)"] = ""
@@ -478,18 +606,28 @@ L["Mark Enemy Mobs"] = ""
 L["Mark enemy mobs with skull, cross, and square"] = ""
 L["Mark Friendly Targets"] = ""
 L["Mark friendly targets with star, circle, diamond, and triangle"] = ""
+L["Enable Target Markers (Group)"] = ""
+L["You are not a group leader. Enable Target Markers"] = ""
 L["Targeting Macro"] = ""
 L["Macro capacity reached"] = ""
 L["Create Targeting Macro"] = ""
 L["Automatically create a targeting macro"] = ""
 L["Notify on new target"] = ""
 L["Notify when a new target is loaded"] = ""
+L["Follow Party Leader Macro"] = ""
+L["Enable follow party leader macro"] = ""
+L["Active Target Frame"] = ""
+L["Enable Active Target Frame"] = ""
 L["Only show when in range"] = ""
 L["Check if targets are nearby\nWarning: This relies on ADDON_ACTION_FORBIDDEN errors from TargetUnit() to function."] = ""
+L["Show Enemy Target"] = ""
 L["Scan Enemy Targets"] = ""
 L["Scan for enemy targets"] = ""
+L["Show Friendly Target"] = ""
 L["Scan Friendly Targets"] = ""
 L["Scan for friendly targets"] = ""
+L["Follow Party Leader Target"] = ""
+L["Show party leader target"] = ""
 L["Scan for Nearby Rares"] = ""
 L["Checks for nearby rare spawns"] = ""
 L["Notify on Rares"] = ""
@@ -504,6 +642,7 @@ L["Flashes the game icon on taskbar when enemy target found"] = ""
 L["Flashes the screen corners when enemy target found"] = ""
 L["Play Sound"] = ""
 L["Sends sound on enemy target found"] = ""
+L["none"] = ""
 L["Map Ping"] = ""
 L["War Drums"] = ""
 L["Raid Warning"] = ""
@@ -551,6 +690,12 @@ L["Send announcements without another RXP user in group"] = ""
 L["Without this checked we will only send announcements if another RestedXP User is in your group"] = ""
 L["Automatic quest sharing"] = ""
 L["Whenever you accept a quest in the guide, the addon tries to share it with your group"] = ""
+L["Active Party Step v2 (Beta)"] = ""
+L["Enable Active Party Step v2"] = ""
+L["Window Scale"] = ""
+L["Hide Party Background"] = ""
+L["Share Active Step "] = ""
+L["Share your Active Step with party members"] = ""
 L["Tips"] = ""
 L["Enable Tips"] = ""
 L["Enable Tips Frame"] = ""
@@ -573,6 +718,7 @@ L["Track Rare Mobs"] = ""
 L["Skip mobs already killed"] = ""
 L["Don't show on the map rare mobs you already killed for their respective achievement"] = ""
 L["Track Treasures"] = ""
+L["Enable Item Upgrade"] = ""
 L["Calculates item upgrades with Tactics' effective power weights"] = ""
 L["Choose active theme"] = ""
 L["Always Show Total EP"] = ""
@@ -580,6 +726,9 @@ L["Quest Reward Recommendation"] = ""
 L["Displays the best calculated item upgrade"] = ""
 L["Quest Reward Automation"] = ""
 L["Automatically chooses the best calculated quest reward"] = ""
+L["Disable Tooltips"] = ""
+L["Displays upgrade information on items"] = ""
+L["Auction Item Search"] = ""
 L["Look and Feel"] = ""
 L["Choose Theme"] = ""
 L["Set primary background"] = ""
@@ -604,6 +753,58 @@ L["Buy"] = ""
 L["Disable Colors"] = ""
 L["Guide Window"] = ""
 L["Window Scale"] = ""
+L["Welcome, select a guide."] = ""
+L["Speedrun Guide"] = ""
+L["Survival Guide"] = ""
+L["Fastest Leveling Experience"] = ""
+L["Safest Leveling Experience"] = ""
+L["Endgame Guides"] = ""
+L["Attunements, Keys And More"] = ""
+L["Profession Guides"] = ""
+L["Level any Profession Effortlessly"] = ""
+L["Gold Assistant"] = ""
+L["Easy gold making guides"] = ""
+L["Hostile Enemy Warning"] = ""
+L["Auction House Usage"] = ""
+L["Enable Group Quests"] = ""
+L["Enable Dungeons"] = ""
+L["Profession Leveling"] = ""
+L["Skip Low Level Quests"] = ""
+L["Speedrun Guide Configuration"] = ""
+L["Survival Guide Configuration"] = ""
+L["Dungeon Configuration"] = ""
+L["Fastest Leveling Speed"] = ""
+L["Best Item Upgrades"] = ""
+L["Select All Dungeons"] = ""
+L["Customize Dungeons"] = ""
+L["Next step"] = ""
+L["Dungeon List"] = ""
+L["Clear All"] = ""
+L["Recommended"] = ""
+L["Alerts when a dangerous entity is nearby and shows patrolling elites on the world map."] = ""
+L["Considers quests that require items that are obtained through trading with other players."] = ""
+L["Show elite quests and routes difficult quests early in the guide. Leave unchecked, if you prefer a solo experience."] = ""
+L["Adds Dungeon Quests to your route. This is helpful to avoid longer grinding sessions."] = ""
+L["Level professions along with the guide"] = ""
+L["Factor only the high impact dungeons into the route"] = ""
+L["Factor all of your available Dungeons to your levelling route"] = ""
+L["Prioritize dungeons with the strongest upgrades for your class."] = ""
+L["Choose the individual dungeons included in your route."] = ""
+L["Select your preferred features to customize the guide. The leveling route automatically adapts to your choices."] = ""
+L["Add dungeons to your journey. The guide will adjust to your selection accordingly and include dungeon quests to your route."] = ""
+L["Configure your guide."] = ""
+L["Select your preferred guide."] = ""
+L["No guides available."] = ""
+L["Attunements"] = ""
+L["RestedXP Endgame Guides"] = ""
+L["Open World Guide"] = ""
+L["Dungeon Cleave Guide"] = ""
+L["Open World Guide Configuration"] = ""
+L["Dungeon Cleave Guide Configuration"] = ""
+L["Fastest Leveling Route"] = ""
+L["Discovery Route (Slower)"] = ""
+L["Prioritizes the fastest route and skips low-level quests."] = ""
+L["Includes more quests for a slower route."] = ""
 L["Scale of the Main Window, use alt+left click on the main window to resize it"] = ""
 L["Guide Font Size"] = ""
 L["Change font size of the Guide Window"] = ""
@@ -624,7 +825,6 @@ L["Size of the waypoint arrow text"] = ""
 L["Reset Arrow Position"] = ""
 L["Active Item Scale"] = ""
 L["Scale of the Active Item frame"] = ""
-L["Hide Background"] = ""
 L["Hide Mini Map Pins"] = ""
 L["Highlight active map pins"] = ""
 L["Show a targeting circle around active map pins"] = ""
@@ -644,6 +844,8 @@ L["Debug"] = ""
 L["Get Completed Quests"] = ""
 L["Disable step skips"] = ""
 L["Ignores any kind of condition that causes a step to auto skip"] = ""
+L["Disable Map Pins"] = ""
+L["Quest Log Size"] = ""
 L["Import Completed Quests"] = ""
 L["Hearthstone batching"] = ""
 L["Enables the automation of the innkeeper prompt, where you can set your home location in the same server tick you're teleporting away"] = ""
@@ -655,13 +857,16 @@ L["Pre load all data"] = ""
 L["Loads all addon data upfront, instead of loading the data slowly over time. This increases loading screen times, only enable this option if you are experiencing frame rate drops"] = ""
 L["Check for Addon Incompatibility"] = ""
 L["Check loaded addons for known compatibility issues with RXP"] = ""
+L["Low Quality Settings"] = ""
 L["Skip quests with missing pre-requisites"] = ""
 L["Automatically skip tasks in which you don't have the required quest pre-requisites\n(Requires Questie)"] = ""
+L["Reload guides and UI"] = ""
 L["Set current profile as default"] = ""
 L["|cff909090Left Click: |cffffcc00Toggle Guide|r"] = ""
 L["|cff909090Right Click: |cffffcc00Show Menu|r"] = ""
 L["Experience rate change detected, reloading guide for %.2fx"] = ""
 L["Profile changed, Reload UI for settings to take effect"] = ""
+L["Missing translation for step %d (Coming soon)"] = ""
 L["Preview"] = ""
 
 -- Talents.lua file
@@ -679,187 +884,88 @@ L["Targeting macro updated with:%s"] = ""
 L["current step has no configured targets"] = ""
 L["A macro has been automatically built to aid in leveling. Please move %s to your action bars."] = ""
 L["Rare Found! %s is nearby."] = ""
-L["Active Targets"] = ""
 
 -- Themes.lua file
 
-L["Theme missing name or author"] = ""
-L["%s does not apply to current mode, importing anyway"] = ""
-
--- Timers.lua file
-
+L["RXP Blue"] = ""
+L["RXP Red"] = ""
+L["RXP Gold"] = ""
+L["DarkMode"] = ""
+L["RXP Green"] = ""
 
 -- Tips.lua file
 
 L["Addon Tips"] = ""
 
--- DB\questDB.lua file
-
-L["Showing expected Quest Log, scroll down to view backup quests"] = ""
-L["Quest Priority"] = ""
-L["Turn-in Route"] = ""
-L["Preparation Guide"] = ""
-L["\n\n--- Backup Quests ---"] = ""
-L["Click to view the %d best quests"] = ""
-L["Southshore"] = ""
-L["Darnassus"] = ""
-L["Cenarion Hold"] = ""
-L["Everlook"] = ""
-L["Grom'gol Base Camp"] = ""
-L["Orgrimmar"] = ""
-L["Set your Hearthstone to |cRXP_WARN_%s|r"] = ""
-L["RestedXP Preparation Guide: Quest Database"] = ""
-L["Refresh"] = ""
-L["Missing"] = ""
-L["Prepared Quests"] = ""
-L["Not Prepared"] = ""
-L["All Quests"] = ""
-L["RestedXP Preparation Guide: Quest Priority"] = ""
-L["Use Recommended"] = ""
-L["Apply Changes"] = ""
-L["This will reload the UI to apply changes"] = ""
-L["RestedXP Preparation Guide: Turn in route"] = ""
-L["Gnomish Engineering"] = ""
-L["Goblin Engineering"] = ""
-L["Mage Portals"] = ""
-L["Wrath of the Blue Flight Teleport"] = ""
-L["If you have this quest available you get a free teleport from Winterspring to Western Plaguelands"] = ""
-L["Silithus Start"] = ""
-L["Burning Steppes Start"] = ""
-L["Turn in Route"] = ""
-L["Step skipped: This is part of a quest you don't have"] = ""
-L["%dxp %s (%d)"] = ""
-L["TBC"] = ""
-L["Quest Log Quests not yet prepared"] = ""
-L["Quests not yet prepared"] = ""
-L["Total XP: %s\n%s"] = ""
-
--- DB\shared.lua file
-
-
--- DB\cata\db.lua file
-
-
--- DB\cata\flightData.lua file
-
-
--- DB\cata\quest.lua file
-
-
--- DB\cata\rares.lua file
-
-
--- DB\cata\spells.lua file
-
-
--- DB\cata\statWeights.lua file
-
-
--- DB\classic\dangerousMobs.lua file
-
-
--- DB\classic\db.lua file
-
-L["Mining & Engineering"] = ""
-L["Mining & Blacksmithing"] = ""
-L["Herbalism & Alchemy"] = ""
-L["Skinning & Leatherworking"] = ""
-L["Mining & Skinning"] = ""
-L["Mining & Herbalism"] = ""
-L["Herbalism & Skinning"] = ""
-L["Skinning"] = ""
-L["Herbalism"] = ""
-L["Mining "] = ""
-L["Loot: %s"] = ""
-L["Quest XP: %s"] = ""
-L["Travel Speed: %s"] = ""
-L["Terrible"] = ""
-L["Bad"] = ""
-L["Good"] = ""
-L["Excellent"] = ""
-
--- DB\classic\flightData.lua file
-
-
--- DB\classic\quest.lua file
-
-
--- DB\classic\spells-sod.lua file
-
-
--- DB\classic\spells.lua file
-
-
--- DB\classic\SpiritHealerDB.lua file
-
-
--- DB\classic\StatWeights.lua file
-
-
--- DB\mainline\db.lua file
-
-
--- DB\mainline\flightData.lua file
-
-
--- DB\mainline\quest.lua file
-
-
--- DB\mainline\rares.lua file
-
-
--- DB\mop\db.lua file
-
-
--- DB\mop\flightData.lua file
-
-
--- DB\mop\quest.lua file
-
-
--- DB\mop\rares.lua file
-
-L["Displays Pandaria rare mobs on your map"] = ""
-L["Displays Pandaria treasures on your map"] = ""
-
--- DB\mop\spells.lua file
-
-
--- DB\mop\statWeights.lua file
-
-
--- DB\tbc\db.lua file
-
-
--- DB\tbc\flightData.lua file
-
-
--- DB\tbc\quest.lua file
-
-
--- DB\tbc\spells.lua file
-
-
--- DB\tbc\statWeights.lua file
-
-
--- DB\wotlk\db.lua file
-
-
--- DB\wotlk\flightData.lua file
-
-
--- DB\wotlk\quest.lua file
-
-
--- DB\wotlk\spells.lua file
-
-
--- locale\enUS.lua file
-
-L["Active Item Button %d"] = ""
-L["Active Friendly Target Button %d"] = ""
-L["Active Enemy Target Button %d"] = ""
-
 -- UI\V2\Core.lua file
 
+L["Welcome to RestedXP"] = ""
+L["Select a guide:"] = ""
+L["Open Settings"] = ""
+L["Browse Guides"] = ""
+
+-- UI\V2\GuideConfigurator.lua file
+
+L["Recommended"] = ""
+L["No guides available."] = ""
+L["Dungeon List"] = ""
+L["Welcome, select a guide."] = ""
+L["Configure your guide."] = ""
+L["Next step"] = ""
+L["Clear All"] = ""
+L["Attunements"] = ""
+L["Keys"] = ""
+L["Set Guide"] = ""
+L["Profession Leveling"] = ""
+L["Dungeon Cleave Guide"] = ""
+L["Fastest Leveling Experience"] = ""
+L["Open World Guide"] = ""
+L["Speedrun Guide"] = ""
+L["Survival Guide"] = ""
+L["Safest Leveling Experience"] = ""
+L["Endgame Guides"] = ""
+L["Attunements, Keys And More"] = ""
+L["Gold Assistant"] = ""
+L["Easy gold making guides"] = ""
+L["Auction House Usage"] = ""
+L["Considers quests that require items that are obtained through trading with other players."] = ""
+L["Enable Group Quests"] = ""
+L["Show elite quests and routes difficult quests early in the guide. Leave unchecked, if you prefer a solo experience."] = ""
+L["Skip Low Level Quests"] = ""
+L["Hostile Enemy Warning"] = ""
+L["Alerts when a dangerous entity is nearby and shows patrolling elites on the world map."] = ""
+L["Enable Dungeons"] = ""
+L["Adds Dungeon Quests to your route. This is helpful to avoid longer grinding sessions."] = ""
+L["Level professions along with the guide"] = ""
+L["Fastest Leveling Speed"] = ""
+L["Best Item Upgrades"] = ""
+L["Prioritize dungeons with the strongest upgrades for your class."] = ""
+L["Select All Dungeons"] = ""
+L["Factor all of your available Dungeons to your levelling route"] = ""
+L["Customize Dungeons"] = ""
+L["Choose the individual dungeons included in your route."] = ""
+L["Speedrun Guide Configuration"] = ""
+L["Select your preferred features to customize the guide. The leveling route automatically adapts to your choices."] = ""
+L["Survival Guide Configuration"] = ""
+L["Dungeon Configuration"] = ""
+L["Add dungeons to your journey. The guide will adjust to your selection accordingly and include dungeon quests to your route."] = ""
+L["Select your preferred guide."] = ""
+L["Fastest Leveling Route"] = ""
+L["Prioritizes the fastest route and skips low-level quests."] = ""
+L["Discovery Route (Slower)"] = ""
+L["Includes more quests for a slower route."] = ""
+L["Open World Guide Configuration"] = ""
+L["Dungeon Cleave Guide Configuration"] = ""
+
+-- UI\V2\GuideImporter.lua file
+
+L["Purge"] = ""
+L["This action will remove ALL guides from the database\nAre you sure?"] = ""
+L["Paste your guide string into the text field and click \"Import\"."] = ""
+L["Import Spliced String"] = ""
+L["Show imported guides"] = ""
+L["Reload"] = ""
+L["Delete"] = ""
+L["Remove"] = ""
+L["Progress"] = ""
+L["Battle.net unreachable, please exit your client, restart Battle.net, and try again"] = ""

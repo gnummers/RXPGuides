@@ -2,7 +2,7 @@ local faction = UnitFactionGroup("player")
 if faction == "Alliance" then return end
 
 
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #classic
 #tbc
@@ -12,6 +12,7 @@ RXPGuides.RegisterGuide([[
 #name 1-6 Mulgore
 #version 11
 #group RestedXP Horde 1-22
+#groupid RXP-SRGCE-H1
 #defaultfor Tauren
 #next 6-12 Mulgore;6-13 Mulgore
 
@@ -585,6 +586,7 @@ RXPGuides.RegisterGuide([[
 #name 6-12 Mulgore
 #version 11
 #group RestedXP Horde 1-22
+#groupid RXP-SRGCE-H1
 #defaultfor Tauren
 #next 12-17 The Barrens
 
@@ -872,7 +874,7 @@ step
     .unitscan Snagglespear
 step
     .goto Mulgore,47.63,61.49
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jhwana|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jhawna|r
     >>|cRXP_BUY_Buy|r |T132815:0|t[Ice Cold Milk] |cRXP_BUY_from her|r << Shaman/Druid
     >>|cRXP_BUY_Buy|r |T133968:0|t[Freshly Baked Bread] |cRXP_BUY_from her|r << Warrior
     .vendor >> Vendor trash
@@ -953,7 +955,7 @@ step << Shaman/Druid
 step << Warrior
     #optional
     #completewith Clawsx
-    +|cRXP_WARN_Equip th|re |T133053:0|t[Wooden Mallet]
+    +|cRXP_WARN_Equip the|r |T133053:0|t[Wooden Mallet]
     .use 2493
     .itemcount 2493,1
     .itemStat 16,QUALITY,<7
@@ -1118,7 +1120,7 @@ step << Hunter
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<3.0
 step << Hunter
     .goto Mulgore,45.86,57.67
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_Talk to|r |cRXP_FRIENDLY_Loorat|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_Talk to|r |cRXP_FRIENDLY_Moorat|r
     .collect 2516,1000,743,1 << Hunter --Light Shot (1000)
     .target Moorat Longstride
     .itemcount 2512,<800 << Hunter
@@ -1162,6 +1164,7 @@ step << Tauren
     .goto Mulgore,48.53,60.40
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mull|r
     .turnin 756 >>Turn in Thunderhorn Totem
+    .timer 8,Thunderhorn Totem RP
     .accept 758 >>Accept Thunderhorn Cleansing
     .target Mull Thunderhorn
 step
@@ -1463,29 +1466,28 @@ step
     .mob Taloned Swoop
 step
     #loop
-	.goto Mulgore,50.79,29.37,0
-	.goto Mulgore,59.52,23.36,60,0
-	.goto Mulgore,57.51,19.08,60,0
-	.goto Mulgore,55.21,18.67,60,0
-	.goto Mulgore,52.99,17.34,60,0
-	.goto Mulgore,51.00,18.40,60,0
-	.goto Mulgore,49.84,20.74,60,0
-	.goto Mulgore,49.82,23.69,60,0
-	.goto Mulgore,49.52,26.10,60,0
-	.goto Mulgore,49.72,28.14,60,0
-	.goto Mulgore,50.79,29.37,60,0
-	.goto Mulgore,52.24,30.07,60,0
-	.goto Mulgore,54.21,30.43,60,0
-	.goto Mulgore,56.15,30.35,60,0
-	.goto Mulgore,57.77,30.48,60,0
-	.goto Mulgore,58.79,28.52,60,0
-	.goto Mulgore,60.56,25.88,60,0
-	.goto Mulgore,59.52,23.36,60,0
+    .goto Mulgore,55.06,32.48,0
+    .goto Mulgore,55.06,32.48,60,0
+    .goto Mulgore,53.84,40.80,60,0
+    .goto Mulgore,53.19,45.16,60,0
+    .goto Mulgore,57.45,48.86,60,0
+    .goto Mulgore,59.04,52.79,60,0
+    .goto Mulgore,59.12,58.09,60,0
+    .goto Mulgore,48.67,44.84,60,0
     >>|cRXP_WARN_Finish getting the items for Mazzranache|r
     .complete 766,1 --Prairie Wolf Heart (1)
+    .mob +Prairie Wolf Alpha
+    .mob +Prairie Stalker
+    .mob +Prairie Wolf Alpha
     .complete 766,2 --Flatland Cougar Femur (1)
+    .mob +Flatland Cougar
     .complete 766,3 --Plainstrider Scale (1)
+    .mob +Elder Plainstrider
+    .mob +Adult Plainstrider
     .complete 766,4 --Swoop Gizzard (1)
+    .mob +Taloned Swoop
+    .mob +Swoop
+    .mob +Wiry Swoop
 step
     #xprate <1.5
     #optional
@@ -1865,7 +1867,7 @@ step << Hunter
     .target Yaw Sharpmane
 step
     .goto Mulgore,47.63,61.49
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jhwana|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jhawna|r
     >>|cRXP_BUY_Buy|r |T132815:0|t[Ice Cold Milk] |cRXP_BUY_from her|r << Shaman/Druid
     >>|cRXP_BUY_Buy|r |T133968:0|t[Freshly Baked Bread] |cRXP_BUY_from her|r << Warrior
     .collect 1179,20,818,1 << Shaman/Druid --Ice Cold Milk (20)
@@ -1902,7 +1904,7 @@ step
 step << Hunter
     #completewith next
     .cast 1515 >>Tame a |cRXP_ENEMY_Prairie Wolf Alpha|r
-    >>|cRXP_WARN_This will allow you to train|r |T132140:0|t[Claw Rank 2]
+    >>|cRXP_WARN_This will allow you to train|r |T132278:0|t[Bite Rank 2]
     .mob Prairie Wolf Alpha
 step << Tauren
     #label AlphaTeeth
@@ -2003,7 +2005,6 @@ step << Druid
 step << Druid
     #completewith next
     .cast 18960 >>|cRXP_WARN_Cast|r |T135758:0|t[Teleport: Moonglade]
-    .zoneskip Moonglade
 step << Druid
     .goto Moonglade,56.21,30.64
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dendrite|r
@@ -2080,7 +2081,7 @@ step
     .target Devrak
     .isQuestAvailable 848
 step
-    .goto The Barrens,51.1,29.0
+    .goto The Barrens,51.21,29.05
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jahan|r
     .accept 6361 >>Accept A Bundle of Hides
     .target Jahan Hawkwing
@@ -2092,7 +2093,7 @@ step
     .complete 848,1 --Collect Fungal Spores (x4)
 step
     .goto The Barrens,45.06,22.54
-    >>Dive underwater to the |cRXP_PICK_Bubble Fissure|r
+    >>Dive underwater to the |cRXP_PICK_Bubbling Fissure|r
     .complete 870,1 --Explore the waters of the Forgotten Pools
 step
     #loop
@@ -2842,7 +2843,7 @@ step
     .cooldown item,6948,<0,1
 step
     #label HidesTurnIn
-    .goto The Barrens,51.1,29.0
+    .goto The Barrens,51.21,29.05
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jahan|r
     .turnin 6364 >>Turn in Return to Jahan
     .target Jahan Hawkwing
@@ -2948,6 +2949,7 @@ RXPGuides.RegisterGuide([[
 #xprate >1.99
 #version 1
 #group RestedXP Horde 1-22
+#groupid RXP-SRGCE-H1
 #name 1-7 Mulgore
 #next 7-13 Mulgore
 #defaultfor Tauren
@@ -3009,7 +3011,7 @@ step
     .train 410111 >> Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Kill Command|r] to train |T236174:0|t[Kill Shot] << Hunter
     .train 410121 >> Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of the Chimera|r] to train |T236176:0|t[Chimera Shot] << Hunter
     .train 409580 >> Use the |T133739:0|t[|cRXP_FRIENDLY_Treatise on the Heart of the Lion|r] to train |T132185:0|t[Heart of the Lion] << Hunter
-    .train 415423 >> Use the |T133739:0|t[|cRXP_FRIENDLY_Treatise on the Heart of the Viper|r] to train |T132160:0|t[Heart of the Viper] << Hunter
+    .train 415423 >> Use the |T133739:0|t[|cRXP_FRIENDLY_Treatise on Aspect of the Viper|r] to train |T132160:0|t[Heart of the Viper] << Hunter
     .train 424718 >> Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of the Stars|r] to train |T135730:0|t[Starsurge] << Druid
     .train 416044 >> Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of the Sun|r] to train |T236216:0|t[Sunfire] << Druid
     .train 439770 >> Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of the Falling Star|r] to train |T236168:0|t[Starfall] << Druid
@@ -3161,7 +3163,7 @@ step << Hunter
 step << Hunter
     #season 2
     .train 410122 >> Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Lone Wolf|r] to train |T132266:0|t[Lone Wolf] << Hunter
-    .train 416086 >> Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Close Combat|r] to train |T132394:0|t[Meele Specialist] << Hunter
+    .train 416086 >> Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Close Combat|r] to train |T132394:0|t[Melee Specialist] << Hunter
     .train 440563 >> Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Guerrilla|r] to train |T132171:0|t[Hit and Run] << Hunter
     .use 210818 << Hunter --Rune of Lone Wolf
     .use 213124 << Hunter --Rune of Close Combat
@@ -3175,7 +3177,7 @@ step << Hunter
     #optional
     >> |cRXP_WARN_Be on the lookout for any|r Chest/Belt/Cloak |cRXP_WARN_drops|r|cRXP_WARN_. Equip them and engrave the respective runes|r
     .engrave 5 >> Engrave |T132266:0|t[Lone Wolf] on your |T132724:0|t[Chest]
-    .engrave 6 >> Engrave |T132394:0|t[Meele Specialist] on your |T132513:0|t[Belt]
+    .engrave 6 >> Engrave |T132394:0|t[Melee Specialist] on your |T132513:0|t[Belt]
     .engrave 15 >> Engrave |T132171:0|t[Hit and Run] on your |T133771:0|t[Cloak]
 step << Druid
     #sticky
@@ -3645,6 +3647,7 @@ RXPGuides.RegisterGuide([[
 #xprate >1.99
 #version 1
 #group RestedXP Horde 1-22
+#groupid RXP-SRGCE-H1
 #name 7-13 Mulgore
 #next 13-20 The Barrens
 #defaultfor Tauren
@@ -3948,7 +3951,7 @@ step
     .unitscan Snagglespear
 step
     .goto Mulgore,47.63,61.49
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jhwana|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jhawna|r
     >>|cRXP_BUY_Buy|r |T132815:0|t[Ice Cold Milk] |cRXP_BUY_from her|r << Shaman/Druid
     >>|cRXP_BUY_Buy|r |T133968:0|t[Freshly Baked Bread] |cRXP_BUY_from her|r << Warrior
     .vendor >> Vendor trash
@@ -4220,7 +4223,7 @@ step << Hunter
 step << Hunter
     #xprate <2.1
     .goto Mulgore,45.86,57.67
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_Talk to|r |cRXP_FRIENDLY_Loorat|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_Talk to|r |cRXP_FRIENDLY_Moorat|r
     .collect 2516,1000,743,1 << Hunter --Light Shot (1000)
     .target Moorat Longstride
     .itemcount 2512,<800 << Hunter
@@ -4270,6 +4273,7 @@ step << Tauren
     .goto Mulgore,48.53,60.40
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mull|r
     .turnin 756 >>Turn in Thunderhorn Totem
+    .timer 8,Thunderhorn Totem RP
     .accept 758 >>Accept Thunderhorn Cleansing
     .target Mull Thunderhorn
 step
@@ -4625,7 +4629,6 @@ step << Druid
 step << Druid
     #completewith next
     .cast 18960 >>Cast |T135758:0|t[Teleport: Moonglade]
-    .zoneskip Moonglade
 step << Druid
     .goto Moonglade,56.21,30.64
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dendrite|r
@@ -4684,7 +4687,7 @@ step << Hunter
     #xprate <2.1
     #completewith SacredBurial
     .cast 1515 >>Tame a |cRXP_ENEMY_Prairie Wolf Alpha|r
-    >>|cRXP_WARN_This will allow you to train|r |T132140:0|t[Claw Rank 2]
+    >>|cRXP_WARN_This will allow you to train|r |T132278:0|t[Bite Rank 2]
     .mob Prairie Wolf Alpha
 step
     #xprate <2.1
@@ -4822,29 +4825,28 @@ step
 step
     #xprate <2.1
     #loop
-	.goto Mulgore,50.79,29.37,0
-	.goto Mulgore,59.52,23.36,60,0
-	.goto Mulgore,57.51,19.08,60,0
-	.goto Mulgore,55.21,18.67,60,0
-	.goto Mulgore,52.99,17.34,60,0
-	.goto Mulgore,51.00,18.40,60,0
-	.goto Mulgore,49.84,20.74,60,0
-	.goto Mulgore,49.82,23.69,60,0
-	.goto Mulgore,49.52,26.10,60,0
-	.goto Mulgore,49.72,28.14,60,0
-	.goto Mulgore,50.79,29.37,60,0
-	.goto Mulgore,52.24,30.07,60,0
-	.goto Mulgore,54.21,30.43,60,0
-	.goto Mulgore,56.15,30.35,60,0
-	.goto Mulgore,57.77,30.48,60,0
-	.goto Mulgore,58.79,28.52,60,0
-	.goto Mulgore,60.56,25.88,60,0
-	.goto Mulgore,59.52,23.36,60,0
+    .goto Mulgore,55.06,32.48,0
+    .goto Mulgore,55.06,32.48,60,0
+    .goto Mulgore,53.84,40.80,60,0
+    .goto Mulgore,53.19,45.16,60,0
+    .goto Mulgore,57.45,48.86,60,0
+    .goto Mulgore,59.04,52.79,60,0
+    .goto Mulgore,59.12,58.09,60,0
+    .goto Mulgore,48.67,44.84,60,0
     >>|cRXP_WARN_Finish getting the items for Mazzranache|r
     .complete 766,1 --Prairie Wolf Heart (1)
+    .mob +Prairie Wolf Alpha
+    .mob +Prairie Stalker
+    .mob +Prairie Wolf Alpha
     .complete 766,2 --Flatland Cougar Femur (1)
+    .mob +Flatland Cougar
     .complete 766,3 --Plainstrider Scale (1)
+    .mob +Elder Plainstrider
+    .mob +Adult Plainstrider
     .complete 766,4 --Swoop Gizzard (1)
+    .mob +Taloned Swoop
+    .mob +Swoop
+    .mob +Wiry Swoop
 step << skip --Cannon removed from game
     #season 2
     #softcore
@@ -5094,7 +5096,7 @@ step << Hunter
     .target Yaw Sharpmane
 step
     .goto Mulgore,47.63,61.49
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jhwana|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jhawna|r
     >>|cRXP_BUY_Buy|r |T132815:0|t[Ice Cold Milk] |cRXP_BUY_from her|r << Shaman/Druid
     >>|cRXP_BUY_Buy|r |T133968:0|t[Freshly Baked Bread] |cRXP_BUY_from her|r << Warrior
     .collect 1179,20,818,1 << Shaman/Druid --Ice Cold Milk (20)
@@ -5135,8 +5137,8 @@ step << Hunter
     .goto Mulgore,65.56,59.37,50,0
     .goto Mulgore,67.62,59.06,50,0
     .goto Mulgore,66.34,67.01,50,0
-    .cast 1515 >>Tame a |cRXP_ENEMY_Prairie Wolf Alpha|r
-    >>|cRXP_WARN_This will allow you to train|r |T132140:0|t[Claw Rank 2]
+    .train 16828 >>|cRXP_WARN_Cast|r |T132164:0|t[Tame Beast] |cRXP_WARN_on a |cRXP_ENEMY_Prairie Wolf Alpha|r. Attack mobs with it to learn|r |T132140:0|t[Claw (Rank 3)]
+    .link https://www.wow-petopia.com/classic/training.php >> |cRXP_WARN_Click here for more info about pet training|r
     .mob Prairie Wolf Alpha
 step
     #xprate >2.09
@@ -5351,7 +5353,6 @@ step << Druid
 step << Druid
     #completewith next
     .cast 18960 >>Cast |T135758:0|t[Teleport: Moonglade]
-    .zoneskip Moonglade
 step << Druid
     .goto Moonglade,56.21,30.64
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dendrite|r
@@ -5427,7 +5428,7 @@ step << Tauren
     .turnin 854 >>Turn in Journey to the Crossroads
     .target Thork
 step
-    .goto The Barrens,51.1,29.0
+    .goto The Barrens,51.21,29.05
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jahan|r
     .accept 6361 >>Accept A Bundle of Hides
     .target Jahan Hawkwing
@@ -5448,7 +5449,7 @@ step
 step
     #xprate <2.1
     .goto The Barrens,45.06,22.54
-    >>Dive underwater to the |cRXP_PICK_Bubble Fissure|r
+    >>Dive underwater to the |cRXP_PICK_Bubbling Fissure|r
     .complete 870,1 --Explore the waters of the Forgotten Pools
 step
     #xprate <2.1
@@ -5726,7 +5727,7 @@ step << Hunter
 step << Shaman
     #season 2
     #completewith next
-    >>Kill |cRXP_ENEMY_Windfury Sorceresses|r. Loot them for their |cRXP_LOOT_s|r
+    >>Kill |cRXP_ENEMY_Windfury Sorceresses|r. Loot them for their |cRXP_LOOT_Azure Feather|r
     >>Kill |cRXP_ENEMY_Windfury Matriarchs|r. Loot them for their |cRXP_LOOT_Bronze Feathers|r
     .complete 744,1 --Azure Feather (6)
     .mob +Windfury Sorceress
@@ -5885,7 +5886,7 @@ step
     .cooldown item,6948,<0
 step
     #label HidesTurnIn
-    .goto The Barrens,51.1,29.0
+    .goto The Barrens,51.21,29.05
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jahan|r
     .turnin 6364 >>Turn in Return to Jahan
     .target Jahan Hawkwing

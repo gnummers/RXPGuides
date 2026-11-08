@@ -1,4 +1,4 @@
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Paladin SoD
@@ -579,8 +579,8 @@ step
     .xp <4,1
 step << skip
     #completewith next
-    >>|cRXP_WARN_It is heavily recommended you get the|r |T134229:0|t[Rune of Horn of Lordaeron] |cRXP_WARN_in Loch Modan instead as it is a LOT easier|r
-    >>|cRXP_WARN_It is NOT recommended to use the|r |T134229:0|t[Rune of Horn of Lordaeron] |cRXP_WARN_over the|r |T236250:0|t[Rune of Divine Storm] |cRXP_WARN_or the|r |T135961:0|t[Rune of Seal of Martyrdom]
+    >>|cRXP_WARN_It is heavily recommended you get the|r |T134229:0|t[Testament of Horn of Lordaeron] |cRXP_WARN_in Loch Modan instead as it is a LOT easier|r
+    >>|cRXP_WARN_It is NOT recommended to use the|r |T134229:0|t[Testament of Horn of Lordaeron] |cRXP_WARN_over the|r |T236250:0|t[Rune of Divine Storm] |cRXP_WARN_or the|r |T133745:0|t[Testament of Martyrdom]
     .train 425618,1
     .xp <12,1
 step
@@ -1609,7 +1609,7 @@ step
     .collect 213447,1
 step
     .train 426175,1
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brother Atticus|r inside Stormgarde Keep to receive the |T134419:0|t[|cRXP_FRIENDLY_Rune of Piety|r]
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brother Atticus|r inside Stromgrade Keep to receive the |T134419:0|t[|cRXP_FRIENDLY_Rune of Piety|r]
     .goto Arathi Highlands,26.06,55.75,20,0
     .goto Arathi Highlands,25.71,59.92,20,0
     .goto Arathi Highlands,23.69,60.52,20,0
@@ -1823,11 +1823,11 @@ RXPGuides.RegisterGuide([[
 step
     #optional
     .train 416028,1
-    +|cRXP_WARN_You must be at least level 18 before you can acquire the|r |T236249:0|t[Sacred Shield] |cRXP_WARN_enraving|r
+    +|cRXP_WARN_You must be at least level 18 before you can acquire the|r |T236249:0|t[Sacred Shield] |cRXP_WARN_engraving|r
     .xp >18,1
 step
     .train 416028,1
-    .train 1044 >> |cRXP_WARN_You must train|r |T135968:0|t[Blessing of Freedom] |cRXP_WARN_to acquire the|r |T236249:0|t[Sacred Shield] |cRXP_WARN_enraving|r
+    .train 1044 >> |cRXP_WARN_You must train|r |T135968:0|t[Blessing of Freedom] |cRXP_WARN_to acquire the|r |T236249:0|t[Sacred Shield] |cRXP_WARN_engraving|r
 step
     .train 416028,1
     #completewith Deliverance
@@ -1965,7 +1965,7 @@ RXPGuides.RegisterGuide([[
 
 step
     #optional
-    .train 5599 >>|cRXP_WARN_You must have|r |T135964:0|t[Blessing of Protection] |cRXP_WARN_trained in order to aquire the|r |T135931:0|t[Light's Grace] |cRXP_WARN_rune|r
+    .train 5599 >>|cRXP_WARN_You must have|r |T135964:0|t[Blessing of Protection] |cRXP_WARN_trained in order to acquire the|r |T135931:0|t[Light's Grace] |cRXP_WARN_rune|r
 step
     #optional
     #completewith TeleporterTaken
@@ -2026,7 +2026,7 @@ RXPGuides.RegisterGuide([[
 
 step
     #optional
-    .train 5502 >>|cRXP_WARN_You must have|r |T135974:0|t[Sense Undead] |cRXP_WARN_trained in order to aquire the|r |T236260:0|t[Wrath] |cRXP_WARN_rune|r
+    .train 5502 >>|cRXP_WARN_You must have|r |T135974:0|t[Sense Undead] |cRXP_WARN_trained in order to acquire the|r |T236260:0|t[Wrath] |cRXP_WARN_rune|r
     .train 429249,1
 step
     #completewith RuneLearned
@@ -2068,8 +2068,8 @@ step
     .train 410013,1
 step
     .goto Felwood,45.0,52.0
-    .gossip 217996,5 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Aoenas the Vindicated|r
-    .target Aoenas the Vindicated
+    .gossip 217996,5 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Aeonas the Vindicated|r
+    .target Aeonas the Vindicated
     .train 410013,1
 step
     .goto Felwood,44.6,52.0
@@ -2166,9 +2166,9 @@ step
     .train 410013,1
 step
     .goto Felwood,45.0,52.0
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Aoenas the Vindicated|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Aeonas the Vindicated|r
     .accept 81885,1 >>Accept The Ritual
-    .target Aoenas the Vindicated
+    .target Aeonas the Vindicated
     .train 410013,1
 step
     .goto Felwood,44.6,52.0
@@ -2178,9 +2178,9 @@ step
     .train 410013,1
 step
     .goto Felwood,45.0,52.0
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Aoenas the Vindicated|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Aeonas the Vindicated|r
     .turnin 81885 >>Turn in The Ritual
-    .target Aoenas the Vindicated
+    .target Aeonas the Vindicated
     .train 410013,1
 ]])
 
@@ -2200,13 +2200,13 @@ step
 step
     .line Eastern Plaguelands,28.6,84.2,33.2,83.0,35.30,82.55,41.19,81.68,45.42,80.68,48.8,79.9,51.5,78.3,55.1,76.4
     >>Look for a |cRXP_ENEMY_Slack-Jawed Ghoul|r. Kill him and |Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Orthas|r a dwarf spirit that will appear. Accept his quest
-    >>|cRXP_WARN_The|r |cRXP_ENEMY_Slack-Jawed Ghoul|r |cRXP_WARN_patrolls the area south of the road between the Undercroft and Corrin's Crossing|r
+    >>|cRXP_WARN_The|r |cRXP_ENEMY_Slack-Jawed Ghoul|r |cRXP_WARN_patrols the area south of the road between the Undercroft and Corin's Crossing|r
     .accept 84318 >> Accept Oi!
     .unitscan Slack-Jawed Ghoul
     .target Orthas
 step
     .goto Eastern Plaguelands,61.3,69.3 --Not sure if this is the house or the other one, need more info
-    >>Enter the house in Corrin's Crossing. Loot the |T133040:0|t[|cRXP_PICK_Ornate Warhammer|r] |cRXP_WARN_on the second floor|r
+    >>Enter the house in Corin's Crossing. Loot the |T133040:0|t[|cRXP_PICK_Ornate Warhammer|r] |cRXP_WARN_on the second floor|r
     .complete 84318,1
 step
     .goto Eastern Plaguelands,61.3,69.3
@@ -2326,13 +2326,13 @@ step
     .train 440792,1 --Righteous Vengeance
 step
     .goto Eastern Plaguelands,78.6,47.6
-    >>|cRXP_WARN_Use the|r |T237377:0|t[|cFF0070FFDalton's Horn|r] |cRXP_WARN_to summon|r |cRXP_FRIENDLY_Squire Cuthbert|r |cRXP_WARN_and kill mobs untill he levels up. Once he does he will give you a free turn-in quest|r
+    >>|cRXP_WARN_Use the|r |T237377:0|t[|cFF0070FFDalton's Horn|r] |cRXP_WARN_to summon|r |cRXP_FRIENDLY_Squire Cuthbert|r |cRXP_WARN_and kill mobs until he levels up. Once he does he will give you a free turn-in quest|r
     .accept 83823 >> Accept a Lesson in Violence
     .turnin 83823 >> Turn in a Lesson in Violence
     .use 226122
 step
     .goto Eastern Plaguelands,78.6,47.6
-    >>|cRXP_WARN_Use the|r |T237377:0|t[|cFF0070FFDalton's Horn|r] |cRXP_WARN_to summon|r |cRXP_FRIENDLY_Squire Cuthbert|r |cRXP_WARN_and keep killing mobs untill he levels up again. Once he does he will give you another free turn-in quest and another quest to find a lich named|r |cRXP_ENEMY_Arkonos the Cursed|r
+    >>|cRXP_WARN_Use the|r |T237377:0|t[|cFF0070FFDalton's Horn|r] |cRXP_WARN_to summon|r |cRXP_FRIENDLY_Squire Cuthbert|r |cRXP_WARN_and keep killing mobs until he levels up again. Once he does he will give you another free turn-in quest and another quest to find a lich named|r |cRXP_ENEMY_Arkonos the Cursed|r
     .accept 84008 >> Accept a Lesson in Grace
     .turnin 84008 >> Turn in a Lesson in Grace
     .accept 84017 >> Accept A Time to Kill

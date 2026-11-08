@@ -3,7 +3,7 @@ if addon.gameVersion < 40000 or addon.player.faction == 'Alliance' then return e
 local faction = UnitFactionGroup("player")
 if faction == "Alliance" then return end
 
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #cata
 #mop
@@ -14,7 +14,7 @@ RXPGuides.RegisterGuide([[
 --#group RXP Cataclysm (H) << cata
 #defaultfor Orc
 #group RXP Cataclysm 1-80 (H) << cata
-#group RXP MoP 1-60 (H) << mop
+#group RXP MoP 1-80 (H) << mop
 #subweight 10000
 
 
@@ -321,7 +321,7 @@ step
 step
     .goto 1411,42.47,69.10
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Canaga|r
-    .accept 25128 >>Accept Hana'zu
+    .accept 25128 >>Accept Hana'zua
     .target Canaga Earthcaller
 step
     .goto 1411,43.45,67.48
@@ -508,7 +508,7 @@ RXPGuides.RegisterGuide([[
 --#group RXP Cataclysm (H) << cata
 #defaultfor Troll
 #group RXP Cataclysm 1-80 (H) << cata
-#group RXP MoP 1-60 (H) << mop
+#group RXP MoP 1-80 (H) << mop
 #subweight 10000
 
 step << !Troll
@@ -1403,7 +1403,7 @@ RXPGuides.RegisterGuide([[
 --#group RXP Cataclysm (H) << cata
 #defaultfor Orc/Troll
 #group RXP Cataclysm 1-80 (H) << cata
-#group RXP MoP 1-60 (H) << mop
+#group RXP MoP 1-80 (H) << mop
 #subweight 10000
 
 step << skip
@@ -2651,7 +2651,7 @@ step
     .goto 1411,47.07,30.87,40,0
     .goto 1411,47.16,29.67,40,0
     .goto 1411,48.95,22.34,40,0
-    >>Loot the |cRXP_LOOT_Kul Sack of Supplies|r on the ground
+    >>Loot the |cRXP_LOOT_Sack of Supplies|r on the ground
     .complete 834,1 --Sack of Supplies (5)
     .isOnQuest 834
 step

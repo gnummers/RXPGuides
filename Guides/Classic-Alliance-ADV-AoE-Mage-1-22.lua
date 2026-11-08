@@ -1,7 +1,7 @@
 local faction = UnitFactionGroup("player")
 if faction == "Horde" then return end
 
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #classic
 #tbc
@@ -175,7 +175,7 @@ step
     .target Brother Danil
 step
     .goto Elwynn Forest,48.923,41.606
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_McBridge|r inside
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_McBride|r inside
     .turnin 15 >> Turn in Investigate Echo Ridge
     .accept 21 >> Accept Skirmish at Echo Ridge
     .target Marshal McBride
@@ -662,8 +662,8 @@ step
     .goto Elwynn Forest,54.10,62.74,50,0
     .goto Elwynn Forest,57.48,63.21,50,0
     .goto Elwynn Forest,56.37,66.50
-    >>Kill |cRXP_ENEMY_Murloc Steamrunners|r and |cRXP_ENEMY_Murlocs|r. Loot them for |cRXP_LOOT_Crystal Kelp Frond|r
-    >>|cRXP_WARN_Be careful as |cRXP_ENEMY_Murloc Steamrunners|r have|r |T132307:0|t[Increased Movespeed]
+    >>Kill |cRXP_ENEMY_Murloc Streamrunners|r and |cRXP_ENEMY_Murlocs|r. Loot them for |cRXP_LOOT_Crystal Kelp Frond|r
+    >>|cRXP_WARN_Be careful as |cRXP_ENEMY_Murloc Streamrunners|r have|r |T132307:0|t[Increased Movespeed]
     .complete 112,1 --Collect Crystal Kelp Frond (x4)
 	.mob Murloc Streamrunner
 	.mob Murloc
@@ -991,10 +991,10 @@ step
     .turnin 61,1 >> Turn in Shipment to Stormwind
     .target Morgan Pestle
 step
-    .goto StormwindClassic,52.62,65.69
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Allison|r
-    .home >> Set your Hearthstone to Stormwind City
-    .target Innkeeper Allison
+    .goto Stormwind City,55.46,65.26
+    >>Talk to |cRXP_FRIENDLY_Keldric|r
+    .vendor 1257 >> |cRXP_BUY_Buy|r |T134830:0|t[Lesser Healing Potions] |cRXP_BUY_from him (if they're up)|r
+    .target Keldric Boucher
 step << skip
     #completewith next
     .goto Stormwind City,51.68,59.86,8,0
@@ -1014,21 +1014,6 @@ step << skip
 step << skip
     #completewith next
     .goto Stormwind City,36.30,82.90,6 >>Go through the green portal
-step << skip
-    #completewith next
-    .goto Stormwind City,42.07,79.44,30,0
-    .goto Stormwind City,45.12,75.37,30,0
-    .goto Stormwind City,44.33,70.20,30,0
-    .goto Stormwind City,46.20,67.09,30,0
-    .goto Stormwind City,49.44,63.25,30,0
-    .goto Stormwind City,52.20,61.49,30,0
-    .goto Stormwind City,55.46,65.26,10 >>Travel toward |cRXP_FRIENDLY_Keldric|r
-step
-    .goto Stormwind City,55.46,65.26
-    >>Talk to |cRXP_FRIENDLY_Keldric|r through the wall
-    >>|cRXP_WARN_NOTE: To do this, bind "Interact with Target" under Gameplay -> Controls in the Options menu|r
-    .vendor 1257 >> |cRXP_BUY_Buy|r |T134830:0|t[Lesser Healing Potions] |cRXP_BUY_from him (if they're up)|r
-    .target Keldric Boucher
 step
     #completewith next
     .goto StormwindClassic,57.32,59.15,10,0
@@ -5008,7 +4993,7 @@ step
 step
     #completewith SeaTurtle1
     .goto Darkshore,43.67,27.81,50,0
-    >>AoE |cRXP_ENEMY_Foreststrider Fledgelings|r. Loot them for their |cRXP_LOOT_Strider Meat|r
+    >>AoE |cRXP_ENEMY_Foreststrider Fledglings|r. Loot them for their |cRXP_LOOT_Strider Meat|r
     .collect 5469,5,2178,1 --Strider Meat (5)
     .mob Foreststrider Fledgeling
 step
@@ -5037,7 +5022,7 @@ step
     .accept 4725 >> Accept Beached Sea Turtle
 step
     #completewith River
-    >>Kill |cRXP_ENEMY_Foreststrider Fledgelings|r. Loot them for their |cRXP_LOOT_Strider Meat|r
+    >>Kill |cRXP_ENEMY_Foreststrider Fledglings|r. Loot them for their |cRXP_LOOT_Strider Meat|r
     .collect 5469,5,2178,1 --Strider Meat (5)
     .mob Foreststrider Fledgeling
 step
@@ -6104,7 +6089,7 @@ step
     .goto Westfall,59.72,34.62,80,0
     .goto Westfall,60.24,47.40
     >>AoE |cRXP_ENEMY_Goretusks|r and |cRXP_ENEMY_Young Goretusks|r. Loot them for their |cRXP_LOOT_Goretusk Livers|r and |cRXP_LOOT_Goretusk Snouts|r
-    >>AoE |cRXP_ENEMY_Fleshrippers|r |cRXP_ENEMY_Young Fleshrippers|r. Loot them for their |cRXP_LOOT_Stringy Vulture Meat|r
+    >>AoE |cRXP_ENEMY_Fleshrippers|r and |cRXP_ENEMY_Young Fleshrippers|r. Loot them for their |cRXP_LOOT_Stringy Vulture Meat|r
     .collect 723,8,22,1 --Goretusk Liver (8)
     .mob +Goretusk
     .mob +Young Goretusk
@@ -7943,7 +7928,7 @@ step
     .goto Elwynn Forest,41.71,65.55
     >>Talk to |cRXP_FRIENDLY_Argus|r
     .turnin 118 >>Turn in The Price of Shoes
-    .accept 119 >>Accept Return to Vener
+    .accept 119 >>Accept Return to Verner
     .target Smith Argus
 step
     #completewith next

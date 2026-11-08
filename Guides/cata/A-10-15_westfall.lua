@@ -1,12 +1,12 @@
 local _,addon = ...
 if addon.gameVersion < 40000 or addon.player.faction == 'Horde' then return end
 
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 
 #version 1
 #group RXP Cataclysm 1-80 (A) << cata
-#group RXP MoP 1-60 (A) << mop
+#group RXP MoP 1-80 (A) << mop
 #cata
 #mop
 #name 10-15 Westfall
@@ -373,7 +373,7 @@ step
     .isOnQuest 26290
     .goto 52,70.38,74.45
     .cast 79528 >> |cRXP_WARN_Use the|r |T134724:0|t[Potion of Shrouding] |cRXP_WARN_while inside Mortwake's Tower|r
-    .use 58112 >>|cRXP_WARN_Run passed the |cRXP_ENEMY_Mercenary|r at the front of the tower. |cRXP_FRIENDLY_Agent Kearnen|r will him them as soon as you get in combat with them|r
+    .use 58112 >>|cRXP_WARN_Run passed the |cRXP_ENEMY_Mercenary|r at the front of the tower. |cRXP_FRIENDLY_Agent Kearnen|r will hit them as soon as you get in combat with them|r
 step
     .goto 52,70.543,74.060
     >>|cRXP_WARN_Head to the top of the tower and wait out the RP|r

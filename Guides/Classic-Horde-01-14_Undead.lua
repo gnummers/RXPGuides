@@ -1,7 +1,7 @@
 local faction = UnitFactionGroup("player")
 if faction == "Alliance" then return end
 
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #classic
 #tbc
@@ -9,6 +9,7 @@ RXPGuides.RegisterGuide([[
 << Horde
 #version 11
 #group RestedXP Horde 1-22
+#groupid RXP-SRGCE-H1
 #defaultfor Undead
 #name 1-6 Tirisfal Glades
 #next 6-11 Tirisfal Glades
@@ -788,6 +789,7 @@ RXPGuides.RegisterGuide([[
 #name 6-11 Tirisfal Glades
 #version 11
 #group RestedXP Horde 1-22
+#groupid RXP-SRGCE-H1
 #defaultfor Undead
 #next 12-14 Silverpine Forest; 12-17 The Barrens
 
@@ -957,6 +959,7 @@ step << Warlock
     .collect 16321,1,404,1 --Grimoire of Blood Pact
     .vendor >>Vendor Trash
     .target Gina Lang
+    .train 6307,1 --Blood Pact (Rank 1)
 step << Warlock
     .goto Tirisfal Glades,61.59,52.39
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rupert|r
@@ -969,11 +972,6 @@ step << Warlock
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rupert|r
     .train 695 >> Train |T136197:0|t[Shadow Bolt]
     .target Rupert Boch
-step << Warlock
-    #completewith Claws
-    .train 20397 >> |cRXP_WARN_Use the|r |T133738:0|t[Grimoire of Blood Pact]
-    .itemcount 16321,1
-    .use 16321
 step << Priest/Warlock
     .goto Tirisfal Glades,61.76,51.56
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vance|r
@@ -1010,6 +1008,13 @@ step
     >>Loot the |cRXP_LOOT_Gloom Weed|r on the ground
     .complete 5481,1 --Gloom Weed (3)
 step
+    #xprate <1.5
+    #completewith Pumkpins
+    >>Kill any |cRXP_ENEMY_Decrepit Darkhound|r you see. Loot them for their |cRXP_LOOT_Blood|r
+    .complete 367,1 --Darkhound Blood (5)
+    .mob Decrepit Darkhound
+step
+    #xprate >1.49
     #completewith GloomWeed
     >>Kill any |cRXP_ENEMY_Decrepit Darkhound|r you see. Loot them for their |cRXP_LOOT_Blood|r
     .complete 367,1 --Darkhound Blood (5)
@@ -1100,6 +1105,7 @@ step << Rogue
     .mob Tirisfal Farmhand
     .train 400095,1
 step
+    #label Pumkpins
     #loop
     .goto Tirisfal Glades,36.63,50.09,0
     .goto Tirisfal Glades,37.20,52.17,50,0
@@ -1109,7 +1115,7 @@ step
     .goto Tirisfal Glades,35.30,50.91,50,0
     .goto Tirisfal Glades,34.57,51.58,50,0
     .goto Tirisfal Glades,36.63,50.09,50,0
-    >>Loot the |cRXP_LOOT_Pumpkins|r found in the field.
+    >>Loot the |cRXP_LOOT_Pumpkins|r found in the field
     .complete 365,1 --Tirisfal Pumpkin (10)
 step << Rogue
     #season 2
@@ -1202,7 +1208,7 @@ step << Mage/Priest
     >>Kill |cRXP_ENEMY_Gillgar|r. Loot him for the |T136222:0|t[|cRXP_FRIENDLY_Memory of Dark Purpose|r] << Priest
     >>|cRXP_WARN_This is a level 7 elite and not easy to kill. Skip him for now if it's too hard|r
     .collect 203753,1 << Mage --Spell Notes: RING SEFF OSTROF (1)
-    .collect 205940,1 << Priest --Memory of Dark Purpose (1)
+    .collect 205940,1 << Priest --Memory of a Dark Purpose (1)
     .mob Gillgar
     .train 401765,1 << Mage
     .train 425216,1 << Priest
@@ -1639,7 +1645,7 @@ step << Rogue
     >>Cast |T133644:0|t[Pick Pocket] and kill |cRXP_ENEMY_Rot Hide Gnolls|r. Loot them for |T134327:0|t[|cRXP_LOOT_Bottom-Left Map Piece|r]
     .collect 208038,1 --Bottom-Left Map Piece (1)
     .mob Rot Hide Mongrel
-    .mob Rote Hide Gnoll
+    .mob Rot Hide Gnoll
     .mob Rot Hide Graverobber
     .train 400095,1
 step << Warrior
@@ -1648,7 +1654,7 @@ step << Warrior
     >>Kill any type of |cRXP_ENEMY_Rote Hide Gnoll|r. Loot them for a |cRXP_LOOT_Severed Gnoll Head|r
     .collect 204478,1 --Severed Gnoll Head (1)
     .mob Rot Hide Mongrel
-    .mob Rote Hide Gnoll
+    .mob Rot Hide Gnoll
     .mob Rot Hide Graverobber
     .train 403475,1
 step
@@ -1746,7 +1752,7 @@ step
     >>Kill |cRXP_ENEMY_Rot Hide Gnolls|r. Loot them for their |cRXP_LOOT_Ichor|r
     .complete 358,3 --Embalming Ichor (8)
     .mob Rot Hide Mongrel
-    .mob Rote Hide Gnoll
+    .mob Rot Hide Gnoll
     .mob Rot Hide Graverobber
 step << Rogue
     #season 2
@@ -1773,7 +1779,7 @@ step << Warrior
     >>Kill any type of |cRXP_ENEMY_Rote Hide Gnoll|r. Loot them for a |cRXP_LOOT_Severed Gnoll Head|r
     .collect 204478,1 --Severed Gnoll Head (1)
     .mob Rot Hide Mongrel
-    .mob Rote Hide Gnoll
+    .mob Rot Hide Gnoll
     .mob Rot Hide Graverobber
     .train 403475,1
 step << Warrior
@@ -1788,7 +1794,7 @@ step << Warrior
     .goto Tirisfal Glades,65.68,30.22,50,0
     .goto Tirisfal Glades,67.48,28.97,50,0
     .goto Tirisfal Glades,68.22,26.46,50,0
-    >>Kill |cRXP_ENEMY_Vile Vin Murlocs|r. Loot them for their |cRXP_LOOT_Scales|r and a |cRXP_LOOT_Severed Murloc Head|r
+    >>Kill |cRXP_ENEMY_Vile Fin Murlocs|r. Loot them for their |cRXP_LOOT_Scales|r and a |cRXP_LOOT_Severed Murloc Head|r
     .complete 368,1 --Vile Fin Scale (5)
     .collect 204477,1 --Severed Murloc Head (1)
     .mob Vile Fin Puddlejumper
@@ -1804,7 +1810,7 @@ step << Rogue
 step << Rogue
     #season 2
     #completewith RuneofPrecision
-    >>Cast |T133644:0|t[Pick Pocket] and kill |cRXP_ENEMY_Vile Vin Murlocs|r. Loot them for |T134327:0|t[|cRXP_LOOT_Bottom-Right Map Piece|r]
+    >>Cast |T133644:0|t[Pick Pocket] and kill |cRXP_ENEMY_Vile Fin Murlocs|r. Loot them for |T134327:0|t[|cRXP_LOOT_Bottom-Right Map Piece|r]
     .collect 208037,1 --Bottom-Right Map Piece (1)
     .train 400095,1
 step
@@ -1819,7 +1825,7 @@ step
     .goto Tirisfal Glades,65.68,30.22,50,0
     .goto Tirisfal Glades,67.48,28.97,50,0
     .goto Tirisfal Glades,68.22,26.46,50,0
-    >>Kill |cRXP_ENEMY_Vile Vin Murlocs|r. Loot them for their |cRXP_LOOT_Scales|r
+    >>Kill |cRXP_ENEMY_Vile Fin Murlocs|r. Loot them for their |cRXP_LOOT_Scales|r
     .complete 368,1 --Vile Fin Scale (5)
     .mob Vile Fin Puddlejumper
     .mob Vile Fin Minor Oracle
@@ -1866,7 +1872,7 @@ step << Rogue
     .goto Tirisfal Glades,65.68,30.22,50,0
     .goto Tirisfal Glades,67.48,28.97,50,0
     .goto Tirisfal Glades,68.22,26.46,50,0
-    >>Cast |T133644:0|t[Pick Pocket] and kill |cRXP_ENEMY_Vile Vin Murlocs|r. Loot them for |T134327:0|t[|cRXP_LOOT_Bottom-Right Map Piece|r]
+    >>Cast |T133644:0|t[Pick Pocket] and kill |cRXP_ENEMY_Vile Fin Murlocs|r. Loot them for |T134327:0|t[|cRXP_LOOT_Bottom-Right Map Piece|r]
     .collect 208037,1 --Bottom-Right Map Piece (1)
     .mob Vile Fin Puddlejumper
     .mob Vile Fin Minor Oracle
@@ -1888,7 +1894,7 @@ step
     .goto Tirisfal Glades,64.50,29.41
     .deathskip >> Die and respawn at the |cRXP_FRIENDLY_Spirit Healer|r
     >>|cRXP_WARN_Make sure you die on (or to the west of) the arrow|r
-step << skip
+step
     #label DoomedWeed
     #loop
     .goto Tirisfal Glades,57.71,48.96,0
@@ -1898,6 +1904,7 @@ step << skip
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Holland|r, he patrols around the graveyard.
     .turnin 5482 >>Turn in Doom Weed
     .target Junior Apothecary Holland
+    .isQuestComplete 5482
 step << Rogue
     #season 2
     .goto Tirisfal Glades,52.89,54.03
@@ -2048,6 +2055,7 @@ step << Warrior
     .itemStat 16,QUALITY,<7
     .itemStat 16,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<3.7
 step
+    #label Brill3
     .goto Tirisfal Glades,61.71,52.06
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Renee|r
     >>|cRXP_BUY_Buy|r |T132815:0|t[Ice Cold Milk] |cRXP_BUY_from her|r << Mage/Priest
@@ -2076,12 +2084,7 @@ step << Warrior
     .mob Vampiric Duskbat
     .train 403475,1
 step
-    #loop
-    .goto Tirisfal Glades,41.09,47.59,0
-    .goto Tirisfal Glades,51.31,50.01,60,0
-    .goto Tirisfal Glades,46.01,51.59,60,0
-    .goto Tirisfal Glades,41.09,47.59,60,0
-    .goto Tirisfal Glades,41.45,41.62,60,0
+    #completewith next
     >>Kill |cRXP_ENEMY_Duskbats|r. Loot them for their |cRXP_LOOT_Pelts|r
     .complete 375,1 --Duskbat Pelt (5)
     .mob Greater Duskbat
@@ -2352,7 +2355,7 @@ step << Mage/Priest
     >>Kill |cRXP_ENEMY_Gillgar|r. Loot him for the |T136222:0|t[|cRXP_FRIENDLY_Memory of Dark Purpose|r] << Priest
     >>|cRXP_WARN_This is a level 7 elite and not easy to kill. Skip him for now if it's too hard|r
     .collect 203753,1 << Mage --Spell Notes: RING SEFF OSTROF (1)
-    .collect 205940,1 << Priest --Memory of Dark Purpose (1)
+    .collect 205940,1 << Priest --Memory of a Dark Purpose (1)
     .mob Gillgar
     .train 401765,1 << Mage
     .train 425216,1 << Priest
@@ -2448,7 +2451,7 @@ step << Rogue
 step << Mage
     .goto Tirisfal Glades,61.96,52.47
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cain|r inside the inn
-    .accept 1881 >> Accept Speak with Anatasia
+    .accept 1881 >> Accept Speak with Anastasia
     .target Cain Firesong
 step
     #label FoodandWater2
@@ -2495,13 +2498,6 @@ step << Warlock
     .goto Undercity,65.89,34.03,10,0
     .goto Undercity,64.22,39.77,10,0
     .goto Undercity,65.53,43.62,15 >> Take the lift down to the Undercity
-step << Warlock
-    #xprate <1.5
-    .goto Undercity,67.74,37.96
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Norman|r
-    .home >> Set your Hearthstone to Undercity
-    .target Innkeeper Norman
-    .bindlocation 1497
 step << Warlock
     .goto Undercity,85.07,25.96
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Carendin|r in the Magic Quarter
@@ -2638,14 +2634,6 @@ step << !Priest
     >>|cRXP_WARN_Skip this if you want, it's only a small time saver|r
     .collect 3164,6,429,1 --Collect Discolored Worg Heart (x6)
     .target Auctioneer Rhyker
-step << !Warlock
-    #xprate <1.5
-    #label UCHome
-    .goto Undercity,67.74,37.96
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Norman|r
-    .home >> Set your Hearthstone to Undercity
-    .target Innkeeper Norman
-    .bindlocation 1497
 step << Warlock
     .goto Undercity,85.07,25.96
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Carendin|r in the Magic Quarter
@@ -2762,7 +2750,7 @@ step << Mage
 step << Mage
     .goto Undercity,85.12,10.07
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anastasia|r in the Magic Quarter
-    .turnin 1881 >> Turn in Speak with Anatasia
+    .turnin 1881 >> Turn in Speak with Anastasia
     .accept 1882 >> Accept The Balnir Farmstead
     .target Anastasia Hartwell
 step
@@ -2778,6 +2766,14 @@ step << Mage/Warlock
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bethor|r in the Magic Quarter
     .turnin 405 >>Turn in The Prodigal Lich
     .target Bethor Iceshard
+step
+    #xprate <1.5
+    #label UCHome
+    .goto Undercity,67.74,37.96
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Norman|r
+    .home >> Set your Hearthstone to Undercity
+    .target Innkeeper Norman
+    .bindlocation 1497
 step
     #optional
     #label LogoutSkip1
@@ -3164,7 +3160,7 @@ step
     #completewith ANewPlagueFinal
     .hs >> Hearth to Brill
     .subzoneskip 159
-    .bindlocation 159,1
+    .bindlocation 2119,1
     .cooldown item,6948,>0,1
 step
     #xprate >1.49
@@ -3930,7 +3926,7 @@ step << Priest
 step << Priest
     #optional
     .goto Undercity,70.76,30.67
-    >>|cRXP_WARN_Turn all your|r |T132889:0|t[Linen Cloth] |cRXP_WARN_into|r |T132890:0|t[Bolt of linen Linen Cloth]
+    >>|cRXP_WARN_Turn all your|r |T132889:0|t[Linen Cloth] |cRXP_WARN_into|r |T132890:0|t[Bolt of Linen Cloth]
     .collect 2996,30,435,1 --Bolt of Linen Cloth (30)
     .itemStat 18,QUALITY,<7
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<11.3
@@ -4093,6 +4089,7 @@ step
 
 RXPGuides.RegisterGuide([[
 #group RestedXP Horde 1-22
+#groupid RXP-SRGCE-H1
 #xprate <1.99
 << Horde
 #version 11
@@ -4114,7 +4111,7 @@ step << Undead Warrior
     .train 403475,1
 step << Undead Rogue
     #sticky
-    #completewith RotHideCluesTurnIn
+    #completewith Rot HideCluesTurnIn
     >>|cRXP_WARN_If you see|r |cRXP_FRIENDLY_Astor|r|cRXP_WARN_, talk to him and kill him. Loot him for the letter. He patrols the road between Brill and The Sepulcher|r
     .complete 1886,1 --Astor's Letter of Introduction (1)
     .unitscan Astor Hadren
@@ -4189,8 +4186,7 @@ step
 step << !Mage !Priest
     .goto Silverpine Forest,44.05,39.78
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gwyn|r
-    >>|cRXP_BUY_Buy|r |T134532:0|t[Red-speckled Mushrooms] |cRXP_BUY_from her|r
-    .vendor >> Vendor trash
+    .vendor >> |cRXP_BUY_Buy|r |T134532:0|t[Red-speckled Mushroom] |cRXP_BUY_from him|r
     .collect 4605,20,421,1 --Red-speckled Mushroom (20)
     .target Gwyn Farrow
     .money <0.05
@@ -4200,7 +4196,6 @@ step
     >>|cRXP_BUY_Buy|r |T132815:0|t[Ice Cold Milk] |cRXP_BUY_from him|r << Mage/Warlock/Priest/Shaman/Druid
     .vendor >> |cRXP_BUY_Buy|r |T134830:0|t[Lesser Healing Potions] |cRXP_BUY_from him if they're up|r
     .collect 1179,20,421,1 << Mage/Warlock/Priest/Shaman/Druid --Ice Cold Milk (20)
-    .vendor >> Vendor trash
     .target Edwin Harly
     .money <0.05 << Mage/Warlock/Priest/Shaman/Druid
 step << Undead
@@ -4270,7 +4265,7 @@ step
     .goto Silverpine Forest,53.13,27.92,8,0
     .goto Silverpine Forest,52.94,27.88,8,0
     .goto Silverpine Forest,52.83,28.56
-    >>Enter the house and go to the second floor. Loot the |cRXP_PICK_Dusky Spellbooks|r on the ground
+    >>Enter the house and go to the second floor. Loot the |cRXP_PICK_Dusty Spellbooks|r on the ground
     .complete 422,1 --Remedy of Arugal (1)
 step
     #completewith next
@@ -4319,7 +4314,7 @@ step
 step
     #label Nightlash
     .goto Silverpine Forest,45.44,21.01
-    >>Kill |cRXP_ENEMY_Rothide Gnolls|r around The Dead Field until |cRXP_ENEMY_Nightlash|r spawns. Kill and loot her for her |cRXP_LOOT_Essence|r
+    >>Kill |cRXP_ENEMY_Rot Hide Gnolls|r around The Dead Field until |cRXP_ENEMY_Nightlash|r spawns. Kill and loot her for her |cRXP_LOOT_Essence|r
     >>|cRXP_WARN_They are immune to fear!|r << Priest/Warlock
     .complete 437,1 --Enter the Dead Fields (1)
     .complete 437,2 --Essence of Nightlash (1)
@@ -4579,7 +4574,7 @@ step
     .goto Silverpine Forest,42.76,40.90,8,0
     .goto Silverpine Forest,43.43,40.87,2 >> Enter the crypt
 step
-    #label RotHideCluesTurnIn
+    #label Rot HideCluesTurnIn
     .goto Silverpine Forest,43.43,40.87
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hadrec|r in the crypt
     .turnin 439 >>Turn in Rot Hide Clues
@@ -5070,7 +5065,7 @@ step << Undead
     #completewith ZeptoDurotar
     .hs >> Hearth to Brill
     .zoneskip Undercity,1
-    .bindlocation 159,1
+    .bindlocation 2119,1
 step << Undead Rogue
     #xprate >1.49
     .goto Tirisfal Glades,61.75,52.01
@@ -5227,6 +5222,7 @@ step << Undead
 step << Undead
     #completewith EnterRFC
     .destroy 14544 >>|cRXP_WARN_Destroy|r |T134417:0|t[Lieutenant's Insignia] |cRXP_WARN_as you no longer need it|r
+    .dungeon RFC
 step << Undead
     #label EnterRFC
     .goto Orgrimmar,52.77,48.97
@@ -5452,6 +5448,7 @@ RXPGuides.RegisterGuide([[
 #xprate >1.99
 #version 1
 #group RestedXP Horde 1-22
+#groupid RXP-SRGCE-H1
 #defaultfor Undead
 #name 1-7 Tirisfal Glades
 #next 7-13 Tirisfal Glades
@@ -5633,8 +5630,8 @@ step << Priest/Mage
 step << Priest
     .goto Tirisfal Glades,31.11,66.02
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duesten|r
-    .accept 77670 >> Accept Meditation on the Undeath
-    .turnin 77670 >> Turn in Meditation on the Undeath
+    .accept 77670 >> Accept Meditation on Undeath
+    .turnin 77670 >> Turn in Meditation on Undeath
     .target Dark Cleric Duesten
 step
     #optional
@@ -6519,6 +6516,7 @@ RXPGuides.RegisterGuide([[
 #name 7-13 Tirisfal Glades
 #version 1
 #group RestedXP Horde 1-22
+#groupid RXP-SRGCE-H1
 #defaultfor Undead
 #next 13-20 The Barrens
 
@@ -6688,6 +6686,7 @@ step << Warlock
     .collect 16321,1,404,1 --Grimoire of Blood Pact
     .vendor >>Vendor Trash
     .target Gina Lang
+    .train 6307,1 --Blood Pact (Rank 1)
 step << Warlock
     .goto Tirisfal Glades,61.59,52.39
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rupert|r
@@ -6700,11 +6699,6 @@ step << Warlock
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rupert|r
     .train 695 >> Train |T136197:0|t[Shadow Bolt]
     .target Rupert Boch
-step << Warlock
-    #completewith Claws
-    .train 20397 >> |cRXP_WARN_Use the|r |T133738:0|t[Grimoire of Blood Pact]
-    .itemcount 16321,1
-    .use 16321
 step << Priest/Warlock
     .goto Tirisfal Glades,61.76,51.56
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vance|r
@@ -6933,7 +6927,7 @@ step << Mage/Priest
     >>Kill |cRXP_ENEMY_Gillgar|r. Loot him for the |T136222:0|t[|cRXP_FRIENDLY_Memory of Dark Purpose|r] << Priest
     >>|cRXP_WARN_This is a level 7 elite and not easy to kill. Skip him for now if it's too hard|r
     .collect 203753,1 << Mage --Spell Notes: RING SEFF OSTROF (1)
-    .collect 205940,1 << Priest --Memory of Dark Purpose (1)
+    .collect 205940,1 << Priest --Memory of a Dark Purpose (1)
     .mob Gillgar
     .train 401765,1 << Mage
     .train 425216,1 << Priest
@@ -6949,7 +6943,7 @@ step
     .hs >> Hearth to Brill
     .subzoneskip 159
     .cooldown item,6948,>0,1
-    .bindlocation 159,1
+    .bindlocation 2119,1
 step
     #hardcore
     #completewith BrillTurnin1
@@ -7386,7 +7380,7 @@ step << Rogue
     >>Cast |T133644:0|t[Pick Pocket] and kill |cRXP_ENEMY_Rot Hide Gnolls|r. Loot them for |T134327:0|t[|cRXP_LOOT_Bottom-Left Map Piece|r]
     .collect 208038,1 --Bottom-Left Map Piece (1)
     .mob Rot Hide Mongrel
-    .mob Rote Hide Gnoll
+    .mob Rot Hide Gnoll
     .mob Rot Hide Graverobber
     .train 400095,1
 step << Warrior
@@ -7395,7 +7389,7 @@ step << Warrior
     >>Kill any type of |cRXP_ENEMY_Rote Hide Gnoll|r. Loot them for a |cRXP_LOOT_Severed Gnoll Head|r
     .collect 204478,1 --Severed Gnoll Head (1)
     .mob Rot Hide Mongrel
-    .mob Rote Hide Gnoll
+    .mob Rot Hide Gnoll
     .mob Rot Hide Graverobber
     .train 403475,1
 step << skip
@@ -7496,7 +7490,7 @@ step
     >>Kill |cRXP_ENEMY_Rot Hide Gnolls|r. Loot them for their |cRXP_LOOT_Ichor|r
     .complete 358,3 --Embalming Ichor (8)
     .mob Rot Hide Mongrel
-    .mob Rote Hide Gnoll
+    .mob Rot Hide Gnoll
     .mob Rot Hide Graverobber
 step << Rogue
     #season 2
@@ -7523,7 +7517,7 @@ step << Warrior
     >>Kill any type of |cRXP_ENEMY_Rote Hide Gnoll|r. Loot them for a |cRXP_LOOT_Severed Gnoll Head|r
     .collect 204478,1 --Severed Gnoll Head (1)
     .mob Rot Hide Mongrel
-    .mob Rote Hide Gnoll
+    .mob Rot Hide Gnoll
     .mob Rot Hide Graverobber
     .train 403475,1
 step << Mage
@@ -7568,7 +7562,7 @@ step << Warrior
     .goto Tirisfal Glades,65.68,30.22,50,0
     .goto Tirisfal Glades,67.48,28.97,50,0
     .goto Tirisfal Glades,68.22,26.46,50,0
-    >>Kill |cRXP_ENEMY_Vile Vin Murlocs|r. Loot them for their |cRXP_LOOT_Scales|r and a |cRXP_LOOT_Severed Murloc Head|r
+    >>Kill |cRXP_ENEMY_Vile Fin Murlocs|r. Loot them for their |cRXP_LOOT_Scales|r and a |cRXP_LOOT_Severed Murloc Head|r
     .complete 368,1 --Vile Fin Scale (5)
     .collect 204477,1 --Severed Murloc Head (1)
     .mob Vile Fin Puddlejumper
@@ -7584,7 +7578,7 @@ step << Rogue
 step << Rogue
     #season 2
     #completewith RuneofPrecision
-    >>Cast |T133644:0|t[Pick Pocket] and kill |cRXP_ENEMY_Vile Vin Murlocs|r. Loot them for |T134327:0|t[|cRXP_LOOT_Bottom-Right Map Piece|r]
+    >>Cast |T133644:0|t[Pick Pocket] and kill |cRXP_ENEMY_Vile Fin Murlocs|r. Loot them for |T134327:0|t[|cRXP_LOOT_Bottom-Right Map Piece|r]
     .collect 208037,1 --Bottom-Right Map Piece (1)
     .train 400095,1
 step
@@ -7599,7 +7593,7 @@ step
     .goto Tirisfal Glades,65.68,30.22,50,0
     .goto Tirisfal Glades,67.48,28.97,50,0
     .goto Tirisfal Glades,68.22,26.46,50,0
-    >>Kill |cRXP_ENEMY_Vile Vin Murlocs|r. Loot them for their |cRXP_LOOT_Scales|r
+    >>Kill |cRXP_ENEMY_Vile Fin Murlocs|r. Loot them for their |cRXP_LOOT_Scales|r
     .complete 368,1 --Vile Fin Scale (5)
     .mob Vile Fin Puddlejumper
     .mob Vile Fin Minor Oracle
@@ -7646,7 +7640,7 @@ step << Rogue
     .goto Tirisfal Glades,65.68,30.22,50,0
     .goto Tirisfal Glades,67.48,28.97,50,0
     .goto Tirisfal Glades,68.22,26.46,50,0
-    >>Cast |T133644:0|t[Pick Pocket] and kill |cRXP_ENEMY_Vile Vin Murlocs|r. Loot them for |T134327:0|t[|cRXP_LOOT_Bottom-Right Map Piece|r]
+    >>Cast |T133644:0|t[Pick Pocket] and kill |cRXP_ENEMY_Vile Fin Murlocs|r. Loot them for |T134327:0|t[|cRXP_LOOT_Bottom-Right Map Piece|r]
     .collect 208037,1 --Bottom-Right Map Piece (1)
     .mob Vile Fin Puddlejumper
     .mob Vile Fin Minor Oracle
@@ -7770,7 +7764,7 @@ step << Mage
     #optional
     .goto Tirisfal Glades,61.96,52.47
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cain|r
-    --.accept 1881 >> Accept Speak with Anatasia
+    --.accept 1881 >> Accept Speak with Anastasia
     .train 122 >> Train your class spells
     .target Cain Firesong
     .xp <10,1
@@ -8207,7 +8201,7 @@ step << Mage/Priest
     >>Kill |cRXP_ENEMY_Gillgar|r. Loot him for the |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: RING SEFF OSTROF|r] << Mage
     >>Kill |cRXP_ENEMY_Gillgar|r. Loot him for the |T136222:0|t[|cRXP_FRIENDLY_Memory of Dark Purpose|r] << Priest
     .collect 203753,1 << Mage --Spell Notes: RING SEFF OSTROF (1)
-    .collect 205940,1 << Priest --Memory of Dark Purpose (1)
+    .collect 205940,1 << Priest --Memory of a Dark Purpose (1)
     .mob Gillgar
     .train 401765,1 << Mage
     .train 425216,1 << Priest
@@ -8225,7 +8219,7 @@ step << skip
     .hs >> Hearth to Brill
     .subzoneskip 159
     .cooldown item,6948,>0,1
-    .bindlocation 159,1
+    .bindlocation 2119,1
 step << skip
     #xprate <1.5
     #hardcore
@@ -8374,7 +8368,7 @@ step << Mage
     #xprate <2.1
     .goto Tirisfal Glades,61.96,52.47
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cain|r inside the inn
-    .accept 1881 >> Accept Speak with Anatasia
+    .accept 1881 >> Accept Speak with Anastasia
     .target Cain Firesong
 step
     #xprate <2.1
@@ -8767,7 +8761,7 @@ step << skip
 step << skip
     .goto Undercity,85.12,10.07
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anastasia|r in the Magic Quarter
-    .turnin 1881 >> Turn in Speak with Anatasia
+    .turnin 1881 >> Turn in Speak with Anastasia
     .accept 1882 >> Accept The Balnir Farmstead
     .target Anastasia Hartwell
 step
@@ -8829,7 +8823,7 @@ step
     #completewith AgamandStart
     #xprate >2.09
     .hs >>Hearth to Brill
-    .bindlocation 159,1
+    .bindlocation 2119,1
 step
     #optional
     .goto Tirisfal Glades,60.93,52.01
@@ -8961,7 +8955,7 @@ step << Mage/Priest
     >>Kill |cRXP_ENEMY_Gillgar|r. Loot him for the |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: RING SEFF OSTROF|r] << Mage
     >>Kill |cRXP_ENEMY_Gillgar|r. Loot him for the |T136222:0|t[|cRXP_FRIENDLY_Memory of Dark Purpose|r] << Priest
     .collect 203753,1 << Mage --Spell Notes: RING SEFF OSTROF (1)
-    .collect 205940,1 << Priest --Memory of Dark Purpose (1)
+    .collect 205940,1 << Priest --Memory of a Dark Purpose (1)
     .mob Gillgar
     .train 401765,1 << Mage
     .train 425216,1 << Priest
@@ -9372,7 +9366,7 @@ step
     #completewith ANewPlagueFinal
     .hs >> Hearth to Brill
     .subzoneskip 159
-    .bindlocation 159,1
+    .bindlocation 2119,1
     .cooldown item,6948,>0,1
 step
     #xprate <2.1
@@ -9683,6 +9677,7 @@ step << Undead
 step << Undead
     #completewith EnterRFC
     .destroy 14544 >>|cRXP_WARN_Destroy|r |T134417:0|t[Lieutenant's Insignia] |cRXP_WARN_as you no longer need it|r
+    .dungeon RFC
 step << Undead
     #label EnterRFC
     .goto Orgrimmar,52.77,48.97

@@ -1,7 +1,7 @@
 local faction = UnitFactionGroup("player")
 if faction == "Alliance" then return end
 
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #tbc
 #wotlk
@@ -9,6 +9,7 @@ RXPGuides.RegisterGuide([[
 #name 1-6 Tirisfal Glades
 #version 1
 #group RestedXP Horde 1-30
+#groupid RXP-SRGCE-H1
 #defaultfor Scourge
 #next 6-10 Eversong Woods
 

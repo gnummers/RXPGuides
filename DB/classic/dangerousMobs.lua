@@ -3640,7 +3640,7 @@ local dangerousMobs = {
         Location = ".line Arathi Highlands,53.0,39.6,52.0,41.8,50.8,43.8,49.0,43.9,46.9,45.6,44.2,50.6,44.3,53.0,43.4,54.9,39.7,54.0,37.4,52.9,35.0,52.1,32.1,51.5,29.5,50.2,27.2,50.1,26.2,52.4,25.8,55.5,25.8,58.2"
         },
       },
-      ["Stormgarde Cavalryman"] = {
+      ["Stromgrade Cavalryman"] = {
         {
         MinLevel = 36,
         MaxLevel = 37,
@@ -5390,7 +5390,7 @@ local dangerousMobs = {
         MaxLevel = 16,
         Classification = "Normal",
         Movement = "Slow Patrol",
-        Notes = "Patrols around the Sludge Ven",
+        Notes = "Patrols around The Sludge Fen",
         Location = ".line The Barrens,57.39,8.53,57.47,8.42,57.49,8.03,57.35,7.69,57.19,7.54,57.08,7.40,56.89,7.36,56.65,7.35,56.55,7.43,56.54,7.49,56.41,7.58,56.06,7.59,55.96,7.65,55.77,7.87,55.75,8.17,55.77,8.44,55.82,8.61;.mob Overseer Glibby"
         },
       },

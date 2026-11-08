@@ -1,13 +1,41 @@
 local addonName, addon = ...
+addon.v2 = addon.v2 or {}
+
+addon.startTime = debugprofilestop()
 
 local _G = _G
 local UnitInRaid = UnitInRaid
 local fmt = string.format
 
+function addon.IsGamePadEnabled()
+    local interfaceStyle = _G.GetCVar and _G.GetCVar("InputDeviceInterfaceStyle")
+    if interfaceStyle ~= nil then
+        return interfaceStyle == "1"
+    end
+
+    local gamePad = _G.C_GamePad
+    return gamePad and gamePad.IsEnabled and gamePad.IsEnabled() or false
+end
+
+function addon.safeCall(callback, ...)
+    local args = {...}
+
+    return xpcall(function() return callback(unpack(args)) end, function(message)
+        message = tostring(message)
+        local handler = geterrorhandler()
+        pcall(handler, message)
+
+        return message
+    end)
+end
+
 local RegisterMessage_OLD = addon.RegisterMessage
 local rand, tinsert, select = math.random, table.insert, _G.select
 local IsAddOnLoadOnDemand = C_AddOns and C_AddOns.IsAddOnLoadOnDemand or _G.IsAddOnLoadOnDemand
 local GetSpellInfo
+
+local busy = 0
+
 if C_Spell and C_Spell.GetSpellInfo then
     addon.GetSpellInfo = function(...)
         local id = ...
@@ -23,6 +51,23 @@ else
     GetSpellInfo = _G.GetSpellInfo
 end
 
+local GetSpellCooldown = _G.GetSpellCooldown or function(spellIdentifier)
+    if C_Spell and C_Spell.GetSpellCooldown then
+        local info = C_Spell.GetSpellCooldown(spellIdentifier)
+        local enabled = info.isEnabled
+        local isActive = info.isActive
+        local startTime,duration = info.startTime, info.duration
+        if not isActive then
+            startTime = 0
+            duration = 0
+        elseif not enabled then
+            startTime = GetTime()
+            duration = 1e6
+        end
+        return startTime, duration, enabled, isActive
+    end
+end
+addon.GetSpellCooldown = GetSpellCooldown
 
 local GetSpellTexture = C_Spell and C_Spell.GetSpellTexture or _G.GetSpellTexture
 local GetSpellSubtext = C_Spell and C_Spell.GetSpellSubtext or _G.GetSpellSubtext
@@ -75,8 +120,9 @@ addon.HookMessage = function(self,message,callback,...)
 end
 
 function addon.SendEvent(self,...)
-    if _G.WeakAuras and _G.WeakAuras.ScanEvents then
-        _G.WeakAuras.ScanEvents(...)
+    local WeakAuras = _G.WeakAuras or _G.ForeverAuras
+    if WeakAuras and WeakAuras.ScanEvents then
+        WeakAuras.ScanEvents(...)
     end
     return addon.SendMessage(self,...)
 end
@@ -106,7 +152,7 @@ end
 local GetAddOnMetadata = C_AddOns and C_AddOns.GetAddOnMetadata or _G.GetAddOnMetadata
 addon.release = GetAddOnMetadata(addonName, "Version")
 addon.title = GetAddOnMetadata(addonName, "Title")
-local cacheVersion = 29
+local cacheVersion = 30
 local L = addon.locale.Get
 local locale = GetLocale()
 
@@ -122,6 +168,19 @@ addon.version = 40000
 local gameVersion = select(4, GetBuildInfo())
 addon.gameVersion = gameVersion
 local maxLevel
+addon.enabledLocale = {
+    ["enUS"] = false,
+    ["deDE"] = true,
+    ["esES"] = true,
+    ["esMX"] = true,
+    ["frFR"] = true,
+    -- ["itIT"] = true,
+    -- ["koKR"] = true,
+    ["ptBR"] = true,
+    -- ["ruRU"] = true,
+    ["zhCN"] = true,
+    -- ["zhTW"] = true
+}
 
 if gameVersion > 60000 then
     addon.game = "RETAIL"
@@ -141,9 +200,15 @@ elseif gameVersion > 30000 then
 elseif gameVersion > 20000 then
     addon.game = "TBC"
     maxLevel = 70
+    addon.enabledLocale["zhCN"] = true
+elseif gameVersion >= 16000 and gameVersion < 20000 then
+    addon.game = "FOREVER"
+    maxLevel = 60
+    addon.enabledLocale["zhCN"] = true
 else
     addon.game = "CLASSIC"
     maxLevel = 60
+    addon.enabledLocale["zhCN"] = true
 end
 
 function addon.GetSeason()
@@ -160,6 +225,7 @@ addon.RXPGuides = RXPGuides
 _G.RXPGuides = RXPGuides
 
 addon.guideCache = {}
+addon.dungeonOverride = {}
 addon.questQueryList = {}
 addon.itemQueryList = {}
 addon.questAccept = {}
@@ -177,13 +243,19 @@ addon.player = {
     race = select(2, UnitRace("player")),
     faction = select(1,UnitFactionGroup("player")),
     guid = UnitGUID("player"),
-    name = UnitName("player"),
     level = UnitLevel("player"),
     maxlevel = maxLevel,
     season = addon.GetSeason(),
     beta = GetCurrentRegion() >= 20,
-    lang = GetLocale():sub(1,2)
+    lang = GetLocale():sub(1,2),
+    hardcore = C_GameRules and C_GameRules.IsHardcoreActive and C_GameRules.IsHardcoreActive(),
 }
+if addon.game == "FOREVER" then
+    local firstName, lastName = UnitName("player")
+    addon.player.name = fmt("%s %s", firstName, lastName)
+else
+    addon.player.name = UnitName("player")
+end
 addon.player.neutral = addon.player.faction == "Neutral"
 
 addon.generatedSteps = {}
@@ -242,7 +314,6 @@ function addon.GetStepQuestReward(titleOrId)
     -- addon.questTurnIn[747] == addon.questTurnIn["The Hunt Begins"]
 
     local element = addon.questTurnIn[titleOrId]
-
     if not element then return 0 end
     if not addon.settings.profile.enableQuestRewardAutomation then return 0,element end
 
@@ -336,6 +407,8 @@ end
 
 addon.currrentSkillLevel = currrentSkillLevel
 function addon.GetProfessionLevel()
+    local GetSkillLineInfo = C_SkillInfo and C_SkillInfo.GetSkillLineInfo or _G.GetSkillLineInfo
+    local GetNumSkillLines = C_SkillInfo and C_SkillInfo.GetNumSkillLines or _G.GetNumSkillLines
     local names
     if not (professionNames and professionNames.riding) then
         addon.GetProfessionNames()
@@ -356,11 +429,17 @@ function addon.GetProfessionLevel()
 
     if addon.IsPlayerSpell(54197) then currrentSkillLevel["coldweatherflying"] = 1 end
 
-    if not _G.GetSkillLineInfo then return end
+    if not GetSkillLineInfo then return end
     if not names.riding then names.riding = GetSpellInfo(33388) end
-    for i = 1, _G.GetNumSkillLines() do
+    for i = 1, GetNumSkillLines() do
         local skillName, _, _, skillRank, _, _, skillMaxRank =
-            _G.GetSkillLineInfo(i)
+            GetSkillLineInfo(i)
+        if type(skillName) == "table" then
+            local t = skillName
+            skillName = t.name
+            skillRank = t.rank
+            skillMaxRank = t.maxRank
+        end
         if skillRank then
             for profession, name in pairs(names) do
                 -- print(name,skillName,name == skillName)
@@ -371,6 +450,7 @@ function addon.GetProfessionLevel()
             end
         end
     end
+    return currrentSkillLevel, maxSkillLevel
 --[[
 --Enum.Profession is just wrong, can't use that
     if _G.GetProfessionInfo then
@@ -501,14 +581,25 @@ local spellRequest = {}
 local trainerUpdate = 0
 
 local function ProcessSpells(names, rank)
-    if gameVersion > 90000 then return end
+	local gt = GetTime()
+    local forever = WOW_PROJECT_ID == WOW_PROJECT_CAMELOT
+    if gameVersion > 90000 or not addon.defaultSpellList or busy == gt then return end
+	busy = gt
+    if forever and ClassTrainerFrame and ClassTrainerFrame.TitleContainer and ClassTrainerFrame.TitleContainer.TitleText:GetText() == UnitName("pet") then
+        return
+    end
+
+    local playerLevelMax = GetEffectivePlayerMaxLevel and GetEffectivePlayerMaxLevel() or 90
     local _, race = UnitRace("player")
     local level = UnitLevel("player")
     local entries = {race, addon.player.class}
+    local hcserver = C_GameRules and C_GameRules.IsHardcoreActive and C_GameRules.IsHardcoreActive()
+	local spellsToBuy = {}
     for _, entry in pairs(entries) do
         if addon.defaultSpellList[entry] then
-            for spellLvl, spells in pairs(addon.defaultSpellList[entry]) do
-                if spellLvl <= level then
+            for spellLvl = 1,playerLevelMax do
+                local spells = addon.defaultSpellList[entry][spellLvl]
+                if spells and spellLvl <= level then
                     for i, spellId in ipairs(spells) do
                         if not (spellRequest[spellId] or
                             C_Spell.IsSpellDataCached(spellId)) then
@@ -516,22 +607,40 @@ local function ProcessSpells(names, rank)
                             spellRequest[spellId] = true
                         end
                         if names and rank and
-                            not (addon.settings.profile.hardcore and
-                                addon.HCSpellList and addon.HCSpellList[spellId]) then
+                        not (hcserver and addon.HCSpellList and addon.HCSpellList[spellId]) then
                             spellRequest[spellId] = nil
                             local sName = GetSpellInfo(spellId)
                             local sRank = GetSpellSubtext(spellId)
                             for id, name in pairs(names) do
                                 if sName == name and sRank == rank[id] then
-                                    BuyTrainerService(id)
+                                    table.insert(spellsToBuy,id)
                                 end
                             end
                         end
+                    end
+                    if next(spellsToBuy) then
+                        break
                     end
                 end
             end
         end
     end
+	table.sort(spellsToBuy)
+	local lastId,start,finish,step
+	if forever then
+        --This has to be traversed from back to front, since buying a spell at the top will reorder the list
+		start,finish,step = #spellsToBuy,1,-1
+	else
+		start,finish,step = 1,#spellsToBuy,1
+	end
+	for i = start,finish,step do
+		local id = spellsToBuy[i]
+		if id ~= lastId then
+			BuyTrainerService(id)
+			--print(id,names[id],rank[id])
+		end
+		lastId = id
+	end
 end
 
 local function OnTrainer()
@@ -545,7 +654,13 @@ local function OnTrainer()
     local rank = {}
 
     for id = 1, i do
-        local n, r, cat = GetTrainerServiceInfo(id)
+        local n, cat, iconId,_,r = GetTrainerServiceInfo(id)
+        if type(iconId) ~= "number" then
+            --n, r, cat = GetTrainerServiceInfo(id)
+            r = cat
+            cat = iconId
+            iconId = nil
+        end
         if cat == "available" then
             names[id] = n
             rank[id] = r
@@ -553,10 +668,11 @@ local function OnTrainer()
     end
 
     ProcessSpells(names, rank)
-
     for spellName, spellRank in pairs(addon.skillList) do
         for id, name in pairs(names) do
-            if name == spellName then
+            --Handles a specific corner case with professions where the text shown is not equal to the spell name
+            local category = _G.GetTrainerServiceSkillLine(id)
+            if name == spellName or spellName == category then
                 local r = rank[id]
                 r = r and tonumber(r:match("(%d+)")) or 0
                 if (r <= spellRank or spellRank == 0) then
@@ -609,12 +725,54 @@ local GossipGetAvailableQuests = C_GossipInfo.GetAvailableQuests or
 -- TODO handle Pawn compatibility
 local questRewardChoiceIcons = {}
 local questLogRewardChoiceIcons = {}
+
+local function createRewardChoiceGlow(parent, icon)
+    icon.glow = parent:CreateTexture(nil, "OVERLAY", nil, 0)
+
+    icon.glow:SetTexture("Interface/Minimap/UI-Minimap-ZoomButton-Highlight")
+    icon.glow:SetBlendMode("ADD")
+    icon.glow:SetVertexColor(1, 0.72, 0.1, 0.9)
+    icon.glow:SetSize(32, 32)
+end
+
+local function showRewardChoiceIcon(icon, rewardButton, point, x, y)
+    local overlay = icon.overlay
+
+    if not overlay then
+        overlay = _G.CreateFrame("Frame", nil, rewardButton)
+
+        icon.overlay = overlay
+    else
+        overlay:SetParent(rewardButton)
+    end
+
+    overlay:SetFrameLevel(rewardButton:GetFrameLevel() + 1)
+    overlay:Show()
+
+    icon:SetParent(overlay)
+    icon:ClearAllPoints()
+    icon:SetPoint(point, rewardButton, x, y)
+
+    if icon.glow then
+        icon.glow:SetParent(overlay)
+        icon.glow:ClearAllPoints()
+        icon.glow:SetPoint("CENTER", icon, "CENTER")
+        icon.glow:Show()
+    end
+
+    icon:Show()
+end
+
 local function hideRewardChoiceIcons()
     for _, f in pairs(questRewardChoiceIcons) do
+        if f.glow then f.glow:Hide() end
+        if f.overlay then f.overlay:Hide() end
         if not f:IsForbidden() then f:Hide() end
     end
 
     for _, f in pairs(questLogRewardChoiceIcons) do
+        if f.glow then f.glow:Hide() end
+        if f.overlay then f.overlay:Hide() end
         if not f:IsForbidden() then f:Hide() end
     end
 end
@@ -624,16 +782,27 @@ local function createRewardChoiceIcons()
 
     if not questRewardChoiceIcons["ratio"] then
         questRewardChoiceIcons["ratio"] = _G.QuestInfoRewardsFrame:CreateTexture()
-        questRewardChoiceIcons["ratio"]:SetTexture("Interface/AddOns/" .. addonName .. "/Textures/rxp_logo-64")
+        questRewardChoiceIcons["ratio"]:SetTexture(addon.v2:IsGuideWindowEnabled() and
+                                                         addon.ui.v2:GetTexture("rxp-reward-upgrade") or
+                                                         "Interface/AddOns/" .. addonName .. "/Textures/rxp_logo-64")
         questRewardChoiceIcons["ratio"]:SetSize(20, 20)
+        questRewardChoiceIcons["ratio"]:SetDrawLayer("OVERLAY", 1)
     end
 
     if questRewardChoiceIcons["ratio"].isHooked then return end
 
     if not questRewardChoiceIcons["value"] then
         questRewardChoiceIcons["value"] = _G.QuestInfoRewardsFrame:CreateTexture()
-        questRewardChoiceIcons["value"]:SetTexture("Interface/GossipFrame/VendorGossipIcon.blp")
+        questRewardChoiceIcons["value"]:SetTexture(addon.v2:IsGuideWindowEnabled() and
+                                                         addon.ui.v2:GetTexture("rxp-reward-gold") or
+                                                         "Interface/GossipFrame/VendorGossipIcon.blp")
         questRewardChoiceIcons["value"]:SetSize(20, 20)
+        questRewardChoiceIcons["value"]:SetDrawLayer("OVERLAY", 1)
+    end
+
+    if addon.v2:IsGuideWindowEnabled() then
+        createRewardChoiceGlow(_G.QuestInfoRewardsFrame, questRewardChoiceIcons["ratio"])
+        createRewardChoiceGlow(_G.QuestInfoRewardsFrame, questRewardChoiceIcons["value"])
     end
 
     _G.QuestInfoRewardsFrame:HookScript("OnHide", hideRewardChoiceIcons)
@@ -648,22 +817,34 @@ local function createLogRewardChoiceIcons()
 
     if not questLogRewardChoiceIcons["ratio"] then
         questLogRewardChoiceIcons["ratio"] = _G.QuestLogDetailScrollFrame:CreateTexture()
-        questLogRewardChoiceIcons["ratio"]:SetTexture("Interface/AddOns/" .. addonName .. "/Textures/rxp_logo-64")
+        questLogRewardChoiceIcons["ratio"]:SetTexture(addon.v2:IsGuideWindowEnabled() and
+                                                            addon.ui.v2:GetTexture("rxp-reward-upgrade") or
+                                                            "Interface/AddOns/" .. addonName .. "/Textures/rxp_logo-64")
         questLogRewardChoiceIcons["ratio"]:SetSize(20, 20)
+        questLogRewardChoiceIcons["ratio"]:SetDrawLayer("OVERLAY", 1)
     end
 
     if questLogRewardChoiceIcons["ratio"].isHooked then return end
 
     if not questLogRewardChoiceIcons["value"] then
         questLogRewardChoiceIcons["value"] = _G.QuestLogDetailScrollFrame:CreateTexture()
-        questLogRewardChoiceIcons["value"]:SetTexture("Interface/GossipFrame/VendorGossipIcon.blp")
+        questLogRewardChoiceIcons["value"]:SetTexture(addon.v2:IsGuideWindowEnabled() and
+                                                            addon.ui.v2:GetTexture("rxp-reward-gold") or
+                                                            "Interface/GossipFrame/VendorGossipIcon.blp")
         questLogRewardChoiceIcons["value"]:SetSize(20, 20)
+        questLogRewardChoiceIcons["value"]:SetDrawLayer("OVERLAY", 1)
+    end
+
+    if addon.v2:IsGuideWindowEnabled() then
+        createRewardChoiceGlow(_G.QuestLogDetailScrollFrame, questLogRewardChoiceIcons["ratio"])
+        createRewardChoiceGlow(_G.QuestLogDetailScrollFrame, questLogRewardChoiceIcons["value"])
     end
 
     -- Triggers on open and selection in Classic
     -- Only triggers on selection in Wrath
     hooksecurefunc("SelectQuestLogEntry", function(questLogIndex)
         hideRewardChoiceIcons()
+
         addon.DisplayQuestLogRewards(questLogIndex)
     end)
 
@@ -680,18 +861,20 @@ local function createLogRewardChoiceIcons()
     questLogRewardChoiceIcons["ratio"].isHooked = true
 end
 
--- Retail has enough helpers and massive UI differences
-if addon.gameVersion < 40000 then
-    createRewardChoiceIcons()
-    createLogRewardChoiceIcons()
-end
-
 local GetItemInfo = C_Item and C_Item.GetItemInfo or _G.GetItemInfo
 
 local GetQuestLogSelection, GetNumQuestLogChoices = _G.GetQuestLogSelection,
                                                     _G.GetNumQuestLogChoices
 local GetQuestLogChoiceInfo, GetQuestLogItemLink, GetQuestLogTitle =
     _G.GetQuestLogChoiceInfo, _G.GetQuestLogItemLink, _G.GetQuestLogTitle
+
+-- GetQuestLogChoiceInfo = function(arg1,...)
+--     if C_QuestLog and C_QuestLog.GetInfo then
+--         return _G.GetQuestLogChoiceInfo(arg1)
+--     else
+--         return _G.GetQuestLogChoiceInfo(arg1,...)
+--     end
+-- end
 
 -- bestSellOption, bestRatioOption, options
 local function evaluateQuestChoices(questID, numChoices, GetQuestItemInfo, GetQuestItemLink, GetQuestLogChoiceInfo)
@@ -716,7 +899,7 @@ local function evaluateQuestChoices(questID, numChoices, GetQuestItemInfo, GetQu
         if GetQuestItemInfo then
             isUsable = select(5, GetQuestItemInfo("choice", i))
         else
-            isUsable = select(5, GetQuestLogChoiceInfo(i))
+            isUsable = select(5, GetQuestLogChoiceInfo(i,questID))
         end
 
         itemLink = GetQuestItemLink("choice", i)
@@ -811,9 +994,7 @@ local function handleQuestComplete()
             local bestRatioFrame = QuestInfo_GetRewardButton(QuestInfoFrame.rewardsFrame, bestRatioOption)
 
             if bestRatioFrame then
-                questRewardChoiceIcons["ratio"]:SetPoint("TOPRIGHT", bestRatioFrame , -1, 1)
-                questRewardChoiceIcons["ratio"]:SetParent(bestRatioFrame)
-                questRewardChoiceIcons["ratio"]:Show()
+                showRewardChoiceIcon(questRewardChoiceIcons["ratio"], bestRatioFrame, "TOPRIGHT", 0, 2)
             end
         end
     end
@@ -823,16 +1004,12 @@ local function handleQuestComplete()
 
         if bestSellFrame then
             if bestSellOption > 0 then
-                questRewardChoiceIcons["value"]:SetPoint("BOTTOMRIGHT", bestSellFrame , -1, 1)
-                questRewardChoiceIcons["value"]:SetParent(bestSellFrame)
-                questRewardChoiceIcons["value"]:Show()
+                showRewardChoiceIcon(questRewardChoiceIcons["value"], bestSellFrame, "BOTTOMRIGHT", 0, 0)
             end
 
             -- No calculated best upgrade, so add recommendation to value as well, only if weights added
             if addon.itemUpgrades and bestRatioOption < 1 then
-                questRewardChoiceIcons["ratio"]:SetPoint("TOPRIGHT", bestSellFrame , -1, 1)
-                questRewardChoiceIcons["ratio"]:SetParent(bestSellFrame)
-                questRewardChoiceIcons["ratio"]:Show()
+                showRewardChoiceIcon(questRewardChoiceIcons["ratio"], bestSellFrame, "TOPRIGHT", 0, 2)
             end
         end
     end
@@ -861,14 +1038,22 @@ function addon.DisplayQuestLogRewards(questLogIndex)
         questLogIndex = GetQuestLogSelection()
     end
     if questLogIndex < 1 then return end
+    local questID = 0
+    local numChoices
 
-    local numChoices = GetNumQuestLogChoices()
+    if C_QuestLog and C_QuestLog.GetInfo then
+        local o = C_QuestLog.GetInfo(questLogIndex)
+        questID = o and o.questID
+        numChoices = GetNumQuestLogChoices(questID)
+    else
+        questID = select(8, GetQuestLogTitle(questLogIndex))
+        numChoices = GetNumQuestLogChoices()
+    end
 
     if numChoices <= 1 then
         return
     end
 
-    local questID = select(8, GetQuestLogTitle(questLogIndex))
 
     -- options third return only used for handleQuestComplete
     local bestSellOption, bestRatioOption, _ = evaluateQuestChoices(questID, numChoices, nil, GetQuestLogItemLink, GetQuestLogChoiceInfo)
@@ -879,9 +1064,7 @@ function addon.DisplayQuestLogRewards(questLogIndex)
             QuestInfo_GetRewardButton(QuestInfoFrame.rewardsFrame, bestRatioOption)
 
         if bestRatioFrame then
-            questLogRewardChoiceIcons["ratio"]:SetPoint("TOPRIGHT", bestRatioFrame , -1, 1)
-            questLogRewardChoiceIcons["ratio"]:SetParent(bestRatioFrame)
-            questLogRewardChoiceIcons["ratio"]:Show()
+            showRewardChoiceIcon(questLogRewardChoiceIcons["ratio"], bestRatioFrame, "TOPRIGHT", 0, 2)
         end
     end
 
@@ -890,15 +1073,11 @@ function addon.DisplayQuestLogRewards(questLogIndex)
             QuestInfo_GetRewardButton(QuestInfoFrame.rewardsFrame, bestSellOption)
 
         if bestSellFrame then
-            questLogRewardChoiceIcons["value"]:SetPoint("BOTTOMRIGHT", bestSellFrame , -1, 1)
-            questLogRewardChoiceIcons["value"]:SetParent(bestSellFrame)
-            questLogRewardChoiceIcons["value"]:Show()
+            showRewardChoiceIcon(questLogRewardChoiceIcons["value"], bestSellFrame, "BOTTOMRIGHT", 0, 0)
 
             -- No calculated best upgrade, so add recommendation to value as well, only if weights added
             if addon.itemUpgrades and bestRatioOption < 1 then
-                questLogRewardChoiceIcons["ratio"]:SetParent(bestSellFrame)
-                questLogRewardChoiceIcons["ratio"]:SetPoint("TOPRIGHT", bestSellFrame , -1, 1)
-                questLogRewardChoiceIcons["ratio"]:Show()
+                showRewardChoiceIcon(questLogRewardChoiceIcons["ratio"], bestSellFrame, "TOPRIGHT", 0, 2)
             end
         end
     end
@@ -1110,18 +1289,28 @@ function addon:CreateMetaDataTable(wipe)
     if wipe or addon.release ~= RXPData.release or RXPData.cacheVersion ~= cacheVersion or not cacheVersion or addon.IsNewCharacter() or addon.settings.profile.preLoadData then
         RXPCData.guideMetaData = {}
         RXPCData.guideDisabled = {}
+        RXPCData.localDB = nil
         local deleteIndexes = {}
         local insertItems = {}
         local guides = addon.db.profile.guides
+        local guideProgress = RXPCData.guideProgress
+
         for key,v in pairs(guides) do
             --print(i,v)
-            local group,subgroup,name = key:match("^(.-)|([^|]*)|(.-)")
+            local group,subgroup,name = key:match("^(.-)|([^|]*)|([^|]+)")
 
             local newgrp,newsubgrp = addon.GroupOverride(group,subgroup)
             if newgrp ~= group or newsubgrp ~= subgroup then
+                local oldkey = v.key or addon.BuildGuideKey(group,subgroup,name)
                 local newkey = addon.BuildGuideKey(newgrp,newsubgrp,name)
                 insertItems[newkey] = v
                 table.insert(deleteIndexes,key)
+
+                if guideProgress and oldkey ~= newkey and guideProgress[oldkey] then
+
+                    guideProgress[newkey] = guideProgress[newkey] or guideProgress[oldkey]
+                    guideProgress[oldkey] = nil
+                end
             end
         end
         for i,v in pairs(insertItems) do
@@ -1150,13 +1339,176 @@ function addon:CreateMetaDataTable(wipe)
 
 end
 
+local updateFrame = CreateFrame("Frame")
+
+local currentGuideGroup
+local currentGuideName
+local startStep
+local startStepId
+
+local function LoadEmbeddedGuides(start,limit,guide)
+    if #addon.embeddedGuides ~= 0 then
+        if addon.player.hardcore then
+            --During patch 1.15.9 Lua scripts have a maximum run time of 200ms (HC only)
+            local nGuides = #addon.embeddedGuides
+            local n = 1 + addon.GetLoadedGuides()
+            while #addon.embeddedGuides > 0 and n <= nGuides and debugprofilestop() - start < limit do
+                addon.LoadEmbeddedGuides(1)
+                n = n + 1
+            end
+            --print('----',#addon.embeddedGuides)
+        else
+            addon.LoadEmbeddedGuides()
+        end
+    elseif addon.addonLoaded then
+        if guide then
+            addon:FetchGuide(guide)
+        end
+        if currentGuideGroup then
+            currentGuideGroup = nil
+            currentGuideName = nil
+            startStep = nil
+            startStepId = nil
+            if addon.LoadDefaultGuide and
+                (not addon.currentGuide or addon.currentGuide.empty) then
+                addon.LoadDefaultGuide()
+            end
+        end
+        updateFrame:SetScript("OnUpdate",nil)
+    end
+end
+
+local function LoadCache(guide)
+    if updateFrame:GetScript("OnUpdate") then
+        return
+    end
+    updateFrame:SetScript("OnUpdate",function(self)
+        if busy == GetTime() then
+            return
+        end
+        local start = debugprofilestop()
+        if not guide then
+            local empty = not addon.currentGuide or addon.currentGuide.empty
+            if currentGuideGroup and empty then
+                local g = addon.GetGuideTable(currentGuideGroup,
+                                    currentGuideName)
+                if g then
+                    addon.SaveGuideProgress(g, startStep, startStepId)
+                    -- if WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then
+                    --     --TODO: Fix the dungeon selection for Camelot
+                    --     addon.settings.dungeons:SetNone()
+                    -- end
+                    addon:LoadGuide(g, true)
+                    currentGuideGroup = nil
+                    currentGuideName = nil
+                    return
+                end
+            end
+        end
+        LoadEmbeddedGuides(start,25,guide)
+    end)
+end
+
+function addon.SaveGuideProgress(guide, step, stepId)
+    if not guide or not step or not RXPCData then return end
+
+    -- If playerGUID not saved, then it's safe to or the first mismatch
+    if not RXPCData.guideProgress.playerGUID then
+        RXPCData.guideProgress.playerGUID = addon.player.guid
+    end
+
+    -- Preserve downgrade functionality
+    RXPCData.currentStep = step
+
+    local stepData = guide.steps and guide.steps[step]
+    stepId = stepId or stepData and stepData.stepId
+
+    if stepId then
+        RXPCData.currentStepId = stepId
+    end
+
+    if not guide.empty and guide.key then
+        RXPCData.guideProgress[guide.key] = {
+            step = step,
+            stepId = stepId,
+        }
+    end
+end
+
+function addon.GetGuideProgress(guide)
+    guide = guide or addon.currentGuide
+
+    if not guide then
+        return tonumber(RXPCData and RXPCData.currentStep) or 1,
+               RXPCData and RXPCData.currentStepId
+    end
+
+    local guideProgress = RXPCData and RXPCData.guideProgress
+    local progress = guide.key and guideProgress and guideProgress[guide.key]
+    local step = progress and progress.step
+    local stepId = progress and progress.stepId
+
+    if not step and RXPCData and
+            RXPCData.currentGuideGroup == guide.group and
+            RXPCData.currentGuideName == guide.name then
+
+        addon.SaveGuideProgress(guide, RXPCData.currentStep,
+                               RXPCData.currentStepId)
+
+        step = RXPCData.currentStep
+        stepId = RXPCData.currentStepId
+    end
+
+    if step then
+        step = tonumber(step) or 1
+        return step, stepId
+    end
+
+    return 1, stepId
+end
+
+
+function addon.ResetGuideProgress()
+    if not RXPCData then return end
+
+    local guideProgress = RXPCData.guideProgress or {}
+    wipe(guideProgress)
+
+    guideProgress.playerGUID = addon.player.guid
+    RXPCData.guideProgress = guideProgress
+    RXPCData.currentStep = 1
+    RXPCData.currentStepId = nil
+    RXPCData.stepSkip = {}
+    RXPCData.completedWaypoints = {}
+
+    startStep = 1
+    startStepId = nil
+
+    addon.ReloadGuide()
+end
+
+
 function addon:OnInitialize()
+    local saveLocally = false
+    if RXPCData then
+        if RXPData then
+            RXPCData.localDB = nil
+        else
+            saveLocally = true
+        end
+    end
+    if not RXPCData and GetCVar("questPOI") then
+        --Make sure to initialize the in-game quest helper on first login
+        --This option gets turned off when selecting the Classic option before character creation
+        SetCVar("questPOI", "1")
+    end
     local importGuidesDefault = {
         profile = {guides = {}, reports = {splits = {}}}
     }
 
     addon.db = LibStub("AceDB-3.0"):New("RXPDB", importGuidesDefault, 'global')
     RXPData = RXPData or {}
+    RXPData.maxLoadTime = RXPData.maxLoadTime or 4000
     RXPCData = RXPCData or {}
     RXPCData.exploredZones = RXPCData.exploredZones or {}
 
@@ -1185,10 +1537,20 @@ function addon:OnInitialize()
         RXPData.gameVersion = gameVersion
     end
     addon.settings:InitializeDatabase()
+    addon:SetupQuestLog()
+    RXPCData.guideProgress = RXPCData.guideProgress or {}
     addon.CreateMetaDataTable()
     addon.settings:InitializeSettings()
 
+
+    -- Retail has enough helpers and massive UI differences
+    if addon.gameVersion < 40000 then
+        createRewardChoiceIcons()
+        createLogRewardChoiceIcons()
+    end
+
     RXPCData.completedWaypoints = RXPCData.completedWaypoints or {}
+
     addon.settings.profile.hardcore =
         addon.game == "CLASSIC" and addon.settings.profile.hardcore
     RXPCData.stepSkip = RXPCData.stepSkip or {}
@@ -1208,12 +1570,14 @@ function addon:OnInitialize()
     end
 
     addon:ImportCustomThemes()
+    addon.v2:ConvertThemes()
     addon:LoadActiveTheme()
     addon.settings:UpdateMinimapButton()
     addon.settings:SetupMapButton()
     addon.SetupGuideWindow()
     addon.RenderFrame()
     addon.SetupArrow()
+    addon.SetupWorldMap()
     addon:CreateActiveItemFrame()
     addon.comms:Setup()
     addon.targeting:Setup()
@@ -1222,11 +1586,6 @@ function addon:OnInitialize()
         addon.tracker:SetupTracker()
     end
     if addon.tips then addon.tips:Setup() end
-    if addon.VendorTreasures then addon.VendorTreasures:Setup() end
-    if addon.itemUpgrades then
-        addon.itemUpgrades:Setup()
-    end
-
     if addon.player.season == 2 then
         addon.settings.profile.phase = 6
     end
@@ -1240,25 +1599,59 @@ function addon:OnInitialize()
     addon.arrowFrame.text:SetFont(addon.font,
                                   addon.settings.profile.arrowText, "OUTLINE")
     addon.activeItemFrame:SetScale(addon.settings.profile.activeItemsScale)
-end
 
-function addon:OnEnable()
-    addon.ParseCompletedQuests()
-    addon.LoadEmbeddedGuides()
+    addon.v2:Setup()
+
+    currentGuideGroup = RXPCData.currentGuideGroup
+    currentGuideName = RXPCData.currentGuideName
+    startStep, startStepId = addon.GetGuideProgress()
+
+    LoadCache()
+    ProcessSpells()
+    addon.GetProfessionLevel()
+
+    if saveLocally then
+        addon.saveSettingsLocally = true
+    end
+
     if addon.settings.profile.preLoadData then
         addon.LoadAllGuides()
     end
-    addon.addonLoaded = true
-    ProcessSpells()
-    addon.GetProfessionLevel()
-    local guide = addon.GetGuideTable(RXPCData.currentGuideGroup,
-                                      RXPCData.currentGuideName)
-    addon:LoadGuide(guide, true)
-    if not addon.currentGuide then
-        addon.RXPFrame:SetHeight(20)
-        addon.RXPFrame.BottomFrame.UpdateFrame()
-        addon.noGuide = true
+
+    -- addon:LoadGuide(guide, true)
+    -- if not addon.currentGuide then
+    --     addon.RXPFrame:SetHeight(20)
+    --     addon.RXPFrame.BottomFrame.UpdateFrame()
+    --     addon.noGuide = true
+    -- end
+    addon.ParseCompletedQuests()
+    local start = addon.startTime
+    if addon.player.hardcore then
+        LoadEmbeddedGuides(start, RXPData.maxLoadTime)
+        for _,guide in pairs(addon.guides) do
+            if debugprofilestop() - start > RXPData.maxLoadTime then
+                break
+            end
+            if not guide.steps then
+                addon:FetchGuide(guide)
+            end
+        end
+    else
+        addon.LoadEmbeddedGuides()
     end
+    --print('load time: ' .. (debugprofilestop() - start))
+    --print('preload data: ' .. (addon.settings.profile.preLoadData and 'true' or 'false'))
+    addon.addonLoaded = false
+end
+
+function addon:OnEnable()
+    if addon.addonLoaded ~= false then
+        RXPData.maxLoadTime = math.ceil(RXPData.maxLoadTime/1.5)
+    end
+    addon.addonLoaded = true
+
+    if addon.inventoryManager then addon.inventoryManager:Setup() end
+
     --addon.RXPFrame.GenerateMenuTable()
 
     self:RegisterEvent("GET_ITEM_INFO_RECEIVED")
@@ -1292,6 +1685,16 @@ function addon:OnEnable()
         self:RegisterEvent("TOYS_UPDATED")
     end
 
+    if addon.gameVersion >= 100000 and C_EventUtils and C_EventUtils.IsEventValid("PLAYER_HOUSE_LIST_UPDATED") then
+        function addon:PLAYER_HOUSE_LIST_UPDATED(_,houseInfo)
+            addon.player.plotID = houseInfo.plotID
+            addon.player.houseGUID = houseInfo.houseGUID
+            addon.player.neighborhoodGUID = houseInfo.neighborhoodGUID
+        end
+        self:RegisterEvent("PLAYER_HOUSE_LIST_UPDATED")
+        C_Housing.GetPlayerOwnedHouses()
+    end
+
     -- self:RegisterEvent("QUEST_LOG_UPDATE")
 
     questFrame:RegisterEvent("QUEST_COMPLETE")
@@ -1309,6 +1712,8 @@ function addon:OnEnable()
     end
 
     addon.settings:LoadFramePositions()
+    addon.RXPFrame.SetStepFrameAnchor()
+    addon.v2:UpdateGuideWindow()
 
     if addon.settings.profile.hideInRaid then
         self:RegisterEvent("GROUP_JOINED", addon.HideInRaid)
@@ -1354,6 +1759,31 @@ function addon:OnEnable()
 
     RXPData.release = addon.release
     RXPData.cacheVersion = cacheVersion
+
+    C_Timer.After(0.2, function()
+        if addon.VendorTreasures then addon.VendorTreasures:Setup() end
+        if addon.itemUpgrades then addon.itemUpgrades:Setup() end
+    end)
+
+    if addon.player.level == 1 then
+        -- Check for character re-creation after normal loading/initialization completes
+        C_Timer.After(4, function()
+            if not RXPCData.guideProgress then return end
+
+            -- No progress saved since started tracking it
+            if not RXPCData.guideProgress.playerGUID then return end
+
+            if RXPCData.guideProgress.playerGUID == addon.player.guid then
+                return
+            end
+
+            addon.comms:ConfirmChoice(
+                "RXP_GUIDE_PROGRESS_PLAYER_MISMATCH",
+                fmt("%s - %s", addonName, L("Guide progress was saved by another character. Reset it?")),
+                addon.ResetGuideProgress)
+        end)
+    end
+
 end
 
 -- Tracks if a player is on a loading screen and pauses the main update loop
@@ -1368,10 +1798,13 @@ function addon:PLAYER_ENTERING_WORLD(_, isInitialLogin)
                          addon.settings.profile.hideGuideWindow or
                          not (addon.RXPFrame and addon.RXPFrame:IsShown())
 
-    C_Timer.After(2, function()
+    local delay = addon.player.hardcore and 5 or 2
+    C_Timer.After(delay, function()
         addon.player.maxlevel = _G.GetMaxPlayerLevel()
 
-        if addon.LoadDefaultGuide and addon.currentGuide.empty then
+        if addon.LoadDefaultGuide and
+            (not addon.currentGuide or addon.currentGuide.empty) and
+            not currentGuideGroup then
             addon.LoadDefaultGuide()
         end
     end)
@@ -1386,9 +1819,7 @@ function addon:PLAYER_ENTERING_WORLD(_, isInitialLogin)
         end)
     end
 
-    if addon.gameVersion < 30000 then
-        addon.ui.v2.LaunchConfigurator(true)
-    end
+    addon.ui.v2.configurator:Open(true)
 
     addon.targeting:Setup()
 end
@@ -1410,7 +1841,7 @@ function addon:UI_INFO_MESSAGE(_,arg1,arg2)
     if not (currentMap and arg1 == 408) then return end
     local subzoneExplored = arg2:match(addon.explorationText)
     if subzoneExplored then
-        print(currentMap,subzoneExplored)
+        --print(currentMap,subzoneExplored)
         RXPCData.exploredZones[currentMap] = RXPCData.exploredZones[currentMap] or {}
         RXPCData.exploredZones[currentMap][subzoneExplored] = true
     end
@@ -1431,7 +1862,21 @@ function addon:ZONE_CHANGED() addon.UpdateMap() end
 
 function addon:BAG_UPDATE_DELAYED(...) addon.UpdateItemFrame() end
 
-function addon:PLAYER_REGEN_ENABLED(...) addon.UpdateItemFrame() end
+function addon:PLAYER_REGEN_ENABLED(...)
+    addon.UpdateItemFrame()
+
+    if addon.settingsPanelAfterCombat ~= nil then
+        local panelName = addon.settingsPanelAfterCombat
+
+        addon.settingsPanelAfterCombat = nil
+
+        if panelName == "Import" then
+            addon.guideImporter:Open()
+        else
+            addon.settings.OpenSettings()
+        end
+    end
+end
 
 function addon:QUEST_TURNED_IN(_, questId, xpReward)
     -- scryer/aldor quest
@@ -1461,7 +1906,11 @@ function addon:TRAINER_SHOW(...)
     addon.trainerFrame:SetScript("OnUpdate", trainerFrameUpdate)
 end
 
-function addon:TRAINER_CLOSED(...) addon.trainerFrame:SetScript("OnUpdate", nil) end
+function addon:TRAINER_CLOSED(...)
+    if addon.trainerFrame then
+        addon.trainerFrame:SetScript("OnUpdate", nil)
+    end
+end
 
 function addon:PLAYER_LEVEL_UP(_, level)
     if not addon.currentGuide then return end
@@ -1472,7 +1921,7 @@ function addon:PLAYER_LEVEL_UP(_, level)
         addon.RXPFrame.GenerateMenuTable()
         addon.ReloadGuide()
     --[[else
-        local stepn = RXPCData.currentStep
+        local stepn = addon.GetGuideProgress()
         -- addon:LoadGuide(addon.currentGuide)
         addon.SetStep(1)
         addon.SetStep(stepn)]]
@@ -1486,11 +1935,32 @@ function addon:UNIT_PET(_, unit)
     addon.petFamily = GetPetIcon() or addon.petFamily
 end
 
+local V2_QUEST_DATA_REQUEST_PREFIX = "v2:"
+
+function addon.EnsureQuestData(questId)
+    if not questId then return false end
+    if HaveQuestData(questId) then return true end
+    if not (C_QuestLog and C_QuestLog.RequestLoadQuestByID) then return false end
+
+    local requestKey = V2_QUEST_DATA_REQUEST_PREFIX .. questId
+    if not addon.requestQuestInfo[requestKey] then
+        addon.requestQuestInfo[requestKey] = true
+        C_QuestLog.RequestLoadQuestByID(questId)
+    end
+    return false
+end
+
 function addon:QUEST_DATA_LOAD_RESULT(_, questId, success)
+    local requestKey = V2_QUEST_DATA_REQUEST_PREFIX .. questId
+    local requestedForV2 = addon.requestQuestInfo[requestKey]
+    addon.requestQuestInfo[requestKey] = nil
+
     if not success then return end
 
     addon.requestQuestInfo[questId] = 0
     addon.updateStepText = true
+
+    if requestedForV2 then addon.v2.events:Trigger("QuestDataLoaded", questId) end
 end
 
 function addon:GROUP_LEFT()
@@ -1528,10 +1998,15 @@ end
 
 questFrame:SetScript("OnEvent", addon.QuestAutomation)
 
-function addon.GetGuideTable(guideGroup, guideName)
+function addon.GetGuideTable(guideGroup, guideName, loop)
     local index = guideGroup and guideName and
         fmt("%s||%s",guideGroup,guideName) or guideGroup or 0
-    return addon.guides[index]
+    local guide = addon.guides[index]
+    if not guide and not loop and addon.game == "TBC" then
+        return addon.GetGuideTable(addon.classicPrefix .. guideGroup, guideName, true)
+    else
+        return guide
+    end
 end
 
 addon.scheduledTasks = {}
@@ -1569,13 +2044,21 @@ function addon.UpdateScheduledTasks()
     --return update
 end
 
-function addon.ScheduleTask(self, ref, ...)
---    print('w',ref)
+local function GetUpdateFrequency()
     local updateFrequency = 0.075
 
     if addon.settings.profile and addon.settings.profile.updateFrequency then
-        updateFrequency = addon.settings.profile.updateFrequency / 1000
+        updateFrequency = math.max(addon.settings.profile.updateFrequency / 1000, 0.005)
     end
+    if addon.player.hardcore then
+        updateFrequency = updateFrequency * 1.5
+    end
+    return updateFrequency
+end
+
+function addon.ScheduleTask(self, ref, ...)
+--    print('w',ref)
+    local updateFrequency = GetUpdateFrequency()
     local time = type(self) == "number" and self or GetTime() + updateFrequency
     --print(type(ref))
 
@@ -1603,11 +2086,13 @@ local skip = 0
 local updateError
 local errorCount = 0
 local event = ""
-local busy = 0
 local updateStepIndex = 0
 
 function addon.LegacyUpdateLoop()
     -- NewTicker calls function every updateFrequency, making diff/updateTick/tickRate logic obsolete
+    local profile = addon.settings.profile
+    if profile.standbyMode and not profile.showEnabled then return end
+
     if updateError then
         errorCount = errorCount + 1
     end
@@ -1654,7 +2139,7 @@ function addon.LegacyUpdateLoop()
         event = event .. "/loadNext"
 
         addon.loadNextStep = false
-        addon.SetStep(RXPCData.currentStep + 1)
+        addon.SetStep(addon.GetGuideProgress() + 1)
         addon.questAutoAccept = true
         skip = 1
         addon.updateBottomFrame = true
@@ -1667,6 +2152,15 @@ function addon.LegacyUpdateLoop()
             event = event .. "/textsingle"
 
             addon.updateStepText = false
+
+            if addon.v2:IsGuideWindowEnabled() then
+                table.wipe(addon.stepUpdateList)
+                addon.updateTipWindow = false
+                addon.v2.events:Trigger("GuideStepsChanged")
+
+                return
+            end
+
             local updateText
             local steps = addon.currentGuide.steps
             local update = {}
@@ -1695,8 +2189,18 @@ function addon.LegacyUpdateLoop()
             event = event .. "/bottomFrame"
 
             errorCount = 0
+
+            if addon.v2:IsGuideWindowEnabled() then
+                addon.updateBottomFrame = false
+                addon.RXPFrame.SetStepFrameAnchor()
+                addon.v2.events:Trigger("GuideStepsChanged")
+
+                return
+            end
+
             addon.RXPFrame.BottomFrame.UpdateFrame()
             addon.RXPFrame.SetStepFrameAnchor()
+
             updateError = false
             skip = 1
 
@@ -1707,12 +2211,17 @@ function addon.LegacyUpdateLoop()
 
             for _,guide in pairs(addon.guides) do
                 if (loadGuide or guide.disablecaching) and not guide.steps then
-                    addon:FetchGuide(guide)
-                    guideLoaded = true
-                    --print('f',not guide.steps and guide.name)
-                    local elapsed = debugprofilestop() - start
-                    if elapsed > 20 or framerate < 50 then
+                    if addon.player.hardcore then
+                        LoadCache(guide)
                         loadGuide = false
+                    else
+                        addon:FetchGuide(guide)
+                        guideLoaded = true
+                        --print('f',not guide.steps and guide.name)
+                        local elapsed = debugprofilestop() - start
+                        if elapsed > 20 or framerate < 50 then
+                            loadGuide = false
+                        end
                     end
                 end
             end
@@ -1739,12 +2248,14 @@ function addon.LegacyUpdateLoop()
         addon.tickers.CycleSixteen()
     elseif cycle32 == 29 then
         addon.tickers.CycleThirty()
-    elseif skip ~= 1 and not guideLoaded and addon.currentGuide then
+    elseif skip ~= 1 and not guideLoaded and addon.currentGuide and
+           not addon.v2:IsGuideWindowEnabled() then
 
         event = event .. "/istep"
         local max = #addon.currentGuide.steps
+        local currentStep = addon.GetGuideProgress()
 
-        if stepCounter == RXPCData.currentStep then
+        if stepCounter == currentStep then
             stepCounter = stepCounter + 4
         end
         local batchMax = 10
@@ -1753,7 +2264,7 @@ function addon.LegacyUpdateLoop()
         end
 
         if updateStepIndex < 5 then
-            addon.RXPFrame.BottomFrame.UpdateFrame(nil,RXPCData.currentStep + updateStepIndex)
+            addon.RXPFrame.BottomFrame.UpdateFrame(nil,currentStep + updateStepIndex)
         end
 
         stepCounter = stepCounter + batchSize
@@ -1781,7 +2292,12 @@ function addon.LegacyUpdateLoop()
             end
 
             updateTimer = time
-            skip = skip % 4096
+            if skip > 512 and addon.settings then
+                skip = skip % 512
+                if addon.saveSettingsLocally then
+                    addon.settings:SaveLocalProfile()
+                end
+            end
         end
     end
 
@@ -1790,11 +2306,7 @@ end
 
 addon.tickers = {}
 function addon.tickers:SetupTickerLoops()
-    local updateFrequency = 0.075
-
-    if addon.settings.profile and addon.settings.profile.updateFrequency then
-        updateFrequency = math.max(addon.settings.profile.updateFrequency / 1000, 0.005)
-    end
+    local updateFrequency = GetUpdateFrequency()
     self.tickRate = 1/updateFrequency
 
     --[[
@@ -1951,6 +2463,9 @@ function addon.HardcoreToggle()
         end
         if hc ~= addon.settings.profile.hardcore then
             addon.RenderFrame()
+            if addon.v2:IsGuideWindowEnabled() then
+                addon.v2:UpdateActiveStepTheme()
+            end
         end
     end
 end
@@ -1968,7 +2483,7 @@ end
 addon.stepLogic = {}
 
 function addon.stepLogic.AldorScryerCheck(faction)
-    if addon.game == "CLASSIC" then return true end
+    if addon.game == "CLASSIC" or addon.game == "FOREVER" then return true end
     local _, _, _, _, _, aldorRep = addon.GetFactionInfoByID(932)
     local _, _, _, _, _, scryerRep = addon.GetFactionInfoByID(934)
 
@@ -2022,12 +2537,17 @@ end
 function addon.IsStepShown(step,...)
     local isShown = true
     local ignoreEntry = {}
+    local args = {}
     for _,entry in pairs({...}) do
-        ignoreEntry[entry] = true
+        if type(entry) == "string" then
+            ignoreEntry[entry] = true
+        else
+            table.insert(args,entry)
+        end
     end
     for name,check in pairs(addon.stepLogic) do
         if not ignoreEntry[name] then
-            isShown = isShown and check(step)
+            isShown = isShown and check(step,unpack(args))
         end
     end
     return isShown
@@ -2181,14 +2701,30 @@ function addon.stepLogic.LevelCheck(step)
     if level <= maxLevel then return true end
 end
 
-function addon.stepLogic.DungeonCheck(step)
+function addon.stepLogic.DungeonCheck(step,guide)
     if step.disabled then return false end
     local dungeon = step.dungeon
     local dskip = step.dungeonskip
     --print(dungeon,dskip)
-    if dskip and addon.settings.profile.dungeons[dskip] then
+    local function IsDungeonEnabled(tag)
+        local key
+        if guide then
+            key = guide.group
+        else
+            key = addon.currentGuide and addon.currentGuide.group
+        end
+        local dungeonOverride = addon.dungeonOverride[key]
+        if dungeonOverride and dungeonOverride[tag] ~= nil then
+            return dungeonOverride[tag]
+        elseif guide and guide.disabledungeons then
+            return false
+        else
+            return addon.settings.profile.dungeons[tag]
+        end
+    end
+    if dskip and IsDungeonEnabled(dskip) then
         return false
-    elseif dungeon and dungeon ~= dskip and addon.settings.profile.dungeons[dungeon] then
+    elseif dungeon and dungeon ~= dskip and IsDungeonEnabled(dungeon) then
         return true
     elseif not dungeon then
         return true
@@ -2210,4 +2746,151 @@ function addon.stepLogic.ProfessionCheck(step)
     end
 end
 
+function addon.stepLogic.BetaVersionCheck(step)
+    if not addon.settings.profile.enableBetaFeatures and step.beta then
+        return false
+    end
+    return true
+end
+
 RXP = addon -- debug purposes
+
+local LibDD = LibStub:GetLibrary("LibUIDropDownMenu-4.0", true)
+
+function addon:CloseMenu()
+    if _G.CloseDropDownMenus then return _G.CloseDropDownMenus() end
+
+    if LibDD then LibDD:CloseDropDownMenus() end
+end
+
+function addon:ShowMenu(menu, menuFrame, anchor, x, y, displayMode, autoHideDelay)
+    menuFrame = menuFrame or addon.RXPFrame.MenuFrame
+    anchor = anchor or "cursor"
+    x = x or 0
+    y = y or 0
+    displayMode = displayMode or "MENU"
+
+    local v2GuideWindow = addon.v2:IsGuideWindowEnabled()
+    local hadV2MenuTheme = menuFrame.rxpV2MenuTheme
+    if v2GuideWindow then
+        menuFrame.rxpV2MenuTheme = addon.settings.profile.enableV2MenuTheme
+    else
+        menuFrame.rxpV2MenuTheme = nil
+    end
+
+    if _G.EasyMenu then
+        if hadV2MenuTheme then addon.v2:UpdateMenuTheme(_G.DropDownList1, false) end
+
+        _G.EasyMenu(menu, menuFrame, anchor, x, y, displayMode, autoHideDelay)
+
+        if menuFrame.rxpV2MenuTheme then
+            addon.v2:UpdateMenuTheme(_G.DropDownList1, menuFrame.rxpV2MenuTheme)
+        end
+
+        if v2GuideWindow then addon.v2:HookMenuSubmenus("DropDownList") end
+    else
+        if hadV2MenuTheme then addon.v2:UpdateMenuTheme(_G.L_DropDownList1, false) end
+
+        LibDD:EasyMenu(menu, menuFrame, anchor, x, y, displayMode, autoHideDelay)
+
+        if menuFrame.rxpV2MenuTheme then
+            addon.v2:UpdateMenuTheme(_G.L_DropDownList1, menuFrame.rxpV2MenuTheme)
+        end
+
+        if v2GuideWindow then addon.v2:HookMenuSubmenus("L_DropDownList") end
+    end
+end
+
+addon.ui.v2.configurator = addon:NewModule("GuideConfigurator", addon.ui.v2.configurator)
+
+function addon.v2:Setup()
+    addon.v2.events:Setup()
+    addon.ui.v2.configurator:Setup()
+    if not self:IsGuideWindowEnabled() then return end
+
+    local legacy = addon.RXPFrame
+    self:GetGuideWindow()
+    self:DisableLegacyGuideWindow()
+    self:UpdateGuideWindow()
+
+    local activeStepsFrame = self:GetActiveStepsFrame(addon.player.name)
+    if activeStepsFrame and legacy.activeSteps then
+        self:UpdateActiveStepsFrame(legacy.activeSteps)
+    end
+
+    self:SetActiveStepsFrameAnchor()
+end
+
+addon.v2.events = addon:NewModule("V2Events", "AceEvent-3.0")
+addon.v2.events.messagePrefix = "RXPGuidesV2_"
+
+function addon.v2.events:Setup()
+    addon.v2.events:Register("UpdateActiveSteps")
+    addon.v2.events:Register("QuestDataLoaded")
+    addon.v2.events:Register("GuideStepsChanged")
+    addon.v2.events:Register("GuideWindowRefresh")
+end
+
+function addon.v2.events:Register(key)
+    if not key then return end
+
+    self:RegisterMessage(self.messagePrefix .. key, key)
+end
+
+function addon.v2.events:Trigger(key, ...)
+    if not key then return end
+
+    self:SendMessage(self.messagePrefix .. key, ...)
+end
+
+function addon.v2.events:UpdateActiveSteps(_, activeSteps, name)
+    if name == addon.player.name then
+        addon.v2:UpdateActiveStepsFrame(activeSteps)
+
+        return
+    end
+
+    addon.v2:UpdateActivePartyStepsFrame(activeSteps, name)
+end
+
+function addon.v2.events:QuestDataLoaded(_, questId)
+    if not questId then
+        addon.v2.state.activeStepRenderRevision =
+            (addon.v2.state.activeStepRenderRevision or 0) + 1
+    end
+
+    if addon.RXPFrame.activeSteps then
+        addon.v2:UpdateActiveStepsFrame(addon.RXPFrame.activeSteps, questId)
+    end
+
+    addon.v2.events:Trigger("GuideStepsChanged")
+end
+
+function addon.v2.events:GuideStepsChanged(_, scheduled)
+    -- Quest-data callbacks often arrive in bursts; one scheduled rebuild is enough.
+    if scheduled then
+        if addon.RXPFrame.activeSteps then
+            addon.v2:UpdateActiveStepsFrame(addon.RXPFrame.activeSteps)
+        end
+
+        addon.v2:UpdateGuideWindow()
+    elseif addon.v2:IsGuideWindowEnabled() then
+        addon:ScheduleTask(addon.v2.events.GuideStepsChanged, false, true)
+    end
+end
+
+function addon.v2.events:GuideWindowRefresh(_, change, value)
+    if change == "visuals" then
+        local window = addon.v2.state and addon.v2.state.guideWindow
+
+        if window then window:UpdateTheme({}) end
+    elseif change == "visibility" then
+        if addon.v2:IsGuideWindowEnabled() then
+            local window = addon.v2:GetGuideWindow()
+
+            if window then window.frame:SetShown(value) end
+        end
+    elseif change == "layout" and addon.v2:IsGuideWindowEnabled() then
+        addon.v2:SetActiveStepsFrameAnchor()
+    end
+end

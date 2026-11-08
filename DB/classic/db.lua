@@ -27,13 +27,13 @@ if class == "HUNTER" then
     addon.defaultGuideList["Dun Morogh"] = "RestedXP Alliance 1-20\\1-6 Coldridge Valley (Hunter)"
 end
 ]]
-
+local L = addon.locale.Get
 if faction == "Horde" then
-    addon.defaultGroup = "RestedXP Speedrun Guide (H)"
-    addon.defaultGroupHC = "RestedXP Survival Guide (H)"
+    addon.defaultGroup = L"RestedXP Speedrun Guide (H)"
+    addon.defaultGroupHC = L"RestedXP Survival Guide (H)"
 elseif faction == "Alliance" then
-    addon.defaultGroup = "RestedXP Speedrun Guide (A)"
-    addon.defaultGroupHC = "RestedXP Survival Guide (A)"
+    addon.defaultGroup = L"RestedXP Speedrun Guide (A)"
+    addon.defaultGroupHC = L"RestedXP Survival Guide (A)"
 end
 
 
@@ -90,6 +90,25 @@ addon.mapId = {
     ["Alterac Valley"] = 1459,
     ["Kalimdor"] = 1414,
     ["Eastern Kingdoms"] = 1415,
+}
+
+addon.ignoredMaps = {
+	["Eversong Woods"] = 1941,
+	["Ghostlands"] = 1942,
+	["Azuremyst Isle"] = 1943,
+	["Hellfire Peninsula"] = 1944,
+	["Zangarmarsh"] = 1946,
+	["The Exodar"] = 1947,
+	["Shadowmoon Valley"] = 1948,
+	["Blade's Edge Mountains"] = 1949,
+	["Bloodmyst Isle"] = 1950,
+	["Nagrand"] = 1951,
+	["Terokkar Forest"] = 1952,
+	["Netherstorm"] = 1953,
+	["Silvermoon City"] = 1954,
+	["Shattrath City"] = 1955,
+	["Isle of Quel'Danas"] = 1957,
+	["Outland"] = 1945 --987?
 }
 
 addon.mapIdToName = {}

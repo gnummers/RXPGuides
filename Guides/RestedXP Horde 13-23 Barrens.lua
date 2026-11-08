@@ -1,7 +1,7 @@
 local faction = UnitFactionGroup("player")
 if faction == "Alliance" then return end
 
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #tbc
 #wotlk
@@ -9,6 +9,7 @@ RXPGuides.RegisterGuide([[
 #name 13-22 The Barrens
 #version 1
 #group RestedXP Horde 1-30
+#groupid RXP-SRGCE-H1
 #defaultfor Shaman/Warrior
 #next 22-25 Hillsbrad / South Barrens;22-25 Hillsbrad Foothills JJ
 
@@ -103,7 +104,7 @@ step << Warrior
     #sticky
     #completewith next
     .goto The Barrens,55.6,26.6
-    >>Kill Quillboars in the area
+    >>Kill Quilboars in the area
     .complete 871,2 --Razormane Thornweaver (8)
     .complete 871,1 --Razormane Water Seeker (8)
     .complete 871,3 --Razormane Hunter (3)
@@ -140,7 +141,7 @@ step
 --Add invisible automatic waypoint so user doesnt have to manually click it if it isnt there
 step
     .goto The Barrens,55.6,26.6
-    >>Kill Quillboars in the area
+    >>Kill Quilboars in the area
     .complete 871,2 --Razormane Thornweaver (8)
     .complete 871,1 --Razormane Water Seeker (8)
     .complete 871,3 --Razormane Hunter (3)
@@ -431,7 +432,7 @@ step << !Tauren
 .complete 848,1 --Collect Fungal Spores (x4)
 step << !Tauren
 #xprate >1.499
->>Dive underwater to the bubble fissure
+>>Dive underwater to the Bubbling Fissure
 .goto The Barrens,45.1,22.5
     .complete 870,1 --Explore the waters of the Forgotten Pools
 step << !Tauren
@@ -752,7 +753,7 @@ step
     .goto The Barrens,58.0,53.9
     .complete 3281,1 --Stolen Silver (1)
 step
-    >>Click the Bubble Fissure underwater
+    >>Click the Bubbling Fissure underwater
     .goto The Barrens,55.6,42.7
     .complete 877,1 --Test the Dried Seeds (1)
 step
@@ -1063,7 +1064,7 @@ step
 step
     #sticky
     #label Lizard
-    >>Kill Stormstouts. Loot them for one of their horns
+    >>Kill Stormsnouts. Loot them for one of their horns
     .complete 821,3 --Thunder Lizard Horn (1)
 step
     #sticky
@@ -1078,7 +1079,7 @@ step
     .accept 883 >>Accept Lakota'Mani
     .unitscan Lakota'mani
 step
-    >>Kill a LOT of Quillboars. Prioritize Thornweavers, Water Seekers, and Geomancers where you can. Loot them for their tusks. Save the Blood Shards you get
+    >>Kill a LOT of Quilboars. Prioritize Thornweavers, Water Seekers, and Geomancers where you can. Loot them for their tusks. Save the Blood Shards you get
     *Water Seekers only spawn in the south western most camps. Go East or North West for Geomancers / Thornweavers.
     .goto The Barrens,51.4,57.7,50,0
     .goto The Barrens,51.4,54.7,50,0
@@ -1169,7 +1170,7 @@ step
     .fly Camp Taurajo >>Fly to Camp Taurajo
 step
     .goto The Barrens,53.0,52.1
-    >>Kill Quillboars for a Blood Shard
+    >>Kill Quilboars for a Blood Shard
 .collect 5075 --Collect Blood Shard (1)
 step
     #label camptflight

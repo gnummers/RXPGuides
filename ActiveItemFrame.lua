@@ -11,21 +11,16 @@ local GetContainerItemCooldown = C_Container and C_Container.GetContainerItemCoo
 local GameTooltip = _G.GameTooltip
 local PickupContainerItem = C_Container and C_Container.PickupContainerItem or _G.PickupContainerItem
 local GetSpellInfo = C_Spell and C_Spell.GetSpellInfo and addon.GetSpellInfo or _G.GetSpellInfo
-local GetSpellTexture = C_Spell and C_Spell.GetSpellTexture or _G.GetSpellTexture
-local GetSpellSubtext = C_Spell and C_Spell.GetSpellSubtext or _G.GetSpellSubtext
-local IsCurrentSpell = C_Spell and C_Spell.IsCurrentSpell or _G.IsCurrentSpell
-local IsSpellKnown = C_Spell and C_Spell.IsSpellKnown or _G.IsSpellKnown
-local IsPlayerSpell = C_Spell and C_Spell.IsPlayerSpell or _G.IsPlayerSpell
+-- local GetSpellTexture = C_Spell and C_Spell.GetSpellTexture or _G.GetSpellTexture
+-- local GetSpellSubtext = C_Spell and C_Spell.GetSpellSubtext or _G.GetSpellSubtext
+-- local IsCurrentSpell = C_Spell and C_Spell.IsCurrentSpell or _G.IsCurrentSpell
+-- local IsSpellKnown = C_Spell and C_Spell.IsSpellKnown or _G.IsSpellKnown
+-- local IsPlayerSpell = C_Spell and C_Spell.IsPlayerSpell or _G.IsPlayerSpell
 local GetItemInfo = C_Item and C_Item.GetItemInfo or _G.GetItemInfo
 --local GetItemCount = C_Item and C_Item.GetItemCount or _G.GetItemCount
 
 -- start, duration, enabled, modRate = GetSpellCooldown(spell)
-local GetSpellCooldown = _G.GetSpellCooldown or function(spellIdentifier)
-    if C_Spell and C_Spell.GetSpellCooldown then
-        local info = C_Spell.GetSpellCooldown(spellIdentifier)
-        return info.startTime, info.start, info.duration, info.enabled, info.modRate
-    end
-end
+local GetSpellCooldown = addon.GetSpellCooldown
 
 local GetItemCooldown = (C_Container and C_Container.GetItemCooldown or _G.GetItemCooldown) or function(searchItemID)
 	local searchItemName = GetItemInfo(searchItemID);
@@ -190,7 +185,7 @@ local function UpdateCooldowns()
                 start,duration = GetItemCooldown(id)
             end
             --local remaining, cd
-            if start and duration then
+            if not (addon.IsSecretValue(start) or addon.IsSecretValue(duration)) and start and duration then
                 --remaining = start + duration - GetTime()
                 --cd = FormatCooldown(start,remaining,enable)
                 btn.cooldown:SetCooldown(start,duration)
@@ -208,19 +203,48 @@ local function UpdateCooldowns()
     end
 end
 
-local function UpdateIconFrameVisuals(self,updateFrame)
+local function UpdateV1IconFrameVisuals(self, updateFrame)
     self:ClearBackdrop()
+
     if not addon.settings.profile.activeItemHideBG then
         self:SetBackdrop(addon.RXPFrame.backdrop.edge)
+
         local r, g, b = unpack(addon.colors.background)
         self:SetBackdropColor(r, g, b, 0.4)
     end
+
     self.title:ClearBackdrop()
     self.title:SetBackdrop(addon.RXPFrame.backdrop.edge)
     self.title:SetBackdropColor(unpack(addon.colors.background))
+
     self.title.text:SetFont(addon.font, 9, "")
     self.title.text:SetTextColor(unpack(addon.activeTheme.textColor))
-    self.title:SetSize(self.title.text:GetStringWidth() + 14, 19)
+
+    self.title:SetSize(self.title.text:GetStringWidth() + 10, 19)
+
+    if updateFrame and self.UpdateFrame then return self:UpdateFrame() end
+end
+
+local function UpdateV2IconFrameVisuals(self, updateFrame)
+    local theme = addon.v2:GetTheme()
+
+    if addon.settings.profile.activeItemHideBG then
+        addon.ui.v2:SetFrameBackdropShown(self, false)
+    else
+        addon.ui.v2:ApplyFrameBackdrop(self, theme.edge, theme.backgroundColors.common,
+                                       theme.borderColors.commonEdge)
+        addon.ui.v2:AddFrameShadow(self)
+        addon.ui.v2:SetFrameBackdropShown(self, true)
+    end
+
+    addon.ui.v2:ApplyFrameBackdrop(self.title, theme.edge, theme.backgroundColors.common,
+                                   theme.borderColors.commonEdge)
+
+    self.title.text:SetFont(addon.font, 9, "")
+    self.title.text:SetTextColor(unpack(theme.textColor.title))
+
+    self.title:SetSize(self.title.text:GetStringWidth() + 10, 19)
+
     if updateFrame and self.UpdateFrame then
         return self:UpdateFrame()
     end
@@ -245,6 +269,7 @@ function addon.CreateActiveItemFrame(self, anchor, enableText)
                                            BackdropTemplate)
         f = self.activeItemFrame
     end
+    f.v2 = addon.v2:IsGuideWindowEnabled()
 
     addon.enabledFrames["activeItemFrame"] = f
     f.IsFeatureEnabled = function()
@@ -254,9 +279,11 @@ function addon.CreateActiveItemFrame(self, anchor, enableText)
 
     f.onMouseDown = function()
         if addon.settings.profile.lockFrames and not IsAltKeyDown() then return end
+        if InCombatLockdown() and f:IsProtected() then return end
         f:StartMoving()
     end
     function f.onMouseUp()
+        if InCombatLockdown() and f:IsProtected() then return end
         f:StopMovingOrSizing()
         addon.settings:SaveFramePositions()
     end
@@ -267,28 +294,30 @@ function addon.CreateActiveItemFrame(self, anchor, enableText)
     f:SetPoint("CENTER", anchor, "CENTER", 0, 0)
 
     f:RegisterEvent("SPELL_UPDATE_COOLDOWN")
+    f:RegisterEvent("PLAYER_REGEN_ENABLED")
     f:SetScript("OnEvent",UpdateCooldowns)
 
     if not f.title then
         f.title = CreateFrame("Frame", "$parent_title", f, BackdropTemplate)
-        f.title:SetPoint("TOPLEFT", f, 5, 5)
+        f.title:SetPoint("TOPLEFT", f, 5, 10)
+        f.title:SetFrameLevel(f:GetFrameLevel() + 3)
         f.title.text = f.title:CreateFontString(nil, "OVERLAY")
         f.title.text:ClearAllPoints()
-        f.title.text:SetPoint("CENTER", f.title, 2, 1)
+        f.title.text:SetPoint("CENTER", f.title, 0, 0)
         f.title.text:SetJustifyH("CENTER")
         f.title.text:SetJustifyV("MIDDLE")
-        f.title.text:SetTextColor(unpack(addon.activeTheme.textColor))
         f.title.text:SetFont(addon.font, 9, "")
         f.title.text:SetText(L"Active Items")
         f.title:EnableMouse(true)
         f.title:SetScript("OnMouseDown", f.onMouseDown)
         f.title:SetScript("OnMouseUp", f.onMouseUp)
     end
-    f.UpdateVisuals = UpdateIconFrameVisuals
+
+    f.UpdateVisuals = f.v2 and UpdateV2IconFrameVisuals or UpdateV1IconFrameVisuals
     f.UpdateFrame = addon.UpdateItemFrame
     f:UpdateVisuals()
-
-    f:SetHeight(40);
+    f:SetHeight(43)
+    f:Hide()
 end
 
 local fOnEnter = function(self)
@@ -347,10 +376,34 @@ function addon.UpdateItemFrame(itemFrame)
     ]]
 
     if InCombatLockdown() then return end
+
+    if addon.player.houseGUID then
+        if not RXPTELEPORTTO then
+            local a = CreateFrame("Button", "RXPTELEPORTTO", nil, "SecureActionButtonTemplate")
+            a:SetSize(1,1)
+            a:SetAttribute("useOnKeyDown", false)
+            a:SetScript("PostClick", nil)
+            a:RegisterForClicks("AnyDown", "AnyUp")
+            a:SetAttribute("type", "teleporthome")
+            a:SetAttribute("house-neighborhood-guid", addon.player.neighborhoodGUID)
+            a:SetAttribute("house-guid", addon.player.houseGUID)
+            a:SetAttribute("house-plot-id", addon.player.plotID)
+        end
+
+        if not RXPTELEPORTHOME then
+            local a = CreateFrame("Button", "RXPTELEPORTHOME", nil, "SecureActionButtonTemplate")
+            a:SetSize(1,1)
+            a:SetAttribute("useOnKeyDown", false)
+            a:SetScript("PostClick", nil)
+            a:RegisterForClicks("AnyDown", "AnyUp")
+            a:SetAttribute("type", "returnhome")
+        end
+    end
+
     local buttonList = itemFrame.buttonList
     local itemList = GetActiveItemList()
 
-    itemFrame.title:SetSize(itemFrame.title.text:GetStringWidth() + 10, 17)
+    itemFrame.title:SetSize(itemFrame.title.text:GetStringWidth() + 10, 19)
     local i = 0
     for _, item in ipairs(itemList) do
         i = i + 1
@@ -369,7 +422,7 @@ function addon.UpdateItemFrame(itemFrame)
 
             btn:ClearAllPoints()
             if n == 1 then
-                btn:SetPoint("BOTTOMLEFT", itemFrame, "BOTTOMLEFT", 6, 6)
+                btn:SetPoint("BOTTOMLEFT", itemFrame, "BOTTOMLEFT", 4, 2)
             else
                 btn:SetPoint("CENTER", buttonList[n - 1], "CENTER", 27, 0)
             end

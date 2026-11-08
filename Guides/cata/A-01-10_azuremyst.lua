@@ -1,13 +1,13 @@
 local _,addon = ...
 if addon.gameVersion < 40000 or addon.player.faction == 'Horde' then return end
 --TODO: skip the furbolg quests if xp rate is greater than 1x
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 << Alliance
 #name 1-10 Azuremyst Isle
 #version 1
 #group RXP Cataclysm 1-80 (A) << cata
-#group RXP MoP 1-60 (A) << mop
+#group RXP MoP 1-80 (A) << mop
 #cata
 #mop
 #defaultfor Draenei
@@ -202,9 +202,9 @@ step
     .target Botanist Taerix
 step << Mage
     .goto Azuremyst Isle,79.662,46.427
-    >>|cRXP_WARN_Cast|r |T135812:0|t[Fireball] |cRXP_WARN_on the |cRXP_ENEMY_Training Dummy|r until you get a|r |T135731:0|t[Arcane Missles!] |cRXP_WARN_proc, then cast|r |T136096:0|t[Arcane Missiles]|cRXP_WARN_. Repeat this twice|r
+    >>|cRXP_WARN_Cast|r |T135812:0|t[Fireball] |cRXP_WARN_on the |cRXP_ENEMY_Training Dummy|r until you get a|r |T135731:0|t[Arcane Missiles!] |cRXP_WARN_proc, then cast|r |T136096:0|t[Arcane Missiles]|cRXP_WARN_. Repeat this twice|r
     >>|cRXP_WARN_Cast|r |T135848:0|t[Frost Nova] |cRXP_WARN_on the |cRXP_ENEMY_Training Dummy|r. Repeat this twice|r
-    .complete 26968,1 << cata -- Practice Arcane Missles (1)
+    .complete 26968,1 << cata -- Practice Arcane Missiles (1)
     .complete 26968,2 << !cata -- Practice Frost Nova (1)
     .mob Training Dummy
 step << Shaman

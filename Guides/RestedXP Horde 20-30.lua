@@ -1,7 +1,7 @@
 local faction = UnitFactionGroup("player")
 if faction == "Alliance" then return end
 
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #tbc
 #wotlk
@@ -9,6 +9,7 @@ RXPGuides.RegisterGuide([[
 #name 20-23 Stonetalon / The Barrens
 #version 1
 #group RestedXP Horde 1-30
+#groupid RXP-SRGCE-H1
 #next 23-27 Hillsbrad / Ashenvale
 #xprate <1.5
 
@@ -585,7 +586,7 @@ step
     .complete 848,1 --Collect Fungal Spores (x4)
     .isOnQuest 848
 step
-    >>Dive underwater to the bubble fissure
+    >>Dive underwater to the Bubbling Fissure
     .goto The Barrens,45.1,22.5
     .complete 870,1 --Explore the waters of the Forgotten Pools
     .isOnQuest 870
@@ -829,7 +830,7 @@ step
     .complete 865,1 --Collect Intact Raptor Horn (x5)
     .isOnQuest 865
 step
-    >>Click the Bubble Fissure underwater
+    >>Click the Bubbling Fissure underwater
     .goto The Barrens,55.6,42.7
     .complete 877,1 --Collect Test the Dried Seeds (x1)
     .isOnQuest 877
@@ -898,14 +899,14 @@ step
     .goto The Barrens,44.5,59.2
     .fp Camp Taurajo >> Get the Camp Taurajo flight path
 step << Warlock tbc
-    >>Kill Quillboars en route to here
+    >>Kill Quilboars en route to here
     .goto The Barrens,43.305,47.885
 >>Talk to |cRXP_FRIENDLY_Grunt Dogran|r
     .turnin 1515 >>Turn in Dogran's Captivity
 .target Grunt Dogran
     .accept 1512 >>Accept Love's Gift
 step
-    >>Kill a LOT of Quillboars. Prioritize Thornweavers, Water Seekers, and Geomancers where you can. Loot them for their tusks. Save the Blood Shards you get
+    >>Kill a LOT of Quilboars. Prioritize Thornweavers, Water Seekers, and Geomancers where you can. Loot them for their tusks. Save the Blood Shards you get
     *Water Seekers only spawn in the south western most camps. Go East or North West for Geomancers / Thornweavers.
     .goto The Barrens,47.1,53.3,50,0
     .goto The Barrens,42.2,48.3,50,0
@@ -1672,6 +1673,7 @@ RXPGuides.RegisterGuide([[
 #name 22-25 Hillsbrad / South Barrens
 #version 1
 #group RestedXP Horde 1-30
+#groupid RXP-SRGCE-H1
 #next 25-26 Stonetalon; 26-30 Ashenvale / Thousand Needles
 #xprate <1.5
 
@@ -1708,7 +1710,7 @@ step << Blood Elf !Warlock wotlk
     >> Teleport to The Undercity if you can << Mage
     .zone Undercity >> Click on the Orb of Translocation to head to the Undercity
 step << Druid tbc
-    >>Loot the gray chest underwater next to the bubble fissure (in the fatigue).
+    >>Loot the gray chest underwater next to the Bubbling Fissure (in the fatigue).
     .goto Silverpine Forest,30.0,29.1
     .collect 15882,1
     --Video link in future?
@@ -3000,6 +3002,7 @@ RXPGuides.RegisterGuide([[
 #next 26-30 Ashenvale / Thousand Needles
 #version 1
 #group RestedXP Horde 1-30
+#groupid RXP-SRGCE-H1
 #xprate <1.5
 
 step
@@ -3062,7 +3065,7 @@ step
 step
 	#completewith next
     .goto Stonetalon Mountains,32.60,67.40,0
-     >> Kill Fire Elementals. Loot them for Increndrite
+     >> Kill Fire Elementals. Loot them for Incendrite
     .complete 6393,1
 step
     .goto Stonetalon Mountains,31.10,61.27
@@ -3096,7 +3099,7 @@ step
 step
 	#completewith next
     .goto Stonetalon Mountains,32.60,67.40,0
-     >> Kill Fire Elementals. Loot them for Increndrite
+     >> Kill Fire Elementals. Loot them for Incendrite
     .complete 6393,1
 step
 	#sticky
@@ -3106,7 +3109,7 @@ step
 	.complete 6381,1
 step
     .goto Stonetalon Mountains,32.60,67.40
-     >> Kill Fire Elementals. Loot them for Increndrite
+     >> Kill Fire Elementals. Loot them for Incendrite
     .complete 6393,1
 step
     #label Ripper
@@ -3145,6 +3148,7 @@ RXPGuides.RegisterGuide([[
 #name 26-30 Ashenvale / Thousand Needles
 #version 1
 #group RestedXP Horde 1-30
+#groupid RXP-SRGCE-H1
 #next RestedXP Horde 30-45\30-33 Hillsbrad / Arathi / Shimmering Flats
 #xprate <1.5
 
@@ -4741,6 +4745,7 @@ RXPGuides.RegisterGuide([[
 #name 22-25 Hillsbrad Foothills JJ
 #version 1
 #group RestedXP Horde 1-30
+#groupid RXP-SRGCE-H1
 #next 25-27 Ashenvale JJ
 #xprate >1.4999
 
@@ -6564,6 +6569,7 @@ RXPGuides.RegisterGuide([[
 #name 25-27 Ashenvale JJ
 #version 1
 #group RestedXP Horde 1-30
+#groupid RXP-SRGCE-H1
 #next 27-28 Southern Barrens JJ
 #xprate >1.4999
 
@@ -7455,7 +7461,7 @@ step << !Shaman !Warrior
  step << !Shaman !Warrior
     #completewith JornTravel
     .line The Barrens,46.4,72.5,46.2,71.4,46.1,70.5,46.1,67.7,45.7,66.7,45.5,66.4,45.1,65.0,45.0,63.7,45.4,63.0,47.1,61.7,48.6,60.3,48.9,59.4,48.6,57.8,48.6,57.0,49.5,55.0,49.4,53.7,47.5,50.6,46.0,47.7,45.9,47.2,46.5,46.6,45.8,44.9,45.1,43.8,44.7,42.7,44.7,42.2,45.2,41.4,45.7,41.3,46.2,42.1,46.2,42.8,46.9,42.8,47.7,42.4,48.5,42.3,49.1,42.3,50.0,43.1,50.2,45.0,50.0,46.2,49.8,47.6,49.2,48.3,48.9,50.1,48.5,50.9,48.6,52.1,49.1,52.7,49.0,55.6,48.6,57.1,48.7,58.1,48.7,59.4,49.5,59.7,49.9,60.3,50.0,61.0,49.0,61.7,47.9,64.2,47.5,65.1,46.8,65.9,46.7,66.4,46.2,67.3,46.2,70.9,46.9,72.0,47.3,72.9,47.4,73.6,47.3,75.4,46.9,76.8,46.8,78.2,46.9,80.8,47.2,81.2,47.8,81.1,48.2,80.2,48.5,79.7,48.6,79.0,48.4,77.1,48.1,76.5,47.7,74.8,47.3,73.6,46.4,72.5
-    >>Kill |cRXP_ENEMY_Aean Swiftriver|r. She patrolls in a pack of mobs in a large area in southern Barrens. Loot her for her |T134939:0|t[|cRXP_LOOT_Runed Scroll|r]
+    >>Kill |cRXP_ENEMY_Aean Swiftriver|r. She patrols in a pack of mobs in a large area in southern Barrens. Loot her for her |T134939:0|t[|cRXP_LOOT_Runed Scroll|r]
     >>|cRXP_WARN_Use the |T134939:0|t[|cRXP_LOOT_Runed Scroll|r] to start the quest|r
     >>|cRXP_WARN_Try to split pull her. Kite her toward the Camp Taurajo guards if possible|r
     >>|cRXP_WARN_Skip this step if you cannot find her or kill her|r
@@ -8461,6 +8467,7 @@ RXPGuides.RegisterGuide([[
 #name 27-28 Southern Barrens JJ
 #version 1
 #group RestedXP Horde 1-30
+#groupid RXP-SRGCE-H1
 #next 28-30 Thousand Needles JJ
 #xprate >1.4999
 
@@ -9280,6 +9287,7 @@ RXPGuides.RegisterGuide([[
 #name 28-30 Thousand Needles JJ
 #version 1
 #group RestedXP Horde 1-30
+#groupid RXP-SRGCE-H1
 #next RestedXP Horde 30-45\30-32 Hillsbrad/Arathi JJ
 #xprate >1.4999
 

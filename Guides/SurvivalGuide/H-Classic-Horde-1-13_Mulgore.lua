@@ -2,7 +2,7 @@ local faction = UnitFactionGroup("player")
 if faction == "Alliance" then return end
 
 
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #hardcore
 #classic
@@ -658,7 +658,7 @@ step
     .unitscan Snagglespear
 step
     .goto Mulgore,47.63,61.49
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jhwana|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jhawna|r
     >>|cRXP_BUY_Buy|r |T132815:0|t[Ice Cold Milk] |cRXP_BUY_from her|r << Shaman/Druid
     >>|cRXP_BUY_Buy|r |T133968:0|t[Freshly Baked Bread] |cRXP_BUY_from her|r << Warrior
     .vendor >> Vendor trash
@@ -899,7 +899,7 @@ step << Hunter
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<3.0
 step << Hunter
     .goto Mulgore,45.86,57.67
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_Talk to|r |cRXP_FRIENDLY_Loorat|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_Talk to|r |cRXP_FRIENDLY_Moorat|r
     .collect 2516,1000,743,1 << Hunter --Light Shot (1000)
     .target Moorat Longstride
     .itemcount 2512,<800 << Hunter
@@ -943,6 +943,7 @@ step << Tauren
     .goto Mulgore,48.53,60.40
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mull|r
     .turnin 756 >>Turn in Thunderhorn Totem
+    .timer 8,Thunderhorn Totem RP
     .accept 758 >>Accept Thunderhorn Cleansing
     .target Mull Thunderhorn
 step
@@ -1125,29 +1126,28 @@ step
     .mob Taloned Swoop
 step
     #loop
-	.goto Mulgore,50.79,29.37,0
-	.goto Mulgore,59.52,23.36,60,0
-	.goto Mulgore,57.51,19.08,60,0
-	.goto Mulgore,55.21,18.67,60,0
-	.goto Mulgore,52.99,17.34,60,0
-	.goto Mulgore,51.00,18.40,60,0
-	.goto Mulgore,49.84,20.74,60,0
-	.goto Mulgore,49.82,23.69,60,0
-	.goto Mulgore,49.52,26.10,60,0
-	.goto Mulgore,49.72,28.14,60,0
-	.goto Mulgore,50.79,29.37,60,0
-	.goto Mulgore,52.24,30.07,60,0
-	.goto Mulgore,54.21,30.43,60,0
-	.goto Mulgore,56.15,30.35,60,0
-	.goto Mulgore,57.77,30.48,60,0
-	.goto Mulgore,58.79,28.52,60,0
-	.goto Mulgore,60.56,25.88,60,0
-	.goto Mulgore,59.52,23.36,60,0
+    .goto Mulgore,55.06,32.48,0
+    .goto Mulgore,55.06,32.48,60,0
+    .goto Mulgore,53.84,40.80,60,0
+    .goto Mulgore,53.19,45.16,60,0
+    .goto Mulgore,57.45,48.86,60,0
+    .goto Mulgore,59.04,52.79,60,0
+    .goto Mulgore,59.12,58.09,60,0
+    .goto Mulgore,48.67,44.84,60,0
     >>|cRXP_WARN_Finish getting the items for Mazzranache|r
     .complete 766,1 --Prairie Wolf Heart (1)
+    .mob +Prairie Wolf Alpha
+    .mob +Prairie Stalker
+    .mob +Prairie Wolf Alpha
     .complete 766,2 --Flatland Cougar Femur (1)
+    .mob +Flatland Cougar
     .complete 766,3 --Plainstrider Scale (1)
+    .mob +Elder Plainstrider
+    .mob +Adult Plainstrider
     .complete 766,4 --Swoop Gizzard (1)
+    .mob +Taloned Swoop
+    .mob +Swoop
+    .mob +Wiry Swoop
 step
     #optional
     #loop
@@ -1394,7 +1394,7 @@ step << Hunter
     .target Yaw Sharpmane
 step
     .goto Mulgore,47.63,61.49
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jhwana|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jhawna|r
     >>|cRXP_BUY_Buy|r |T132815:0|t[Ice Cold Milk] |cRXP_BUY_from her|r << Shaman/Druid
     >>|cRXP_BUY_Buy|r |T133968:0|t[Freshly Baked Bread] |cRXP_BUY_from her|r << Warrior
     .collect 1179,20,818,1 << Shaman/Druid --Ice Cold Milk (20)
@@ -1415,8 +1415,8 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Morin|r
     >>|cRXP_WARN_He patrols along the eastern road|r
     .turnin 751 >> Turn in The Ravaged Caravan
-    .accept 764 >> The Venture Co
-    .accept 765 >> Supervisor Fizsprocket
+    .accept 764 >> Accept The Venture Co
+    .accept 765 >> Accept Supervisor Fizsprocket
 	.unitscan Morin Cloudstalker
     .group
 step
@@ -1498,7 +1498,7 @@ step << Hunter
     .goto Mulgore,67.62,59.06,50,0
     .goto Mulgore,66.34,67.01,50,0
     .cast 1515 >>Tame a |cRXP_ENEMY_Prairie Wolf Alpha|r
-    >>|cRXP_WARN_This will allow you to train|r |T132140:0|t[Claw Rank 2]
+    >>|cRXP_WARN_This will allow you to train|r |T132278:0|t[Bite Rank 2]
     .mob Prairie Wolf Alpha
 step
     #completewith next
@@ -1518,7 +1518,7 @@ step << Tauren
 step
     #completewith next
     .subzone 380 >>Travel north toward The Crossroads
-    >>|cRXP_WARN_Make sure you stay on the road. Otherwise you may agro high level mobs|r
+    >>|cRXP_WARN_Make sure you stay on the road. Otherwise you may aggro high level mobs|r
  step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tonga|r, |cRXP_FRIENDLY_Sergra|r, |cRXP_FRIENDLY_Gazrog|r |cRXP_FRIENDLY_Thork|r and |cRXP_FRIENDLY_Jahan|r
     .accept 870 >>Accept The Forgotten Pools
@@ -1615,7 +1615,6 @@ step << Druid
 step << Druid
     #completewith next
     .cast 18960 >>Cast |T135758:0|t[Teleport: Moonglade]
-    .zoneskip Moonglade
 step << Druid
     .goto Moonglade,56.21,30.64
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dendrite|r
@@ -1722,7 +1721,7 @@ step << Druid
     .zoneskip The Barrens
 step << Hunter/Druid
     #label ReturntoJahan
-    .goto The Barrens,51.2,29.1
+    .goto The Barrens,51.21,29.05
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jahan|r
     .turnin 6364 >>Turn in Return to Jahan
     .target Jahan Hawkwing
@@ -2600,7 +2599,7 @@ step << Hunter
     .xp <12,1
 step << Hunter
     .goto Orgrimmar,66.06,18.50
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ormakl|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ormak|r
     .train 14281 >> Train your class spells
     .target Ormak Grimshot
     .xp <12,1
@@ -2981,7 +2980,7 @@ step << Shaman/Warrior
     .subzoneskip 380
 step << Shaman/Warrior
     #label ReturntoJahan2
-    .goto The Barrens,51.2,29.1
+    .goto The Barrens,51.21,29.05
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jahan|r
     .turnin 6364 >>Turn in Return to Jahan
     .target Jahan Hawkwing

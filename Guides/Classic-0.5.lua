@@ -1,4 +1,4 @@
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #classic
 #tbc
@@ -13,6 +13,8 @@ RXPGuides.RegisterGuide([[
 #subgroup Heroism Set Guide << Warrior
 #subgroup Virtuous Set Guide << Priest
 #name Part 1: Bracers
+#guideKind gearset
+#guideIcon rxp-icon-quest
 #next Part 2: Belt & Gloves
 
 
@@ -229,6 +231,8 @@ RXPGuides.RegisterGuide([[
 #subgroup Heroism Set Guide << Warrior
 #subgroup Virtuous Set Guide << Priest
 #name Part 2: Belt & Gloves
+#guideKind gearset
+#guideIcon rxp-icon-quest
 #next Part 3: Pants, Shoulders & Boots
 
 
@@ -673,6 +677,8 @@ RXPGuides.RegisterGuide([[
 #subgroup Heroism Set Guide << Warrior
 #subgroup Virtuous Set Guide << Priest
 #name Part 3: Pants, Shoulders & Boots
+#guideKind gearset
+#guideIcon rxp-icon-quest
 #next Part 4: Helm & Chest
 
 step
@@ -845,7 +851,7 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anthion|r
     .use 22115 >>|cRXP_WARN_Use the|r |T133878:0|t[Extra-Dimensional Ghost Revealer] |cRXP_WARN_to reveal|r |cRXP_FRIENDLY_Anthion|r
     .turnin 8929 >>Turn in In Search of Anthion << Alliance
-    .turnin 8930 >>Turn in Search of Anthion << Horde
+    .turnin 8930 >>Turn in In Search of Anthion << Horde
     .accept 8945 >>Accept Dead Man's Plea
     .target Anthion Harmon
 step
@@ -1155,6 +1161,8 @@ RXPGuides.RegisterGuide([[
 #subgroup Heroism Set Guide << Warrior
 #subgroup Virtuous Set Guide << Priest
 #name Part 4: Helm & Chest
+#guideKind gearset
+#guideIcon rxp-icon-quest
 
 
 step

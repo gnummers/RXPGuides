@@ -3,14 +3,7 @@ local _, addon = ...
 if addon.gameVersion > 50000 then return end
 
 local GameTooltip = _G.GameTooltip
-local LibDD = LibStub:GetLibrary("LibUIDropDownMenu-4.0", true)
-local EasyMenu = function(...)
-    if _G.EasyMenu then
-        _G.EasyMenu(...)
-    else
-        LibDD:EasyMenu(...)
-    end
-end
+local EasyMenu = function(...) addon:ShowMenu(...) end
 
 local fmt, sgmatch, strsplittable, strjoin = string.format, string.gmatch, strsplittable, string.join
 local tonumber = tonumber
@@ -27,6 +20,7 @@ local L = addon.locale.Get
 addon.talents = addon:NewModule("Talents", "AceEvent-3.0")
 addon.talents.functions = {}
 addon.talents.guides = {}
+addon.talents.pendingGuides = {}
 addon.talents.maxLevel = GetMaxPlayerLevel()
 
 addon.talents.petGuides = {
@@ -196,7 +190,9 @@ local function buildTalentGuidesMenu()
     return menu
 end
 
-function addon.talents:IsSupported() return self.guides and next(self.guides) ~= nil and compatible end
+function addon.talents:IsSupported()
+    return compatible and (next(self.guides) ~= nil or self.pendingGuides and #self.pendingGuides > 0)
+end
 
 function addon.talents:Setup()
     if not addon.settings.profile.enableTalentGuides then return end
@@ -204,8 +200,9 @@ function addon.talents:Setup()
     if not self:IsSupported() then return end
 
     self:RegisterEvent("ADDON_LOADED")
-
-    self:UpdateSelectedGuide(RXPCData.activeTalentGuide)
+    if _G.PlayerTalentFrame then
+        self:ADDON_LOADED(nil, "Blizzard_TalentUI")
+    end
 
     if tonumber(GetCVar("previewTalents")) == 0 and addon.game == "WOTLK" and addon.settings.profile.previewTalents then
         -- Talents are enabled in RXP, so match client
@@ -217,13 +214,20 @@ end
 function addon.talents:ADDON_LOADED(_, loadedAddon)
     -- Talent frame/globals get loaded on demand when it's first opened
     if loadedAddon == "Blizzard_TalentUI" then
-        _G.PlayerTalentFrame:HookScript("OnShow", function() addon.talents:HookUI() end)
+        _G.PlayerTalentFrame:HookScript("OnShow", function()
+            self:LoadGuides()
+            self:HookUI()
+        end)
 
         _G.PlayerTalentFrame:HookScript("OnUpdate", function() self:DrawTalents() end)
 
         PlayerTalentFrame = _G.PlayerTalentFrame
 
         self:BuildIndexLookup()
+        if PlayerTalentFrame:IsShown() then
+            self:LoadGuides()
+            self:HookUI()
+        end
     elseif loadedAddon == "Talented" then
         compatible = false
         addon.comms.PrettyPrint(L("Talented detected, please disable for talent guide functionality")) -- TODO locale
@@ -270,7 +274,7 @@ function addon.talents:UpdateTalentsButton()
     -- Build a button to match Wrath dual-spec talent tabs
     if not button then
         button = CreateFrame("Button", "$parentRXPTalents", iconReference.frame)
-        button:SetNormalTexture(addon.GetTexture("rxp_logo-64"))
+        button:SetNormalTexture(addon.GetV1Texture("rxp_logo-64"))
 
         button.bg = button:CreateTexture("$parentBG", "BACKGROUND")
         button.bg:SetSize(64, 64)
@@ -344,7 +348,7 @@ function addon.talents:HookUI()
     end
 end
 
-function addon.talents.RegisterGuide(text)
+local function registerGuide(text)
     local guide = addon.talents:ParseGuide(text)
 
     if not (guide and guide.key) then return end
@@ -355,6 +359,24 @@ function addon.talents.RegisterGuide(text)
     end
 
     addon.talents.guides[guide.key] = guide
+end
+
+function addon.talents.RegisterGuide(text)
+    if addon.talents.pendingGuides then
+        tinsert(addon.talents.pendingGuides, text)
+    else
+        registerGuide(text)
+    end
+end
+
+function addon.talents:LoadGuides()
+    if not self.pendingGuides then return end
+
+    for _, text in ipairs(self.pendingGuides) do
+        registerGuide(text)
+    end
+    self.pendingGuides = nil
+    self:UpdateSelectedGuide(RXPCData.activeTalentGuide)
 end
 
 function addon.talents:ParseGuide(text)

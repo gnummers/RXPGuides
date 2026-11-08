@@ -39,21 +39,23 @@ addon.defaultGuideList = {
 ]]
 
 local minLevel = 1
-
+local L = addon.locale.Get
 if addon.player.class == "DEATHKNIGHT" then
-    addon.defaultGroup = "RestedXP Death Knight Start"
+    addon.defaultGroup = L"RestedXP Death Knight Start"
     minLevel = 55
 elseif faction == "Horde" then
-    addon.defaultGroup = "RXP MoP 1-60 (H)"
+    addon.defaultGroup = L"RXP MoP 1-80 (H)"
 elseif faction == "Alliance" then
-    addon.defaultGroup = "RXP MoP 1-60 (A)"
+    addon.defaultGroup = L"RXP MoP 1-80 (A)"
 end
 
 function addon.LoadDefaultGuide()
     local played
-    if not addon.tracker.waitingForTimePlayed then
-        local login = addon.tracker.state.login
-        played = difftime(time(),login.time) + login.totalTimePlayed
+    if addon.tracker.state and addon.tracker.state.login then
+        if not addon.tracker.waitingForTimePlayed then
+            local login = addon.tracker.state.login
+            played = difftime(time(),login.time) + login.totalTimePlayed
+        end
     end
     if not played then
         C_Timer.After(5,addon.LoadDefaultGuide)
@@ -915,7 +917,9 @@ addon.mapId = {
 }]]
 
 
-addon.mapConversion = addon.mapConversion or {}
+addon.mapConversion = addon.mapConversion or {
+    [870] = 1064,--Isle of thunder map ID changed in 5.4
+}
 
 
 --See TaxiNodes dbc table for reference

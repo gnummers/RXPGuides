@@ -1,10 +1,10 @@
 local _,addon = ...
 if addon.gameVersion < 40000 or addon.player.faction == 'Horde' then return end
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 
 #group RXP Cataclysm 1-80 (A) << cata
-#group RXP MoP 1-60 (A) << mop
+#group RXP MoP 1-80 (A) << mop
 #cata
 #mop
 #name 1-6 Northshire Valley
@@ -593,7 +593,7 @@ step
 RXPGuides.RegisterGuide([[
 #version 1
 #group RXP Cataclysm 1-80 (A) << cata
-#group RXP MoP 1-60 (A) << mop
+#group RXP MoP 1-80 (A) << mop
 #cata
 #mop
 #name 6-9 Elwynn Forest
@@ -647,7 +647,7 @@ step << cata Shaman
 step << cata Shaman
     #xprate <1.2
     .goto 1426/0,-536.50000,-5581.50000
-    .train 331 >> Train |T136052:0|tHeaing Wave at the Kharanos Inn
+    .train 331 >> Train |T136052:0|tHealing Wave at the Kharanos Inn
 step << Gnome
 #xprate >1.19
     #optional
@@ -733,7 +733,7 @@ step << skip
     #optional
     #completewith RemyTT
     .goto 37,41.95,67.16,0
-    +|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lien Farmer|r next to |cRXP_FRIENDLY_Remy "Two Times"|r if you wish to train Professions
+    +|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lien Farner|r next to |cRXP_FRIENDLY_Remy "Two Times"|r if you wish to train Professions
     .target Lien Farner
 step
     #optional
@@ -1121,7 +1121,7 @@ step << Human
     .goto 37,57.29,62.51,40,0
     .goto 37,55.14,63.48,40,0
     .goto 37,54.79,66.42,40,0
-    >>Kill |cRXP_ENEMY_Murloc Steamrunners|r and |cRXP_ENEMY_Murlocs|r. Loot them for their |cRXP_LOOT_Crystal Kelp Frond|r
+    >>Kill |cRXP_ENEMY_Murloc Streamrunners|r and |cRXP_ENEMY_Murlocs|r. Loot them for their |cRXP_LOOT_Crystal Kelp Frond|r
     .complete 112,1 --Crystal Kelp Frond (4)
     .mob Murloc Steamrunner
     .mob Murloc

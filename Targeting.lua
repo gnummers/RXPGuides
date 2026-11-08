@@ -1,17 +1,17 @@
 local addonName, addon = ...
 
-local fmt, tinsert, tremove, mmax, mrand = string.format, table.insert, table.remove, math.max, math.random
+local fmt, tinsert, tremove, mmax, mmin, mrand = string.format, table.insert, table.remove, math.max, math.min,
+                                                 math.random
 local GetMacroInfo, CreateMacro, EditMacro, InCombatLockdown, GetNumMacros = GetMacroInfo, CreateMacro, EditMacro,
                                                                              InCombatLockdown, GetNumMacros
-local TargetUnit, UnitName, next, IsInRaid, UnitIsDead, UnitIsGroupLeader, IsInGroup, UnitOnTaxi, UnitIsPlayer,
-      UnitIsUnit = TargetUnit, UnitName, next, IsInRaid, UnitIsDead, UnitIsGroupLeader, IsInGroup, UnitOnTaxi,
+local TargetUnit, next, IsInRaid, UnitIsDead, UnitIsGroupLeader, IsInGroup, UnitOnTaxi, UnitIsPlayer,
+      UnitIsUnit = TargetUnit, next, IsInRaid, UnitIsDead, UnitIsGroupLeader, IsInGroup, UnitOnTaxi,
                    UnitIsPlayer, UnitIsUnit
 local GetRaidTargetIndex, SetRaidTarget = GetRaidTargetIndex, SetRaidTarget
 local GetTime, FlashClientIcon, PlaySound = GetTime, FlashClientIcon, PlaySound
 local wipe = wipe
 local GetRealZoneText = GetRealZoneText
 local GetNamePlates = C_NamePlate.GetNamePlates
-
 local HBD = LibStub("HereBeDragons-2.0")
 
 local GameTooltip = _G.GameTooltip
@@ -46,10 +46,29 @@ local unitscanList = {}
 
 local rareTargets = {}
 
-
 local pendingLeaderUpdate
 
-UnitName = addon.GetUnitName
+local UnitName = addon.GetUnitName
+
+function addon.targeting:ConfigureTargetButton(button, targetName, kind, index, marking)
+    local macrotext = "/cleartarget\n/targetexact " .. targetName
+
+    -- Retail/Forever cannot SetRaidTarget automatically, leverage button
+    if (addon.game == "FOREVER" or addon.gameVersion >= 120000) and marking then
+        local markerIndex = self:GetMarkerIndex(kind, index)
+        if markerIndex then
+            -- Toggle Friendly markers
+            -- Keep Mob/Unitscan markers
+            -- >= 120000 requires ~N to prevent toggling
+            -- Forever requires ~N to prevent toggling
+            local markerPrefix = kind == "friendly" and "" or (addon.game == "FOREVER" and "!" or "~")
+            macrotext = macrotext .. "\n/tm " .. markerPrefix .. markerIndex
+        end
+    end
+
+    button:SetAttribute("type", "macro")
+    button:SetAttribute("macrotext", macrotext)
+end
 
 function addon.targeting:Setup()
     if not addon.settings.profile.enableTargetMacro then DeleteMacro(self.macroName) end
@@ -100,10 +119,36 @@ function addon.targeting:Setup()
 
         self.ticker = C_Timer.NewTicker(proxmityPolling.frequency, self.CheckTargetProximity)
 
-        self:RegisterEvent("ADDON_ACTION_FORBIDDEN")
+        if StaticPopupDialogs["ADDON_ACTION_FORBIDDEN"] then
+            -- Disables and mutes the annoying dialog that shows up
+            local actionForbiddenText = fmt(ADDON_ACTION_FORBIDDEN, addonName)
 
-        -- Prevent default forbidden UI popup
-        UIParent:UnregisterEvent("ADDON_ACTION_FORBIDDEN")
+            local ForbiddenTextBoxHook = function(this)
+                local text = this.text or this.Text
+                if text and text:GetText() == actionForbiddenText then
+                    if this:IsShown() then this:Hide() end
+
+                    local _, channel = PlaySound(SOUNDKIT.IG_MAINMENU_CLOSE)
+
+                    if channel then
+                        StopSound(channel)
+                        StopSound(channel - 1)
+                    end
+
+                    StaticPopupDialogs["ADDON_ACTION_FORBIDDEN"] = nil
+                end
+            end
+
+            _G.StaticPopup1:HookScript("OnShow", ForbiddenTextBoxHook)
+            _G.StaticPopup1:HookScript("OnHide", ForbiddenTextBoxHook)
+            _G.StaticPopup2:HookScript("OnShow", ForbiddenTextBoxHook)
+            _G.StaticPopup2:HookScript("OnHide", ForbiddenTextBoxHook)
+
+            self:RegisterEvent("ADDON_ACTION_FORBIDDEN")
+
+            -- Prevent default forbidden UI popup
+            UIParent:UnregisterEvent("ADDON_ACTION_FORBIDDEN")
+        end
     end
 
     if addon.rares then
@@ -112,9 +157,7 @@ function addon.targeting:Setup()
     end
 end
 
-function addon.targeting.GetCurrentTargets()
-    return targetList,mobList,unitscanList,rareTargets
-end
+function addon.targeting.GetCurrentTargets() return targetList, mobList, unitscanList, rareTargets end
 
 local function shouldTargetCheck()
     return not IsInRaid() and not UnitOnTaxi("player") and not addon.isCastingHS and
@@ -195,10 +238,16 @@ function addon.targeting:UpdateMacro(queuedTargets)
         addon.ScheduleTask(1.5, AnnounceTargets)
     end
 
-    if content then
-        while #content > 230 do content = content:gsub("^\n?[^\n]*[\n]*", "") end
+    local maxMacroSize = 230
+    local targetMarker = ""
+    if WOW_PROJECT_ID == WOW_PROJECT_CAMELOT or WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then
+        targetMarker = "\n/tm !7"
+        maxMacroSize = 223
+    end
 
-        content = content .. '\n/targetlasttarget [dead]'
+    if content then
+        while #content > maxMacroSize do content = content:gsub("^\n?[^\n]*[\n]*", "") end
+        content = content .. targetMarker .. '\n/targetlasttarget [dead]'
     else
         content = fmt('//%s - %s', addon.title, L("current step has no configured targets")) -- TODO locale
     end
@@ -209,7 +258,7 @@ function addon.targeting:UpdateMacro(queuedTargets)
         nil then
         C_Timer.After(1, function()
             addon.comms.PrettyPrint(L(
-            "A macro has been automatically built to aid in leveling. Please move %s to your action bars."),
+                                        "A macro has been automatically built to aid in leveling. Please move %s to your action bars."),
                                     self.macroName)
 
         end)
@@ -247,9 +296,7 @@ function addon.targeting:UpdateFollowMacro(leaderName)
         return
     end
 
-    if not leaderName then
-        leaderName = addon.comms.state.group.leader
-    end
+    if not leaderName then leaderName = addon.comms.state.group.leader end
 
     if not leaderName then return end
 
@@ -263,17 +310,13 @@ function addon.targeting:PLAYER_REGEN_ENABLED()
 
     self:UpdateTargetFrame()
 
-    if pendingLeaderUpdate then
-        C_Timer.After(mrand(1), function() self:UpdateFollowMacro(pendingLeaderUpdate) end)
-    end
+    if pendingLeaderUpdate then C_Timer.After(mrand(1), function() self:UpdateFollowMacro(pendingLeaderUpdate) end) end
 end
 
 function addon.targeting:CheckNameplate(nameplateID)
     if not nameplateID then return end
 
-    local unitName
-
-    unitName = UnitName(nameplateID)
+    local unitName = UnitName(nameplateID)
 
     if not unitName then return end
 
@@ -339,19 +382,13 @@ function addon.targeting:CheckNameplates()
     for _, nameplate in ipairs(nameplatesArray) do self:CheckNameplate(nameplate.namePlateUnitToken) end
 end
 
-function addon.targeting:PLAYER_ENTERING_WORLD()
-    C_Timer.After(mrand(3), function() self:UpdateFollowMacro() end)
-end
+function addon.targeting:PLAYER_ENTERING_WORLD() C_Timer.After(mrand(3), function() self:UpdateFollowMacro() end) end
 
-function addon.targeting:GROUP_FORMED()
-    C_Timer.After(3 + mrand(2), function() self:UpdateFollowMacro() end)
-end
+function addon.targeting:GROUP_FORMED() C_Timer.After(3 + mrand(2), function() self:UpdateFollowMacro() end) end
 
 function addon.targeting:GROUP_LEFT() self:UpdateFollowMacro("") end
 
-function addon.targeting:PARTY_LEADER_CHANGED()
-    self:UpdateFollowMacro()
-end
+function addon.targeting:PARTY_LEADER_CHANGED() self:UpdateFollowMacro() end
 
 function addon.targeting:NAME_PLATE_UNIT_ADDED(_, nameplateID)
     if not nameplateID or not shouldTargetCheck() then return end
@@ -472,24 +509,28 @@ function addon.targeting:PLAYER_TARGET_CHANGED()
 end
 
 function addon.targeting:GOSSIP_SHOW()
+    if not addon.settings.profile.enableFriendlyTargeting then return end
     local targetUnit = UnitName("target")
-
     if not targetUnit then return end
 
-    if not addon.settings.profile.enableFriendlyTargeting then return end
-
-    -- Return after first match, won't be an enemy and friendly target as the same step
+    local targetIndex
     for i, name in ipairs(targetList) do
         if name == targetUnit then
-            tremove(targetList, i)
-
-            self:UpdateTargetFrame("target")
-            self:UpdateMacro()
-
-            if addon.gameVersion < 120000 and GetRaidTargetIndex("target") ~= nil then SetRaidTarget("target", 0) end
-            return
+            targetIndex = i
+            break
         end
     end
+
+    if not targetIndex then return end
+
+    tremove(targetList, targetIndex)
+    self:UpdateTargetFrame("target")
+    self:UpdateMacro()
+
+    if addon.game == "FOREVER" or addon.gameVersion >= 120000 then return end
+    local marker = GetRaidTargetIndex("target")
+    if not marker or addon.IsSecretValue(marker) then return end
+    SetRaidTarget("target", 0)
 end
 
 addon.targeting.MERCHANT_SHOW = addon.targeting.GOSSIP_SHOW
@@ -498,7 +539,7 @@ addon.targeting.QUEST_GREETING = addon.targeting.GOSSIP_SHOW
 addon.targeting.QUEST_COMPLETE = addon.targeting.GOSSIP_SHOW
 
 function addon.targeting.CheckTargetProximity()
-    if not shouldTargetCheck() or not addon.settings.profile.showTargetingOnProximity then return end
+    if not shouldTargetCheck() or not addon.settings.profile.showTargetingOnProximity or not addon.unitscanEnabled then return end
 
     if addon.settings.profile.enableEnemyTargeting then
         for _, name in pairs(unitscanList) do
@@ -551,27 +592,6 @@ function addon.targeting.CheckTargetProximity()
         end
     end
 end
-
--- Disables and mutes the annoying dialog that shows up
-local actionForbiddenText = fmt(ADDON_ACTION_FORBIDDEN, addonName)
-
-local TextBoxHook = function(self)
-    local text = self.text or self.Text
-    if text and text:GetText() == actionForbiddenText then
-        if self:IsShown() then self:Hide() end
-        local _, channel = PlaySound(SOUNDKIT.IG_MAINMENU_CLOSE)
-        if channel then
-            StopSound(channel)
-            StopSound(channel - 1)
-        end
-        StaticPopupDialogs["ADDON_ACTION_FORBIDDEN"] = nil
-    end
-end
-
-_G.StaticPopup1:HookScript("OnShow", TextBoxHook)
-_G.StaticPopup1:HookScript("OnHide", TextBoxHook)
-_G.StaticPopup2:HookScript("OnShow", TextBoxHook)
-_G.StaticPopup2:HookScript("OnHide", TextBoxHook)
 
 function addon.targeting:ADDON_ACTION_FORBIDDEN(_, forbiddenAddon, func)
     if func ~= "TargetUnit()" or forbiddenAddon ~= addonName then return end
@@ -628,10 +648,13 @@ function addon.targeting:UpdateUnitList()
     local unitscanGenerated = {}
     local mobsGenerated = {}
     local targetsGenerated = {}
-    for _, context in pairs(addon.generatedSteps) do
-        for _, step in ipairs(context) do
-            for _, element in ipairs(step.elements or {}) do
-                AddUnits(element, unitscanGenerated, mobsGenerated, targetsGenerated)
+    for generatedKind, context in pairs(addon.generatedSteps) do
+        -- Only include dangerousMobs in targeting if showTargetingOnProximity
+        if generatedKind ~= "dangerousMobs" or addon.settings.profile.showTargetingOnProximity then
+            for _, step in ipairs(context) do
+                for _, element in ipairs(step.elements or {}) do
+                    AddUnits(element, unitscanGenerated, mobsGenerated, targetsGenerated)
+                end
             end
         end
     end
@@ -780,15 +803,33 @@ end
 
 function addon.targeting:CanCreateMacro() return GetNumMacros() < 119 end
 
-local function UpdateIconFrameVisuals(self, updateFrame)
+local function UpdateV1IconFrameVisuals(self)
     self:SetScale(addon.settings.profile.activeTargetScale or 1)
+
     addon.targeting:RenderTargetFrameBackground()
+
     self.title:ClearBackdrop()
     self.title:SetBackdrop(addon.RXPFrame.backdrop.edge)
     self.title:SetBackdropColor(unpack(addon.colors.background))
+
     self.title.text:SetFont(addon.font, 9, "")
     self.title.text:SetTextColor(unpack(addon.activeTheme.textColor))
-    self.title:SetSize(self.title.text:GetStringWidth() + 14, 19)
+
+    self.title:SetSize(self.title.text:GetStringWidth() + 10, 19)
+end
+
+local function UpdateV2IconFrameVisuals(self)
+    local theme = addon.v2:GetTheme()
+
+    self:SetScale(addon.settings.profile.activeTargetScale or 1)
+
+    addon.targeting:RenderTargetFrameBackground()
+    addon.ui.v2:ApplyFrameBackdrop(self.title, theme.edge, theme.backgroundColors.common, theme.borderColors.commonEdge)
+
+    self.title.text:SetFont(addon.font, 9, "")
+    self.title.text:SetTextColor(unpack(theme.textColor.title))
+
+    self.title:SetSize(self.title.text:GetStringWidth() + 10, 19)
 end
 
 function addon.targeting:CreateTargetFrame()
@@ -798,6 +839,7 @@ function addon.targeting:CreateTargetFrame()
     self.activeTargetFrame = CreateFrame("Frame", "RXPTargetFrame", UIParent,
                                          BackdropTemplateMixin and "BackdropTemplate" or nil)
     local f = self.activeTargetFrame
+    f.v2 = addon.v2:IsGuideWindowEnabled()
 
     f:SetClampedToScreen(true)
     f:EnableMouse(true)
@@ -807,12 +849,13 @@ function addon.targeting:CreateTargetFrame()
     addon.enabledFrames["activeTargetFrame"] = f
     f.IsFeatureEnabled = function()
         if not addon.settings.profile.enableTargetFrame then return nil, true end
+        if (self.activeTargetCount or 0) == 0 then return nil, true end
 
         if addon.settings.profile.showTargetingOnProximity then
             return proxmityPolling.match and shouldTargetCheck(), true
         end
 
-        return shouldTargetCheck()
+        return shouldTargetCheck(), true
     end
 
     self:RenderTargetFrameBackground()
@@ -835,42 +878,47 @@ function addon.targeting:CreateTargetFrame()
     f:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
 
     f.title = CreateFrame("Frame", "$parent_title", f, BackdropTemplateMixin and "BackdropTemplate" or nil)
-    f.title:SetPoint("TOPLEFT", f, 5, 5)
-    f.title:ClearBackdrop()
-    f.title:SetBackdrop(addon.RXPFrame.backdrop.edge)
-    f.title:SetBackdropColor(unpack(addon.colors.background))
-
+    f.title:SetPoint("TOPLEFT", f, 5, 8)
+    f.title:SetFrameLevel(f:GetFrameLevel() + 3)
     f.title.text = f.title:CreateFontString(nil, "OVERLAY")
     f.title.text:ClearAllPoints()
-    f.title.text:SetPoint("CENTER", f.title, 0, 2)
+    f.title.text:SetPoint("CENTER", f.title, 0, 0)
     f.title.text:SetJustifyH("CENTER")
     f.title.text:SetJustifyV("MIDDLE")
-    f.title.text:SetTextColor(unpack(addon.activeTheme.textColor))
     f.title.text:SetFont(addon.font, 9, "")
-    f.title.text:SetText(L"Active Targets")
-
-    f.title:SetSize(f.title.text:GetStringWidth() + 14, 19)
+    f.title.text:SetText(L "Active Targets")
 
     f.title:EnableMouse(true)
     f.title:SetScript("OnMouseDown", f.onMouseDown)
     f.title:SetScript("OnMouseUp", f.onMouseUp)
 
-    f.UpdateVisuals = UpdateIconFrameVisuals
+    f.UpdateVisuals = f.v2 and UpdateV2IconFrameVisuals or UpdateV1IconFrameVisuals
     f:SetHeight(40)
-    f:SetScale(addon.settings.profile.activeTargetScale)
+    f:UpdateVisuals()
 end
 
 function addon.targeting:RenderTargetFrameBackground()
     if not self.activeTargetFrame then return end
 
     local f = self.activeTargetFrame
-    -- print(RXP.activeTheme.texturePath)
+    if not f.v2 then
+        if addon.settings.profile.hideActiveTargetsBackground then
+            f:ClearBackdrop()
+        else
+            f:ClearBackdrop()
+            f:SetBackdrop(addon.RXPFrame.backdrop.edge)
+            f:SetBackdropColor(unpack(addon.colors.background))
+        end
+        return
+    end
+
     if addon.settings.profile.hideActiveTargetsBackground then
-        f:ClearBackdrop()
+        addon.ui.v2:SetFrameBackdropShown(f, false)
     else
-        f:ClearBackdrop()
-        f:SetBackdrop(addon.RXPFrame.backdrop.edge)
-        f:SetBackdropColor(unpack(addon.colors.background))
+        local theme = addon.v2:GetTheme()
+        addon.ui.v2:ApplyFrameBackdrop(f, theme.edge, theme.backgroundColors.common, theme.borderColors.commonEdge)
+        addon.ui.v2:AddFrameShadow(f)
+        addon.ui.v2:SetFrameBackdropShown(f, true)
     end
 end
 
@@ -916,8 +964,8 @@ function addon.targeting:GetMarkerIndex(kind, kindIndex)
         -- 0 % 4 = 0 + 1, 3 % 4 = 3 + 1, 4 % 4 = 0 + 1, 5 % 4 = 1 + 1
         raidTargetIndex = (kindIndex % 4) + 1
     elseif kind == 'unitscan' or kind == 'rare' then
-         -- Use moon 5
-         -- Use Moon for all party members
+        -- Use moon 5
+        -- Use Moon for all party members
         raidTargetIndex = 5
     elseif kind == 'mob' then
         -- Use skull 8, cross 7, square 6
@@ -934,12 +982,11 @@ function addon.targeting:UpdateMarker(kind, unitId, index)
     if IsInGroup() and not UnitIsGroupLeader('player') then
         if not addon.settings.profile.enableNonLeadMarking then return end
     end
-    if addon.gameVersion >= 120000 then
-        return
-    end
+    if addon.game == "FOREVER" or addon.gameVersion >= 120000 then return end
     local markerId = self:GetMarkerIndex(kind, index)
 
-    if GetRaidTargetIndex(unitId) == nil and GetRaidTargetIndex(unitId) ~= markerId then
+    local currentMarker = GetRaidTargetIndex(unitId)
+    if not addon.IsSecretValue(currentMarker) and currentMarker == nil and markerId then
         SetRaidTarget(unitId, markerId)
     end
 end
@@ -1019,6 +1066,10 @@ local function GetUnitTexture(self, name, unit)
 end
 
 local buttonsPerRow = 4
+local function GetTargetGridMetrics(count, rightPadding)
+    return count > 0 and mmin(count, buttonsPerRow) * 27 + rightPadding or 0, ceil(count / buttonsPerRow)
+end
+
 local function RowifyTargets(targetFrame, btn, buttons, kind)
     local buttonKindCount = #buttons
 
@@ -1029,7 +1080,7 @@ local function RowifyTargets(targetFrame, btn, buttons, kind)
 
     if buttonKindCount == 1 then
         if kind == "enemy" then
-            btn:SetPoint("TOPLEFT", targetFrame, "TOPLEFT", 6, -11)
+            btn:SetPoint("TOPLEFT", targetFrame, "TOPLEFT", 6, -15)
         else -- Friendly
             btn:SetPoint("BOTTOMLEFT", targetFrame, "BOTTOMLEFT", 6, 6)
         end
@@ -1053,35 +1104,26 @@ local function RowifyTargets(targetFrame, btn, buttons, kind)
 end
 
 local function ResizeTargetsFrame(targetFrame, friendlyCount, enemyCount)
-    local friendlyWidth = 0
-    local enemyWidth = 0
-    local topDown, bottomUp = 0, 0
-
-    if enemyCount == 0 then
-        topDown = 0
-    elseif enemyCount <= buttonsPerRow then
-        enemyWidth = enemyCount * 27 + 8
-        topDown = 25
-    else
-        -- If > buttonsPerRow, then row 1 has 4 buttons
-        enemyWidth = buttonsPerRow * 27 + 8
-        topDown = 25 * ceil(enemyCount / buttonsPerRow)
-    end
-
-    if friendlyCount == 0 then
-        bottomUp = 0
-    elseif friendlyCount <= buttonsPerRow then
-        friendlyWidth = friendlyCount * 27 + 8
-        bottomUp = 25
-    else
-        friendlyWidth = buttonsPerRow * 27 + 8
-        bottomUp = 25 * ceil(friendlyCount / buttonsPerRow)
-    end
+    local enemyWidth, enemyRows = GetTargetGridMetrics(enemyCount, 10)
+    local friendlyWidth, friendlyRows = GetTargetGridMetrics(friendlyCount, 10)
+    local soloFriendlyRow = enemyRows == 0 and friendlyRows == 1
+    local contentOffset = targetFrame.v2 and 0 or 3
 
     targetFrame:SetWidth(mmax(targetFrame.title:GetWidth() + 10, friendlyWidth, enemyWidth))
+    targetFrame:SetHeight(18 + (enemyRows + friendlyRows) * 25 + (enemyRows > 0 and friendlyRows > 0 and 5 or 0))
 
-    -- Header offset + rows
-    targetFrame:SetHeight(18 + topDown + bottomUp)
+    if enemyRows > 0 then
+        local firstEnemyButton = targetFrame.enemyTargetButtons[1]
+        firstEnemyButton:ClearAllPoints()
+        firstEnemyButton:SetPoint("TOPLEFT", targetFrame, "TOPLEFT", 6, -15 + contentOffset)
+    end
+
+    if friendlyRows > 0 then
+        local firstFriendlyButton = targetFrame.friendlyTargetButtons[1]
+        firstFriendlyButton:ClearAllPoints()
+        firstFriendlyButton:SetPoint("BOTTOMLEFT", targetFrame, "BOTTOMLEFT", 6,
+                                    (soloFriendlyRow and 4 or 6) + contentOffset)
+    end
 end
 
 function addon.targeting:UpdateTargetFrame(selector)
@@ -1129,7 +1171,8 @@ function addon.targeting:UpdateTargetFrame(selector)
         btn = enemyTargetButtons[enemyTargetButtonIndex]
 
         if not btn then
-            btn = CreateFrame("Button", "RXPTargetFrame_EnemyButton" .. enemyTargetButtonIndex, targetFrame, "SecureActionButtonTemplate")
+            btn = CreateFrame("Button", "RXPTargetFrame_EnemyButton" .. enemyTargetButtonIndex, targetFrame,
+                              "SecureActionButtonTemplate")
 
             btn:SetAttribute("type", "macro")
             btn:SetSize(25, 25)
@@ -1161,7 +1204,8 @@ function addon.targeting:UpdateTargetFrame(selector)
             ht:SetBlendMode("ADD")
         end
 
-        btn:SetAttribute('macrotext', '/cleartarget\n/targetexact ' .. targetName)
+        self:ConfigureTargetButton(btn, targetName, enemyKind, enemyTargetButtonIndex,
+            addon.settings.profile.enableEnemyMarking)
 
         if btn.targetData and btn.targetData.name ~= targetName then
             btn.placeholder:SetTexture(mobPlaceholder)
@@ -1196,7 +1240,8 @@ function addon.targeting:UpdateTargetFrame(selector)
         btn = friendlyTargetButtons[friendlyTargetButtonIndex]
 
         if not btn then
-            btn = CreateFrame("Button", "RXPTargetFrame_FriendlyButton" .. friendlyTargetButtonIndex, targetFrame, "SecureActionButtonTemplate")
+            btn = CreateFrame("Button", "RXPTargetFrame_FriendlyButton" .. friendlyTargetButtonIndex, targetFrame,
+                              "SecureActionButtonTemplate")
             btn:SetAttribute("type", "macro")
             btn:SetSize(25, 25)
 
@@ -1227,7 +1272,8 @@ function addon.targeting:UpdateTargetFrame(selector)
             ht:SetBlendMode("ADD")
         end
 
-        btn:SetAttribute('macrotext', '/cleartarget\n/targetexact ' .. targetName)
+        self:ConfigureTargetButton(btn, targetName, "friendly", friendlyTargetButtonIndex,
+            addon.settings.profile.enableTargetMarking)
 
         if btn.targetData and btn.targetData.name ~= targetName then
             btn.placeholder:SetTexture(targetPlaceholder)
@@ -1260,6 +1306,8 @@ function addon.targeting:UpdateTargetFrame(selector)
         enemyTargetButtons[e].placeholder:SetTexture(mobPlaceholder)
         enemyTargetButtons[e].icon.isDefault = true
     end
+
+    self.activeTargetCount = friendlyTargetButtonIndex + enemyTargetButtonIndex
 
     ResizeTargetsFrame(targetFrame, friendlyTargetButtonIndex, enemyTargetButtonIndex)
 

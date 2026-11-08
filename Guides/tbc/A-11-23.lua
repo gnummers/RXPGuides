@@ -1,15 +1,17 @@
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #tbc
 #wotlk
 #version 7
 #group RestedXP TBC Guide (A)
-<< Alliance !Warlock
+<< Alliance
+#xprate >1.49 << Human Warlock
 #name 12-14 Darkshore
 #displayname 10-14 Darkshore << Dwarf Hunter
-#displayname 11-14 Darkshore << !Human
+#displayname 11-14 Darkshore << !Human !Mage
+#displayname 12-14 Darkshore << Gnome Mage
 #subgroup RestedXP Alliance 1-20
-#defaultfor !Draenei !Warlock
+#defaultfor Human/NightElf/Dwarf/Gnome !Warlock
 #next 14-20 Bloodmyst
 
 step << !NightElf
@@ -25,11 +27,13 @@ step << !NightElf
     .vendor 1448 >> |cRXP_BUY_Buy a|r |T133024:0|t[Bronze Tube] |cRXP_BUY_from him (if it's up)|r
 	.target Neal Allen
     .money <0.08 << !Hunter
+    .zoneskip Darkshore
 step << !NightElf
     .goto Wetlands,7.95,56.38
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dewin Shimmerdawn|r inside
     .vendor 1453 >> |cRXP_BUY_Buy|r |T134831:0|t[Healing Potions] |cRXP_BUY_from him (if they're up)|r
     .target Dewin Shimmerdawn
+    .zoneskip Darkshore
 step << !NightElf
     #completewith DarkshoreBoat
     .goto Wetlands,7.10,57.96,30,0
@@ -295,6 +299,7 @@ step
     .accept 4681 >> Accept Washed Ashore
     .target Gwennyth Bly'Leggonde
 step
+#xprate <1.5
     .goto 1439,35.743,43.710
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cerellean Whiteclaw|r
     .accept 963 >> Accept For Love Eternal
@@ -321,10 +326,17 @@ step << !Dwarf/!Hunter
     .accept 4811 >> Accept The Red Crystal
     .target Sentinel Glynda Nal'Shea
 step
+#xprate <1.5
     .goto 1439,38.843,43.416
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tharnariun Treetender|r
     .turnin 2118 >> Turn in Plagued Lands
     .accept 2138 >> Accept Cleansing of the Infected
+    .target Tharnariun Treetender
+step
+#xprate >1.49
+    .goto 1439,38.843,43.416
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tharnariun Treetender|r
+    .turnin 2118 >> Turn in Plagued Lands
     .target Tharnariun Treetender
 step
     .goto 1439,39.373,43.483
@@ -332,10 +344,18 @@ step
     .turnin 984 >> Turn in How Big a Threat?
     .target Terenthis
 step
+#xprate <1.5
     .goto 1439,39.373,43.483
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Terenthis|r
     .turnin 984 >> Turn in How Big a Threat?
     .accept 985 >> Accept How Big a Threat?
+    .accept 4761 >> Accept Thundris Windweaver
+    .target Terenthis
+step
+#xprate >1.49
+    .goto 1439,39.373,43.483
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Terenthis|r
+    .turnin 984 >> Turn in How Big a Threat?
     .accept 4761 >> Accept Thundris Windweaver
     .target Terenthis
 step
@@ -348,12 +368,21 @@ step
     .itemcount 5469,5 -- Strider Meat (5)
     .skill cooking,<10,1 -- step only displays if skill is 10 or higher
 step
+#xprate <1.5
     .goto 1439,37.394,40.128
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thundris Windweaver|r
     .turnin 4761 >> Turn in Thundris Windweaver
     .accept 4762 >> Accept The Cliffspring River
     .accept 954 >> Accept Bashal'Aran
     .accept 958 >> Accept Tools of the Highborne
+    .target Thundris Windweaver
+step
+#xprate >1.49
+    .goto 1439,37.394,40.128
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thundris Windweaver|r
+    .turnin 4761 >> Turn in Thundris Windweaver
+    .accept 4762 >> Accept The Cliffspring River
+    .accept 954 >> Accept Bashal'Aran
     .target Thundris Windweaver
 step
     #optional
@@ -468,6 +497,14 @@ step
     .mob Deth'ryll Satyr
     .isOnQuest 956
 step
+#xprate >1.49
+    .goto 1439,44.168,36.289
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Asterion|r
+    .turnin 956 >> Turn in Bashal'Aran
+    .target Asterion
+    .isQuestComplete 956
+step
+#xprate <1.5
     .goto 1439,44.168,36.289
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Asterion|r
     .turnin 956 >> Turn in Bashal'Aran
@@ -475,15 +512,18 @@ step
     .target Asterion
     .isQuestComplete 956
 step
+#xprate <1.5
     .goto 1439,44.168,36.289
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Asterion|r
     .accept 957 >> Accept Bashal'Aran
     .target Asterion
     .isQuestTurnedIn 956
 step
+#xprate <1.5
     #optional
     .abandon 956 >> Abandon Bashal'Aran
 step << !Draenei
+#xprate <1.5
     .goto 1439,53.4,28.8,0
     .goto 1439,54.8,22.8,0
     .goto 1439,44.6,24.8,0
@@ -531,6 +571,9 @@ step
     .cooldown item,6948,>2,1
     .bindlocation 442,1
     .subzoneskip 442
+step
+    #completewith next
+    .subzone 442 >> Return to Auberdine
 step << Dwarf Hunter
     .goto 1439,37.703,43.393
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sentinel Glynda Nal'Shea|r
@@ -610,10 +653,11 @@ step << !Dwarf/!Hunter
 step << !Dwarf/!Hunter
     .goto 1439,47.314,48.676
     >>Click the |cRXP_PICK_Mysterious Red Crystal|r
-    >>|cRXP_WARN_Be careful of the two groups of |cRXP_ENEMY_Raging Moonkins|r west of the |cRXP_PICK_Mysterious Red Crystal|r when you click it as they can agro together|r
+    >>|cRXP_WARN_Be careful of the two groups of |cRXP_ENEMY_Raging Moonkins|r west of the |cRXP_PICK_Mysterious Red Crystal|r when you click it as they can aggro together|r
     .turnin 4812 >> Turn in As Water Cascades
     .accept 4813 >> Accept The Fragments Within
 step
+#xprate <1.5
     #sticky
     #label Anaya
     .goto 1439,42.017,58.866,0 --NE spawn
@@ -637,6 +681,7 @@ step
     .unitscan Anaya Dawnrunner
     .isOnQuest 963
 step
+#xprate <1.5
     #sticky
     #label Relics
     .goto 1439,42.670,57.390,0
@@ -660,39 +705,47 @@ step
     .mob Wailing Highborne
     .isOnQuest 958
 step
+#xprate <1.5
     .goto 1439,40.302,59.731
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sentinel Tysha Moonblade|r
     .accept 953 >> Accept The Fall of Ameth'Aran
     .target Sentinel Tysha Moonblade
 step
+#xprate <1.5
     .goto 1439,42.652,63.145
     >>Click the |cRXP_PICK_The Fall of Ameth'Aran|r
     .complete 953,2 --Read The Fall of Ameth'Aran (1)
     .isOnQuest 953
 step
+#xprate <1.5
     .goto 1439,42.373,61.815
     >>Click the |cRXP_PICK_Ancient Flame|r
     .complete 957,1 --Destroy the seal at the ancient flame (1)
     .isOnQuest 957
 step
+#xprate <1.5
     .goto Darkshore,43.30,58.70
     >>Click the |cRXP_PICK_The Lay of Ameth'Aran|r
     .complete 953,1 --Read The Lay of Ameth'Aran (1)
     .isOnQuest 953
 step
+#xprate <1.5
     #optional
     #requires Relics
 --XXREQ Placeholder invis step until multiple requires per step
 step
+#xprate <1.5
     #optional
     #requires Anaya
 --XXREQ Placeholder invis step until multiple requires per step
 step
+#xprate <1.5
     .goto 1439,40.302,59.731
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sentinel Tysha Moonblade|r
     .turnin 953 >> Turn in The Fall of Ameth'Aran
     .target Sentinel Tysha Moonblade
 step
+#xprate <1.5
     #sticky
     #label bears1A
     #loop
@@ -707,14 +760,17 @@ step
     .complete 2138,1 -- Rabid Thistle Bear slain (20)
     .mob Rabid Thistle Bear
 step
+#xprate <1.5
     .goto 1439,37.105,62.167
     >>Click the |cRXP_PICK_Beached Sea Turtle|r
     .accept 4722 >> Accept Beached Sea Turtle
 step << Draenei
+#xprate <1.5
     .goto 1439/1,579.500,5240.300
     >>Click the |cRXP_PICK_Beached Sea Creature|r
     .accept 4728 >>Accept Beached Sea Creature
 step
+#xprate <1.5
     #requires bears1A
     #loop
     .goto 1439,39.899,54.745,0
@@ -734,27 +790,32 @@ step
     .complete 985,2 -- Blackwood Windtalker (5)
     .mob +Blackwood Windtalker
 step
+#xprate <1.5
     #completewith DarkshoreEnd
     .deathskip >> Die and respawn at the |cRXP_FRIENDLY_Spirit Healer|r
     .subzoneskip 442 -- auberdine
     .subzoneskip 446 -- bashal'aran
 step << !Draenei
+#xprate <1.5
     .isQuestComplete 957
     .goto 1439,44.168,36.289
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Asterion|r
     .turnin 957 >> Turn in Bashal'Aran
     .target Asterion
 step
+#xprate <1.5
     #label FinalAuber
     #completewith DarkshoreEnd
     .subzone 442 >> Travel to Auberdine
 step
+#xprate <1.5
     .goto 1439,38.843,43.416
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tharnariun Treetender|r
     .turnin 2138 >> Turn in Cleansing of the Infected
     .target Tharnariun Treetender
     .isQuestComplete 2138
 step
+#xprate <1.5
     .goto 1439,39.373,43.483
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Terenthis|r
     .turnin 985 >> Turn in How Big a Threat?
@@ -769,6 +830,7 @@ step
     .itemcount 5469,5 -- Strider Meat (5)
     .skill cooking,<10,1 -- step only displays if skill is 10 or higher
 step
+#xprate <1.5
     .goto 1439,37.394,40.128
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thundris Windweaver|r
     .turnin 958 >> Turn in Tools of the Highborne
@@ -784,6 +846,7 @@ step << Dwarf Hunter
     .turnin 4811 >> Turn in The Red Crystal
     .target Sentinel Glynda Nal'Shea
 step
+#xprate <1.5
     .goto 1439,36.701,45.122,8,0
     .goto 1439,36.621,45.596
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gwennyth Bly'Leggonde|r
@@ -793,6 +856,7 @@ step
     .target Gwennyth Bly'Leggonde
     .isOnQuest 4722
 step
+#xprate <1.5
     .goto 1439,35.743,43.710
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cerellean Whiteclaw|r
     >>|cRXP_WARN_You may need to wait out his RP if someone else just turned in|r
@@ -833,7 +897,7 @@ RXPGuides.RegisterGuide([[
 #name 14-20 Bloodmyst
 #subgroup RestedXP Alliance 1-20
 #defaultfor !Draenei
-#next 20-21 Darkshore << !Warlock
+#next 20-21 Darkshore;21-23 Ashenvale << !Warlock
 #next 20-23 Darkshore/Ashenvale << Warlock
 
 step << Druid
@@ -1824,7 +1888,7 @@ step
     .goto Bloodmyst Isle,42.27,44.12,80,0
 	.line Bloodmyst Isle,43.1,43.7,36.5,47.2,33.5,47.1,29.9,51.8,27.7,51.8,25.1,54.1,22.0,54.3
     .use 24278 >>|cRXP_WARN_Use the|r |T134536:0|t[Flare Gun] |cRXP_WARN_on|r |cRXP_ENEMY_Matis the Cruel|r
-    >>|cRXP_WARN_This will summon a |cRXP_FRIENDLY_Tracker of the Hand|r which will capture him once his health reaches 50%. Try not to get agro as |cRXP_ENEMY_Matis the Cruel|r hits very hard|r
+    >>|cRXP_WARN_This will summon a |cRXP_FRIENDLY_Tracker of the Hand|r which will capture him once his health reaches 50%. Try not to get aggro as |cRXP_ENEMY_Matis the Cruel|r hits very hard|r
     >>|cRXP_ENEMY_Matis the Cruel|r |cRXP_WARN_patrols a large section of the road. His patrol path is marked on your map|r
     .complete 9711,1 --Capture Matis the Cruel
 	.unitscan Matis the Cruel
@@ -1954,7 +2018,7 @@ step
 step
 	#completewith next
 	>>Kill the |cRXP_ENEMY_Webbed Creatures|r
-    >>|cRXP_WARN_Attack the |cRXP_ENEMY_Webbed Creatures|r from range if possible incase a hostile mob pops out, it won't agro you|r
+    >>|cRXP_WARN_Attack the |cRXP_ENEMY_Webbed Creatures|r from range if possible incase a hostile mob pops out, it won't aggro you|r
     .complete 9670,1 --Expedition Researcher Freed (5)
     .mob Webbed Creature
 step
@@ -1973,7 +2037,7 @@ step
     .goto Bloodmyst Isle,17.2,28.4,40,0
     .goto Bloodmyst Isle,18.2,38.0
 	>>Kill the |cRXP_ENEMY_Webbed Creatures|r
-    >>|cRXP_WARN_Attack the |cRXP_ENEMY_Webbed Creatures|r from range if possible incase a hostile mob pops out, it won't agro you|r
+    >>|cRXP_WARN_Attack the |cRXP_ENEMY_Webbed Creatures|r from range if possible incase a hostile mob pops out, it won't aggro you|r
     .complete 9670,1 --Expedition Researcher Freed (5)
     .mob Webbed Creature
 step
@@ -2394,6 +2458,7 @@ step << !NightElf Hunter
     .target Silvaria
 step << !NightElf Hunter
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ilyenia Moonfire|r
+    .skipgossip 11866,1
     .goto Darnassus,57.56,46.72
     .train 264 >> Train Bows
     .train 227 >> Train Staves
@@ -3329,6 +3394,66 @@ step
     .fly Darkshore >> Fly to Darkshore
     .target Vesprystus
     .zoneskip Darkshore
+--
+step << !Warlock
+#xprate >1.49
+    #optional
+    .isOnQuest 3765
+    .goto Darkshore,38.327,43.039
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gershala Nightwhisper|r
+    .turnin 3765 >> Turn in The Corruption Abroad
+    .target Gershala Nightwhisper
+step << !Warlock
+#xprate >1.49
+.dungeon BFD
+    .goto Darkshore,38.327,43.039
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gershala Nightwhisper|r
+    >>|cRXP_WARN_If you cannot accept this quest, skip this step|r
+    .accept 1275 >> Accept Researching the Corruption
+    .target Gershala Nightwhisper
+step << !Warlock
+#xprate >1.49
+    .isOnQuest 9633
+    .goto Darkshore,37.394,40.128
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thundris Windweaver|r
+	.turnin 9633 >> Turn in The Way to Auberdine
+    .accept 10752 >> Accept Onward to Ashenvale
+    .target Thundris Windweaver
+step << !Warlock
+#xprate >1.49
+    .goto Darkshore,37.394,40.128
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thundris Windweaver|r
+    .accept 10752 >> Accept Onward to Ashenvale
+    .target Thundris Windweaver
+step << !Warlock
+#xprate >1.49
+    .goto Darkshore,37.439,41.839
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Archaeologist Hollee|r
+    .accept 729 >> Accept The Absent Minded Prospector
+    .target Archaeologist Hollee
+step << !Warlock
+#xprate >1.49
+    #completewith next
+    .goto 1439,35.724,83.696,50 >> Travel to Southern Darkshore
+step << !Warlock
+#xprate >1.49
+    .goto 1439,35.724,83.696
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Remtravel|r
+    >>|cRXP_WARN_This will begin an escort. You may have to wait for him to respawn or for others to finish the escort|r
+    .turnin 729 >> Turn in The Absent Minded Prospector
+    .accept 731,1 >> Accept The Absent Minded Prospector
+    .target Prospector Remtravel
+step << !Warlock
+#xprate >1.49
+    .isOnQuest 731
+    >>|cRXP_WARN_Escort |cRXP_FRIENDLY_Prospector Remtravel|r through the Excavation|r
+    .complete 731,1
+    .target Prospector Remtravel
+step << !Warlock
+#xprate >1.49
+    .isOnQuest 967,10752,945,4740,994,731
+    .zone Ashenvale >> Travel south to Ashenvale
+    .goto Ashenvale,29.7,13.6
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -3337,6 +3462,7 @@ RXPGuides.RegisterGuide([[
 #version 7
 #group RestedXP TBC Guide (A)
 << Alliance !Warlock
+#xprate <1.5
 #name 20-21 Darkshore
 #subgroup RestedXP Alliance 20-32
 #defaultfor !Draenei
@@ -3615,7 +3741,7 @@ step
     .goto Darkshore,52.38,33.39,0
     .goto Darkshore,52.86,33.41
     >>Open the |cRXP_PICK_Blackwood Fruit Stores|r. Loot it for the |T134013:0|t|cRXP_LOOT_[Blackwood Fruit Sample]|r
-    >>|cRXP_WARN_Looting this will spawn 2 |cRXP_ENEMY_Blackwood Furbolgs|r that will agro and run towards you. Be ready to fight them or reset them|r
+    >>|cRXP_WARN_Looting this will spawn 2 |cRXP_ENEMY_Blackwood Furbolgs|r that will aggro and run towards you. Be ready to fight them or reset them|r
     >>|cRXP_WARN_If you see |cRXP_ENEMY_Xabraxxis|r yell in chat or see someone fighting him, help them. Open the |cRXP_PICK_Xabraxxis' Demon Bag|r he drops on the ground. Loot it for the|r |cRXP_LOOT_Talisman of Corruption|r
     .collect 12341,1,4763,1 -- Blackwood Fruit Sample (1)
     .complete 4763,1 --Talisman of Corruption (1)
@@ -3630,7 +3756,7 @@ step
     .goto Darkshore,52.38,33.39,0
     .goto Darkshore,51.83,33.50
     >>Open the |cRXP_PICK_Blackwood Nut Stores|r. Loot it for the |T133944:0|t|cRXP_LOOT_[Blackwood Nut Sample]|r
-    >>|cRXP_WARN_Looting this will spawn 2 |cRXP_ENEMY_Blackwood Furbolgs|r that will agro and run towards you. Be ready to fight them or reset them|r
+    >>|cRXP_WARN_Looting this will spawn 2 |cRXP_ENEMY_Blackwood Furbolgs|r that will aggro and run towards you. Be ready to fight them or reset them|r
     >>|cRXP_WARN_If you see |cRXP_ENEMY_Xabraxxis|r yell in chat or see someone fighting him, help them. Open the |cRXP_PICK_Xabraxxis' Demon Bag|r he drops on the ground. Loot it for the|r |cRXP_LOOT_Talisman of Corruption|r
     .collect 12343,1,4763,1 -- Blackwood Nut Sample (1)
     .complete 4763,1 --Talisman of Corruption (1)
@@ -3645,7 +3771,7 @@ step
     .goto Darkshore,52.38,33.39,0
     .goto Darkshore,50.66,34.94
     >>Open the |cRXP_PICK_Blackwood Grain Stores|r. Loot it for the |T134059:0|t|cRXP_LOOT_[Blackwood Grain Sample]|r
-    >>|cRXP_WARN_Looting this will spawn 2 |cRXP_ENEMY_Blackwood Furbolgs|r that will agro and run towards you. Be ready to fight them or reset them|r
+    >>|cRXP_WARN_Looting this will spawn 2 |cRXP_ENEMY_Blackwood Furbolgs|r that will aggro and run towards you. Be ready to fight them or reset them|r
     >>|cRXP_WARN_If you see |cRXP_ENEMY_Xabraxxis|r yell in chat or see someone fighting him, help them. Open the |cRXP_PICK_Xabraxxis' Demon Bag|r he drops on the ground. Loot it for the|r |cRXP_LOOT_Talisman of Corruption|r
     .collect 12342,1,4763,1 -- Blackwood Grain Stores (1)
     .complete 4763,1 --Talisman of Corruption (1)
@@ -3948,9 +4074,10 @@ RXPGuides.RegisterGuide([[
 #name 21-23 Ashenvale
 #subgroup RestedXP Alliance 20-32
 #defaultfor !Draenei
-#next 23-24 Wetlands
+#next 23-24 Wetlands;24-27 Redridge/Duskwood
 
 step
+#xprate <1.5
     .goto Ashenvale,26.19,38.69
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Delgren the Purifier|r
     .turnin 967 >> Turn in The Tower of Althalaxx
@@ -3962,6 +4089,7 @@ step
     .accept 1010 >> Accept Bathran's Hair
 	.target Orendil Broadleaf
 step
+#xprate <1.5
     .isOnQuest 970
     .goto Ashenvale,31.25,30.70
     >>Kill |cRXP_ENEMY_Dark Strand Cultists|r, |cRXP_ENEMY_Dark Strand Adepts|r, |cRXP_ENEMY_Dark Strand Enforcers|r and |cRXP_ENEMY_Dark Strand Excavators|r. Loot them for the |cRXP_LOOT_Glowing Soul Gem|r
@@ -3978,7 +4106,7 @@ step
     .goto Ashenvale,31.89,22.53
     >>Open the |cRXP_PICK_Plant Bundles|r in the ground. Loot them for |cRXP_LOOT_Bathran's Hairs|r
     >>|cRXP_WARN_They look like small brown sacks and can be partially buried into the ground. They can be hard to see|r
-    >>|cRXP_WARN_Make sure you have|r |T134916:0|t[Track Herbs] |cRXP_WARN_enabled to see them on the minimap|r
+    >>|cRXP_WARN_Make sure you have|r |T134916:0|t[Find Herbs] |cRXP_WARN_enabled to see them on the minimap|r
     .complete 1010,1 --Bathran's Hair (5)
     .skill herbalism,<1,1
 step
@@ -4006,6 +4134,7 @@ step
     .accept 1020 >> Accept Orendil's Cure
     .target Orendil Broadleaf
 step
+#xprate <1.5
     .isQuestComplete 970
     .goto Ashenvale,26.19,38.69
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Delgren the Purifier|r
@@ -4013,6 +4142,7 @@ step
     .accept 973 >> Accept The Tower of Althalaxx
 	.target Delgren the Purifier
 step
+#xprate <1.5
     .isQuestTurnedIn 970
     .goto Ashenvale,26.19,38.69
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Delgren the Purifier|r
@@ -4310,10 +4440,12 @@ step
     >>|cRXP_WARN_Their spawn locations are scattered throughout the island|r
     .complete 1034,1
 step
+#xprate <1.5
     #completewith ToA973
     .goto Ashenvale,31.67,64.24,15 >> Head to the base of the mountain
     .goto Ashenvale,31.21,61.60,15 >>Run straight north while climbing the mountain
 step
+#xprate <1.5
     .isOnQuest 973
     .goto Ashenvale,27.40,63.03,70,0
     .goto Ashenvale,25.27,60.68
@@ -4331,6 +4463,7 @@ step
     .turnin 945 >> Turn in Therylune's Escape
 	.target Therysil
 step
+#xprate <1.5
     #label ToA973
     .isQuestComplete 973
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Delgren the Purifier|r
@@ -4557,12 +4690,14 @@ step
     .fly Auberdine >> Fly to Darkshore
     .target Daelyshia
 step
+#xprate <1.5
     #optional
     .isQuestComplete 1138
     .goto Darkshore,36.096,44.931
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gubber Blump|r
     .turnin 1138 >> Turn in Fruit of the Sea
 step
+#xprate <1.5
     .isQuestComplete 4740
     .goto Darkshore,37.70,43.39
     .target Sentinel Glynda Nal'Shea
@@ -4576,6 +4711,7 @@ step
     .turnin 1275 >> Turn in Researching the Corruption
     .target Gershala Nightwhisper
 step
+#xprate <1.5
     .isOnQuest 994
     .goto 1439,39.373,43.483
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Terenthis|r
@@ -4637,6 +4773,7 @@ step
     .accept 942 >> Accept The Absent Minded Prospector
 step << Mage/Priest/Warlock
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ilyenia Moonfire|r
+    .skipgossip 11866,1
     .goto Darnassus,57.56,46.72
     .train 227 >> Train Staves
     .target Ilyenia Moonfire
@@ -4670,6 +4807,194 @@ step
 step
     .goto Darkshore,32.44,43.71
     .zone Wetlands >> Take the boat to Menethil Harbor
+--
+step
+#xprate >1.49
+.dungeon SFK
+    #completewith BTcheck
+    +|cRXP_WARN_Begin looking for a Shadowfang Keep group. You will soon head to Silverpine Forest to run Shadowfang Keep|r
+step
+#xprate >1.49
+    .goto Wetlands,7.95,56.38
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dewin Shimmerdawn|r
+    .vendor >> |cRXP_BUY_Buy as many|r |T134831:0|t[Healing Potions] |cRXP_BUY_that are available|r
+    >>|cRXP_WARN_This is a limited supply item. Skip this step if |cRXP_FRIENDLY_Dewin Shimmerdawn|r doesn't have any|r
+    .target Dewin Shimmerdawn
+    .zoneskip Wetlands,1
+step << Draenei/NightElf
+#xprate >1.49
+    .goto Wetlands,9.490,59.693
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shellei Brondir|r
+    .fp Menethil Harbor >> Get the Menethil Harbor flight path
+    .target Shellei Brondir
+    .zoneskip Wetlands,1
+step
+#xprate >1.49
+    .goto Wetlands,10.89,59.66
+    .target First Mate Fitzsimmons
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_First Mate Fitzsimmons|r
+    .accept 288 >> Accept The Third Fleet
+step
+#xprate >1.49
+    .goto Wetlands,10.69,60.95
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Helbrek|r
+    .home >> Set your Hearthstone to Menethil Harbor
+    .target Innkeeper Helbrek
+    .bindlocation 2104
+step
+#xprate >1.49
+    .goto Wetlands,10.69,60.95
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Helbrek|r
+    >>|cRXP_BUY_Buy a|r |T132792:0|t[Flagon of Dwarven Honeymead]
+    .complete 288,1 -- Flagon of Dwarven Honeymead (1)
+    .target Innkeeper Helbrek
+step
+#xprate >1.49
+    .isQuestComplete 942
+    #completewith next
+    .goto Wetlands,10.368,61.016,8 >> Travel upstairs towards |cRXP_FRIENDLY_Archaeologist Flagongut|r
+step
+#xprate >1.49
+    .isQuestComplete 942
+    .goto Wetlands,10.843,60.435
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Archaeologist Flagongut|r upstairs
+    .target Archaeologist Flagongut
+    .turnin 942 >> Turn in The Absent Minded Prospector
+step
+#xprate >1.49
+    .goto Wetlands,10.89,59.66
+    .target First Mate Fitzsimmons
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_First Mate Fitzsimmons|r
+    .turnin 288 >> Turn in The Third Fleet
+step
+#xprate >1.49
+    #label BTcheck
+    .goto Wetlands,10.4,56.0,25,0
+    .goto Wetlands,10.1,56.9,25,0
+    .goto Wetlands,10.6,57.2,25,0
+    .goto Wetlands,10.761,56.737
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Neal Allen|r
+    .vendor >> |cRXP_BUY_Buy a|r |T133024:0|t[Bronze Tube]
+    >>|cRXP_WARN_This is a limited supply item. Skip this step if |cRXP_FRIENDLY_Neal Allen|r doesn't have one|r
+	.target Neal Allen
+    .bronzetube
+step
+#xprate >1.49
+.dungeon SFK
+    #completewith next
+    .goto Wetlands,30.8,31.0,0
+    .goto Wetlands,37.8,29.6,0
+    .goto Wetlands,43.0,33.2,0
+    .zone Arathi Highlands >> Grind |cRXP_ENEMY_Mosshides Gnolls|r while looking for a group for Shadowfang Keep
+step
+#xprate >1.49
+.dungeon SFK
+    .goto Arathi Highlands,43.01,55.00,90,0
+    .goto Arathi Highlands,25.45,46.95,90,0
+    .goto Arathi Highlands,21.29,30.24,70,0
+    .goto Hillsbrad Foothills,49.338,52.272
+    >>There are no quests for Shadowfang Keep. You will have to run from Wetlands to Silverpine Forest. Ensure you stay on the road while running through Arathi Highlands, and watchout for the |cRXP_ENEMY_Forsaken Courier|r
+    >>|cRXP_WARN_You don't need to get the Arathi Highlands flight path yet|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Darla Harris|r
+    .fp Southshore >> Get the Southshore Flight Path
+    .target Cedrik Prose
+    .target Darla Harris
+    .unitscan Forsaken Courier
+step
+#xprate >1.49
+.dungeon SFK
+    .goto Hillsbrad Foothills,14.77,46.72,0
+    .goto Silverpine Forest,44.96,67.92,0
+    .goto Hillsbrad Foothills,14.77,46.72,100,0
+    .goto Silverpine Forest,47.19,69.78,100,0
+    .goto Silverpine Forest,44.712,67.769
+    .subzone 209,2 >> Enter Shadowfang Keep
+step
+#xprate >1.49
+.dungeon SFK
+    +There are no quests for Shadowfang Keep
+    >>Clear Shadowfang Keep. Leave when you are finished
+    .zoneskip 209,1
+step
+#xprate >1.49
+.dungeon SFK
+	.goto Wetlands,63.9,78.6
+	.hs >> Hearth to Menethil Harbor
+    >>|cRXP_BUY_Buy food/water if needed|r << !Warrior !Rogue
+	>>|cRXP_BUY_Buy food if needed|r << Warrior/Rogue
+    .subzoneskip 150
+    .subzoneskip 2103
+    .subzoneskip 2104
+    .zoneskip Loch Modan
+step << !Draenei !NightElf
+#xprate >1.49
+    .goto Wetlands,9.490,59.693
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shellei Brondir|r
+    .fly Stormwind >> Fly to Stormwind City
+    .target Shellei Brondir
+    .zoneskip Stormwind City
+    .zoneskip Redridge Mountains
+    .zoneskip Duskwood
+step << NightElf/Draenei
+#xprate >1.49
+    .goto Wetlands,53.74,70.33,30,0
+    .goto Wetlands,48.17,67.49,30,0
+    .goto Loch Modan,25.11,8.99,20 >>|cRXP_WARN_Travel through the Dun Algaz tunnel to Loch Modan|r
+    .zoneskip Loch Modan --Completes if you run to Loch
+step << skip --logout skip NightElf/Draenei
+#xprate >1.49
+	#completewith next
+	.goto Wetlands,63.9,78.6
+    >>Head to the cave at the base of the dam in eastern Wetlands
+	.zone Loch Modan >> Logout on top of the mushrooms at the back of the cave.
+    >>When you log back in, this will teleport you to Thelsamar
+	.link https://www.youtube.com/watch?v=21CuGto26Mk >> |cRXP_WARN_CLICK HERE for a reference|r
+step << NightElf/Draenei
+#xprate >1.49
+    .goto Loch Modan,33.938,50.954
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thorgrum Borrelson|r
+    .fp Thelsamar >> Get the Thelsamar flight path
+    .target Thorgrum Borrelson
+step << NightElf/Draenei
+#xprate >1.49
+	.goto Loch Modan,22.6,70.2,80,0
+	.goto Loch Modan,19.85,63.04,40,0
+	.goto Dun Morogh,86.2,47.0
+    >>|cRXP_WARN_Begin taking off your gear as you run to Dun Morogh|r
+    .deathskip >> aggro the |cRXP_ENEMY_Scarred Crag Boars|r to die and respawn at the |cRXP_FRIENDLY_Spirit Healer|r once you are in Dun Morogh
+    .mob Scarred Crag Boar
+step << skip --logout skip NightElf/Draenei
+#xprate >1.49
+	>>Go inside the South-eastern Trogg cave. Perform a logout skip
+    .goto Dun Morogh,70.63,56.70,60,0
+    .goto Dun Morogh,70.60,54.86
+	.link https://www.youtube.com/watch?v=yQBW3KyguCM >> |cRXP_WARN_CLICK HERE for a reference|r
+	.zone Ironforge >> Logout Skip or travel to Ironforge
+step << NightElf/Draenei
+#xprate >1.49
+    .goto Dun Morogh,50.084,49.420
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Loslor Rudge|r
+    .vendor >> |cRXP_BUY_Buy a|r |T133024:0|t[Bronze Tube]
+    >>|cRXP_WARN_This is a limited supply item. Skip this step if |cRXP_FRIENDLY_Loslor Rudge|r doesn't have one|r
+	.target Loslor Rudge
+    .bronzetube
+step << NightElf/Draenei
+#xprate >1.49
+    .goto Dun Morogh,52.94,35.22,0
+    .goto Dun Morogh,52.94,35.22,50,0
+    .goto Ironforge,19.24,80.76
+    .zone Ironforge >> Travel to Ironforge
+step << NightElf/Draenei
+#xprate >1.49
+    .goto Ironforge,55.491,47.751
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryth Thurden|r
+    .fp Ironforge >> Get the Ironforge flight path
+    .target Gryth Thurden
+step << NightElf/Draenei
+#xprate >1.49
+    .goto Ironforge,76.61,51.28,0
+    .goto Ironforge,76.61,51.28,10,0
+    .zone Stormwind City >> Take the tram to Stormwind
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -4680,7 +5005,7 @@ RXPGuides.RegisterGuide([[
 << Alliance Warlock
 #name 20-23 Darkshore/Ashenvale
 #subgroup RestedXP Alliance 20-32
-#next 23-24 Wetlands
+#next 23-24 Wetlands;24-27 Redridge/Duskwood
 
 step
     .isQuestAvailable 1716
@@ -4737,6 +5062,7 @@ step
     .zone Darkshore>> Ghetto Hearth to Darkshore. To do this, enter The Stockades, then copy paste the link below into chat. Wait out the 1 minute countdown
     .link /run InviteUnit("aa");C_Timer.After(1,function() LeaveParty() end) >> CLICK HERE
 step
+#xprate <1.5
     .goto Darkshore,37.219,44.227
     >>Click the |cRXP_PICK_Wanted Poster|r
     .accept 4740 >> Accept WANTED: Murkdeep!
@@ -4772,6 +5098,7 @@ step
     .accept 1275 >> Accept Researching the Corruption
     .target Gershala Nightwhisper
 step
+#xprate <1.5
     .goto 1439,35.429,76.566,0
     .goto 1439,35.429,76.566,60,0
     .goto Darkshore,36.64,76.53
@@ -4824,7 +5151,7 @@ step
     .goto Ashenvale,31.89,22.53
     >>Open the |cRXP_PICK_Plant Bundles|r in the ground. Loot them for |cRXP_LOOT_Bathran's Hairs|r
     >>|cRXP_WARN_They look like small brown sacks and can be partially buried into the ground. They can be hard to see|r
-    >>|cRXP_WARN_Make sure you have|r |T134916:0|t[Track Herbs] |cRXP_WARN_enabled to see them on the minimap|r
+    >>|cRXP_WARN_Make sure you have|r |T134916:0|t[Find Herbs] |cRXP_WARN_enabled to see them on the minimap|r
     .complete 1010,1 --Bathran's Hair (5)
     .skill herbalism,<1,1
 step
@@ -5100,10 +5427,17 @@ step
     #completewith TRoS
     .subzone 415 >> Travel to Astranaar
 step
+#xprate <1.5
     .goto Ashenvale,36.61,49.58
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Raene Wolfrunner|r
     .turnin 1023 >> Turn in Raene's Cleansing
     .accept 1025 >> Accept An Aggressive Defense
+    .target Raene Wolfrunner
+step
+#xprate >1.49
+    .goto Ashenvale,36.61,49.58
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Raene Wolfrunner|r
+    .turnin 1023 >> Turn in Raene's Cleansing
     .target Raene Wolfrunner
 step
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shindrell Swiftfire|r
@@ -5111,6 +5445,7 @@ step
     .goto Ashenvale,34.67,48.83
     .turnin 1008 >> Turn in The Zoram Strand
 step
+    #label TRoS
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pelturas Whitemoon|r
 	.target Pelturas Whitemoon
     .goto Ashenvale,37.36,51.79
@@ -5120,6 +5455,7 @@ step
     #sticky
     .destroy 5505 >> Destroy |T133741:0|t[Teronis' Journal]. You no longer need it
 step
+#xprate <1.5
     #loop
     .goto Ashenvale,50.08,59.94,0
     .goto Ashenvale,53.75,63.49,0
@@ -5139,11 +5475,13 @@ step
     .complete 1025,1 -- Foulweald Den Watcher slain
     .mob +Foulweald Den Watcher
 step
+#xprate <1.5
     .goto Ashenvale,49.79,67.21
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sentinel Velene Starstrike|r
     .accept 1016 >> Accept Elemental Bracers
     .target Sentinel Velene Starstrike
 step
+#xprate <1.5
     #loop
     .goto Ashenvale,44.78,70.07,0
     .goto Ashenvale,48.90,70.05,0
@@ -5155,9 +5493,11 @@ step
     .collect 12220,5,1016,1
     .mob Befouled Water Elemental
 step
+#xprate <1.5
     .use 5456 >> |cRXP_WARN_Use the|r |T134943:0|t[Divining Scroll] |cRXP_WARN_to create the|r |T134938:0|t[Divined Scroll]
     .complete 1016,1 -- Divined Scroll
 step
+#xprate <1.5
     .goto Ashenvale,49.79,67.21
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sentinel Velene Starstrike|r
     .turnin 1016 >> Turn in Elemental Bracers
@@ -5170,18 +5510,21 @@ step
     .goto The Barrens,48.98,5.42,35,0
     .zone The Barrens >> Travel to The Barrens. Follow the Arrow to avoid |cRXP_ENEMY_Barrens Guards|r
 step
+#xprate <1.5
     #completewith next
     .goto The Barrens,48.73,14.86,20,0
     .goto The Barrens,48.53,16.51,15,0
     .goto The Barrens,48.16,18.52,6,0
     .goto The Barrens,47.96,18.82,5 >> Ascend Dreadmist Peak. Follow the Arrow to the top
 step
+#xprate <1.5
     .goto The Barrens,48.22,19.15
     >>Kill |cRXP_ENEMY_Sarilus Foulborne|r. Loot him for his |cRXP_LOOT_Head|r
     >>|cRXP_WARN_The surrounding |cRXP_ENEMY_Burning Blade|r are only level 10-12|r
     .complete 1017,1 -- Sarilus Foulborne's Head (1)
     .mob Sarilus Foulborne
 step
+#xprate <1.5
 .dungeon !WC
     #completewith next
     .deathskip >> Die and respawn at the |cRXP_FRIENDLY_Spirit Healer|r
@@ -5426,10 +5769,18 @@ step
     .deathskip >> Die and respawn at the |cRXP_FRIENDLY_Spirit Healer|r
 step
 .dungeon !WC
+#xprate <1.5
     .goto Ashenvale,36.61,49.58
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Raene Wolfrunner|r
     .turnin 1054 >> Turn in Culling the Threat
     .turnin 1025 >> Turn in An Aggressive Defense
+    .target Raene Wolfrunner
+step
+.dungeon !WC
+#xprate >1.49
+    .goto Ashenvale,36.61,49.58
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Raene Wolfrunner|r
+    .turnin 1054 >> Turn in Culling the Threat
     .target Raene Wolfrunner
 step
 .dungeon WC
@@ -5444,6 +5795,7 @@ step
     .fly Auberdine >> Fly to Darkshore
     .target Daelyshia
 step
+#xprate <1.5
     .isQuestComplete 4740
     .goto Darkshore,37.70,43.39
     .target Sentinel Glynda Nal'Shea
@@ -5496,6 +5848,7 @@ step
 step
     #optional
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ilyenia Moonfire|r
+    .skipgossip 11866,1
     .goto Darnassus,57.56,46.72
     .train 227 >> Train Staves
     .target Ilyenia Moonfire
@@ -5529,4 +5882,132 @@ step
 step
     .goto Darkshore,32.44,43.71
     .zone Wetlands >> Take the boat to Menethil Harbor
+--
+step
+#xprate >1.49
+.dungeon SFK
+    #completewith BTcheck
+    +|cRXP_WARN_Begin looking for a Shadowfang Keep group. You will soon head to Silverpine Forest to run Shadowfang Keep|r
+step
+#xprate >1.49
+    .goto Wetlands,7.95,56.38
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dewin Shimmerdawn|r
+    .vendor >> |cRXP_BUY_Buy as many|r |T134831:0|t[Healing Potions] |cRXP_BUY_that are available|r
+    >>|cRXP_WARN_This is a limited supply item. Skip this step if |cRXP_FRIENDLY_Dewin Shimmerdawn|r doesn't have any|r
+    .target Dewin Shimmerdawn
+    .zoneskip Wetlands,1
+step << Draenei/NightElf
+#xprate >1.49
+    .goto Wetlands,9.490,59.693
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shellei Brondir|r
+    .fp Menethil Harbor >> Get the Menethil Harbor flight path
+    .target Shellei Brondir
+    .zoneskip Wetlands,1
+step
+#xprate >1.49
+    .goto Wetlands,10.89,59.66
+    .target First Mate Fitzsimmons
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_First Mate Fitzsimmons|r
+    .accept 288 >> Accept The Third Fleet
+step
+#xprate >1.49
+    .goto Wetlands,10.69,60.95
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Helbrek|r
+    .home >> Set your Hearthstone to Menethil Harbor
+    .target Innkeeper Helbrek
+    .bindlocation 2104
+step
+#xprate >1.49
+    .goto Wetlands,10.69,60.95
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Helbrek|r
+    >>|cRXP_BUY_Buy a|r |T132792:0|t[Flagon of Dwarven Honeymead]
+    .complete 288,1 -- Flagon of Dwarven Honeymead (1)
+    .target Innkeeper Helbrek
+step
+#xprate >1.49
+    .isQuestComplete 942
+    #completewith next
+    .goto Wetlands,10.368,61.016,8 >> Travel upstairs towards |cRXP_FRIENDLY_Archaeologist Flagongut|r
+step
+#xprate >1.49
+    .isQuestComplete 942
+    .goto Wetlands,10.843,60.435
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Archaeologist Flagongut|r upstairs
+    .target Archaeologist Flagongut
+    .turnin 942 >> Turn in The Absent Minded Prospector
+step
+#xprate >1.49
+    .goto Wetlands,10.89,59.66
+    .target First Mate Fitzsimmons
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_First Mate Fitzsimmons|r
+    .turnin 288 >> Turn in The Third Fleet
+step
+#xprate >1.49
+    #label BTcheck
+    .goto Wetlands,10.4,56.0,25,0
+    .goto Wetlands,10.1,56.9,25,0
+    .goto Wetlands,10.6,57.2,25,0
+    .goto Wetlands,10.761,56.737
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Neal Allen|r
+    .vendor >> |cRXP_BUY_Buy a|r |T133024:0|t[Bronze Tube]
+    >>|cRXP_WARN_This is a limited supply item. Skip this step if |cRXP_FRIENDLY_Neal Allen|r doesn't have one|r
+	.target Neal Allen
+    .bronzetube
+step
+#xprate >1.49
+.dungeon SFK
+    #completewith next
+    .goto Wetlands,30.8,31.0,0
+    .goto Wetlands,37.8,29.6,0
+    .goto Wetlands,43.0,33.2,0
+    .zone Arathi Highlands >> Grind |cRXP_ENEMY_Mosshides Gnolls|r while looking for a group for Shadowfang Keep
+step
+#xprate >1.49
+.dungeon SFK
+    .goto Arathi Highlands,43.01,55.00,90,0
+    .goto Arathi Highlands,25.45,46.95,90,0
+    .goto Arathi Highlands,21.29,30.24,70,0
+    .goto Hillsbrad Foothills,49.338,52.272
+    >>There are no quests for Shadowfang Keep. You will have to run from Wetlands to Silverpine Forest. Ensure you stay on the road while running through Arathi Highlands, and watchout for the |cRXP_ENEMY_Forsaken Courier|r
+    >>|cRXP_WARN_You don't need to get the Arathi Highlands flight path yet|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Darla Harris|r
+    .fp Southshore >> Get the Southshore Flight Path
+    .target Cedrik Prose
+    .target Darla Harris
+    .unitscan Forsaken Courier
+step
+#xprate >1.49
+.dungeon SFK
+    .goto Hillsbrad Foothills,14.77,46.72,0
+    .goto Silverpine Forest,44.96,67.92,0
+    .goto Hillsbrad Foothills,14.77,46.72,100,0
+    .goto Silverpine Forest,47.19,69.78,100,0
+    .goto Silverpine Forest,44.712,67.769
+    .subzone 209,2 >> Enter Shadowfang Keep
+step
+#xprate >1.49
+.dungeon SFK
+    +There are no quests for Shadowfang Keep
+    >>Clear Shadowfang Keep. Leave when you are finished
+    .zoneskip 209,1
+step
+#xprate >1.49
+.dungeon SFK
+	.goto Wetlands,63.9,78.6
+	.hs >> Hearth to Menethil Harbor
+    >>|cRXP_BUY_Buy food/water if needed|r << !Warrior !Rogue
+	>>|cRXP_BUY_Buy food if needed|r << Warrior/Rogue
+    .subzoneskip 150
+    .subzoneskip 2103
+    .subzoneskip 2104
+    .zoneskip Loch Modan
+step
+#xprate >1.49
+    .goto Wetlands,9.490,59.693
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shellei Brondir|r
+    .fly Stormwind >> Fly to Stormwind City
+    .target Shellei Brondir
+    .zoneskip Stormwind City
+    .zoneskip Redridge Mountains
+    .zoneskip Duskwood
 ]])

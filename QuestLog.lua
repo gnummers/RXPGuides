@@ -4,12 +4,27 @@ local _G = _G
 
 local GetNumQuests = C_QuestLog.GetNumQuestLogEntries or
                          _G.GetNumQuestLogEntries
-local GetQuestLogTitle = C_QuestLog.GetInfo or _G.GetQuestLogTitle
+local GetQuestLogTitle
+if C_QuestLog.GetInfo then
+    GetQuestLogTitle = function(index)
+        local questInfo = C_QuestLog.GetInfo(index)
+        if not questInfo then return end
+
+        local questID = questInfo.questID
+        return questInfo.title, questInfo.level, questInfo.suggestedGroup,
+            questInfo.isHeader, questInfo.isCollapsed, nil,
+            questInfo.frequency, questID
+    end
+else
+    GetQuestLogTitle = _G.GetQuestLogTitle
+end
 
 local L = addon.locale.Get
-local maxQuests = 25
-if addon.game == "CLASSIC" then
-    maxQuests = 20
+local maxQuests
+
+function addon:SetupQuestLog()
+    maxQuests = self.settings.profile.questLogSize or
+        (self.game == "CLASSIC" and 20 or self.game == "FOREVER" and 40 or 25)
 end
 
 local lastIndex
@@ -30,7 +45,7 @@ function addon.UpdateQuestButton(index)
         button:SetWidth(32)
         button:SetHeight(32)
         button:SetPoint("TOPRIGHT", anchor, "TOPRIGHT", 0, 0)
-        button:SetNormalTexture(addon.GetTexture("rxp_logo-64"))
+        button:SetNormalTexture(addon.GetV1Texture("rxp_logo-64"))
         addon.questLogButton = button
 
         local function tpOnEnter(self)
@@ -53,7 +68,7 @@ function addon.UpdateQuestButton(index)
 
     end
     local questLogTitleText, level, questTag, isHeader, isCollapsed, isComplete,
-          frequency, questID = _G.GetQuestLogTitle(index);
+          frequency, questID = GetQuestLogTitle(index)
     local showButton
     local function GetGuideList(list,qid,mode)
         -- local guides = {}
@@ -131,12 +146,6 @@ function addon.UpdateQuestButton(index)
             end
         end
 
-        -- Only evaluates true on first load
-        -- addon.orphanedList is updated when QuestLogFrame opens/closes
-        if not addon.orphanedList then
-            addon.GetOrphanedQuests()
-        end
-
         -- If showButton, then it's a pickUp or turnIn, without the table lookup cost
         if not showButton and addon.orphanedList and addon.orphanedList[questID] then
             tooltip = format("%s%s%s%s%s|r", tooltip, separator,
@@ -148,7 +157,7 @@ function addon.UpdateQuestButton(index)
             showButton = true
         else
             -- Inefficient, but set back to default texture in case of orphans
-            button:SetNormalTexture(addon.GetTexture("rxp_logo-64"))
+            button:SetNormalTexture(addon.GetV1Texture("rxp_logo-64"))
         end
         button.tooltip = tooltip
     end
@@ -182,7 +191,7 @@ function addon.GetExpectedQuestLog()
         return {},{}
     end
     local startGuide
-    local currentStep = RXPCData.currentStep
+    local currentStep = addon.GetGuideProgress()
     local scanQuests
     if guideKey ~= guide.key or stepIndex ~= currentStep or not qLogCache then
         scanQuests = true
@@ -194,8 +203,12 @@ function addon.GetExpectedQuestLog()
         if guide.standalone then
             startGuide = guide
         else
-            local group = guide.group
-            local list = addon.guideList[group]
+            local list = addon.guideList[guide.groupdisplayname or guide.group]
+            if not list and guide.group then
+                list = addon.guideList["*"..guide.group]
+            end
+            list = list or {}
+            local group = list.defaultGroup_
             local name = list.defaultGuide_
             startGuide = addon:FetchGuide(group,name)
         end
@@ -402,43 +415,47 @@ else
 end
 
 local function getQuestData(questLogIndex)
-    local data
-    local questInfo, questLogTitleText, level, isHeader, isComplete, frequency,
-          questID
-
     if C_QuestLog.GetInfo then
-        questInfo = C_QuestLog.GetInfo(questLogIndex) or {}
+        local questInfo = C_QuestLog.GetInfo(questLogIndex)
+        if not questInfo then return {} end
 
-        data = {
+        local questID = questInfo.questID
+        local isComplete
+        if C_QuestLog.IsComplete and not questInfo.isHeader and questID and
+            questID > 0 then
+            isComplete = C_QuestLog.IsComplete(questID)
+        end
+
+        return {
             ["questLogTitleText"] = questInfo.title,
             ["level"] = questInfo.level,
             ["isHeader"] = questInfo.isHeader,
-            ["questID"] = questInfo.questID,
-            ["frequency"] = questInfo.frequency,
-
-            ["isComplete"] = questID and C_QuestLog.IsComplete(questID)
-        }
-    else
-        questLogTitleText, level, _, isHeader, _, isComplete, frequency, questID =
-            GetQuestLogTitle(questLogIndex)
-
-        data = {
-            ["questLogTitleText"] = questLogTitleText,
-            ["level"] = level,
-            ["isHeader"] = isHeader,
             ["questID"] = questID,
-            ["frequency"] = frequency,
-
-            ["isComplete"] = questID and isComplete
+            ["frequency"] = questInfo.frequency,
+            ["isComplete"] = isComplete
         }
     end
 
-    return data
+    local questLogTitleText, level, _, isHeader, _, isComplete, frequency, questID =
+        GetQuestLogTitle(questLogIndex)
+
+    return {
+        ["questLogTitleText"] = questLogTitleText,
+        ["level"] = level,
+        ["isHeader"] = isHeader,
+        ["questID"] = questID,
+        ["frequency"] = frequency,
+        ["isComplete"] = questID and isComplete
+    }
 end
 
--- Set on first GetOrphanedQuests run, likely by UpdateQuestButton call
+-- Set when orphaned quests are explicitly inventoried.
 addon.orphanedList = nil -- {}
 function addon.GetOrphanedQuests()
+    if addon.player.hardcore then
+        addon.orphanedList = {}
+        return {}, {}
+    end
     if addon.isHidden or not addon.currentGuide or not addon.currentGuide.key then
         return {}, {}
     end
@@ -452,7 +469,7 @@ function addon.GetOrphanedQuests()
     for i = 1, GetNumQuests() do
         questData = getQuestData(i)
 
-        if not questData.isHeader and questData.questID > 0 then
+        if not questData.isHeader and questData.questID and questData.questID > 0 then
             orphanData = {
                 ["questLogTitleText"] = questData.questLogTitleText,
                 ["level"] = questData.level,
@@ -796,7 +813,7 @@ local function CreateCleanupButton()
 
     createdCleanupBtn = true
     SetCleanupBtnEnabled(not (InCombatLockdown and InCombatLockdown()))
-    cleanupBtn:SetShown(not addon.isHidden)
+    cleanupBtn:SetShown(not addon.isHidden and not addon.player.hardcore)
 
     -- Re-anchor
     if parent.HookScript then
@@ -804,9 +821,9 @@ local function CreateCleanupButton()
             AnchorCleanupButton()
             if cleanupBtn then
                 local enabled = addon.currentGuide and not addon.currentGuide.empty
-                local grp = addon.currentGuide.group
+                local grp = addon.currentGuide and addon.currentGuide.group
                 local isPrepGuide = grp and strlower(grp):find("prep")
-                cleanupBtn:SetShown(not addon.isHidden and enabled and not isPrepGuide)
+                cleanupBtn:SetShown(not addon.isHidden and not addon.player.hardcore and enabled and not isPrepGuide)
             end
         end)
     end
@@ -815,7 +832,7 @@ local function CreateCleanupButton()
         _G.WorldMapFrame:HookScript("OnShow", function()
             AnchorCleanupButton()
             if cleanupBtn then
-                cleanupBtn:SetShown(not addon.isHidden)
+                cleanupBtn:SetShown(not addon.isHidden and not addon.player.hardcore)
             end
         end)
     end
@@ -861,7 +878,7 @@ do
             end
 
             if cleanupBtn then
-                cleanupBtn:SetShown(not addon.isHidden)
+                cleanupBtn:SetShown(not addon.isHidden and not addon.player.hardcore)
             end
 
         elseif ev == "PLAYER_REGEN_DISABLED" then

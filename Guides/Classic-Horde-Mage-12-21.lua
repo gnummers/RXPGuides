@@ -1,7 +1,7 @@
 local faction = UnitFactionGroup("player")
 if faction == "Alliance" then return end
 
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #classic
 #tbc
@@ -78,7 +78,7 @@ step
     .accept 819 >> Accept Chen's Empty Keg
 step
     .goto The Barrens,55.6,26.6
-    >>Kill Quillboars in the area
+    >>Kill Quilboars in the area
     .complete 871,2 --Razormane Thornweaver (8)
     .complete 871,1 --Razormane Water Seeker (8)
     .complete 871,3 --Razormane Hunter (3)
@@ -281,7 +281,7 @@ step
     .complete 848,1 --Collect Fungal Spores (x4)
 step
     .goto The Barrens,45.06,22.54
-    >>Dive underwater to the |cRXP_PICK_Bubble Fissure|r
+    >>Dive underwater to the |cRXP_PICK_Bubbling Fissure|r
     .complete 870,1 --Explore the waters of the Forgotten Pools
 step
     #label Barak
@@ -336,7 +336,7 @@ step
 step
     #completewith next
     .goto The Barrens,43.8,12.2
-    >> If you still didn't get the Heavy Spiked Mace consider try to buy it from BVrang Wildgore << Druid/Warrior
+    >> If you still didn't get the Heavy Spiked Mace consider try to buy it from Vrang Wildgore << Druid/Warrior
     .vendor >> Go vendor at this guy if needed
 step
     #sticky
@@ -532,7 +532,7 @@ step
     >>Collect |cRXP_LOOT_Laden Mushrooms|r around The Stagnant Oasis
     .complete 848,1 --Collect Fungal Spores (x4)
 step
-    >>Click the Bubble Fissure underwater
+    >>Click the Bubbling Fissure underwater
     .goto The Barrens,55.6,42.7
     .complete 877,1 --Test the Dried Seeds (1)
 step
@@ -823,7 +823,7 @@ step
 step
     #sticky
     #label Lizard
-    >>Kill Stormstouts. Loot them for a Horn
+    >>Kill Stormsnouts. Loot them for a Horn
     .complete 821,3 --Thunder Lizard Horn (1)
 step
 	#sticky
@@ -837,7 +837,7 @@ step
 	.collect 5099,1,883 --Collect Hoof of Lakota'Mani
 	.accept 883 >>Accept Lakota'Mani
 step
-    >>Kill a LOT of Quillboars. Loot them for their tusks. Save the Blood Shards you get
+    >>Kill a LOT of Quilboars. Loot them for their tusks. Save the Blood Shards you get
 	.goto The Barrens,44.3,52.3,50,0
     .goto The Barrens,47.1,53.3,50,0
     .goto The Barrens,45.2,54.3,50,0
@@ -934,7 +934,7 @@ step
     .fly Camp Taurajo >>Fly to Camp Taurajo
 step
     .goto The Barrens,53.0,52.1
-    >>Kill Quillboars for a Blood Shard
+    >>Kill Quilboars for a Blood Shard
     .collect 5075 --Blood Shard (1)
 step
     .goto The Barrens,44.6,59.2
@@ -1087,7 +1087,7 @@ step
     .fp Sun Rock>> Get the Sun Rock Retreat flight path
 step
     #completewith next
-    .hs >> Hearth Thunder Bluff
+    .hs >> Hearth to Thunder Bluff
 step
     .goto Thunder Bluff,70.00,30.90
 >>Talk to |cRXP_FRIENDLY_Magatha Grimtotem|r

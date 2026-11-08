@@ -1,4 +1,4 @@
-if GetLocale() == "zhCN" then return end
+local L = GetLocale() if L and RXP.enabledLocale[L] then return end
 RXPGuides.RegisterGuide([[
 #version 1
 #group +RestedXP Northrend Daily Quests
@@ -454,12 +454,12 @@ step
 step
     .goto TheStormPeaks,64.22,59.39
 	>>Talk to the Helm you just placed
-    .daily 13006 >>Accept Viscous Cleaning
+    .daily 13006 >>Accept A Viscous Cleaning
 	.isQuestAvailable 13047
 step << !Human
     .goto TheStormPeaks,65.45,60.16
 	>>Talk to King Jokkum
-    .accept 13011 >>Accept Culling Jorcutta
+    .accept 13011 >>Accept Culling Jorcuttar
 step
 	#completewith Jorcuttar
     .goto TheStormPeaks,54.4,63.2,0

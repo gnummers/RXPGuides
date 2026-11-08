@@ -3,7 +3,10 @@ local L = addon.locale.Get
 local _G = _G
 
 local HBD = LibStub("HereBeDragons-2.0")
-local HBDPins = LibStub("HereBeDragons-Pins-2.0")
+local HBDPins_Lib = LibStub("HereBeDragons-Pins-2.0")
+local HBDPins = {}
+
+
 addon.activeWaypoints = {}
 addon.linePoints = {}
 
@@ -11,16 +14,43 @@ local MapPinPool = {}
 local MapLinePool = {}
 local worldMapFramePool, miniMapFramePool, lineMapFramePool
 
+function addon.SetupWorldMap()
+    setmetatable(HBDPins, {
+        __index = function(_, k)
+            if addon.settings.profile.disableMapPins or addon.IsGamePadEnabled() then
+                return addon.functions.noop
+            end
+
+            return HBDPins_Lib[k]
+        end
+    })
+
+    _G.WorldMapFrame:HookScript("OnShow", function()
+        if addon.settings.profile.disableMapPins then return end
+
+        local hasLines = false
+        for _ in lineMapFramePool:EnumerateActive() do
+            hasLines = true
+            break
+        end
+
+        if not hasLines then addon.UpdateMap(true) end
+    end)
+end
+
 addon.arrowFrame = CreateFrame("Frame", "RXPG_ARROW", UIParent)
 local af = addon.arrowFrame
 
 function addon.arrowFrame:UpdateVisuals()
-    self.texture:SetTexture(addon.GetTexture(
-        "rxp_navigation_arrow-1"))
+    local texture = addon.GetV1Texture("rxp_navigation_arrow-1")
+    if addon.v2 and addon.v2:IsGuideWindowEnabled() then
+        texture = addon.v2:GetTheme().navigationArrow
+    end
+    self.texture:SetTexture(texture)
 end
 
 local function IsInInstance()
-    if _G.IsInInstance() and not select(2, GetInstanceInfo()) == "scenario" then
+    if _G.IsInInstance() and select(2, GetInstanceInfo()) ~= "scenario" then
         return true
     end
 end
@@ -63,7 +93,7 @@ end)
 
 function addon.SetupArrow()
     af.text:SetFont(addon.font, 9,"OUTLINE")
-    af.texture:SetTexture(addon.GetTexture("rxp_navigation_arrow-1"))
+    af:UpdateVisuals()
     af.text:SetTextColor(unpack(addon.activeTheme.textColor))
 
     addon.arrowFrame:SetScript("OnUpdate", addon.DrawArrow)
@@ -212,16 +242,19 @@ local function PinOnLeave(self)
     if self:IsForbidden() or _G.GameTooltip:IsForbidden() then
         return
     end
+
     local lineData = self.lineData
+
     if lineData then
         local element = lineData.element
+
         for line in lineMapFramePool:EnumerateActive() do
             if line.lineData.element == element then
-                self:SetAlpha(line.lineData.lineAlpha or 1)
+                line:SetAlpha(line.lineData.lineAlpha or 1)
             end
         end
-        addon.UpdateMap()
     end
+
     _G.GameTooltip:Hide()
 end
 
@@ -262,7 +295,7 @@ MapPinPool.creationFunc = function(framePool)
 
     -- Styling
     f:SetBackdrop({
-        bgFile = addon.GetTexture("white_circle"),
+        bgFile = addon.GetV1Texture("white_circle"),
         insets = {left = 0, right = 0, top = 0, bottom = 0}
     })
     f:SetWidth(0)
@@ -274,7 +307,7 @@ MapPinPool.creationFunc = function(framePool)
     f.inner = CreateFrame("Button", nil, f,
                           BackdropTemplateMixin and "BackdropTemplate")
     f.inner:SetBackdrop({
-        bgFile = addon.GetTexture("map_active_step_target_icon"),
+        bgFile = addon.GetV1Texture("map_active_step_target_icon"),
         insets = {left = 0, right = 0, top = 0, bottom = 0}
     })
     f.inner:SetPoint("CENTER", 0, 0)
@@ -571,6 +604,7 @@ local function generatePins(steps, numPins, startingIndex, isMiniMap)
     if addon.currentGuide.empty then return pins end
     local numActivePins = 0
     local numSteps = #steps
+    local progressStep = addon.GetGuideProgress()
     local activeSteps = addon.RXPFrame.activeSteps
 
     local numActive = 0
@@ -587,7 +621,7 @@ local function generatePins(steps, numPins, startingIndex, isMiniMap)
 
     for _, step in pairs(activeSteps) do GetNumPins(step) end
 
-    for i = RXPCData.currentStep + 1, RXPCData.currentStep + numPins do
+    for i = progressStep + 1, progressStep + numPins do
         local step = addon.currentGuide.steps[i]
         GetNumPins(step)
         if step and step.centerPins then
@@ -671,7 +705,7 @@ local function generatePins(steps, numPins, startingIndex, isMiniMap)
                         })
                     end
                 end
-                if not isMiniMap then
+                if not isMiniMap and not step.dangerousMob then
                     table.insert(addon.activeWaypoints, element)
                 end
                 if not element.hidePin then
@@ -686,7 +720,7 @@ local function generatePins(steps, numPins, startingIndex, isMiniMap)
     for _, step in pairs(activeSteps) do ProcessMapPin(step) end
 
     if not isMiniMap then
-        local currentStep = steps[RXPCData.currentStep]
+        local currentStep = steps[progressStep]
         if (currentStep and not currentStep.active) then
             ProcessMapPin(currentStep)
         end
@@ -707,6 +741,7 @@ local function generateLines(steps, numPins, startingIndex, isMiniMap)
     if addon.currentGuide.empty then return pins end
     local numActivePins = 0
     local numSteps = #steps
+    local progressStep = addon.GetGuideProgress()
     local activeSteps = addon.RXPFrame.activeSteps
 
     local numActive = 0
@@ -723,7 +758,7 @@ local function generateLines(steps, numPins, startingIndex, isMiniMap)
 
     for _, step in pairs(activeSteps) do GetNumPins(step) end
 
-    for i = RXPCData.currentStep + 1, RXPCData.currentStep + numPins do
+    for i = progressStep + 1, progressStep + numPins do
         GetNumPins(addon.currentGuide.steps[i])
     end
 
@@ -839,7 +874,7 @@ local function generateLines(steps, numPins, startingIndex, isMiniMap)
                             nEdges = nEdges + 1
                             InsertLine(element, sX, sY, fX, fY, element.lineAlpha or 1)
                         end
-                        if element.showArrow and step.active then
+                        if element.showArrow and step.active and not step.dangerousMob then
                             AddPoint(sX,sY,element,flags,addon.linePoints,addon.activeWaypoints)
                         end
                     end
@@ -858,7 +893,7 @@ local function generateLines(steps, numPins, startingIndex, isMiniMap)
     for _, step in pairs(activeSteps) do ProcessLine(step) end
 
     if not isMiniMap then
-        local currentStep = steps[RXPCData.currentStep]
+        local currentStep = steps[progressStep]
         if not (currentStep and currentStep.active) then
             ProcessLine(currentStep)
         end
@@ -882,7 +917,7 @@ local function addWorldMapPins()
 
     -- Calculate which pins should be on the world map
     local pins = generatePins(addon.currentGuide.steps, addon.settings.profile.numMapPins,
-                              RXPCData.currentStep, false)
+                              addon.GetGuideProgress(), false)
 
     -- Convert each "pin" data structure into a WoW frame. Then add that frame to the world map
     if IsInInstance() then return end
@@ -922,7 +957,8 @@ end
 
 local function addWorldMapLines()
     local lineData = generateLines(addon.currentGuide.steps, addon.settings.profile.numMapPins,
-                                   RXPCData.currentStep, false)
+                                   addon.GetGuideProgress(), false)
+    if addon.settings.profile.disableMapPins or not _G.WorldMapFrame:IsShown() then return end
 
     if #lineData > 0 then
         local canvas = _G.WorldMapFrame:GetCanvas()
@@ -952,7 +988,7 @@ local function addMiniMapPins(pins)
     if addon.settings.profile.hideMiniMapPins then return end
     -- Calculate which pins should be on the mini map
     local pins = generatePins(addon.currentGuide.steps, addon.settings.profile.numMapPins,
-                              RXPCData.currentStep, true)
+                              addon.GetGuideProgress(), true)
 
     -- Convert each "pin" data structure into a WoW frame. Then add that frame to the mini map
     if IsInInstance() then return end
@@ -1476,7 +1512,14 @@ p2 = {
 
 addon.classicToWrathEPL = GetMapCoefficients(p1.x,p1.y,p1.xb,p1.yb,p2.x,p2.y,p2.xb,p2.yb)
 addon.wrathToClassicEPL = GetMapCoefficients(p1.xb,p1.yb,p1.x,p1.y,p2.xb,p2.yb,p2.x,p2.y)
-
+if addon.gameVersion > 50000 then
+    --siege of orgrimmar patch bricked all the coordinates from IoT
+    local p1x,p1y = 4023.1,5033.1
+    local p1xb,p1yb = 6309.4,7167.2
+    local p2x,p2y = 3849.0,4228.2
+    local p2xb,p2yb = 6135.6,6363.3
+    addon.isleOfThunderTransform = GetMapCoefficients(p1x,p1y,p1xb,p1yb,p2x,p2y,p2xb,p2yb)
+end
 
 --addon.mID = {}
 function addon.GetMapId(zone)
@@ -1488,41 +1531,46 @@ function addon.GetMapId(zone)
     return addon.mapId[zone]
 end
 
-function addon.GetMapInfo(zone,x,y)
+function addon.GetMapInfo(zone,x,y,instance)
     x = tonumber(x)
     y = tonumber(y)
     if not (x and y and zone) then
         return
     elseif zone == "StormwindClassic" then
-        if addon.gameVersion > 30000 then
+        if addon.gameVersion > 30000 or WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then
             local c = addon.classicToWrathSW
             x = x*c[1]+c[2]
             y = y*c[3]+c[4]
         end
-        return addon.GetMapId("Stormwind City"),x,y
+        return addon.GetMapId("Stormwind City"),x,y,instance
     elseif zone == "EPLClassic" then
-        if addon.gameVersion > 30000 then
+        if addon.gameVersion > 30000 or WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then
             local c = addon.classicToWrathEPL
             x = x*c[1]+c[2]
             y = y*c[3]+c[4]
         end
-        return addon.GetMapId("Eastern Plaguelands"),x,y
+        return addon.GetMapId("Eastern Plaguelands"),x,y,instance
     elseif zone == "StormwindNew" then
         if addon.gameVersion < 30000 then
             local c = addon.wrathToClassicSW
             x = x*c[1]+c[2]
             y = y*c[3]+c[4]
         end
-        return addon.GetMapId("Stormwind City"),x,y
+        return addon.GetMapId("Stormwind City"),x,y,instance
     elseif zone == "EPLNew" then
         if addon.gameVersion < 30000 then
             local c = addon.wrathToClassicEPL
             x = x*c[1]+c[2]
             y = y*c[3]+c[4]
         end
-        return addon.GetMapId("Eastern Plaguelands"),x,y
+        return addon.GetMapId("Eastern Plaguelands"),x,y,instance
+    elseif instance == 870 then
+        local c = addon.isleOfThunderTransform
+        x = x*c[1]+c[2]
+        y = y*c[3]+c[4]
+        return 504,x,y,1064
     else
-        return addon.GetMapId(zone) or tonumber(zone),x,y
+        return addon.GetMapId(zone) or tonumber(zone),x,y,instance
     end
 end
 

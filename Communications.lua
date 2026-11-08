@@ -53,6 +53,7 @@ function addon.comms:Setup()
     self:RegisterEvent("GROUP_LEFT")
     self:RegisterEvent("GROUP_ROSTER_UPDATE")
     self:RegisterEvent("PLAYER_ENTERING_WORLD")
+    self:RegisterEvent("PLAYER_REGEN_ENABLED")
 
     self:RegisterComm(self._commPrefix)
 
@@ -70,9 +71,7 @@ end
 function addon.comms:UpdateDB()
     local abs = math.abs
     for _, data in pairs(self.players) do
-        if data.timePlayed < 0 then
-            data.timePlayed = abs(data.timePlayed)
-        end
+        if data.timePlayed < 0 then data.timePlayed = abs(data.timePlayed) end
 
         -- Initial logic didn't calculate XP properly
         -- Only counted the first XP chunk
@@ -87,11 +86,7 @@ function addon.comms:UpdateDB()
         -- .complete[msg] = addon.player.level
         -- .collect[msg] = addon.player.level
         for _, data in pairs(kinds) do
-            for msg, level in pairs(data) do
-                if level < addon.player.level - 3 then
-                    data[msg] = nil
-                end
-            end
+            for msg, level in pairs(data) do if level < addon.player.level - 3 then data[msg] = nil end end
         end
     end
 end
@@ -102,6 +97,7 @@ function addon.comms:PLAYER_ENTERING_WORLD(_, isInitialLogin, isReloadingUi)
     self:AnnounceSelf("ANNOUNCE")
 
     addon.comms.grouping:UpdateParty()
+    self:AdvertiseCurrentStepOnce()
 end
 
 function addon.comms:GROUP_FORMED()
@@ -109,6 +105,7 @@ function addon.comms:GROUP_FORMED()
         self:AnnounceSelf("ANNOUNCE")
 
         addon.comms.grouping:UpdateParty()
+        self:AdvertiseCurrentStepOnce()
     end)
 end
 
@@ -116,10 +113,35 @@ function addon.comms:GROUP_LEFT()
     self.state.rxpGroupDetected = false
 
     addon.comms.grouping:UpdateParty()
+    self:QueueActiveStepFrameCleanup()
 end
 
 function addon.comms:GROUP_ROSTER_UPDATE()
     addon.comms.grouping:UpdateParty()
+    self:QueueActiveStepFrameCleanup()
+
+    C_Timer.After(5 + mrand(5), function() self:AdvertiseCurrentStepOnce() end)
+end
+
+function addon.comms:QueueActiveStepFrameCleanup()
+    self.activeStepFrameCleanupPending = true
+
+    if not InCombatLockdown() then self:ProcessActiveStepFrameCleanup() end
+end
+
+function addon.comms:ProcessActiveStepFrameCleanup()
+    if not self.activeStepFrameCleanupPending or InCombatLockdown() then return end
+
+    self.activeStepFrameCleanupPending = nil
+    addon.v2:HideUnusedActiveStepFrames()
+end
+
+function addon.comms:PLAYER_REGEN_ENABLED() self:ProcessActiveStepFrameCleanup() end
+
+function addon.comms:AdvertiseCurrentStepOnce()
+    if not (addon.settings.profile.enableBetaFeatures and addon.RXPFrame and addon.RXPFrame.activeSteps) then return end
+
+    addon.comms.grouping:BroadcastCurrentStep(addon.v2:EncodePlayerActiveSteps(addon.RXPFrame.activeSteps))
 end
 
 function addon.comms:PLAYER_LEVEL_UP(_, level)
@@ -189,9 +211,7 @@ function addon.comms:TallyGroup(xp)
 
     local diff = 0
     local now = GetTime()
-    if self.state.lastXPGain then
-        diff = now - self.state.lastXPGain
-    end
+    if self.state.lastXPGain then diff = now - self.state.lastXPGain end
 
     self.state.lastXPGain = now
 
@@ -238,7 +258,7 @@ function addon.comms:OnCommReceived(prefix, data, _, sender)
 
     local status, obj = self:Deserialize(data)
 
-    if not status or not obj.command then return end
+    if not status or type(obj) ~= "table" or type(obj.command) ~= "string" then return end
 
     self.state.rxpGroupDetected = true
 
@@ -248,6 +268,8 @@ function addon.comms:OnCommReceived(prefix, data, _, sender)
     elseif obj.command == 'REPLY' then
         self:HandleAnnounce(obj)
         -- Don't respond on REPLY
+    elseif obj.command == 'STEP' and type(obj.encodedPayload) == "string" then
+        addon.v2.events:Trigger("UpdateActiveSteps", obj.encodedPayload, sender)
     end
 
 end
@@ -291,6 +313,9 @@ function addon.comms:HandleAnnounce(data)
     self.players[data.player.name].isRxp = true
     self.players[data.player.name].lastSeen = GetTime()
 
+    addon.comms.grouping:UpdateParty()
+    self:AdvertiseCurrentStepOnce()
+
     if not addon.settings.profile.checkVersions then return end
 
     if not self.state.updateFound.addon and self:IsNewRelease(data.addon.release, data.player.name) then
@@ -325,7 +350,7 @@ function addon.comms:AnnounceStepEvent(event, data)
 
     -- Probably step replay, shush
     -- currentStep == 1 is probably spam from rapid replay
-    if RXPCData.currentStep == 1 or GetTime() - addon.lastStepUpdate < 1 then return end
+    if addon.GetGuideProgress() == 1 or GetTime() - addon.lastStepUpdate < 1 then return end
 
     if not self.db.profile.announcements[data.guideName] then
         self.db.profile.announcements[data.guideName] = {complete = {}, collect = {}}
@@ -374,7 +399,7 @@ function addon.comms:AnnounceStepEvent(event, data)
 
         -- Questie doesn't announce flight-time, so okay to send this out
         msg = self.BuildNotification(L("Flying to %s ETA %s"), RXPCData.flightPaths[data.destination] or '',
-                                        addon.comms:PrettyPrintTime(data.duration))
+                                     addon.comms:PrettyPrintTime(data.duration))
 
         if addon.settings.profile.enableFlyStepAnnouncements and GetNumGroupMembers() > 0 then
             SendChatMessage(msg, "PARTY", nil)
@@ -411,10 +436,7 @@ function addon.comms.PrettyDebug(msg, ...)
     local now = GetTime()
 
     if not addon.comms.debugThrottle[msg] then
-        addon.comms.debugThrottle[msg] = {
-            last = now,
-            throttled = false
-        }
+        addon.comms.debugThrottle[msg] = {last = now, throttled = false}
         print(fmt("%s (Debug): %s", addon.title, msg))
 
         return
@@ -457,7 +479,7 @@ function addon.comms.OpenBugReport(stepNumber)
                     (addon.currentGuide.guideId) or 'N/A')
     end
 
-    stepNumber = stepNumber or RXPCData.currentStep
+    stepNumber = stepNumber or addon.GetGuideProgress()
     local stepData = ""
     if addon.currentGuide and addon.currentGuide.steps and stepNumber then
         local step = addon.currentGuide.steps[stepNumber]
@@ -516,9 +538,9 @@ function addon.comms.OpenBugReport(stepNumber)
     end
 
     local arrowData = af and fmt(
-                          "  Shown: %s\n  Hidden by step: %s\n  Disabled: %s\n  Distance: %s\n  Same Continent: %s\n  Zone: %s\n  Coordinates (w): wy (%.02f) wx (%.02f); zy (%.03f) zx (%.03f)",
+                          "  Shown: %s\n  Hidden by step: %s\n  Disabled: %s\n  Distance: %s\n  Same Continent: %s(%d)\n  Zone: %s\n  Coordinates (w): wy (%.02f) wx (%.02f); zy (%.03f) zx (%.03f)",
                           tostr(af:IsShown()), tostr(addon.hideArrow), tostr(addon.settings.profile.disableArrow),
-                          af.distance or -1, sameContinent, af.element and af.element.zone or 'N/A',
+                          af.distance or -1, sameContinent, af.element and af.element.instance or 0, af.element and af.element.zone or 'N/A',
                           af.element and af.element.wy or 0, af.element and af.element.wx or 0,
                           af.element and af.element.y or 0, af.element and af.element.x or 0) or 'N/A'
 
@@ -731,9 +753,7 @@ function addon.comms.grouping:ShareQuest(questId)
     end
 
     -- Only required for Classic
-    if _G.SelectQuestLogEntry then
-        _G.SelectQuestLogEntry(questLogIndex)
-    end
+    if _G.SelectQuestLogEntry then _G.SelectQuestLogEntry(questLogIndex) end
 
     return _G.QuestLogPushQuest(questLogIndex)
 end
@@ -741,12 +761,7 @@ end
 function addon.comms.grouping:UpdateParty()
     addon.comms.state.group = {
         leader = nil,
-        members = {
-            [addon.player.name] = {
-                partyId = "player",
-                isRxp = true
-            }
-        },
+        members = {[addon.player.name] = {partyId = "player", isRxp = true}},
         hasRXP = false
     }
 
@@ -759,19 +774,12 @@ function addon.comms.grouping:UpdateParty()
 
         if not name then break end
 
-        if UnitIsGroupLeader(partyId) then
-            addon.comms.state.group.leader = name
-        end
+        if UnitIsGroupLeader(partyId) then addon.comms.state.group.leader = name end
 
         isRXP = addon.comms.players[name] and addon.comms.players[name].isRxp
-        if isRXP then
-            addon.comms.state.group.hasRXP = true
-        end
+        if isRXP then addon.comms.state.group.hasRXP = true end
 
-        addon.comms.state.group.members[name] = {
-            partyId = partyId,
-            isRxp = isRXP
-        }
+        addon.comms.state.group.members[name] = {partyId = partyId, isRxp = isRXP}
     end
 
     if not addon.comms.state.group.hasRXP then return end
@@ -781,9 +789,7 @@ function addon.comms.grouping:UpdateParty()
     -- Player+party1+party2+party3+party4 is alphabetical ordering including player
     local partyNames = {}
 
-    for playerName, _ in pairs(addon.comms.state.group.members) do
-        tinsert(partyNames, playerName)
-    end
+    for playerName, _ in pairs(addon.comms.state.group.members) do tinsert(partyNames, playerName) end
 
     -- Alphabetically sort player names
     table.sort(partyNames)
@@ -797,4 +803,48 @@ function addon.comms.grouping:UpdateParty()
             markerIndex = markerIndex + 1
         end
     end
+end
+
+local ACTIVE_STEP_BROADCAST_INTERVAL = 0.2
+
+function addon.comms.grouping:CanBroadcastCurrentStep()
+    return addon.settings.profile.enableBetaFeatures and addon.settings.profile.shareActiveSteps and
+               UnitInBattleground("player") == nil and GetNumGroupMembers() > 1
+end
+
+function addon.comms.grouping:SendCurrentStep(encodedPayload)
+    local data = {command = "STEP", encodedPayload = encodedPayload}
+
+    local serialized = addon.comms:Serialize(data)
+    addon.comms:SendCommMessage(addon.comms._commPrefix, serialized, "PARTY", nil, "ALERT")
+
+    self.activeStepBroadcastLast = GetTime()
+
+    return true
+end
+
+function addon.comms.grouping:BroadcastCurrentStep(encodedPayload)
+    if not self:CanBroadcastCurrentStep() then return end
+
+    local now = GetTime()
+    local delay = ACTIVE_STEP_BROADCAST_INTERVAL - (now - (self.activeStepBroadcastLast or 0))
+
+    if delay <= 0 and not self.activeStepBroadcastQueued then return self:SendCurrentStep(encodedPayload) end
+
+    self.activeStepBroadcastPayload = encodedPayload
+
+    if self.activeStepBroadcastQueued then return true end
+
+    self.activeStepBroadcastQueued = true
+
+    C_Timer.After(delay, function()
+        local payload = self.activeStepBroadcastPayload
+
+        self.activeStepBroadcastQueued = false
+        self.activeStepBroadcastPayload = nil
+
+        if payload then self:BroadcastCurrentStep(payload) end
+    end)
+
+    return true
 end

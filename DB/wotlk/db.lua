@@ -1,6 +1,5 @@
 local addonName, addon = ...
 local faction = UnitFactionGroup("player")
-print('1234w')
 addon.skipPreReq = {
     [9573] = 1,
     [533] = 1,
@@ -30,11 +29,11 @@ elseif class == "HUNTER" then
     addon.defaultGuideList["Dun Morogh"] = "RestedXP Alliance 1-20\\1-11 Dun Morogh"
 end
 ]]
-
+local L = addon.locale.Get
 if faction == "Horde" then
-    addon.defaultGroup = "RestedXP Horde 1-30"
+    addon.defaultGroup = L"RestedXP Horde 1-30"
 elseif faction == "Alliance" then
-    addon.defaultGroup = "RestedXP Alliance 1-20"
+    addon.defaultGroup = L"RestedXP Alliance 1-20"
 end
 
 
