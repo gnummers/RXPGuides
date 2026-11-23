@@ -207,7 +207,7 @@ step
 step
     .goto The Barrens,51.62,30.90
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Darsok|r
-    >>Il est au sommet de la tour
+    >>Il est en haut de la tour
     .accept 867 >>Acceptez la quête Les harpies pillardes
     .target Darsok Swiftdagger
 step
@@ -275,7 +275,7 @@ step
 step
     .goto The Barrens,55.70,27.30
     .use 4926 >> Ramassez le |cRXP_PICK_Chen's Empty Keg|r sur le sol et commencez la quête
-    >>Si il n'est pas disponible, vous pourrez le prendre plus tard
+    >>Si il n'est pas présent, vous pourrez le trouver plus tard
     .collect 4926,1,819 --Collect Chen's Empty Keg
     .accept 819 >> Acceptez la quête Tonneau vide de Chen
 step << !Tauren !Hunter !Shaman
@@ -812,7 +812,7 @@ step << Tauren Warrior
 step << Tauren Warrior
     #optional
     #completewith BarenLongshore
-    +Équipez le [Marteau en pierre] lorsque vous passez niveau 16
+    +Équipez le [Marteau en pierre] lorsque vous passez au niveau 16
     .use 2026
     .itemcount 2026,1
     .itemStat 16,QUALITY,<7
@@ -858,7 +858,7 @@ step
 step
     .goto The Barrens,62.05,39.41
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Wiley l'aubergiste|r
-    >>|cRXP_BUY_Buy|r Achetez des [Lutjan à longue mâchoire]|cRXP_BUY_au marchand|r
+    >>|cRXP_BUY_Buy|r Achetez des [Lutjan à longue mâchoire]|cRXP_BUY_à Drohn|r
     >>|cRXP_BUY_Achetez du|r [Jus de melon] |cRXP_BUY_au marchand|r << Mage/Warlock/Priest/Shaman/Druid
     >>|cRXP_WARN_Cette option est extrêmement bon marché, achetez-en autant que vous le voulez|r
     .vendor >> Vendez tout ce dont nous n'avez pas besoin
@@ -870,7 +870,7 @@ step
     .isQuestAvailable 887
 step
     #completewith BaronLongshore
-    .destroy 5088 >> Détruisez le [Manuel de la console de contrôlel] de vos sacs, vous n'en aurez plus besoin
+    .destroy 5088 >> Détruisez le [Manuel de la console de contrôle] de vos sacs, il n'est plus nécessaire
 step
     #completewith BaronLongshore
     >>Tuez les |cRXP_ENEMY_Southsea Brigands|r et les |cRXP_ENEMY_Southsea Cannoneers|r
@@ -894,7 +894,7 @@ step
     .goto The Barrens,63.57,49.14,50,0
     .goto The Barrens,62.64,49.72,50,0
     >>Tuez |cRXP_ENEMY_Baron Longshore|r. Dépouillez-le pour sa |cRXP_LOOT_Tête|r
-    >>Vous pourrez le trouver dans l'un des camps
+    >>Il se trouve dans l'un des camps
     .complete 895,1 --Baron Longshore's Head (1)
     .unitscan Baron Longshore
 step << Orc Rogue/Troll Rogue
@@ -961,7 +961,7 @@ step << Troll Warrior/Undead Warrior
     .itemStat 16,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<11.9
 step << Orc Warrior
     .goto The Barrens,62.24,37.48
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_Parlez à|r |cRXP_FRIENDLY_Ironzar|r|cRXP_BUY_. Achetez une|r [Hâche ébarbée] |cRXP_BUY_à Ironzar|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_Parlez à|r |cRXP_FRIENDLY_Ironzar|r|cRXP_BUY_. Achetez une|r [Hache ébarbée] |cRXP_BUY_à Ironzar|r
     .collect 2025,1,850,1 --Collect Bearded Axe (1)
     .money <0.5304
     .itemStat 16,QUALITY,<7
@@ -985,7 +985,7 @@ step << Tauren Warrior
 step << Tauren Warrior
     #optional
     #completewith FlyToXroads1
-    +Équipez le [Marteau en pierre] lorsque vous passez niveau 16
+    +Équipez le [Marteau en pierre] lorsque vous passez au niveau 16
     .use 2026
     .itemcount 2026,1
     .itemStat 16,QUALITY,<7
@@ -1250,7 +1250,7 @@ step
 step
     .goto The Barrens,62.05,39.41
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Wiley l'aubergiste|r
-    >>|cRXP_BUY_Buy|r Achetez des [Lutjan à longue mâchoire]|cRXP_BUY_au marchand|r
+    >>|cRXP_BUY_Buy|r Achetez des [Lutjan à longue mâchoire]|cRXP_BUY_à Drohn|r
     >>|cRXP_BUY_Achetez du|r [Jus de melon] |cRXP_BUY_au marchand|r << Mage/Warlock/Priest/Shaman/Druid
     >>|cRXP_WARN_Cette option est extrêmement bon marché, achetez-en autant que vous le voulez|r
     .vendor >> Vendez tout ce dont nous n'avez pas besoin
@@ -1436,7 +1436,7 @@ step << Warlock
     .xp >18,1
 step << Warlock
     .goto Orgrimmar,47.54,46.75
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Kurgul|r et achetez le [Grimoire d’Éclair de feu (Rang 3)]
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Kurgul|r et achetez un [Grimoire d’Éclair de feu(Rang 3)]
     .collect 16316,1,896,1 --Grimoire of Firebolt (Rank 3) (Rank 1) (1)
     .target Kurgul
     .xp <18,1
@@ -1519,7 +1519,7 @@ step
     .skill firstaid,<1,1
 step
     #completewith next
-    .skill firstaid,50 >> Créez des [Bandages épais en lin] jusqu'à ce que votre compétence en [Premiers soins] soit de 50 ou plus
+    .skill firstaid,50 >> Fabriquez des [Bandages épais en lin] jusqu'à ce que votre compétence de [Premiers soins] soit de 50 ou plus
     .skill firstaid,<1,1
 step
     .goto Orgrimmar,34.18,84.53
@@ -1860,7 +1860,7 @@ step
 step
     .goto The Barrens,62.05,39.41
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Wiley l'aubergiste|r
-    >>|cRXP_BUY_Buy|r Achetez des [Lutjan à longue mâchoire]|cRXP_BUY_au marchand|r
+    >>|cRXP_BUY_Buy|r Achetez des [Lutjan à longue mâchoire]|cRXP_BUY_à Drohn|r
     >>|cRXP_BUY_Achetez du|r [Jus de melon] |cRXP_BUY_au marchand|r << Mage/Warlock/Priest/Shaman/Druid
     >>|cRXP_WARN_Cette option est extrêmement bon marché, achetez-en autant que vous le voulez|r
     .vendor >> Vendez tout ce dont nous n'avez pas besoin
@@ -2066,7 +2066,7 @@ step
     .target +Gazrog
     .goto The Barrens,51.93,30.32
 step
-    .destroy 5165 >>Détruisez toutes les [Plumes solécailles] que vous avez encore
+    .destroy 5165 >>Détruisez toutes les [Plumes solécailles] qu'il vous reste
     .itemcount 5165,1
 step << Hunter
     .goto The Barrens,51.67,29.95
@@ -2159,7 +2159,7 @@ step
     .goto Stonetalon Mountains,75.89,87.49,30 >>Montez le chemin jusqu'au bûcher
 step
     .goto Stonetalon Mountains,73.65,86.13
-    >>Tuez |cRXP_ENEMY_Grundig Darkcloud|r et |cRXP_ENEMY_Grimtotem Brutes|r
+    >>Tuez les |cRXP_ENEMY_Grundig Darkcloud|r et les |cRXP_ENEMY_Grimtotem Brutes|r
     >>Tuez bien les 6 |cRXP_ENEMY_Grimtotem Brutes|r avant de commencer la quête à l'intérieur
     .complete 6629,1 --Kill Grundig Darkcloud (x1)
     .mob +Grundig Darkcloud
@@ -2223,7 +2223,7 @@ step
     .isQuestAvailable 1093
 step
     .goto Stonetalon Mountains,47.61,61.58
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Jeeda|r au deuxième étage de l'auberge
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Jeeda|r au second étage de l'auberge
     .vendor >> |cRXP_BUY_Achetez-lui des|r [Potions de soins] |cRXP_BUY_si elle en a en stock|r << !Warrior
     .vendor >> |cRXP_BUY_Achetez-lui des|r [Potions de soins] |cRXP_BUY_et des|r [Viétérule] |cRXP_BUY_si elle en a en stock|r << Warrior
     .target Jeeda
@@ -2503,7 +2503,7 @@ step
     .goto The Barrens,45.93,49.08,80,0
     .goto The Barrens,47.43,51.37,80,0
     .goto The Barrens,50.10,53.34,80,0
-	>>Tuez |cRXP_ENEMY_Lakota'mani|r. Dépouillez-le pour la [|cRXP_LOOT_Hoof of Lakota'mani|r]
+	>>Tuez |cRXP_ENEMY_Lakota'mani|r. Dépouillez-le pour sa [|cRXP_LOOT_Hoof of Lakota'mani|r]
     >>|cRXP_WARN_Utilisez le [|cRXP_LOOT_Hoof of Lakota'mani|r] pour commencer la quête|r
     >>Il a 4 possibles points d'apparition (marqués sur la carte)
     >>Passez cette étape si vous n'arrivez pas à le trouver
@@ -2692,7 +2692,7 @@ step << Warrior
 step << Rogue/Hunter/Warrior/Shaman/Druid
     #optional
     #completewith FlytoXroads
-    +Équipez les [|cRXP_FRIENDLY_Wolf Bracers|r]
+    +Équipez le [|cRXP_FRIENDLY_Wolf Bracers|r]
     .use 4794
     .itemcount 4794,1
     .itemStat 9,ITEM_MOD_ARMOR_SHORT,<37
@@ -3234,7 +3234,7 @@ step
 step << !Tauren
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Mangletooth|r
     .aura 16618 >>|cRXP_WARN_S'il vous reste 10|r |T134128:0|t[|cRXP_LOOT_Joyaux de sang|r] |cRXP_WARN_, utilisez-les pour obtenir|r |T136022:0|t[L'esprit du vent] |cRXP_WARN_auprès de|r |cRXP_FRIENDLY_Mutiledent|r
-    >>Passez cette étape si vous pouvez voler jusqu'à Thunder Bluff
+    >>Passez cette étape si vous pouvez voler jusqu'à Pitons-du-Tonnerre
     .itemcount 5075,10
     .target Mangletooth
 step << !Tauren
@@ -3266,7 +3266,7 @@ step << Troll Hunter/Orc Hunter/Undead Warrior/Warlock/Priest
 step << Rogue
     .goto Thunder Bluff,40.93,62.73
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Ansekhwa|r
-    .train 198 >>Acheter la compétence pour porter des masses à une main
+    .train 198 >>Acheter la compétence pour porter des masses à deux mains
     .target Ansekhwa
 step << Rogue
     .goto Thunder Bluff,38.95,64.62
@@ -3360,18 +3360,18 @@ step << Shaman
     .xp <22,1
 step
     #completewith next
-    .skill firstaid,80 >> Fabriquez des [Bandages épais en lin] jusqu'à ce que votre compétence de [Premiers soins] soit de 80 ou plus
+    .skill firstaid,80 >> Fabriquez des  [Bandages épais en lin] jusqu'à ce que votre compétence en [Premiers soins] soit de 80 ou plus
     .skill firstaid,<1,1
 step
     .goto Thunder Bluff,29.68,21.19
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à|r |cRXP_FRIENDLY_Pand|r
     >>Passez cette étape si vous n'avez pas assez d'[Etoffe de lin] pour monter vos [Premiers soins] à 80
-    .train 3277 >> Apprenez  [Bandage en laine]
+    .train 3277 >> Apprenez [Bandage en laine]
     .train 7934 >> Apprenez [Anti-Venin] << Rogue
     .target Pand Stonebinder
     .skill firstaid,<1,1
 step << Rogue
-    >>Fabriquez des [Anti-venin] si vous avez trouvé des [Petites glandes à venin]
+    >>Fabriquez des [Anti-Venin] si vous avez trouvé des [Petites glandes à venin]
     >>Gardez-les pour plus tard
     .collect 6452,1 --Anti Venom
     .itemcount 1475,1
@@ -3573,7 +3573,7 @@ step << Hunter
 step << Hunter
     .goto Thunder Bluff,46.98,45.69
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_Parlez à|r |cRXP_FRIENDLY_Kuna|r
-    >>|cRXP_BUY_Achetez des|r [Flèche grossières] |cRXP_BUY_à Narina|r
+    >>|cRXP_BUY_Achetez des|r [Flèche pointues] |cRXP_BUY_à Kuna|r
     .collect 2515,1600,493,1 << Hunter --Sharp Arrow (1600)
     .target Kuna Corne-Tonnerre
 step
@@ -3770,7 +3770,7 @@ step
 step
     #requires Gems
     #completewith next
-    +|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Disciple of Naralex|r à l'entrée des Cavernes des lamentations. Escortez-le jusqu'à |cRXP_FRIENDLY_Naralex|r
+    +|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Disciple of Naralex|r à l'entrée des Cavernes des Lamentations. Escortez-le sans qu'il ne meurt jusqu'à |cRXP_FRIENDLY_Naralex|r
     .target Disciple of Naralex
     .skipgossip
     .dungeon WC
@@ -4194,7 +4194,7 @@ step
     .isQuestAvailable 6442
 step
     .goto Stonetalon Mountains,47.61,61.58
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Jeeda|r au deuxième étage de l'auberge
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Jeeda|r au second étage de l'auberge
     .vendor >> |cRXP_BUY_Achetez-lui des|r [Potions de soins] |cRXP_BUY_si elle en a en stock|r << !Warrior
     .vendor >> |cRXP_BUY_Achetez-lui des|r [Potions de soins] |cRXP_BUY_et des|r [Viétérule] |cRXP_BUY_si elle en a en stock|r << Warrior
     .target Jeeda
@@ -4451,7 +4451,7 @@ step
 step
     #label ZoramFP
    .goto Ashenvale,12.24,33.80
-   >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Andruk|r
+   >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Andruk, Zoram'gar|r
    .fp Zoram'gar Outpost >> Prenez le chemin de vol de l'Avant-poste de Zoram'gar
    .target Andruk
    .isQuestAvailable 6442
@@ -4660,7 +4660,7 @@ step
 step
     #completewith flytoORG
     .goto Ashenvale,12.24,33.80
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Andruk|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Andruk, Zoram'gar|r
     .zoneskip Thunder Bluff
     .fly Thunder Bluff >> Volez à Thunder Bluff
     .target Andruk
@@ -4733,7 +4733,7 @@ step << Warlock
     .use 6626
 step << Warlock
     .goto Orgrimmar,49.66,50.15
-    >>Tuez la |cRXP_ENEMY_Summoned Succubus|r
+    >>Tuez les |cRXP_ENEMY_Summoned Succubus|r
     .complete 1513,1 --Kill Summoned Succubus (1)
     .mob Summoned Succubus
     .use 6626
@@ -4821,7 +4821,7 @@ step << Mage
     .xp <24,1
 step << Mage
     .goto Orgrimmar,38.66,85.41
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à|r |cRXP_FRIENDLY_Thuul|r en haut de la hutte
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à|r |cRXP_FRIENDLY_Thuul|r au sommet de la hutte
     .train 3567 >> Apprenez [Téléportation: Orgrimmar]
     .target Thuul
 step << Troll Priest
@@ -4897,8 +4897,8 @@ step << Rogue
 step << Rogue
     .goto The Barrens,54.77,5.57
     >>Au sommet de la tour vous trouverez |cRXP_ENEMY_Gallywix|r. Dépouillez-le pour sa |cRXP_LOOT_Tête|r
-    >>Utilisez [Embuscade] pour réduire ses PV de moitié. Utilisez [Suriner] pour récupérer votre énergie et utiliser [Évasion]
-	>>Rappelez-vous d'utiliser une potion et un [Thé aux chardons] si nécessaire
+    >>Utilisez [Embuscade] pour réduire ses PV de moitié. Utilisez [Suriner] pour récupérer votre énergie et utilisez [Évasion]
+	>>N'oubliez pas d'utiliser une Potion et un [Thé aux chardons] si nécessaire
     .complete 2478,4 --Gallywix's Head (1)
     .mob Grand Foreman Puzik Gallywix
     --VV Video?

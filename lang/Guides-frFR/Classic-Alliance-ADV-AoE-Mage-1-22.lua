@@ -1530,7 +1530,7 @@ step
     .goto 1426,21.813,72.584,0
     .goto 1426,19.578,72.086,0
     .goto 1426,20.627,70.415,0
-    >>Tuez les|cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
+    >>Tuez les |cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
     .complete 170,1 --Kill Rockjaw Trogg (x6)
     .mob +Rockjaw Trogg
     .complete 170,2 --Kill Burly Rockjaw Trogg (x6)
@@ -1595,7 +1595,7 @@ step
     .goto 1426,21.813,72.584,0
     .goto 1426,19.578,72.086,0
     .goto 1426,20.627,70.415,0
-    >>Tuez les|cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
+    >>Tuez les |cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
     .complete 170,1 --Kill Rockjaw Trogg (x6)
     .mob +Rockjaw Trogg
     .complete 170,2 --Kill Burly Rockjaw Trogg (x6)
@@ -2530,7 +2530,7 @@ step
 step
     .goto Dun Morogh,24.29,50.80,40,0
     .goto Dun Morogh,23.31,51.36
-    >>Tuez |cRXP_ENEMY_Frostmane Headhunters|r à l'intérieur de la grotte
+    >>Tuez les|cRXP_ENEMY_Frostmane Headhunters|r à l'intérieur de la grotte
     >>|cRXP_WARN_Soyez prudent car ils lancent|r |T132222:0|t[Tir] |cRXP_WARN_(À distance : inflige 8-15 dégâts)|r
     >>|cRXP_WARN_Faites attention au |cRXP_ENEMY_Chasseur de têtes Crins-de-givre|r qui patrouille à l'intérieur|r
     .complete 287,1 --Kill Frostmane Headhunter (x5)

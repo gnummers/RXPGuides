@@ -57,7 +57,7 @@ step << Hunter
     #requires balance1
 	.goto Teldrassil,58.695,44.266
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_管理员伊尔萨莱恩|r 对话
-    .turnin 456,1 >> 交任务 自然的平衡 << Hunter
+    .turnin 456,1 >> 交任务  自然的平衡 << Hunter
     .target 管理员伊尔萨莱恩
     .accept 457 >> 接受任务 自然的平衡
 step << Hunter
@@ -75,7 +75,7 @@ step << Hunter
 step << Hunter
     .goto Teldrassil,54.593,32.992
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_埃沃隆|r 对话
-    .turnin 4495 >> 交任务  好朋友
+    .turnin 4495 >> 交任务 好朋友
     .target 埃沃隆
     .accept 3519 >> 接受任务 需要帮助的朋友
 step << Hunter
@@ -92,7 +92,7 @@ step << Hunter
     #requires balance1
 	.goto Teldrassil,58.695,44.266
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_管理员伊尔萨莱恩|r 对话
-    .turnin 457 >> 交任务 自然的平衡
+    .turnin 457 >> 交任务  自然的平衡
     .target 管理员伊尔萨莱恩
 	.accept 3117 >> 接受任务 风化符记
 step << Druid
@@ -107,8 +107,8 @@ step
     #requires balance1
 	.goto Teldrassil,58.695,44.266
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_管理员伊尔萨莱恩|r 对话
-    .turnin 456,1 >> 交任务 自然的平衡 << Hunter
-    .turnin 456 >> 交任务 自然的平衡 << !Hunter
+    .turnin 456,1 >> 交任务  自然的平衡 << Hunter
+    .turnin 456 >> 交任务  自然的平衡 << !Hunter
     .target 管理员伊尔萨莱恩
     .accept 457 >> 接受任务 自然的平衡
 	.accept 3116 >> 接受任务 简易符记 << Warrior
@@ -164,7 +164,7 @@ step << !Hunter
     .goto Teldrassil,58.695,44.266
     .target 管理员伊尔萨莱恩
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_管理员伊尔萨莱恩|r 对话
-    .turnin 457 >> 交任务 自然的平衡
+    .turnin 457 >> 交任务  自然的平衡
 step
     .goto Teldrassil,60.899,41.961
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_迪兰妮亚·银辉|r 对话
@@ -314,7 +314,7 @@ step << Druid
     >>爬上奥达希尔之树
     .target 玛丹特·硬木
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_玛丹特·硬木|r 对话
-	.turnin 3120 >> 交任务 绿色符记
+	.turnin 3120 >> 交任务  绿色符记
 	.train 8921 >>学习 |T136096:0|t[月火术]
 step
     #season 0 << Warrior
@@ -388,7 +388,7 @@ step << Hunter
     .goto Teldrassil,58.695,44.266
     .target 管理员伊尔萨莱恩
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_管理员伊尔萨莱恩|r 对话
-    .turnin 457,2 >> 交任务 自然的平衡
+    .turnin 457,2 >> 交任务  自然的平衡
 step << Priest
     #requires vial1
     .goto Teldrassil,59.2,40.5
@@ -713,7 +713,7 @@ step
     #label zenn
     .goto Teldrassil,66.26,58.52
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_盖洛拉斯·塔文斯伦|r 对话
-    .turnin 475 >> 交任务 烦恼之风
+    .turnin 475 >> 交任务  烦恼之风
     .target 盖洛拉斯·塔文斯伦
     .accept 476 >> 接受任务 瘤背熊怪的堕落
 step
@@ -1071,7 +1071,7 @@ step
     .target 塔隆凯·捷根
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|在树顶上与 |cRXP_FRIENDLY_塔隆凯·捷根|r 对话
     .turnin 932 >> 交任务  扭曲的仇恨
-    .turnin 2459 >> 交任务 噬梦者菲罗斯塔
+    .turnin 2459 >> 交任务  噬梦者菲罗斯塔
 step
 #xprate >1.99
     .xp 10
@@ -1242,7 +1242,7 @@ step << Hunter
 	#requires harpies
     .goto Teldrassil,38.32,34.36
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_哨兵阿瑞尼亚·碎云|r 对话
-    .turnin 937 >> 交任务 神谕林地
+    .turnin 937 >> 交任务  神谕林地
     .target 哨兵阿瑞尼亚·碎云
     .accept 940 >> 接受任务 泰达希尔
 step << !Hunter
@@ -1258,7 +1258,7 @@ step << !Hunter
     .goto Teldrassil,38.32,34.36
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_哨兵阿瑞尼亚·碎云|r 对话
     >>|cRXP_WARN_记住这是一个限时任务，你需要在接受任务之后10分钟之内交任务|r
-    .turnin 937 >> 交任务 神谕林地
+    .turnin 937 >> 交任务  神谕林地
     .target 哨兵阿瑞尼亚·碎云
     .accept 940 >> 接受任务 泰达希尔
     .turnin 938 >> 交任务  密斯特
@@ -1334,7 +1334,7 @@ step << !Rogue
     #requires xp10
     .goto Darnassus,38.18,21.64
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_雷利亚·绿树|r 对话
-    .turnin 922 >> 交任务 雷利亚·绿树
+    .turnin 922 >> 交任务  雷利亚·绿树
     .target 雷利亚·绿树
     .accept 923 >> 接受任务 青苔之瘤
 step << !Hunter !Rogue
@@ -1613,7 +1613,7 @@ step << Rogue
 step << Rogue
     .goto Darnassus,38.18,21.64
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_雷利亚·绿树|r 对话
-    .turnin 922 >> 交任务 雷利亚·绿树
+    .turnin 922 >> 交任务  雷利亚·绿树
     .target 雷利亚·绿树
     .accept 923 >> 接受任务 青苔之瘤
 step << Rogue
@@ -1735,7 +1735,7 @@ step
     #label TeldrassilEnd
     .goto Teldrassil,38.3,34.4
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_哨兵阿瑞尼亚·碎云|r 对话
-    .turnin 937 >> 交任务 神谕林地
+    .turnin 937 >> 交任务  神谕林地
     .target 哨兵阿瑞尼亚·碎云
     .accept 940 >> 接受任务 泰达希尔
 step

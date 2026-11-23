@@ -13,7 +13,7 @@ RXPGuides.RegisterGuide([[
 #group RestedXP Forever Route (H)
 #subgroup Schnellste Route 1-22
 --#groupid RXP-SRGCE-H1
-#next 17-22 Steinkrallengebirge/Brachland/Eschental
+#next 17-22 Steinkrallengebirge/Brachland/Ashenvale
 
 
 step << Tauren Shaman
@@ -571,23 +571,16 @@ step
     .mob Sunscale Screecher
 step
     #optional
-    #completewith next
+    #completewith RatchetEnter
     .goto 1413/1,-3851.27,-526.53,100,0
     >>Tötet |cRXP_ENEMY_Zhevra-Läufer|r. Plündert sie für ihre |cRXP_LOOT_Hufe|r
     .complete 845,1 --Zhevra Hooves (4)
     .mob Zhevra Runner
     .isOnQuest 872
 step
-    #optional
-    #completewith next
-    >>Tötet |cRXP_ENEMY_Zhevra-Läufer|r. Plündert sie für ihre |cRXP_LOOT_Hufe|r
-    .complete 845,1 --Zhevra Hooves (4)
-    .mob Zhevra Runner
-    .isNotOnQuest 872
-step
     #label RatchetEnter
     .goto 1413/1,-3728.66,-835.29
-    .subzone 392 >> Reist nach Ratschet
+    .subzone 392 >> Reist nach Ratchet
     .isOnQuest 845
 step
     .goto 1413/1,-3767.800,-842.900
@@ -603,7 +596,7 @@ step
     #completewith next
     .goto 1413/1,-3770.20,-898.12
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Bragok|r
-    .fp Ratchet >> Erlernt die Flugroute nach Ratschet
+    .fp Ratchet >> Erlernt die Flugroute nach Ratchet
     .target Bragok
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Sputtervalve|r und dem |cRXP_FRIENDLY_Gesucht Plakat|r
@@ -1046,7 +1039,7 @@ step << Tauren Druid
     .xp <16,1
 step << Tauren
     #completewith FlyXroads2
-    .hs >> Ruhestein nach Donnerfels
+    .hs >> Ruhestein nach Thunder Bluff
     .bindlocation 1638,1
     .zoneskip Thunder Bluff
     .cooldown item,6948,>0
@@ -1054,7 +1047,7 @@ step << Tauren
 step << Tauren
     .goto 1456/1,40.72,-1238.97--c:Thunder Bluff,45.6,55.9
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Ahanu|r
-    .turnin 6362 >>Gebt die Quest Flug nach Donnerfels ab
+    .turnin 6362 >>Gebt die Quest Flug nach Thunder Bluff ab
     .accept 6363 >>Akzeptiert die Quest Tal der Windreitermeister
     .target Ahanu
 step << Tauren Shaman
@@ -1276,7 +1269,7 @@ step
     .goto 1413/1,-1483.11,66.67,50,0
     .goto 1413/1,-1531.75,180.85,50,0
     .goto 1413/1,-1462.84,214.63,50,0
-    >>Tötet |cRXP_ENEMY_Savannah Prowlers|r. Plündert sie für |cRXP_LOOT_Claws|r
+    >>Tötet |cRXP_ENEMY_Savannenstreuner|r. Plündert sie für |cRXP_LOOT_Klauen|r
     .complete 903,1 --Prowler Claws (7)
     .mob Savannah Prowler
     .isQuestAvailable 819
@@ -1312,13 +1305,13 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Vrang|r
     .accept 95494 >>Akzeptiert die Quest Verletzter Stolz und Löwenbalg
     .accept 95507 >>Akzeptiert die Quest Vrangs Spiel
-    .target Vrang Wildgore
+    .target Vrang Wildblut
 step
     .goto 1413/1,-1815.48,786.89
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Vrang|r
     >>|cRXP_FRIENDLY_Vrang|r |cRXP_WARN_verkauft|r |T133476:0|t[|cRXP_FRIENDLY_Schwerer Stachelkolben|r] |cRXP_WARN_ein Gegenstand mit begrenztem Vorrat|r << Tauren Warrior/Tauren Shaman/Druid
 	.vendor	>> Verkauft trash und repariert
-    .target Vrang Wildgore
+    .target Vrang Wildblut
     .isQuestAvailable 95494,95507
 step
     #completewith next
@@ -1333,8 +1326,8 @@ step
     .goto 1413/1,-1960.600,653.700,50,0
     .goto 1413/1,-1871.600,653.700,50,0
     .goto 1413/1,-1729.700,592.400,50,0
-    >>Tötet |cRXP_ENEMY_Savannah Patriarchs|r. Plündert sie für |cRXP_LOOT_Hides|r und |cRXP_LOOT_Tusks|r
-    >>|cRXP_WARN_Falls die |cRXP_ENEMY_Savannah Patriarchs|r stark umkämpft sind, überspringt diese Quest vorerst. Sie kann später abgeschlossen werden|r
+    >>Tötet |cRXP_ENEMY_Savannenpatriarch|r. Plündert sie für |cRXP_LOOT_Bälge|r und |cRXP_LOOT_Hauer|r
+    >>|cRXP_WARN_Falls die |cRXP_ENEMY_Savannenpatriarchen|r stark umkämpft sind, überspringt diese Quest vorerst, da sie später abgeschlossen werden kann|r
     .complete 95494,1 --|6/6 Savannah Lion Hide
     .complete 821,1 --Savannah Lion Tusk (5)
     .disablecheckbox
@@ -1350,8 +1343,8 @@ step
     .goto 1413/1,-1960.600,653.700,50,0
     .goto 1413/1,-1871.600,653.700,50,0
     .goto 1413/1,-1729.700,592.400,50,0
-    >>Tötet |cRXP_ENEMY_Savannah Patriarchs|r. Plündert sie für |cRXP_LOOT_Hides|r
-    >>|cRXP_WARN_Falls die |cRXP_ENEMY_Savannah Patriarchs|r stark umkämpft sind, überspringt diese Quest vorerst. Sie kann später abgeschlossen werden|r
+    >>Tötet |cRXP_ENEMY_Savannenpatriarch|r. Plündert sie für |cRXP_LOOT_Bälge|r
+    >>|cRXP_WARN_Falls die |cRXP_ENEMY_Savannenpatriarchen|r stark umkämpft sind, überspringt diese Quest vorerst, da sie später abgeschlossen werden kann|r
     .complete 95494,1 --|6/6 Savannah Lion Hide
     .mob Savannah Patriarch
     .isQuestAvailable 819
@@ -1372,7 +1365,7 @@ step
     .turnin 95494 >>Gebt die Quest Verletzter Stolz und Löwenbalg ab
     .turnin 95507 >>Gebt die Quest Vrangs Spiel ab
     .accept 95495 >>Nehmt die Quest Der einsiedlerische Kürschner an
-    .target Vrang Wildgore
+    .target Vrang Wildblut
     .isQuestComplete 95494
 step
     #completewith next
@@ -1475,7 +1468,7 @@ step
 step
     #optional
     #completewith RaptorHeadsComplete
-    >>Tötet |cRXP_ENEMY_Savannah Prowlers|r. Plündert sie für |cRXP_LOOT_Claws|r
+    >>Tötet |cRXP_ENEMY_Savannenstreuner|r. Plündert sie für |cRXP_LOOT_Klauen|r
     .complete 903,1 --Prowler Claws (7)
     .mob Savannah Prowler
     .isQuestAvailable 819
@@ -1512,7 +1505,7 @@ step
     .goto 1413/1,-2859.800,565.900,50,0
     .goto 1413/1,-3023.000,530.700,50,0
     .goto 1413/1,-2897.500,642.200,50,0
-    >>Tötet |cRXP_ENEMY_Savannah Prowlers|r. Plündert sie für |cRXP_LOOT_Claws|r
+    >>Tötet |cRXP_ENEMY_Savannenstreuner|r. Plündert sie für |cRXP_LOOT_Klauen|r
     .complete 903,1 --Prowler Claws (7)
     .mob Savannah Prowler
     .isQuestAvailable 819
@@ -1827,7 +1820,7 @@ step << Rogue
     .goto 1454/1,-4279.79,1778.57
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Zando'zan|r
     .turnin 2379 >>Gebt die Quest Zando'zan ab
-    .accept 2382 >>Akzeptiert die Quest Wrenix aus Ratschet
+    .accept 2382 >>Akzeptiert die Quest Wrenix aus Ratchet
     .target Zando'zan
 step << Orc Rogue/Troll Rogue
     #optional
@@ -2011,13 +2004,13 @@ step
     #completewith RapHornsPickup
     .goto 1413/1,-2595.75,-437.35
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Devrak|r
-    .fly Ratchet >>Fliege nach Ratschet
+    .fly Ratchet >>Fliegt nach Ratchet
     .target Devrak
     .subzoneskip 392
 step << Rogue
     .goto 1413/1,-3767.800,-842.900
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Wrenix|r
-    .turnin 2382 >>Gebt die Quest Wrenix aus Ratschet ab
+    .turnin 2382 >>Gebt die Quest Wrenix aus Ratchet ab
     .accept 2381 >>Akzeptiert die Quest Das Ausplündern der Plünderer
     .target Wrenix the Wretched
 step << Rogue
@@ -2027,44 +2020,28 @@ step << Rogue
     .collect 7970,1,888,1 --E.C.A.C. (1)
     .collect 5060,1,888,1 --Thieves' Tools (1)
 step
+    .goto 1413/1,-3759.06,-902.18
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Sputtervalve|r und |cRXP_FRIENDLY_Dizzywig|r
     .turnin 902 >>Gebt die Quest Samophlang ab
     .turnin 863 >> Gebt die Quest Die Flucht ab
     .accept 3921 >> Akzeptiert die Quest Wenikee Boltbucket << Hunter
-    .accept 1483 >> Akzeptiert die Quest Ziz Fizziks
-    .target +Sputtervalve
-    .goto 1413/1,-3759.06,-902.18
-    .turnin 896 >> Gebt die Quest Des Minenarbeiters Vermögen ab
-    .target +Wharfmaster Dizzywig
-    .goto 1413/1,-3796.55,-985.28
-    .isQuestComplete 896
-    .isQuestComplete 863
-step
-    #optional
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Sputtervalve|r und |cRXP_FRIENDLY_Dizzywig|r
-    .turnin 902 >>Gebt die Quest Samophlang ab
-    .accept 3921 >> Akzeptiert die Quest Wenikee Boltbucket << Hunter
-    .accept 1483 >> Akzeptiert die Quest Ziz Fizziks
-    .target +Sputtervalve
-    .goto 1413/1,-3759.06,-902.18
-    .turnin 896 >> Gebt die Quest Des Minenarbeiters Vermögen ab
-    .target +Wharfmaster Dizzywig
-    .goto 1413/1,-3796.55,-985.28
-    .isQuestComplete 896
-step
-    #optional
-    .goto 1413/1,-3759.06,-902.18
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Sputtervalve|r
-    .turnin 863 >> Gebt die Quest Die Flucht ab
     .accept 1483 >> Akzeptiert die Quest Ziz Fizziks
     .target Sputtervalve
     .isQuestComplete 863
 step
     #optional
     .goto 1413/1,-3759.06,-902.18
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Sputtervalve|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Sputtervalve|r und |cRXP_FRIENDLY_Dizzywig|r
+    .turnin 902 >>Gebt die Quest Samophlang ab
+    .accept 3921 >> Akzeptiert die Quest Wenikee Boltbucket << Hunter
     .accept 1483 >> Akzeptiert die Quest Ziz Fizziks
     .target Sputtervalve
+step
+    .goto 1413/1,-3796.55,-985.28
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit  |cRXP_FRIENDLY_Dizzywig|r
+    .turnin 896 >> Gebt die Quest Des Minenarbeiters Vermögen ab
+    .target Wharfmaster Dizzywig
+    .isQuestComplete 896
 step
     #label RapHornsPickup
     .goto 1413/1,-3697.24,-929.20
@@ -2485,7 +2462,7 @@ step
     >>Tötet |cRXP_ENEMY_Kriegsherr Krom'zar|r, sobald er erscheint. Plündert die |cRXP_PICK_Flagge|r, welche er auf dem Boden fallen lässt
     >>|cRXP_WARN_Seid vorsichtig! Er ist ein starker Elite und wird von mindestens zwei|r |cRXP_ENEMY_Kolkar|r |cRXP_WARN_mobs|r beschützt
     >>|cRXP_WARN_Es kann bis zu 3 Minuten dauern, bis er erscheint|r
-    .link https://www.youtube.com/watch?v=xrm0PWe5wf4 >>|cRXP_WARN_Klickt hier für ein Anleitungsvideo zum Kiten|r |cRXP_ENEMY_Kriegsherr Krom'zar|r
+    .link https://www.youtube.com/watch?v=xrm0PWe5wf4 >>|cRXP_WARN_Klickt hier für ein Anleitungsvideo zum Kiten von|r |cRXP_ENEMY_Kriegsherr Krom'zar|r
     .complete 4021,1 --Piece of Krom'zar's Banner (1)
     .unitscan Warlord Krom'zar
     .isOnQuest 4021
@@ -2581,13 +2558,13 @@ RXPGuides.RegisterGuide([[
 #forever
 #disabledungeons
 << Horde
-#name 17-22 Steinkrallengebirge/Brachland/Eschental
-#displayname 18-22 Steinkrallengebirge/Brachland/Eschental << !Shaman !Hunter !Tauren
+#name 17-22 Steinkrallengebirge/Brachland/Ashenvale
+#displayname 18-22 Steinkrallengebirge/Brachland/Ashenvale << !Shaman !Hunter !Tauren
 #version 11
 #group RestedXP Forever Route (H)
 #subgroup Schnellste Route 1-22
 --#groupid RXP-SRGCE-H1
-#next 22-24 Hügellandhof
+#next 22-24 Hillsbrad
 
 
 step
@@ -3165,7 +3142,7 @@ step
     .mob Oasis Snapjaw
 step
     #completewith IshamuhalesFang
-    >>Tötet |cRXP_ENEMY_Savannah Matriarchs|r und |cRXP_ENEMY_Savannah Patriarchs|r. Plündert sie für |cRXP_LOOT_Hides|r
+    >>Tötet |cRXP_ENEMY_Savannenmatriarchin|r und |cRXP_ENEMY_Savannenpatriarch|r. Plündert sie für |cRXP_LOOT_Bälge|r
     .complete 95494,1 --|6/6 Savannah Lion Hide
     .mob Savannah Matriarch
     .mob Savannah Patriarch
@@ -3187,13 +3164,13 @@ step
     .goto 1413/1,-3633.200,-600.500,50,0
     .goto 1413/1,-3469.100,-495.000,50,0
     .goto 1413/1,-3428.300,-584.300,50,0
-    >>Tötet |cRXP_ENEMY_Savannah Matriarchs|r und |cRXP_ENEMY_Savannah Patriarchs|r. Plündert sie für |cRXP_LOOT_Hides|r
+    >>Tötet |cRXP_ENEMY_Savannenmatriarchin|r und |cRXP_ENEMY_Savannenpatriarch|r. Plündert sie für |cRXP_LOOT_Bälge|r
     .complete 95494,1 --|6/6 Savannah Lion Hide
     .mob Savannah Matriarch
     .mob Savannah Patriarch
 step
     #completewith BootyTurnin
-    .subzone 392 >> Reist nach Ratschet
+    .subzone 392 >> Reist nach Ratchet
 step
     .goto 1413/1,-3767.800,-842.900
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Wrenix|r
@@ -3220,7 +3197,7 @@ step
 step
     .goto 1413/1,-3720.300,-920.000
     >>Klickt das |cRXP_PICK_Gesucht-Plakat|r
-    .accept 92706 >>Nehmt WANTED: Bruuz an
+    .accept 92706 >>Nehmt Gesucht: Bruuz an
     .group << Rogue/Warrior
 step
     .goto 1413/1,-3697.24,-929.20
@@ -3231,7 +3208,7 @@ step
 step
     #optional
     #completewith XroadsHS2
-    .destroy 5570 >>|cRXP_WARN_Löscht beliebige|r |T132834:0|t[Eier der Kluftmoosspinnen] |cRXP_WARN_die ihr übrig habt|r
+    .destroy 5570 >>|cRXP_WARN_Löscht sämtliche|r |T132834:0|t[Eier der Kluftmoosspinnen] |cRXP_WARN_die ihr übrig habt|r
 step
     .goto 1413/1,-3687.11,-981.22
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Drohn|r
@@ -3281,9 +3258,9 @@ step
     .goto 1413/1,-3951.600,-1093.500
     .goto 1413/1,-4012.800,-1081.800
     .goto 1413/1,-3973.000,-1028.700
-    >>Tötet |cRXP_PICK_Bruuz|r (Stufe 20 Elite) im Meer in der Nähe von Ratschet
+    >>Tötet |cRXP_PICK_Bruuz|r (lvl 20 elite) im Meer neben Ratchet
     >>|cRXP_WARN_Das ist schwer! Bildet eine Gruppe, falls möglich|r << !Rogue !Warrior
-    >>|cRXP_WARN_Versucht, ihn nach Ratschet zu den Wachen zu locken, die euch helfen werden, aber stellt sicher, dass ihr mindestens 50 % Schaden anrichtet!|r
+    >>|cRXP_WARN_Versucht, ihn nach Ratchet zu den Wachen zu locken, die euch helfen werden, aber stellt sicher, dass ihr mindestens 50% des Schadens verursacht!|r
     .complete 92706,1 --Kill Bruuz
     .mob Bruuz
     .isOnQuest 92706
@@ -3419,7 +3396,7 @@ step << Shaman
     #completewith CallofWater01
     .goto 1454/1,-4313.60,1676.24
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Doras|r
-    .fly Ratchet >> Fliege nach Ratschet
+    .fly Ratchet >> Fliegt nach Ratchet
     .target Doras
     .zoneskip Orgrimmar,1
 step << Shaman
@@ -3523,8 +3500,8 @@ step
 step
     #label SleepingBag1
     .goto 1413/1,-2075.00,-3380.64--c:The Barrens,46.361,73.904
-    >>Klickt die |cRXP_PICK_Verbrannten Überreste|r auf dem Boden an
-    .accept 79007 >> Nehmt an ...und diese Notiz, die Ihr gefunden habt.
+    >>Klickt die |cRXP_PICK_Ausgebrannten Überreste|r auf dem Boden
+    .accept 79007 >> Akzeptiert die Quest ...und diese Notiz, die Ihr gefunden habt.
 step
     #label LizardBlood
     #loop
@@ -3644,7 +3621,7 @@ step
     .turnin 884 >>Gebt die Quest Owatanka ab
     .turnin 913 >>Gebt die Quest Der Ruf des Donnerfalken ab
     .accept 874 >>Akzeptiert die Quest Mahren Skyseer
-    .accept 6382 >>Akzeptiert die Quest Die Jagd im Eschental << Hunter
+    .accept 6382 >>Akzeptiert die Quest Die Jagd in Ashenvale << Hunter
     .target Jorn Skyseer
     .isOnQuest 884
 step
@@ -3653,7 +3630,7 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Jorn Himmelsdeuter|r
     .turnin 913 >>Gebt die Quest Der Ruf des Donnerfalken ab
     .accept 874 >>Akzeptiert die Quest Mahren Skyseer
-    .accept 6382 >>Akzeptiert die Quest Die Jagd im Eschental << Hunter
+    .accept 6382 >>Akzeptiert die Quest Die Jagd in Ashenvale << Hunter
     .target Jorn Skyseer
 step
     #optional
@@ -3661,8 +3638,8 @@ step
 step << !Tauren !Skyborne
     .goto 1413/1,-1891.48,-2391.93
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Quetschzahn|r
-    .aura 16618 >>|cRXP_WARN_Falls ihr 10 habt|r |T134128:0|t[|cRXP_LOOT_Blutsplitter|r] |cRXP_WARN_übrig, benutzt sie, um|r |T136022:0|t[Geist des Windes] |cRXP_WARN_von|r |cRXP_FRIENDLY_Quetschzahn|r zu erhalten
-    >>|cRXP_WARN_Überspringen diesen Schritt, falls ihr die Donnerfels-Flugroute habt|r
+    .aura 16618 >>|cRXP_WARN_Falls ihr 10|r |T134128:0|t[|cRXP_LOOT_Blutsplitter|r] |cRXP_WARN_übrig habt, benutzt sie, um|r |T136022:0|t[Geist des Windes] |cRXP_WARN_von|r |cRXP_FRIENDLY_Quetschzahn|r zu erhalten
+    >>|cRXP_WARN_Überspringt diesen Schritt, falls ihr die Thunder Bluff Flugroute habt|r
     .itemcount 5075,10
     .target Mangletooth
     .train 2645,1 << Shaman --skip if ghost wolf trained
@@ -3674,13 +3651,13 @@ step << !Tauren !Skyborne
 step << !Tauren !Skyborne
     #completewith DeathDUPpickup
     .goto 1456/1,184.96,-1308.69
-    .zone Thunder Bluff >>Nehmt den Aufzug nach Donnerfels
-    >>|cRXP_WARN_Wenn ihr die Donnerfels Flugroute habt, fliegt stattdessen dorthin|r
+    .zone Thunder Bluff >>Nehmt den Aufzug nach Thunder Bluff
+    >>|cRXP_WARN_Wenn ihr die Thunder Bluff Flugroute habt, fliegt stattdessen dorthin|r
 step << Tauren/Skyborne
     #completewith DeathDUPpickup
     .goto 1413/1,-1881.35,-2384.50
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Omusa|r
-    .fly Thunder Bluff >>Fliege nach Donnerfels
+    .fly Thunder Bluff >>Fliegt nach Thunder Bluff
     .target Omusa Thunderhorn
     .zoneskip Thunder Bluff
 step << Undead Warrior/Orc Warrior/Troll Warrior/Troll Shaman/Orc Shaman
@@ -3699,7 +3676,7 @@ step << Rogue !Skyborne
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Ansekhwa|r
     .train 198 >>Erlernt Streitkolben
     .target Ansekhwa
-step << Rogue
+step << skip --Rogue
     .goto 1456/1,110.13,-1299.65
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_Sprecht mit|r |cRXP_FRIENDLY_Kuruk|r|cRXP_BUY_. Kauft |r |T135423:0|t[Tödliche Wurfaxt] |cRXP_BUY_von ihm|r
     .collect 3137,1,6562,1 --Deadly Throwing Axe (200)
@@ -3737,7 +3714,7 @@ step
 step
     .goto 1456/1,38.32,-1300.48
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Gastwirtin Pala|r
-    .home >>Setzt euren Ruhestein in Donnerfels
+    .home >>Setzt euren Ruhestein in Thunder Bluff
     .target Innkeeper Pala
     .bindlocation 1638
     .isQuestAvailable 6442
@@ -3850,7 +3827,7 @@ step
     .skill firstaid,<1,1
 step
     .goto 1456/1,206.88,-997.45
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |r |cRXP_FRIENDLY_Pand|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit|r |cRXP_FRIENDLY_Pand|r
     >>|cRXP_WARN_Überspringt diesen Schritt, wenn ihr nicht genug|r |T132889:0|t[Leinenstoff] |cRXP_WARN_hattet, um Skill 80 zu erreichen|r
     .train 3277 >> Erlernt |T133684:0|t[Wollverband]
     .train 7934 >> Erlernt |T134437:0|t[Gegengift] << Rogue
@@ -3880,7 +3857,7 @@ step << Druid
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Turak|r
     .trainer >>Trainiere deine Klassenfähigkeiten
     .accept 27 >>Akzeptiert die Quest Eine wertvolle Lektion
-    .accept 98340 >>Akzeptiert die Quest Der Große Katzengeist
+    .accept 98340 >>Akzeptiert die Quest Der große Katzengeist
     .target Turak Runetotem
 step << Druid
     #completewith next
@@ -3891,9 +3868,9 @@ step << Druid
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Dendrite|r
     .turnin 27 >>Gebt die Quest Eine wertvolle Lektion ab
     .accept 28 >>Akzeptiert die Quest Prüfung des Sees
-    .turnin 98340 >>Gebt die Quest Der Große Katzengeist ab
+    .turnin 98340 >>Gebt die Quest Der große Katzengeist ab
     .accept 98341 >>Akzeptiert die Quest Der Große windgetragene Katzengeist << Skyborne
-    .accept 98405 >>Akzeptiert die Quest Der Große Katzengeist << !Skyborne
+    .accept 98405 >>Akzeptiert die Quest Der große Katzengeist << !Skyborne
     .target Dendrite Starblaze
 step << Druid
     #completewith next
@@ -3913,14 +3890,14 @@ step << Druid
     .target Tajarri
 step << Druid !Skyborne
     .goto 1450/1,-2640.000,7338.900
-     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Great Katze Willenskraft|r
-    .turnin 98405 >>Gebt die Quest Der Große Katzengeist ab
-    .accept 98342 >>Akzeptiert die Quest Der Große Katzengeist
+     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Großer Katzengeist|r
+    .turnin 98405 >>Gebt die Quest Der große Katzengeist ab
+    .accept 98342 >>Akzeptiert die Quest Der große Katzengeist
     .target Great Cat Spirit
 step << Druid Skyborne
     .goto 1450/1,-2352.700,7375.600,10,0
     .goto 1450/1,-2394.300,7361.200
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Avatar of Saeyleenan::272054|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Avatar von Saeyleenan::272054|r
     .target Avatar of Saeyleenan::272054
     .turnin 98341 >>Gebt die Quest Der Große windgetragene Katzengeist ab
     .accept 98404 >>Akzeptiert die Quest Der Große windgetragene Katzengeist
@@ -3928,37 +3905,37 @@ step << Druid
     #completewith next
     .goto 1450/1,-3046.700,7534.400
     --aura 1309054?
-    .subzone 2363 >> Geht zum Sturmgrimms Grabhügel
+    .subzone 2363 >> Geht zu Sturmgrimms Grabhügel
 step << Druid
-    >>Geht tief in die Höhle, wandert über die Brücke, sucht nach einer Katzenstatue in einer Nische und klickt auf die kleine Sphäre neben der Statue
-    >>Beute |cRXP_LOOT_Relikt der Klaue|r
+    >>Geht tief in die Höhle, überquert die Brücke, sucht nach einer Katzenstatue in einer Nische und klickt auf den kleinen Orb neben der Statue
+    >>Plündert das |cRXP_LOOT_Relikt der Klaue|r
     .goto 1450/1,-3117.400,7455.300
     .complete 98404,2 << Skyborne --|1/1 Relic of the Claw
     .complete 98342,2 << !Skyborne --|1/1 Relic of the Claw
 step << Druid
-    >>Klickt auf die kleine Sphäre neben der Katzenstatue
-    >>Beute |cRXP_LOOT_Relikt des stillen Schattens|r
+    >>Klickt auf den kleinen Orb neben der Katzenstatue
+    >>Plündert das |cRXP_LOOT_Relikt des stillen Schattens|r
     .goto 1450/1,-3099.200,7485.700
     .complete 98404,3  << Skyborne --|1/1 Relic of the Silent Shadow
     .complete 98342,3  << !Skyborne --|1/1 Relic of the Silent Shadow
 step << Druid
-    >>Klickt auf die kleine Sphäre neben der Katzenstatue
-    >>Plündert |cRXP_LOOT_Relic of the Zerrender Biss|r
+    >>Klickt auf den kleinen Orb neben der Katzenstatue
+    >>Plündert das |cRXP_LOOT_Relikt des Fangzahns|r
     .goto 1450/1,-3054.100,7476.800
     .complete 98404,1  << Skyborne --|1/1 Relic of the Fang
     .complete 98342,1  << !Skyborne --|1/1 Relic of the Fang
 step << Druid !Skyborne
     .goto 1450/1,-2640.000,7338.900
-     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Great Katze Willenskraft|r
-    .turnin 98342 >>Gebt die Quest Der Große Katzengeist ab
-    .accept 98739 >>Akzeptiert die Quest Segnungen des Großen Katzengeists
+     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Großer Katzengeist|r
+    .turnin 98342 >>Gebt die Quest Der große Katzengeist ab
+    .accept 98739 >>Akzeptiert die Quest Segen des großen Katzengeistes
     .target Great Cat Spirit
 step << Druid Skyborne
     .goto 1450/1,-2395.400,7361.400
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Avatar of Saeyleenan::272054|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Avatar von Saeyleenan::272054|r
     .target Avatar of Saeyleenan::272054
     .turnin 98404 >>Gebt die Quest Der Große windgetragene Katzengeist ab
-    .accept 98738 >>Akzeptiert die Quest Segnungen des Großen windgetragenen Katzengeists
+    .accept 98738 >>Akzeptiert die Quest Segen des großen windgetragenen Katzengeistes
 step << Druid
     #completewith next
     .cast 18960 >>|cRXP_WARN_Wirkt |r|T135758:0|t[Teleportieren: Mondlichtung]
@@ -3966,12 +3943,12 @@ step << Druid
 step << Druid
     .goto 1450/1,-2678.200,8021.500
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Dendrite Starblaze::11802|r
-    .turnin 98738 >>Gebt die Quest Segnungen des Großen windgetragenen Katzengeists ab << Skyborne
-    .turnin 98739 >>Gebt die Quest Segnungen des Großen Katzengeists ab << !Skyborne
-    .accept 98362 >>Akzeptiert die Quest Nach Donnerfels
+    .turnin 98738 >>Gebt die Quest Segen des großen windgetragenen Katzengeistes ab << Skyborne
+    .turnin 98739 >>Gebt die Quest Segen des großen Katzengeistes ab << !Skyborne
+    .accept 98362 >>Akzeptiert die Quest Nach Thunder Bluff
     .target Dendrite Starblaze::11802
 step << Druid
-    .hs >> Ruhestein nach Donnerfels
+    .hs >> Ruhestein nach Thunder Bluff
     .use 6948
     .cooldown item,6948,>0
     .bindlocation 1638,1
@@ -3980,14 +3957,14 @@ step << Druid
     #completewith next
     .goto 1450/1,-2403.61,7785.31
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Bunthen|r
-    .fly Thunder Bluff >> Fliege nach Donnerfels
+    .fly Thunder Bluff >> Fliegt nach Thunder Bluff
     .target Bunthen Plainswind
     .zoneskip Thunder Bluff
     .cooldown item,6948,<0
 step << Druid
     .goto 1456/1,-281.59,-1039.61
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Turak|r
-    .turnin 98362 >>Gebt die Quest Nach Donnerfels ab
+    .turnin 98362 >>Gebt die Quest Nach Thunder Bluff ab
     .target Turak Runetotem
 step << Rogue
     .goto 1456/1,-36.52,-1244.05
@@ -4108,7 +4085,7 @@ step
     >>Tötet |cRXP_ENEMY_Kriegsherr Krom'zar|r, sobald er erscheint. Plündert die |cRXP_PICK_Flagge|r, welche er auf dem Boden fallen lässt
     >>|cRXP_WARN_Seid vorsichtig! Er ist ein starker Elite und wird von mindestens zwei|r |cRXP_ENEMY_Kolkar|r |cRXP_WARN_mobs|r beschützt
     >>|cRXP_WARN_Es kann bis zu 3 Minuten dauern, bis er erscheint|r
-    .link https://www.youtube.com/watch?v=xrm0PWe5wf4 >>|cRXP_WARN_Klickt hier für ein Anleitungsvideo zum Kiten|r |cRXP_ENEMY_Kriegsherr Krom'zar|r
+    .link https://www.youtube.com/watch?v=xrm0PWe5wf4 >>|cRXP_WARN_Klickt hier für ein Anleitungsvideo zum Kiten von|r |cRXP_ENEMY_Kriegsherr Krom'zar|r
     .complete 4021,1 --Piece of Krom'zar's Banner (1)
     .unitscan Warlord Krom'zar
     .isQuestTurnedIn 852
@@ -4145,7 +4122,7 @@ step
     .goto 1413/1,-1960.600,653.700,50,0
     .goto 1413/1,-1871.600,653.700,50,0
     .goto 1413/1,-1729.700,592.400,50,0
-    >>Tötet |cRXP_ENEMY_Savannah Patriarchs|r. Plündert sie für |cRXP_LOOT_Hides|r
+    >>Tötet |cRXP_ENEMY_Savannenpatriarch|r. Plündert sie für |cRXP_LOOT_Bälge|r
     .complete 95494,1 --|6/6 Savannah Lion Hide
     .mob Savannah Patriarch
 step
@@ -4165,7 +4142,7 @@ step
     .turnin 95494 >>Gebt die Quest Verletzter Stolz und Löwenbalg ab
     .turnin 95507 >>Gebt die Quest Vrangs Spiel ab
     .accept 95495 >>Nehmt die Quest Der einsiedlerische Kürschner an
-    .target Vrang Wildgore
+    .target Vrang Wildblut
     .isQuestComplete 95494
 step
     #completewith next
@@ -4229,8 +4206,8 @@ step << Hunter
     #optional
     .goto 1413/1,-2253.24,1246.31
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Torek|r
-    .accept 3513 >>Akzeptiert die Quest Die Runenverzierte Schriftrolle
-    .turnin 3513 >>Gebt die Quest Die Runenverzierte Schriftrolle ab
+    .accept 3513 >>Akzeptiert die Quest Die runenverzierte Rolle
+    .turnin 3513 >>Gebt die Quest Die runenverzierte Rolle ab
     .target Kadrak
     .itemcount 10621,1
 step << Hunter
@@ -4399,7 +4376,7 @@ step << skip
 step << skip
     #completewith ElderCroneTurnin
     .goto 1456/1,-48.84,-1037.94,20,0
-    .goto 1456/1,-13.04,-1107.95,40 >> Nehmt den Aufzug hinauf nach Donnerfels
+    .goto 1456/1,-13.04,-1107.95,40 >> Nehmt den Aufzug nach Thunder Bluff
 step << Hunter
     .goto 1442/1,360.76,451.690
     >>Klickt auf das |cRXP_FRIENDLY_Gesucht Poster|r
@@ -4666,7 +4643,7 @@ step
 step
     #ah
     #completewith WrathtailHeads
-    +|cRXP_WARN_Speichert alle|r |T134332:0|t[Schredder Operating Manuell Pages] |cRXP_WARN_die ihr plündert|r
+    +|cRXP_WARN_Behaltet alle|r |T134332:0|t[Schredderanleitungsseiten] |cRXP_WARN_die ihr plündert|r
 step
    .goto 1440/1,1004.54,3341.83
    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Muglash|r
@@ -4776,13 +4753,13 @@ step
     #completewith JourneytoTM
     .goto 1440/1,994.16,3373.730
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Andruk|r
-    .fly Thunder Bluff >> Fliege nach Donnerfels
+    .fly Thunder Bluff >> Fliegt nach Thunder Bluff
     .zoneskip Thunder Bluff
     .target Andruk
     .cooldown item,6948,<0
 step
     #completewith JourneytoTM
-    .hs >> Ruhestein nach Donnerfels
+    .hs >> Ruhestein nach Thunder Bluff
     .use 6948
     .zoneskip Thunder Bluff
     .bindlocation 1638,1
@@ -4826,7 +4803,7 @@ step
     #ah
     .goto 1456/1,24.85,-1252.75
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Chesmu|r
-    .bankdeposit 16645,16646,16647,16648,16649,16650,16651,16652,16653,16654,16655,16656 >>Einzahlen alle von Euch |T134332:0|t[Schredder Operating Manuell Pages]
+    .bankdeposit 16645,16646,16647,16648,16649,16650,16651,16652,16653,16654,16655,16656 >>Legt alle eure |T134332:0|t[Schredderanleitungsseiten] auf die Bank
     .target Chesmu
 step << Warlock
     .goto 1456/1,26.1,-1196.66
@@ -5154,6 +5131,7 @@ step << skip
     .accept 2841 >>Akzeptiert die Quest Maschinenkriege
     .target Nogg
 step
+    #completewith next
     .goto 1454/1,-4739.57,2036.84
     .gossipoption 95758 >>Sprecht mit |cRXP_FRIENDLY_Sovik|r
     .isNotOnQuest 2842
@@ -5161,10 +5139,10 @@ step
 step
     .goto 1454/1,-4739.57,2036.84
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Sovik|r
-    -->>|cRXP_WARN_You are required to have Rig Wars in your quest log to accept this quest|r
+    >>|cRXP_WARN_Achtung! Ihr müsst zuerst seinen Dialog durchgehen, danach wird die Quest automatisch angenommen.|r
     .accept 2842 >>Akzeptiert die Quest Chefingenieur Scooty
     .target Sovik
-step << Rogue
+step << skip --Rogue
     .goto 1454/1,-4355.53,1520.68
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_Sprecht mit|r |cRXP_FRIENDLY_Trak'gen|r|cRXP_BUY_. Kauft|r |T135423:0|t[Tödliche Wurfaxt] |cRXP_BUY_von ihm|r
     .collect 3137,1,6544,1 --Deadly Throwing Axe (200)
@@ -5201,7 +5179,7 @@ step
     .abandon 6563 >>Brecht die Quest Die Essenz von Aku'mai ab
 step
     #optional
-    .abandon 97003 >>Brecht die Quest Chol'aruk the Ravener ab
+    .abandon 97003 >>Brecht die Quest Chol'aruk der Verschlinger ab
 step
     .zone Durotar >> Verlass Orgrimmar
     .zoneskip Tirisfal Glades

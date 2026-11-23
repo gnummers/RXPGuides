@@ -3648,7 +3648,7 @@ step
     .goto Wetlands,7.89,56.22
     >>隔墙与 |cRXP_FRIENDLY_德温|r 对话
     >>|cRXP_WARN_如果船只刚刚抵达，跳过此步骤|r
-    .vendor 1453 >> |cRXP_BUY_从他那里购买|r |T134831:0|t[治疗药水] |cRXP_BUY_(如果有)|r
+    .vendor 1453 >> |cRXP_BUY_购买|r |T134831:0|t[治疗药水] |cRXP_BUY_从他那里(如果有)|r
     .target 德温·晨光
     .money <0.03
 step
@@ -7205,7 +7205,7 @@ step
 step
     #completewith next
     .goto Stormwind City,37.84,58.50,5,0
-    .goto Stormwind City,37.81,45.02,20 >>沿着墙边往上跑，而不是绕过
+    .goto Stormwind City,37.81,45.02,20 >>沿着墙边跑上去，而不是绕过去
 step
     .goto Stormwind City,45.70,38.42
     >>与 |cRXP_FRIENDLY_克里斯托弗修士|r 对话
@@ -7488,7 +7488,7 @@ step
     .fp Redridge Mountains >> 获取赤脊山的飞行路径
 step
     >>与 |cRXP_FRIENDLY_玛蒂|r 和 |cRXP_FRIENDLY_工头奥斯洛|r 对话
-    .accept 20 >>接受任务 黑石氏族的威胁
+    .accept 20 >>接受任务黑石氏族的威胁
     .target +Marshal Marris
     .goto Redridge Mountains,33.51,48.96
     .accept 125 >>接受任务 丢失的工具
@@ -7878,7 +7878,7 @@ step
 step
     >>与 |cRXP_FRIENDLY_玛蒂|r 和 |cRXP_FRIENDLY_工头奥斯洛|r 对话
     .turnin 20 >>交任务 黑石氏族的威胁
-    .accept 19 >>接受任务 萨瑞尔祖恩
+    .accept 19 >>接受任务萨瑞尔祖恩
     .target +Marshal Marris
     .goto Redridge Mountains,33.51,48.96
     .turnin 89,1 >>交任务 止水湖上的桥

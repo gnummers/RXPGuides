@@ -132,7 +132,7 @@ step
     #label RitesoftheEarthmother
     .goto Mulgore,42.58,92.18
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Seer Graytongue|r
-    >>Tuez des mobs sur la route
+    >>Tuez des créatures sur la route
     .turnin 755 >>Rendez la quête Les rites de la Terre-Mère
     .accept 757 >>Acceptez la quête Le rite de force
     .target Seer Graytongue
@@ -358,7 +358,7 @@ step
 step << Shaman
     #completewith CallofEarth
     #label Rock
-    .goto Mulgore,53.74,80.15,30 >> Voyagez vers le rocher
+    .goto Mulgore,53.74,80.15,30 >> Parlez vers le rocher
 step << Shaman
     #completewith next
     #requires Rock
@@ -465,7 +465,7 @@ step
 step << Shaman/Druid
     .goto Mulgore,45.66,58.60
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Mahnott|r
-    .vendor >> Vendez votre surplus. Vendez votre arme si elle vous donne assez d'argent pour un [Bâton de marche] (5s 04c). Vous reviendrez plus rien si vous n'avez pas encore assez d'argent
+    .vendor >> Vendez votre surplus. Vendez votre arme si elle vous donne assez d'argent pour un [Bâton de marche] (5s 04c). Vous reviendrez plus tard si vous n'avez pas encore assez d'argent
     .target Mahnott Roughwound
     .itemStat 16,QUALITY,<7
     .itemStat 16,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<4.2
@@ -689,7 +689,7 @@ step
 step << Shaman/Druid
     .goto Mulgore,45.66,58.60
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Mahnott|r
-    .vendor >> Vendez votre surplus. Vendez votre arme si elle vous donne assez d'argent pour un [Bâton de marche] (5s 04c). Vous reviendrez plus rien si vous n'avez pas encore assez d'argent
+    .vendor >> Vendez votre surplus. Vendez votre arme si elle vous donne assez d'argent pour un [Bâton de marche] (5s 04c). Vous reviendrez plus tard si vous n'avez pas encore assez d'argent
     .target Mahnott Roughwound
     .itemStat 16,QUALITY,<7
     .itemStat 16,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<4.2
@@ -858,7 +858,7 @@ step
 step << Shaman/Druid
     .goto Mulgore,45.66,58.60
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Mahnott|r
-    .vendor >> Vendez votre surplus. Vendez votre arme si elle vous donne assez d'argent pour un [Bâton de marche] (5s 04c). Vous reviendrez plus rien si vous n'avez pas encore assez d'argent
+    .vendor >> Vendez votre surplus. Vendez votre arme si elle vous donne assez d'argent pour un [Bâton de marche] (5s 04c). Vous reviendrez plus tard si vous n'avez pas encore assez d'argent
     .target Mahnott Roughwound
     .itemStat 16,QUALITY,<7
     .itemStat 16,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<4.2
@@ -976,7 +976,7 @@ step << Hunter
 step
     .goto Mulgore,46.63,61.08
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Innkeeper Kauth|r
-    >>|cRXP_BUY_Achetez du|r [Lait frais] |cRXP_BUY_à Kauth|r << Shaman/Druid
+    >>|cRXP_BUY_Achetez du|r [Lait frais] |cRXP_BUY_à Grosk|r << Shaman/Druid
     >>|cRXP_BUY_Achetez des|r [Pain sorti du four] |cRXP_BUY_à Kauth|r << Warrior
     .vendor >> Vendez tout ce dont nous n'avez pas besoin
     .collect 1179,10,746,1 << Shaman/Druid --Ice Cold Milk (10)
@@ -1282,7 +1282,7 @@ step << Tauren
     .target +Mull Thunderhorn
     .goto Mulgore,48.54,60.38
 step << !Tauren
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Baine|r, |cRXP_FRIENDLY_Ruul|r et |cRXP_FRIENDLY_Harken|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Baine|r, |cRXP_FRIENDLY_Ruul|r et à |cRXP_FRIENDLY_Harken|r
     .turnin 746 >>Rendez la quête Les fouilles des nains
     .target +Baine Bloodhoof
     .goto Mulgore,47.51,60.16
@@ -1351,7 +1351,7 @@ step << Hunter
     .goto Mulgore,42.87,54.88,50,0
     .goto Mulgore,40.73,55.60,50,0
     .goto Mulgore,39.38,57.43,50,0
-    .use 15914 >> Utilisez votre [Bâtonnet de domptage] sur un |cRXP_ENEMY_Adult Plainstrider|r à distance maximale
+    .use 15914 >> Utilisez votre [Bâtonnet de domptage] sur un |cRXP_ENEMY_Adult Plainstrider|r à la portée maximale
     .complete 6061,1 --Tame an Adult Plainstrider (1)
     .mob Adult Plainstrider
 step << Hunter
@@ -1367,7 +1367,7 @@ step << Hunter
     .goto Mulgore,46.65,47.22,50,0
     .goto Mulgore,48.18,45.27,50,0
     .goto Mulgore,49.49,42.27,50,0
-    .use 15915 >> Utilisez votre [Bâtonnet de domptage] sur un |cRXP_ENEMY_Prairie Stalker|r à la portée maximale
+    .use 15915 >> Utilisez votre [Taming Rod] sur un |cRXP_ENEMY_Prairie Stalker|r à distance maximale
     .complete 6087,1 --Tame a Prairie Stalker (1)
     .mob Prairie Stalker
 step << Hunter
@@ -1520,7 +1520,7 @@ step
     .subzone 380 >>Voyagez au nord vers la Croisée
     >>|cRXP_WARN_Faites en sorte de rester sur la route. Sinon, vous risquez d'engager des créatures de haut niveau|r
  step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tonga|r, à |cRXP_FRIENDLY_Sergra|r, à |cRXP_FRIENDLY_Gazrog|r à |cRXP_FRIENDLY_Thork|r et à |cRXP_FRIENDLY_Jahan|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tonga|r, |cRXP_FRIENDLY_Sergra|r, |cRXP_FRIENDLY_Gazrog|r |cRXP_FRIENDLY_Thork|r et |cRXP_FRIENDLY_Jahan|r
     .accept 870 >>Acceptez la quête Les Bassins oubliés
     .target +Tonga Runetotem
     .goto The Barrens,52.26,31.93
@@ -1966,7 +1966,7 @@ step
     .target Ukor
 step
     #label SenjinPickups
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Vel'rin|r, |cRXP_FRIENDLY_Vornal|r et à |cRXP_FRIENDLY_Gadrin|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Vel'rin|r, |cRXP_FRIENDLY_Vornal|r et |cRXP_FRIENDLY_Gadrin|r
     .accept 817 >>Acceptez la quête Proie nécessaire
     .target +Vel'rin Fang
     .goto Durotar,55.95,73.93
@@ -2227,7 +2227,7 @@ step << Hunter
     .xp <12,1
 step
     .goto Durotar,51.51,41.64
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |r |cRXP_FRIENDLY_Grosk l'aubergiste|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |r |cRXP_FRIENDLY_Innkeeper Grosk|r
     .turnin 2161 >>Rendez la quête Un Fardeau de Péon
     .target Innkeeper Grosk
 step
@@ -2400,8 +2400,8 @@ step
     .goto Durotar,51.51,41.64
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Innkeeper Grosk|r
     .vendor >> Vendez tout ce dont nous n'avez pas besoin
-    >>|cRXP_BUY_Achetez du|r [Lait frais] |cRXP_BUY_à Kauth|r << Shaman/Druid
-    >>|cRXP_BUY_Achetez des|r [Cuissot] |cRXP_BUY_à Grosk|r << Warrior
+    >>|cRXP_BUY_Achetez du|r [Lait frais] |cRXP_BUY_à Grosk|r << Shaman/Druid
+    >>|cRXP_BUY_Achetez des|r [Cuissot] |cRXP_BUY_à Hai'zan|r << Warrior
     .collect 1179,20,818,1 << Mage/Warlock/Priest/Shaman --Ice Cold Milk (20)
     .collect 2287,20,818,1 << Rogue/Warrior --Haunch of Meat (20)
     .target Innkeeper Grosk
@@ -2853,7 +2853,7 @@ step
 step
     .goto The Barrens,55.70,27.30
     .use 4926 >> Ramassez le |cRXP_PICK_Chen's Empty Keg|r sur le sol et commencez la quête
-    >>Si il n'est pas disponible, vous pourrez le prendre plus tard
+    >>Si il n'est pas présent, vous pourrez le trouver plus tard
     .collect 4926,1,819 --Collect Chen's Empty Keg
     .accept 819 >> Acceptez la quête Tonneau vide de Chen
 step

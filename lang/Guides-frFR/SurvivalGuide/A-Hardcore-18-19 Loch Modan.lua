@@ -52,7 +52,7 @@ step << !Druid !Hunter
     .xp <18,1
 step << !Druid !Hunter
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Bilban Tosslespanner|r << Warrior
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Eglantine|r << Warlock
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Briarthorn|r << Warlock
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Fenthwick|r << Rogue
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Toldren Deepiron|r << Priest
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Dink|r << Mage
@@ -103,7 +103,7 @@ step
 step
     .goto Loch Modan,23.85,17.92,10,0
     .goto Loch Modan,24.77,18.40
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Mountaineer Stormpike|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Mountaineer Stormpike|r
     .turnin 353 >> Rendez la quête Livraison pour Stormpike << NightElf
     .accept 307 >> Acceptez la quête Bas les pattes !
     .target Mountaineer Stormpike
@@ -118,7 +118,7 @@ step
 step
     .goto Loch Modan,23.85,17.92,10,0
     .goto Loch Modan,24.77,18.40
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Mountaineer Stormpike|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Mountaineer Stormpike|r
     .turnin 307 >> Rendez la quête Bas les pattes !
     .target Mountaineer Stormpike
 step

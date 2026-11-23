@@ -468,7 +468,7 @@ step << Dwarf/Gnome
     #label ThelsaHS
     .goto Loch Modan,35.534,48.404
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Estalajadeiro Fornalenha|r dentro
-    .home >> Defina sua Pedra de Retorno em Thelsamar
+    .home >> Defina sua Pedra de Regresso em Thelsamar
     .target Innkeeper Hearthstove
 step << Dwarf/Gnome
     #label HonorStudents
@@ -676,7 +676,7 @@ step << Dwarf/Gnome
     .goto Ironforge,25.800,75.500,-1
     .goto Ironforge,24.200,74.600,-1
     .goto Ironforge,23.800,71.800,-1
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com um |cRXP_FRIENDLY_Leiloeiro de Ironforge|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com um |cRXP_FRIENDLY_Leiloeiro de Altaforja|r
     >>Se você não quiser ou não puder fazer isso, pule esta etapa
     >>|cRXP_BUY_Compre os itens a seguir para uma entrega mais rápida em Loch Modan em breve:|r
     >>|T134342:0|t[Javali Intestines]
@@ -777,7 +777,7 @@ step << Hunter
 step << Hunter
     .goto Ironforge,70.86,85.83
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Bélia Granitrondo|r
-    .turnin 6086 >> Entregue Treinamento da Fera - Missão
+    .turnin 6086 >> Entregue Treinando a fera
     .target Belia Thundergranite
 step << Paladin Dwarf
     #season 2
@@ -993,10 +993,10 @@ step << Warlock !Human
 step << Warlock !Human
     .goto Redridge Mountains,30.590,59.410
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Ariena Penafúria|r
-    .fp Redridge Mountains >> Aprenda a rota de voo para Montanhas Cristarrubra
+    .fp Redridge Mountains >> Pegue o ponto de voo das Montanhas Cristarrubra
     .target Ariena Stormfeather
 step << !Human
-    .hs >> Volte para Loch Modan
+    .hs >> Use a Pedra de Regresso para voltar a Loch Modan
     .cooldown item,6948,>0,1 << !Warlock
 step << !Warlock !Human
     #label end
@@ -1188,7 +1188,7 @@ step
     .target Mountaineer Cobbleflint
 step << !Human
     #completewith Algaz
-    .hs >> Vá para Thelsamar
+    .hs >> Use sua Pedra de Retorno para ir a Thelsamar
     .cooldown item,6948,>0
     .subzoneskip 924,1--valley of kings
 
@@ -1428,7 +1428,7 @@ step << Human
 step << !Human
     #requires ratcatching
     .goto Loch Modan,33.938,50.954
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Thorgrum|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Thorgrum Borrelson|r
     .fly Ironforge >> Voe para Altaforja
     .target Thorgrum Borrelson
 step << Warrior/Hunter

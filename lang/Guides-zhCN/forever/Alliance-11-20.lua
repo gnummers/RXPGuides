@@ -41,14 +41,14 @@ step
     >>|T135997:0|t[血牙野猪的头]
     >>|T134185:0|t[秋葵]
     >>|T134341:0|t[血牙野猪的肝]
-    -->>|T4548890:0|t[Golem Isospring]
+    >>|T4548890:0|t[魔像同位弹簧]
     -->>|T132995:0|t[Harvester Gyrostabilizer]
     .collect 729,3,38,1 -- Stringy Vulture Meat (3)
     .collect 730,3,38,1 -- Murloc Eye (3)
     .collect 731,3,38,1 -- Goretusk Snout (3)
     .collect 732,3,38,1 -- Okra (3)
     .collect 723,8,22,1 -- Goretusk Liver (8)
-    --.collect 255007,14,92909,1 -- Golem Isospring (14)
+    .collect 255007,14,92909,1 -- Golem Isospring (14)
     --.collect 255010,5,92909,1 -- Harvester Gyrostabilizer (5)
 step << Human
     .goto 1453/0,484.200,-8832.500
@@ -173,20 +173,34 @@ step
     .isOnQuest 399
     .goto 1436/0,1602.67,-10629.67,75 >> 前往阿历克斯顿农场
     >>|cRXP_WARN_跑图前往该位置的途中，顺便做完其他任务的目标|r
-step << skip -- quests drop rate is beyond dreadful. over 50 kills to complete
+step
+    #optional
+    .itemcount 255007,10 -- only accepting this quest if they bought a bunch of isosprings from AH
     .goto 1436/0,1213.400,-10153.800
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_奥兹温·铁链::253395|r 在谷仓对话
     .target Ozwin Ironsprocket::253395
     .accept 92909 >>接受任务 收割傀儡被收割
 step
-    #sticky
+    .isNotOnQuest 92909
     #completewith bennytime
     >>当你路过农田时，顺手击杀|cRXP_ENEMY_看守傀儡|r
     >>拾取它们的 |cRXP_LOOT_秋葵|r 和 |cRXP_LOOT_灯油|r
     .mob Harvest Watcher
     .complete 9,1 --Havest Watcher slain (20)
     .collect 732,3,38,1 --Okra (3)
-    .collect 814,5,103,1 --Flask of Oil (5)
+    .collect 814,5,103,1,1 --Flask of Oil (5)
+step
+    #optional
+    .isOnQuest 92909
+    #completewith bennytime
+    >>当你路过农田时，顺手击杀|cRXP_ENEMY_看守傀儡|r
+    >>拾取它们以获得|cRXP_LOOT_秋葵|r、|cRXP_LOOT_油瓶|r、|cRXP_LOOT_魔像等渗弹簧|r和|cRXP_LOOT_收割机陀螺稳定器|r
+    .mob Harvest Watcher
+    .complete 9,1 --Havest Watcher slain (20)
+    .collect 732,3,38,1 --Okra (3)
+    .collect 814,5,103,1,1 --Flask of Oil (5)
+    .complete 92909,1 -- Golem Isosprings (14)
+    .complete 92909,2 -- Harvester Gyrostabilizer (5)
 step
     .goto 1436/0,1748.27,-10672.13
     >>打开 |cRXP_PICK_阿历克斯顿的箱子|r。拾取其中的 |cRXP_LOOT_简易罗盘|r
@@ -334,10 +348,16 @@ step
     .goto 1436/0,1213.400,-10153.800
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_奥兹温·铁链::253395|r 对话
     .target Ozwin Ironsprocket::253395
-    .accept 92909 >>接受任务 收割傀儡被收割
     .turnin 92909 >>交任务 收割傀儡被收割
     .itemcount 255007,14 -- Golem Isospring (14)
     .itemcount 255010,5 -- Harvester Gyrostabilizer (5)
+step
+    #optional
+    #completewith HarvestW
+    .isOnQuest 92909
+    >>拾取|cRXP_ENEMY_收割者卫士|r以获得|cRXP_LOOT_魔像等渗弹簧|r和|cRXP_LOOT_收割者陀螺稳定器|r
+    .complete 92909,1 -- Golem Isosprings (14)
+    .complete 92909,2 -- Harvester Gyrostabilizer (5)
 step
     .isQuestAvailable 38
     .goto 1436/0,1132.27,-10146.67,60,0
@@ -353,7 +373,7 @@ step
     .complete 9,1 --Harvest Watcher (20)
     .mob Harvest Watcher
     .collect 732,3,38,1 --Okra (3)
-    .collect 814,5,103,1 --Flask of Oil (5)
+    .collect 814,5,103,1,1 --Flask of Oil (5)
 step
     .isQuestTurnedIn 38
     #label HarvestW
@@ -367,9 +387,25 @@ step
     .goto 1436/0,1460.22,-10224.83,60,0
     .goto 1436/0,1238.67,-9907.73
     >>击杀 看守傀儡。拾取它们的 |cRXP_ENEMY_秋葵|r 和 |cRXP_LOOT_灯油|r
-    .mob Harvest Watcher
     .complete 9,1 --Harvest Watcher (20)
-    .collect 814,5,103,1 --Flask of Oil (5)
+    .mob Harvest Watcher
+    .collect 814,5,103,1,1 --Flask of Oil (5)
+step
+    .isOnQuest 92909
+    #optional
+    .goto 1436/0,1132.27,-10146.67,60,0
+    .goto 1436/0,1238.67,-9907.73,80,0
+    .goto 1436/0,1460.22,-10224.83,80,0
+    .goto 1436/0,1132.27,-10146.67,80,0
+    .goto 1436/0,1238.67,-9907.73,80,0
+    .goto 1436/0,1460.22,-10224.83,80,0
+    .goto 1436/0,1132.27,-10146.67,60,0
+    .goto 1436/0,1460.22,-10224.83,60,0
+    .goto 1436/0,1238.67,-9907.73
+    >>击杀|cRXP_ENEMY_收割者卫士|r，拾取以获得|cRXP_LOOT_魔像等渗弹簧|r和|cRXP_LOOT_收割者陀螺稳定器|r
+    .complete 92909,1 -- Golem Isosprings (14)
+    .complete 92909,2 -- Harvester Gyrostabilizer (5)
+    .mob Harvest Watcher
 step
     #optional
     .isQuestComplete 9
@@ -378,15 +414,6 @@ step
 	.target Farmer Saldean
     .goto 1436/0,1055.27,-10128.70
     .turnin 9 >> 交任务 清理荒野
-step
-    #optional
-    .goto 1436/0,1213.400,-10153.800
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_奥兹温·铁链::253395|r 对话
-    .target Ozwin Ironsprocket::253395
-    .accept 92909 >>接受任务 收割傀儡被收割
-    .turnin 92909 >>交任务 收割傀儡被收割
-    .itemcount 255007,14 -- Golem Isospring (14)
-    .itemcount 255010,5 -- Harvester Gyrostabilizer (5)
 step
     .goto 1436/0,1179.52,-10382.57,75,0
     .goto 1436/0,1138.22,-10474.97,75,0
@@ -423,7 +450,6 @@ step
     .goto 1436/0,1213.400,-10153.800
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_奥兹温·铁链::253395|r 对话
     .target Ozwin Ironsprocket::253395
-    .accept 92909 >>接受任务 收割傀儡被收割
     .turnin 92909 >>交任务 收割傀儡被收割
     .itemcount 255007,14 -- Golem Isospring (14)
     .itemcount 255010,5 -- Harvester Gyrostabilizer (5)
@@ -895,7 +921,7 @@ step
     .target 特伦希斯
 step
     .goto 1439/1,503.100,6402.100
-    >>点击 |cRXP_PICK_通缉布告|r
+    >>点击 |cRXP_PICK_通缉告示|r
     .accept 98025 >>接受任务 通缉：贾伊瓦内尔
 step
     #ah
@@ -1021,7 +1047,7 @@ step
     #completewith next
     >>|cRXP_WARN_对|r |cRXP_WARN_狂暴蓟熊|r |cRXP_ENEMY_使用|r |T134335:0|t[萨纳瑞恩的希望] --|cRXP_WARN_. It can be used from any range as long as you're targeting the|r |cRXP_ENEMY_Bear|r
     -->>|cRXP_WARN_==DO NOT USE THE QUEST ITEM IF THERES NO |cRXP_ENEMY_BEAR|r NEARBY==|r
-    >>你可能会浪费陷阱，导致该任务无法完成！如果发生这种情况，你需要返回任务给予者那里再领取一个新的陷阱
+    >>|cRXP_WARN_你可能会浪费陷阱，导致该任务无法完成！如果发生这种情况，你需要返回任务给予者那里再领取一个新的陷阱|r
     .complete 2118,1 --Rabid Thistle Bear Captured (1)
     .unitscan 狂暴蓟熊
     .use 7586
@@ -1044,7 +1070,7 @@ step
     .goto 1439/1,378.72,5749.31,50,0--c:1439,39.129,59.176
     >>|cRXP_WARN_对|r |cRXP_WARN_狂暴蓟熊|r |cRXP_ENEMY_使用|r |T134335:0|t[萨纳瑞恩的希望] --|cRXP_WARN_. It can be used from any range as long as you're targeting the bear|r
     -->>|cRXP_WARN_==DO NOT USE THE QUEST ITEM IF THERES NO BEAR NEARBY==|r
-    >>你可能会浪费陷阱，导致该任务无法完成！如果发生这种情况，你需要返回任务给予者那里再领取一个新的陷阱
+    >>|cRXP_WARN_你可能会浪费陷阱，导致该任务无法完成！如果发生这种情况，你需要返回任务给予者那里再领取一个新的陷阱|r
     .complete 2118,1 --Rabid Thistle Bear Captured (1)
     .unitscan 狂暴蓟熊
     .use 7586
@@ -1427,7 +1453,7 @@ step
     #optional
     #completewith AsterionTravel
     .goto 1439/1,47.22,6861.90,0--c:1439,44.190,33.697
-    >>杀死 |cRXP_ENEMY_月夜猛虎幼崽|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
+    >>击杀 |cRXP_ENEMY_月夜猛虎幼崽|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
     .complete 1002,1 -- Moonstalker Fang (6)
     .mob 月夜猛虎幼崽
     .isQuestTurnedIn 1001
@@ -1583,7 +1609,7 @@ step
     #optional
     #completewith AuberdineTurnin2 << NightElf/Hunter/Druid/Warrior
     #completewith EndFirstMoonstalker << !NightElf !Hunter !Druid !Warrior
-    >>杀死 |cRXP_ENEMY_月夜猛虎幼崽|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
+    >>击杀 |cRXP_ENEMY_月夜猛虎幼崽|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
     .complete 1002,1 -- Moonstalker Fang (6)
     .mob 月夜猛虎幼崽
     .isQuestTurnedIn 1001
@@ -1705,7 +1731,7 @@ step << NightElf/Hunter/Druid/Warrior
 step << NightElf/Hunter/Druid/Warrior
     #optional
     #completewith EndFirstMoonstalker
-    >>杀死 |cRXP_ENEMY_月夜猛虎幼崽|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
+    >>击杀 |cRXP_ENEMY_月夜猛虎幼崽|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
     .complete 1002,1 -- Moonstalker Fang (6)
     .mob 月夜猛虎幼崽
     .isOnQuest 1002
@@ -1873,7 +1899,7 @@ step
 step
     #optional
     #completewith AmethStart
-    >>击杀 |cRXP_ENEMY_月夜猛虎幼崽|r 和 |cRXP_ENEMY_月夜猛虎|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
+    >>杀死 |cRXP_ENEMY_月夜猛虎幼崽|r 和 |cRXP_ENEMY_月夜猛虎|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
     .complete 1002,1 -- Moonstalker Fang (6)
     .mob 月夜猛虎幼崽
     .mob Moonstalker
@@ -2013,7 +2039,7 @@ step << !sod/Warrior/Rogue
 step
     #optional
     #completewith FurbolgGrind
-    >>击杀 |cRXP_ENEMY_月夜猛虎幼崽|r 和 |cRXP_ENEMY_月夜猛虎|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
+    >>杀死 |cRXP_ENEMY_月夜猛虎幼崽|r 和 |cRXP_ENEMY_月夜猛虎|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
     .complete 1002,1 -- Moonstalker Fang (6)
     .mob 月夜猛虎幼崽
     .mob Moonstalker
@@ -2060,7 +2086,7 @@ step
 step
     #optional
     #completewith FurbolgGrindEnd
-    >>杀死 |cRXP_ENEMY_月夜猛虎幼崽|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
+    >>击杀 |cRXP_ENEMY_月夜猛虎幼崽|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
     .complete 1002,1 -- Moonstalker Fang (6)
     .mob 月夜猛虎幼崽
     .isOnQuest 1002
@@ -2298,7 +2324,7 @@ step
     #optional
     #completewith BoatSeaCreature
     .goto 1439/1,47.22,6861.90,0--c:1439,44.190,33.697
-    >>击杀 |cRXP_ENEMY_月夜猛虎幼崽|r 和 |cRXP_ENEMY_月夜猛虎|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
+    >>杀死 |cRXP_ENEMY_月夜猛虎幼崽|r 和 |cRXP_ENEMY_月夜猛虎|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
     .complete 1002,1 -- Moonstalker Fang (6)
     .mob 月夜猛虎幼崽
     .mob Moonstalker
@@ -2362,7 +2388,7 @@ step
 step
     #optional
     #completewith CrabTurtle
-    >>击杀 |cRXP_ENEMY_月夜猛虎幼崽|r 和 |cRXP_ENEMY_月夜猛虎|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
+    >>杀死 |cRXP_ENEMY_月夜猛虎幼崽|r 和 |cRXP_ENEMY_月夜猛虎|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
     .complete 1002,1 -- Moonstalker Fang (6)
     .mob 月夜猛虎幼崽
     .mob Moonstalker
@@ -2434,7 +2460,7 @@ step << Hunter/Druid
 step << Hunter/Druid
     #optional
     #completewith Tower1
-    >>击杀 |cRXP_ENEMY_月夜猛虎|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
+    >>杀死 |cRXP_ENEMY_月夜猛虎|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
     .complete 1002,1 -- Moonstalker Fang (6)
     .mob Moonstalker
     .isOnQuest 1002
@@ -2513,7 +2539,7 @@ step
 step
     #optional
     #completewith CliffCave
-    >>击杀 |cRXP_ENEMY_月夜猛虎|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
+    >>杀死 |cRXP_ENEMY_月夜猛虎|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
     .complete 1002,1 -- Moonstalker Fang (6)
     .mob Moonstalker
     .isOnQuest 1002
@@ -2627,7 +2653,7 @@ step
 step
     #requires MushroomLS
     #completewith CavetoAuber
-    >>击杀 |cRXP_ENEMY_月夜猛虎幼崽|r 和 |cRXP_ENEMY_月夜猛虎|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
+    >>杀死 |cRXP_ENEMY_月夜猛虎幼崽|r 和 |cRXP_ENEMY_月夜猛虎|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
     .complete 1002,1 -- Moonstalker Fang (6)
     .mob 月夜猛虎幼崽
     .mob Moonstalker
@@ -2717,7 +2743,7 @@ step
     .target 巴瑞萨斯·月影
 step
     .goto 1439/1,504.41,6402.39
-    >>点击 |cRXP_PICK_通缉布告|r
+    >>点击 |cRXP_PICK_通缉告示|r
     .accept 4740 >> 接受任务 通缉：莫克迪普！
 -- step << NightElf !Druid
 --     .goto 1439,36.767,44.285
@@ -2771,7 +2797,16 @@ step << Druid
     .xp 16 >> 刷怪升级到16级
     .mob Blackwood Pathfinder
     .mob Blackwood Windtalker
-step << Druid
+step << Skyborne Druid
+    .goto 1439/1,766.22,6591.78--c:1439,33.213,39.883
+    .zone Teldrassil >> 乘船前往达纳苏斯
+    .zoneskip Darnassus
+step << Skyborne Druid
+    .goto 1438/1,841.56,8640.79
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_维斯派塔斯|r 对话
+    .fp Teldrassil >> 开启泰达希尔的飞行路径
+    .target 维斯派塔斯
+step << NightElf Druid
     #optional
     #completewith DruidLesson
     .goto 1439/1,561.66,6343.27
@@ -2793,7 +2828,7 @@ step << Druid
 step << Druid
     .goto 1457/1,2563.98,10179.00
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_玛斯雷·驭熊者|r 对话
-    .accept 26 >> 接受任务必修的课程
+    .accept 26 >> 接受任务 必修的课程
     .trainer >> 训练你的职业技能
     .target 玛斯雷·驭熊者
 step << Druid
@@ -2836,7 +2871,7 @@ step << Druid
     #label TotL
     .goto 1450/1,-2224.18,7874.23
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_塔加里|r 对话
-    .turnin 29 >> 交任务 湖中试炼
+    .turnin 29 >> 交任务湖中试炼
     .accept 272 >> 接受任务 海狮试炼
     .target 塔加里
 step << Druid
@@ -2948,6 +2983,11 @@ step << Hunter
     .trainer >> 训练你的宠物技能
     .target 卡瑞娜·麦肯达
 step
+    .goto StormwindClassic,51.757,12.091
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_格瑞曼德·艾尔默|r 对话
+    .accept 353 >> 接受任务 雷矛的包裹
+    .target 格瑞曼德·艾尔默
+step
     #label DeeprunEnter
     #completewith next
     .goto 1453/0,562.300,-8385.300,20,0
@@ -2989,7 +3029,7 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_格莱斯·瑟登|r 对话
     .fp Ironforge >> 获取铁炉堡的飞行路径
     .target 格莱斯·瑟登
-step Warrior
+step << Warrior
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_比尔班·飞钳|r 对话
     .goto 1455/0,-1234.65,-5035.67
     .trainer >> 训练你的职业技能
@@ -3191,6 +3231,7 @@ step
     .goto 1432/0,-2676.82,-4825.93
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与地堡里的 |cRXP_FRIENDLY_巡山人雷矛|r 对话
     .turnin 1339 >> 交任务 巡山人雷矛的任务
+    .turnin 353 >> 交任务 雷矛的包裹
     .accept 307 >> 接受任务 污秽的爪子
     .target 巡山人雷矛
 step
@@ -3712,7 +3753,7 @@ RXPGuides.RegisterGuide([[
 --     .hs >> Hearth to Auberdine
 step
     .goto 1439/1,504.41,6402.39
-    >>点击 |cRXP_PICK_通缉布告|r
+    >>点击 |cRXP_PICK_通缉告示|r
     .accept 4740 >> 接受任务 通缉：莫克迪普！
 step << NightElf
     .goto 1439/1,489.41,6506.36--c:1439,37.439,41.839
@@ -3784,7 +3825,7 @@ step
 step
     #optional
     #completewith CompleteFangs
-    >>击杀 |cRXP_ENEMY_月夜猛虎幼崽|r 和 |cRXP_ENEMY_月夜猛虎|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
+    >>杀死 |cRXP_ENEMY_月夜猛虎幼崽|r 和 |cRXP_ENEMY_月夜猛虎|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
     .complete 1002,1 -- Moonstalker Fang (6)
     .mob 月夜猛虎幼崽
     .mob Moonstalker
@@ -4299,7 +4340,7 @@ step
     .goto 1439/1,-533.04,7111.41,60,0--c:1439,53.049,27.983
     .goto 1439/1,-514.38,7184.38,60,0--c:1439,52.764,26.312
     .goto 1439/1,-571.03,7195.64,60,0--c:1439,53.629,26.054
-    >>击杀 |cRXP_ENEMY_月夜猛虎幼崽|r 和 |cRXP_ENEMY_月夜猛虎|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
+    >>杀死 |cRXP_ENEMY_月夜猛虎幼崽|r 和 |cRXP_ENEMY_月夜猛虎|r。拾取它们的 |cRXP_LOOT_月夜猛虎的牙齿|r
     .complete 1002,1 -- Moonstalker Fang (6)
     .mob 月夜猛虎幼崽
     .mob Moonstalker
@@ -4482,7 +4523,7 @@ step
     #sticky
     #label DeleteGyromast
     #optional
-    .destroy 7442 >> 从你的背包中摧毁 |T134459:0|t[Gyromast's 钥匙]，因为不再需要了
+    .destroy 7442 >> 从背包中删除|T134459:0|t|T134459:0|t[基尔卡克的钥匙]，因为不再需要了
 step << !NightElf/!Dwarf Hunter/!Human Hunter/!Druid
     #completewith BeachedCloak
     #map Darkshore
@@ -4531,7 +4572,7 @@ step << !NightElf !Hunter
     #softcore
     #optional
     #completewith next
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
 step << !NightElf
     .goto 1439/1,492.36,6581.08--c:1439,37.394,40.128
@@ -4588,7 +4629,7 @@ step << Dwarf Hunter/Human Hunter/Skyborne Hunter
     #requires TravelDarnDwarfHBoat
     #completewith DarnDwarfHBoat
     >>|cRXP_WARN_在码头等待船只期间：|r
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Teldrassil
     .zoneskip Darnassus
@@ -4800,7 +4841,7 @@ step << !Hunter
     #requires TravelMenethilRRBoat
     #completewith MenethilRRBoat
     >>|cRXP_WARN_在码头等待船只期间：|r
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Loch Modan
     .zoneskip Dun Morogh
@@ -5025,7 +5066,7 @@ step << Rogue
     .goto 1453/0,323.43,-8817.83,5 >> 进入军情7处总部。上楼去找 |cRXP_FRIENDLY_"剃刀"雷吉克|r
 step << Rogue
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_"剃刀"雷吉克|r对话
-    .accept 2281 >> 接受任务赤脊山的联络员
+    .accept 2281 >> 接受任务 赤脊山的联络员
     .goto 1453/0,362.55,-8819.80
     .target Renzik "The Shiv"
 step << Warrior
@@ -5141,7 +5182,7 @@ step
     #label BMenace
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_治安官马瑞斯|r 对话
     .goto 1433/0,-2298.06,-9284.04
-    .accept 20 >> 接受任务 黑石氏族的威胁
+    .accept 20 >> 接受任务黑石氏族的威胁
     .accept 98387 >>接受任务 黑石封锁
     .target 治安官马瑞斯
 step
@@ -5157,7 +5198,7 @@ step
 step
     .group
     .goto 1433/0,-2208.600,-9243.500
-    >>点击 |cRXP_PICK_通缉布告|r
+    >>点击 |cRXP_PICK_通缉告示|r
     .accept 95999 >>接受任务 通缉：焚化者加因姆
 step
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_所罗门镇长|r 对话
@@ -5217,7 +5258,7 @@ step << Warlock
     .turnin 34 >> 交任务不速之客
 step << Rogue
     .goto 1433/0,-2180.19,-9328.21
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与|cRXP_FRIENDLY_卢修斯|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_卢修斯|r 对话
     .turnin 2281 >> 交任务 赤脊山的联络员
     .accept 2282 >> 接受任务 奥瑟尔伐木场
     .target Lucius
@@ -5463,10 +5504,10 @@ step
     .goto 1433/0,-2152.62,-9216.430
     .turnin 131 >> 交任务 水仙诉衷情
 step << Rogue
-	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与|cRXP_FRIENDLY_卢修斯|r 对话
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_卢修斯|r 对话
 	.target Lucius
     .goto 1433/0,-2180.19,-9328.21
-    .turnin 2282 >> 交任务奥瑟尔伐木场
+    .turnin 2282 >> 交任务 奥瑟尔伐木场
 step
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_希拉里|r 对话
 	.target Hilary
@@ -5772,7 +5813,7 @@ step << Rogue
     .goto 1453/0,323.43,-8817.83,5 >> 进入 SI:7 总部。前往楼上，前去找 |cRXP_FRIENDLY_马迪亚斯·肖尔大师|r
 step << Rogue
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_马迪亚斯·肖尔大师|r 对话
-    .accept 2360 >> 接受任务马迪亚斯和迪菲亚盗贼
+    .accept 2360 >> 接受任务 马迪亚斯和迪菲亚盗贼
     .goto 1453/0,362.28,-8815.23
     .target 马迪亚斯·肖尔大师
 step << Warrior
@@ -5826,12 +5867,12 @@ step << Rogue
     +|cRXP_WARN_==注意接下来的内容==|r
     >>|cRXP_WARN_按下 Esc，然后进入 → 选项 → 控制|r
     >>|cRXP_WARN_勾选 "启用交互键" 并将 "与目标互动" 绑定到一个按键|r
-    >>|cRXP_WARN_另外，建议启用敌方姓名板（默认按键：V）这样可以在塔内的一些拐角处看到躲在后面的敌人|r
+    >>|cRXP_WARN_另外，建议启用敌方姓名板 (默认按键：V) 这样可以在塔内的一些拐角处看到躲在后面的敌人|r
 step << Rogue
     .goto 1436/0,619.17,-11035.20
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_密探吉尔妮|r 对话
     >>|cRXP_WARN_你必须完成此任务才能解锁|r |T132290:0|t[毒药]。
-    .turnin 2360 >> 交任务 马迪亚斯和迪菲亚盗贼
+    .turnin 2360 >> 交任务马迪亚斯和迪菲亚盗贼
     .accept 2359 >> 接受任务 克拉文之塔
     .target Agent Kearnen
 step << Rogue
@@ -5843,7 +5884,7 @@ step << Rogue
     .goto 1436/0,514.52,-11114.77,30,0
     .goto 1436/0,531.32,-11166.80,30,0
     .goto 1436/0,581.37,-11104.97,30,0
-    >>|T133644:0|t[搜索] |cRXP_ENEMY_丑陋的迪菲亚懒汉|r。拾取 |cRXP_LOOT_迪菲亚塔楼钥匙|r
+    >>|T133644:0|t[搜索] |cRXP_ENEMY_丑陋的迪菲亚懒汉|r。拾取地上的物品以获得 |cRXP_LOOT_迪菲亚塔楼钥匙|r
     >>|cRXP_WARN_你必须处于|r |T132320:0|t[潜行] |cRXP_WARN_状态下才能使用|r |T133644:0|t[偷窃]
     >>|cRXP_WARN_|cRXP_ENEMY_丑陋的迪菲亚懒汉|r 出现在塔楼入口处，随后会在塔楼外侧巡逻|r
     >>|cRXP_WARN_小心，他伤害很高。如果你的|r |T132320:0|t[潜行] |cRXP_WARN_被打破，立刻使用|r |T132307:0|t[疾跑] |cRXP_WARN_并逃离|r
@@ -5859,7 +5900,7 @@ step << Rogue
 step << Rogue
     #label Mortwake
     .goto 1436/0,551.93,-11127.39--c:1436,70.421,74.031
-    >>|cRXP_WARN_前往塔楼的第2层顶楼。在|r |T132320:0|t[潜行] |cRXP_WARN_状态下，并且 |cRXP_ENEMY_迪菲亚哨兵|r 不在你身旁时，跳到椅子上，再跳到灯上，最后跳到路径点位置顶部的书架上|r
+    >>|cRXP_WARN_往上走到塔的倒数第二层。在|r|T132320:0|t[潜行]|cRXP_WARN_状态下，趁|cRXP_ENEMY_迪菲亚哨兵|r不在你身边时，跳到椅子上，再跳到灯上，然后跳到位于坐标点正上方的书架上|r
     >>|cRXP_WARN_手动|r |T132320:0|t[取消潜行]|cRXP_WARN_，然后按下你的 "与目标互动" 快捷键来打开 |cRXP_PICK_暮色森林宝箱|r。拾取其中的|r |cRXP_LOOT_克拉文·摩特维克的日志|r
     >>|cRXP_WARN_注意：你的|r |T132320:0|t[潜行] |cRXP_WARN_在拾取|r |cRXP_LOOT_克拉文·摩特维克的日志|r 后会暂时失效
     >>|cRXP_WARN_如果你在第2层没有击杀 |cRXP_ENEMY_迪菲亚哨兵|r，请做好逃跑的准备。当你站在书架顶部时，他们很可能会一直对你产生仇恨 (但不会攻击你) ，因为那里是一个脱战点|r
@@ -5888,7 +5929,7 @@ step << Dwarf Rogue
     #optional
     #sticky
     #label AntiVenomEnd2
-    .cast 20594 >>|cRXP_WARN_施放 |T136225:0|t[石像形态] 来移除 |T136230:0|t[赞吉尔之触] 的减益效果|r
+    .cast 20594 >>|cRXP_WARN_施放 |T136225:0|t[石像形态] ，来移除 |T136230:0|t[赞吉尔之触] 的减益效果|r
     .aura -9991
 step << Rogue
     #optional
@@ -5909,7 +5950,7 @@ step << !Dwarf Rogue
 step << !Dwarf Rogue
     #requires AntiVenomEnd
     .goto 1453/0,801.99,-8513.29--c:1453,43.070,26.155
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_珊娜·弗勒|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_珊娜·弗勒|r 对话
     >>|cRXP_WARN_如果你有一个|r |T626003:0|t|cFFF48CBA圣骑士|r|cRXP_WARN_、|r |T625999:0|t|cFFFF7C0A德鲁伊|r |cRXP_WARN_或者|r |T626006:0|t|cFF0070DD萨满|r |cRXP_WARN_朋友，|r |cRXP_WARN_请他们为你移除|r |T136230:0|t[赞吉尔之触]
     .skill firstaid,80 >> |cRXP_WARN_将你的|r |T135966:0|t[急救] |cRXP_WARN_提升到 80|r
     .aura -9991
@@ -5917,7 +5958,7 @@ step << !Dwarf Rogue
 step << !Dwarf Rogue
     #label FirstAidEnd
     .goto 1453/0,801.99,-8513.29--c:1453,43.070,26.155
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_珊娜·弗勒|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_珊娜·弗勒|r 对话
     >>|cRXP_WARN_如果你有一个|r |T626003:0|t|cFFF48CBA圣骑士|r|cRXP_WARN_、|r |T625999:0|t|cFFFF7C0A德鲁伊|r |cRXP_WARN_或者|r |T626006:0|t|cFF0070DD萨满|r |cRXP_WARN_朋友，|r |cRXP_WARN_请他们为你移除|r |T136230:0|t[赞吉尔之触]
     .train 7934 >> |cRXP_WARN_学习|r |T134437:0|t[抗毒药剂]
     .aura -9991
@@ -5950,7 +5991,7 @@ step << Rogue
     .goto 1453/0,362.28,-8815.23
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_马迪亚斯·肖尔大师|r 对话
     >>|cRXP_WARN_如果你之前切换成了|r |T135641:0|t[匕首] |cRXP_WARN_，记得重新装备你的主武器|r << Rogue
-    .turnin 2359 >> 交任务 克拉文之塔
+    .turnin 2359 >> 交任务克拉文之塔
     .target 马迪亚斯·肖尔大师
 
 
@@ -6400,7 +6441,7 @@ step << Hunter
     #sticky
     .goto 1440/1,663.38,2365.17
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_波尔温|r 对话
-    .trainer >> 学习你的宠物技能
+    .trainer >> 训练你的宠物技能
     .target Bolyun
 --XX Train in darn at 20 on 2x
 step << Hunter
@@ -6782,7 +6823,7 @@ step
     .abandon 168 >> 放弃任务 收集记忆
 step
     .goto 1439/1,504.41,6402.39
-    >>点击 |cRXP_PICK_通缉布告|r
+    >>点击 |cRXP_PICK_通缉告示|r
     .accept 4740 >> 接受任务 通缉：莫克迪普！
 step
     .goto 1439/1,497.08,6427.72--c:1439,37.322,43.640

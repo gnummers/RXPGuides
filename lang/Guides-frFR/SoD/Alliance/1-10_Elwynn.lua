@@ -95,7 +95,7 @@ step << Warlock
     #sticky
     .aura 403619 >> |cRXP_WARN_N'oubliez pas d'activer votre|r |T136156:0|t[Gangrarmure]
 step << Warrior
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Llane Beshere|r en bas des escaliers à l'intérieur
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Llane Beshere|r en bas des escaliers
     .train 6673 >>Apprenez [Cri de guerre]
     .accept 77616 >> Acceptez la quête La Rune perdue
     .turnin 77616 >> Rendez la quête La Rune perdue
@@ -587,7 +587,7 @@ step << Warrior
     #xprate >1.59
     #season 2
     .goto Elwynn Forest,50.242,42.287
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Llane Beshere|r en bas des escaliers à l'intérieur
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Llane Beshere|r en bas des escaliers
     .turnin 3100 >> Rendez la quête Lettre simple
     .accept 77616 >> Acceptez la quête La Rune perdue << Human
     .turnin 77616 >> Rendez la quête La Rune perdue << Human
@@ -1089,7 +1089,7 @@ step
     .target Remy "Two Times"
 step << Priest
     .goto Elwynn Forest,48.148,68.046
-    >>Lancez [Soins inférieurs (Rang 2)] et [Mot de pouvoir : Robustesse] sur le |cRXP_FRIENDLY_Guard Roberts|r
+    >>Lancez [Soins inférieurs (Rang 2)] et [Mot de pouvoir : Robustesse] sur |cRXP_FRIENDLY_Guard Roberts|r
     .complete 5624,1 --Heal and fortify Guard Roberts
     .target Guard Roberts
 step
@@ -1962,7 +1962,7 @@ step << Rogue
     .goto 1429,68.102,45.049,60,0
     .goto 1429,66.618,40.849
     >>Utilisez |T133644:0|t[Vol à la tire] sur les |cRXP_ENEMY_Estafettes Rivepattes|r et les |cRXP_ENEMY_Rivepattes chétifs|r. Dépouillez-les pour obtenir le |T134327:0|t[|cRXP_LOOT_Morceau inférieur gauche de carte]|r
-    >>Vous devez être en [Camouflage] pour utiliser votre [Vol à la tire]
+    >>Vous devez être en [Camouflage] pour utiliser [Vol à la tire]
     >>|cRXP_ENEMY_NOTE:|r |cRXP_WARN_Tous les|r |T134327:0|t[|cRXP_LOOT_Morceaux de carte|r] |cRXP_WARN_servent à obtenir la rune|r |T134536:0|t[Tireur rapide] |cRXP_WARN_.|r |cRXP_WARN_Elle est utile, mais pas obligatoire pour monter de niveau, et devient obsolète vers le niveau 22 après avoir débloqué vos poisons. N'hésitez pas à passer toutes ces étapes si vous ne voulez pas obtenir la rune aussi rapidement que possible et préférez gagner un peu de temps à court terme.|r
     >>|cRXP_WARN_Si vous décidez de ne pas récupérer la rune, vous pouvez passer le passage aux Carmines pour le moment et juste utiliser votre Pierre de foyer ou mourir pour ressusciter à Goldshire|r
     .collect 203787,1 -- Bottom-Left Map Piece (1)
@@ -1994,7 +1994,7 @@ step << Rogue
     .goto Elwynn Forest,70.8,79.8,60,0
     .goto Elwynn Forest,89.2,78.8
     >>Utilisez|T133644:0|t[Vol à la tire] sur les |cRXP_ENEMY_Défias|r. Récupérez le |T134327:0|t[|cRXP_LOOT_Morceau supérieur gauche de carte]|r
-    >>Vous devez être en [Camouflage] pour utiliser votre [Vol à la tire]
+    >>Vous devez être en [Camouflage] pour utiliser [Vol à la tire]
     >>|cRXP_WARN_Note: Celui-ci peut aussi se trouver sur un autre membre des |cRXP_ENEMY_Défias|r dans la Forêt d'Elwynn|r
     .collect 203785,1 -- Top-Left Map Piece (1)
     .mob Defias Bandit
@@ -2468,7 +2468,7 @@ step
     .isQuestAvailable 6181 << Human
 step
     .goto Westfall,52.86,53.71
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Innkeeper Heather|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Aubergiste Heather|r
     >>|cRXP_BUY_Achetez-lui jusqu'à 20|r |T133918:0|t[Lutjans à longue mâchoire] |cRXP_BUY_. Cette nourriture de niveau 5 est peu coûteuse|r
     .collect 4592,20,314,1 --Longjaw Mud Snapper (20)
 	.target Innkeeper Heather
@@ -2492,7 +2492,7 @@ step << skip --Rogue
     .goto Westfall,50.81,47.15,50,0
     .goto Westfall,51.093,54.642
     >>Utilisez le|T133644:0|t[Vol à la tire] sur l' |cRXP_ENEMY_Eclaireur défias|r pour la |T134419:0|t[|cRXP_FRIENDLY_Rune de Coup de sabre|r]
-    >>Vous devez être en [Camouflage] pour utiliser votre [Vol à la tire]
+    >>Vous devez être en [Camouflage] pour utiliser [Vol à la tire]
     >>|cRXP_WARN_Il y a une très grande chance que le|r |T133644:0|t[Vol à la tire] |cRXP_WARN_échoue car votre niveau est trop bas. Si c'est le cas, passez cette étape et volez vers Stormwind. Vous la terminerez bientôt au Loch Modan|r
     >>|cRXP_WARN_N'engagez PAS l' |cRXP_ENEMY_Éclaireur défias|r sinon il utilisera|r |T132331:0|t[Disparition] |cRXP_WARN_et disparaîtra pour 3-5 minutes. Assurez-vous d'utiliser|r |T132320:0|t[Camouflage] |cRXP_WARN_au plus tôt!|r
     >>|cRXP_WARN_L' |cRXP_ENEMY_Éclaireur défias|r peut apparaître sur les collines|r
@@ -3134,7 +3134,7 @@ step << Warrior
 step << Warrior
     #optional
     #completewith Rudra
-    +Équipez les [Couteau de lancer perçant]
+    +Équipez le [Couteau de lancer perçant]
     .use 3107
     .itemcount 3107,1
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<6.3

@@ -125,7 +125,7 @@ step << Warlock
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_黑暗缚灵者加科因|r 对话
     .target 黑暗缚灵者加科因
     .goto StormwindClassic,25.25,78.59
-    .turnin 1689 >> 交任务誓缚
+    .turnin 1689 >> 交任务 誓缚
 step << Priest/Mage/Warlock
     .goto StormwindClassic,42.65,67.16,14,0
     .goto StormwindClassic,42.88,65.11
@@ -151,7 +151,7 @@ step << Rogue
     .goto StormwindClassic,78.67,60.13,5 >> 进入军情7处总部。上楼去找 |cRXP_FRIENDLY_"剃刀"雷吉克|r
 step << Rogue
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_"剃刀"雷吉克|r对话
-    .accept 2281 >> 接受任务赤脊山的联络员
+    .accept 2281 >> 接受任务 赤脊山的联络员
     .goto StormwindClassic,75.76,60.35
     .target Renzik "The Shiv"
 step << Warrior
@@ -477,7 +477,7 @@ step
     #label BMenace
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_治安官马瑞斯|r 对话
     .goto Redridge Mountains,33.50,48.97
-    .accept 20 >> 接受任务 黑石氏族的威胁
+    .accept 20 >> 接受任务黑石氏族的威胁
     .target 治安官马瑞斯
     .xp <18,1
 step
@@ -593,7 +593,7 @@ step
     #label BMenace
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_治安官马瑞斯|r 对话
     .goto Redridge Mountains,33.50,48.97
-    .accept 20 >> 接受任务 黑石氏族的威胁
+    .accept 20 >> 接受任务黑石氏族的威胁
     .target 治安官马瑞斯
     .xp <18,1
 step
@@ -762,7 +762,7 @@ step
     #label BMenace
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_治安官马瑞斯|r 对话
     .goto Redridge Mountains,33.50,48.97
-    .accept 20 >> 接受任务 黑石氏族的威胁
+    .accept 20 >> 接受任务黑石氏族的威胁
     .target 治安官马瑞斯
     .xp <18,1
 step
@@ -886,7 +886,7 @@ step
 step << Rogue
     .goto Redridge Mountains,28.07,52.02
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与|cRXP_FRIENDLY_卢修斯|r 对话
-    .turnin 2282 >> 交任务奥瑟尔伐木场
+    .turnin 2282 >> 交任务 奥瑟尔伐木场
     .target Lucius
 step << Rogue
 #label xp20
@@ -915,7 +915,7 @@ step << Rogue
     .goto StormwindClassic,78.67,60.13,5 >> 进入 SI:7 总部。前往楼上，前去找 |cRXP_FRIENDLY_马迪亚斯·肖尔大师|r
 step << Rogue
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_马迪亚斯·肖尔大师|r 对话
-    .accept 2360 >> 接受任务马迪亚斯和迪菲亚盗贼
+    .accept 2360 >> 接受任务 马迪亚斯和迪菲亚盗贼
     .goto StormwindClassic,75.78,59.84
     .target 马迪亚斯·肖尔大师
 step << !Rogue
@@ -1002,7 +1002,7 @@ step << Rogue
     .goto Westfall,68.50,70.08
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_密探吉尔妮|r 对话
     >>|cRXP_WARN_你必须完成这个任务来获取你的|r|T132290:0|t[毒药]
-    .turnin 2360 >> 交任务 马迪亚斯和迪菲亚盗贼
+    .turnin 2360 >> 交任务马迪亚斯和迪菲亚盗贼
     .accept 2359 >> 接受任务 克拉文之塔
     .target Agent Kearnen
 step << Rogue
@@ -1121,7 +1121,7 @@ step << Rogue
     .goto StormwindClassic,75.78,59.84
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_马迪亚斯·肖尔大师|r 对话
     >>|cRXP_WARN_如果你之前切换成了|r |T135641:0|t[匕首] |cRXP_WARN_，记得重新装备上你的主武器|r << Rogue
-    .turnin 2359 >> 交任务 克拉文之塔
+    .turnin 2359 >> 交任务克拉文之塔
     .turnin 135 >> 交任务 迪菲亚兄弟会
     .target 马迪亚斯·肖尔大师
 step << Rogue

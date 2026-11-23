@@ -5,14 +5,14 @@ if faction == "Alliance" then return end
 RXPGuides.RegisterGuide([[
 #forever
 << Horde
-#name 12-16 Das Brachland
+#name 14-18 Das Brachland
 #displayname 14-16 The Barrens << !Shaman !Hunter !Tauren
-#displayname 15-16 The Barrens << Paladin
+#displayname 15-16 Das Brachland << Paladin
 #version 11
 #group RestedXP Forever Dungeonführer (H)
 #subgroup Dungeonführer 1-22
 --#groupid RXP-SRGCE-H1
-#next 16-17 Der Flammenschlund
+#next 16-17 Ragefireabgrund
 
 
 step << Tauren Shaman
@@ -389,8 +389,8 @@ step << Orc Warrior/Troll Warrior/Tauren Warrior/Skyborne Warrior
 step
     .goto 1413/1,-2645.40,-406.94
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Gastwirt Boorand|r
-    .vendor >>Stock up on food und water << !Rogue !Warrior
-    .vendor >>Kauft Nahrung << Rogue/Warrior
+    .vendor >>Füllt euer Essen und Wasser auf << !Rogue !Warrior
+    .vendor >>Füllt essen auf << Rogue/Warrior
     .target Innkeeper Boorand Plainswind
     .isOnQuest 872,5041,845
 step
@@ -570,28 +570,21 @@ step
     .mob Sunscale Screecher
 step
     #optional
-    #completewith next
+    #completewith RatchetEnter
     .goto 1413/1,-3851.27,-526.53,100,0
     >>Tötet |cRXP_ENEMY_Zhevra-Läufer|r. Plündert sie für ihre |cRXP_LOOT_Hufe|r
     .complete 845,1 --Zhevra Hooves (4)
     .mob Zhevra Runner
     .isOnQuest 872
 step
-    #optional
-    #completewith next
-    >>Tötet |cRXP_ENEMY_Zhevra-Läufer|r. Plündert sie für ihre |cRXP_LOOT_Hufe|r
-    .complete 845,1 --Zhevra Hooves (4)
-    .mob Zhevra Runner
-    .isNotOnQuest 872
-step
     #label RatchetEnter
     .goto 1413/1,-3728.66,-835.29
-    .subzone 392 >> Reist nach Ratschet
+    .subzone 392 >> Reist nach Ratchet
     .isOnQuest 845
 step
     .goto 1413/1,-3767.800,-842.900
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Wrenix|r
-    .accept 97253 >>Akzeptiert die Quest Parts and Pieces
+    .accept 97253 >>Akzeptiert die Quest Teile und Stücke
     .target Wrenix the Wretched
 step
     .goto 1413/1,-3728.66,-835.29
@@ -602,7 +595,7 @@ step
     #completewith next
     .goto 1413/1,-3770.20,-898.12
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Bragok|r
-    .fp Ratchet >> Erlernt die Flugroute nach Ratschet
+    .fp Ratchet >> Erlernt die Flugroute nach Ratchet
     .target Bragok
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Sputtervalve|r und dem |cRXP_FRIENDLY_Gesucht Plakat|r
@@ -854,7 +847,7 @@ step
     .turnin 1492 >>Gebt die Quest Werftmeister Dizzywig ab
     .turnin 890 >>Gebt die Quest Die verloren gegangene Lieferung ab
     .accept 892 >>Akzeptiert die Quest Die verloren gegangene Lieferung
-    .accept 896 >>Akzeptiert die Quest Des Minenarbeiters Vermögen
+    --.accept 896 >>Accept Miner's Fortune
     .target Wharfmaster Dizzywig
 step
     .goto 1413/1,-3728.66,-835.29
@@ -1045,7 +1038,7 @@ step << Tauren Druid
     .xp <16,1
 step << Tauren
     #completewith FlyXroads2
-    .hs >> Ruhestein nach Donnerfels
+    .hs >> Ruhestein nach Thunder Bluff
     .bindlocation 1638,1
     .zoneskip Thunder Bluff
     .cooldown item,6948,>0
@@ -1053,7 +1046,7 @@ step << Tauren
 step << Tauren
     .goto 1456/1,40.72,-1238.97--c:Thunder Bluff,45.6,55.9
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Ahanu|r
-    .turnin 6362 >>Gebt die Quest Flug nach Donnerfels ab
+    .turnin 6362 >>Gebt die Quest Flug nach Thunder Bluff ab
     .accept 6363 >>Akzeptiert die Quest Tal der Windreitermeister
     .target Ahanu
 step << Tauren Shaman
@@ -1313,13 +1306,13 @@ step << Tauren/Hunter/Orc Shaman/Troll Shaman
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Vrang|r
     .accept 95494 >>Akzeptiert die Quest Zerschrammt Stolz und Lion Hides
     .accept 95507 >>Akzeptiert die Quest Vrang's Spiel
-    .target Vrang Wildgore
+    .target Vrang Wildblut
 step << Tauren/Hunter/Orc Shaman/Troll Shaman
     .goto 1413/1,-1815.48,786.89
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Vrang|r
     >>|cRXP_FRIENDLY_Vrang|r |cRXP_WARN_verkauft|r |T133476:0|t[|cRXP_FRIENDLY_Schwerer Stachelkolben|r] |cRXP_WARN_ein Gegenstand mit begrenztem Vorrat|r << Tauren Warrior/Tauren Shaman/Druid
 	.vendor	>> Verkauft trash und repariert
-    .target Vrang Wildgore
+    .target Vrang Wildblut
     .isQuestAvailable 95494,95507
 step << Tauren/Hunter/Orc Shaman/Troll Shaman
     #completewith next
@@ -1373,7 +1366,7 @@ step << Tauren/Hunter/Orc Shaman/Troll Shaman
     .turnin 95494 >>Gebt die Quest Zerschrammt Stolz und Lion Hides ab
     .turnin 95507 >>Gebt die Quest Vrang's Spiel ab
     .accept 95495 >>Akzeptiert die Quest Der Einsiedler Mobber
-    .target Vrang Wildgore
+    .target Vrang Wildblut
     .isQuestComplete 95494
 step << Tauren/Hunter/Orc Shaman/Troll Shaman
     #completewith next
@@ -1688,7 +1681,7 @@ step << skip
 RXPGuides.RegisterGuide([[
 #forever
 << Horde
-#name 16-17 Der Flammenschlund
+#name 16-17 Ragefireabgrund
 #version 11
 #group RestedXP Forever Dungeonführer (H)
 #subgroup Dungeonführer 1-22
@@ -1698,18 +1691,18 @@ RXPGuides.RegisterGuide([[
 step
     #sticky
     #completewith EnterRFC
-    .subzone 2437 >> Jetzt solltet ihr eine Gruppe für Flammenschlund suchen
+    .subzone 2437 >> Jetzt solltet ihr nach einer Gruppe für Ragefireabgrund suchen
 step
     #optional
     #completewith EnterRFC
     >>|cRXP_WARN_Falls möglich, lasst Gruppenmitglieder den folgenden Quest freigeben|r
-    >>|cRXP_WARN_Falls nötig, fragt jemanden in Unterstadt nach einer Freigabe|r
+    >>|cRXP_WARN_Falls nötig, fragt jemanden in Undercity nach dem Teilen|r
     .accept 5725 >> Akzeptiert die Quest Die Macht zu Zerstören...
 step
     #optional
     #completewith EnterRFC
     >>|cRXP_WARN_Falls möglich, lasst Gruppenmitglieder die folgenden Quests teilen|r
-    >>|cRXP_WARN_Falls nötig, fragt jemanden in Donnerfels nach einer Freigabe|r
+    >>|cRXP_WARN_Falls nötig, fragt jemanden in Thunder Bluff nach dem Teilen|r
     .accept 5722 >> Akzeptiert die Quest Die Suche nach dem verloren gegangenen Ranzen
     .accept 5723 >> Akzeptiert die Quest Die Kraft des Feindes wird auf die Probe gestellt
 step << Tauren/Hunter/Orc Shaman/Troll Shaman
@@ -1946,7 +1939,7 @@ step
     >>|cRXP_WARN_Benutzt |T134085:0|t[|cRXP_LOOT_Auge des brennenden Schatten|r] um die Quest zu starten|r
     >>|cRXP_WARN_Benutzt LoS (Sichtlinie), um |cRXP_ENEMY_Gazz'uz|r seine Schattenblitze zu vermeiden|r
     >>|cRXP_WARN_Ihr könnt zu Gewässern innerhalb der Höhle fliehen um dem|r Leerwandler|cRXP_ENEMY_ nach dem Töten von|r |cRXP_WARN_Gazz'uz|r |cRXP_ENEMY_zu entkommen|r
-    >>|cRXP_WARN_Seid vorsichtig, er ist schwierig. Ihr könnt diese Quest überspringen, falls erforderlich|r
+    >>|cRXP_WARN_Seid vorsichtig, da er schwierig ist. Ihr könnt diese Quest überspringen, falls nötig|r
     .collect 4903,1,832,1 --Collect Eye of Burning Shadow
     .accept 832 >>Akzeptiert die Quest Brennende Schatten
     .use 4903
@@ -1997,7 +1990,7 @@ step << Rogue
     .goto 1454/1,-4279.79,1778.57
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Zando'zan|r
     .turnin 2379 >>Gebt die Quest Zando'zan ab
-    .accept 2382 >>Akzeptiert die Quest Wrenix aus Ratschet
+    .accept 2382 >>Akzeptiert die Quest Wrenix aus Ratchet
     .target Zando'zan
 step << Orc Rogue/Troll Rogue
     #optional
@@ -2086,7 +2079,7 @@ step
 .enabledungeon RFC
     #label EnterRFC
     .goto 1454/1,-4420.76,1815.80--c:Orgrimmar,52.77,48.97
-    .subzone 2437 >> BETRETET Das Flammenschlund Instanzportal. Betretet die Zone
+    .subzone 2437 >> Betretet das Ragefireabgrund-Instanzportal
 step
     #optional
     #completewith next
@@ -2214,21 +2207,64 @@ step
     .goto 1420/0,265.15,2305.94--c:Tirisfal Glades,61.26,50.84
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Sevren|r
     .turnin 440 >> Gebt die Quest Der gravierte Läuten ab
-    .accept 441 >> Akzeptiert die Quest Raleigh und Unterstadt
+    .accept 441 >> Akzeptiert die Quest Raleigh und Undercity
     .target Magistrate Sevren
     .isOnQuest 440
 step
     #optional
     .goto 1420/0,265.15,2305.94--c:Tirisfal Glades,61.26,50.84
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Sevren|r
-    .accept 441 >> Akzeptiert die Quest Raleigh und Unterstadt
+    .accept 441 >> Akzeptiert die Quest Raleigh und Undercity
     .target Magistrate Sevren
     .isQuestTurnedIn 440
+step
+    .goto 1420/0,74.200,2022.700
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Deathguard Linnea::1495|r
+    >>|cRXP_WARN_Dies ist eine Vorquest für "The Zorn of Rath'mael"|r
+    .accept 356 >>Akzeptiert die Quest Patrouille zur Rückendeckung
+    .target Deathguard Linnea::1495
+step
+    #loop
+	.goto 1420/0,-324.55,2000.48,0
+	.goto 1420/0,-324.55,2000.48,50,0
+	.goto 1420/0,-330.88,2040.84,50,0
+	.goto 1420/0,-359.34,2073.38,50,0
+	.goto 1420/0,-421.25,2070.07,50,0
+	.goto 1420/0,-464.63,2070.37,50,0
+	.goto 1420/0,-516.14,2017.05,50,0
+	.goto 1420/0,-466.44,1986.02,50,0
+	.goto 1420/0,-436.61,1951.670,50,0
+	.goto 1420/0,-355.28,1970.35,50,0
+    >>Tötet |cRXP_ENEMY_Blutender Schrecken|r und |cRXP_ENEMY_Wandernder Geist|r
+    .complete 356,1 --Bleeding Horror (8)
+    .mob +Bleeding Horror
+    .complete 356,2 --Wandering Spirit (8)
+    .mob +Wandering Spirit
+step
+    .goto 1420/0,73.800,2022.300
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Deathguard Linnea::1495|r
+    >>|cRXP_WARN_Dies ist eine Vorquest für "The Zorn of Rath'mael"|r
+    .turnin 356 >>Gebt die Quest Patrouille zur Rückendeckung ab
+    .target Deathguard Linnea::1495
+    .accept 99156 >>Akzeptiert die Quest Patrouille zur Rückendeckung
+step
+    .goto 1420/0,-765.200,2518.700
+    >>Tötet |cRXP_ENEMY_Riptear|r |cRXP_WARN_(level 13 elite)|r. Plündert sie für |T134339:0|t[|cRXP_LOOT_Riptear's Herz|r]
+    >>|cRXP_WARN_Dies ist eine Vorquest für "The Zorn of Rath'mael"|r
+    .complete 99156,1 --|1/1 Riptear's Heart
+    .mob Riptear
+step
+    .goto 1420/0,74.200,2022.400
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Deathguard Linnea::1495|r
+    >>|cRXP_WARN_Dies ist eine Vorquest für "The Zorn of Rath'mael"|r
+    .turnin 99156 >>Gebt die Quest Patrouille zur Rückendeckung ab
+    .target Deathguard Linnea::1495
 step
     .goto 1420/0,84.900,2023.500
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Deathguard Kristof::251001|r
     .accept 92422 >>Akzeptiert die Quest Der Zorn von Rath'mael
     .target Deathguard Kristof::251001
+    .isQuestTurnedIn 99156
 step
     #completewith UCPickups
     >>|cRXP_WARN_Falls möglich, bittet jemanden in eurer Gruppe, die folgende Quest zu teilen|r
@@ -2236,7 +2272,7 @@ step
 step
     #completewith UCPickups
     .goto 1420/0,240.75,1877.57
-    .zone Undercity >>Reist nach Unterstadt
+    .zone Undercity >>Reist nach Undercity
 step
     #completewith UCPickups
     .goto 1458/0,239.14,1749.54,35,0
@@ -2245,26 +2281,35 @@ step
     .goto 1458/0,241.06,1660.12,10,0
     .goto 1458/0,257.08,1623.38,10,0
     .goto 1458/0,244.51,1598.73,15,0
-    .goto 1458/0,266.300,1567.200,20 >>Nehmt den Aufzug hinab nach Unterstadt
+    .goto 1458/0,266.300,1567.200,20 >>Nehmt den Aufzug hinab nach Undercity
 step
     .goto 1458/0,278.19,1604.24--c:Undercity,62.02,42.76
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Raleigh|r
-    .turnin 441 >>Gebt die Quest Raleigh und Unterstadt ab
+    .turnin 441 >>Gebt die Quest Raleigh und Undercity ab
     .accept 530 >>Akzeptiert die Quest Rache eines Ehemanns
     .target Raleigh Andrean
     .isQuestTurnedIn 440
 step << Tauren/Hunter/Orc Shaman/Troll Shaman
     .goto 1458/0,266.300,1567.200
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Michael Garrett::4551|r
-    .fp Undercity >>Erlernt die Flugroute Unterstadt
+    .fp Undercity >>Erlernt die Flugroute Undercity
     .target Michael Garrett::4551
 step
+    .goto 1458/0,404.63,1434.67
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Faranell|r und |cRXP_FRIENDLY_Zinge|r im Apothekarium
+    >>|cRXP_WARN_Dies ist eine Vorquest für "Die neue Seuche"|r
+    .accept 450 >>Akzeptiert die Quest Rezept für den Tod
+    .target Master Apothecary Faranell
+    .isQuestTurnedIn 447
+step
+    #optional
     .goto 1458/0,344.000,1423.800,50,0
     .goto 1458/0,373.200,1362.100,50,0
     .goto 1458/0,428.400,1417.700
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Theodore Griffs::11835|r
     .accept 95216 >>Akzeptiert die Quest Die neue Seuche
     .target Theodore Griffs::11835
+    .isQuestTurnedIn 451
 step
     .goto 1458/0,415.400,1389.900,50,0
     .goto 1458/0,373.500,1362.200,50,0
@@ -2298,7 +2343,7 @@ step << Tauren/Hunter/Orc Shaman/Troll Shaman
     .goto 1458/0,610.42,1684.44,35,0
     .goto 1458/0,663.19,1600.46,35,0
     .goto 1420/0,724.25,1682.66,50,0
-    .zone Tirisfal Glades >>Verlasst die Unterstadt durch die Kanalisation
+    .zone Tirisfal Glades >>Verlasst Undercity durch die Abwasserkanäle
 step << Tauren/Hunter/Orc Shaman/Troll Shaman
     .isQuestAvailable 92401
     .isNotOnQuest 92401
@@ -2327,24 +2372,107 @@ step << !Tauren !Hunter !Shaman/Skyborne
     .fly Sepulcher >>Fliegt nach Sepulcher
     .target Michael Garrett::4551
 step
-    #label AFrightenedRequest
     .goto 1421/0,1579.600,461.700
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Tabitha Heartweaver::250686|r
     .accept 92401 >>Akzeptiert die Quest Eine erschrockene Anfrage
     .target Tabitha Heartweaver::250686
 step
+    .goto Silverpine Forest,42.98,73.22
+    >>Tötet |cRXP_ENEMY_Apotheker Berard|r. Plündert sein |cRXP_LOOT_Buch|r im Bücherregal
+    >>|cRXP_WARN_Dies sollte in einer Gruppe abgeschlossen werden|r
+    .complete 450,1 --Berard's Journal (1)
+    .mob Apothecary Berard
+    .isQuestTurnedIn 447
+step
+    .goto 1421/0,1649.400,522.500
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Apothecary Renferrel::1937|r
+    >>|cRXP_WARN_Dies ist eine Vorquest für "Die neue Seuche"|r
+    .turnin 450 >>Gebt die Quest Rezept für den Tod ab
+    .accept 451 >>Akzeptiert die Quest Rezept für den Tod
+    .target Apothecary Renferrel::1937
+    .isQuestTurnedIn 447
+step
+    #completewith LakeSkulkerMoss
+    >>Tötet die |cRXP_ENEMY_Vile Fins|r. Plündert sie für |T134339:0|t[|cRXP_LOOT_Hardened Tumor|r]
+    .complete 451,3 --|1/1 Hardened Tumor
+    .mob Vile Fin Shorecreeper
+    .mob Vile Fin Tidecaller
+    .mob Vile Fin Tidehunter
+    .mob Vile Fin Shredder
+    .mob Vile Fin Lakestalker
+    .mob Vile Fin Oracle
+    .isQuestTurnedIn 447
+step
+    #loop
+    .goto 1421/0,214.000,871.700,0
+    .goto 1421/0,214.000,871.700,35,0
+    .goto 1421/0,134.800,932.100,35,0
+    .goto 1421/0,287.100,1117.300,35,0
+    >>Tötet die |cRXP_ENEMY_Lake Kriecher|r. Plündert sie für |T134186:0|t[|cRXP_LOOT_Lake Kriecher Moss|r]
+    .complete 451,2 --|6/6 Lake Creeper Moss
+    .mob Lake Creeper
+    .mob Elder Lake Creeper
+    .isQuestTurnedIn 447
+step
+    #label LakeSkulkerMoss
+    #loop
+    .goto 1421/0,499.300,645.000,0
+    .goto 1421/0,499.300,645.000,35,0
+    .goto 1421/0,300.300,724.800,35,0
+    >>Tötet die |cRXP_ENEMY_Lake Skulker|r. Plündert sie für |T134186:0|t[|cRXP_LOOT_Lake Skuler Moss|r]
+    .complete 451,1 --|6/6 Lake Skulker Moss
+    .mob Lake Skulker
+    .mob Elder Lake Skulker
+    .isQuestTurnedIn 447
+step
+    #label AFrightenedRequest
+    #loop
+    .goto 1421/0,694.600,1323.800,0
+    .goto 1421/0,694.600,1323.800,30,0
+    .goto 1421/0,964.900,1167.900,30,0
+    .goto 1421/0,1061.100,1032.000,30,0
+    .goto 1421/0,1089.000,884.900,30,0
+    >>Tötet die |cRXP_ENEMY_Vile Fins|r. Plündert sie für |T134339:0|t[|cRXP_LOOT_Hardened Tumor|r]
+    .complete 451,3 --|1/1 Hardened Tumor
+    .mob Vile Fin Shorecreeper
+    .mob Vile Fin Tidecaller
+    .mob Vile Fin Tidehunter
+    .mob Vile Fin Shredder
+    .mob Vile Fin Lakestalker
+    .mob Vile Fin Oracle
+    .isQuestTurnedIn 447
+step
+    #completewith EnterRoL
+    .zone Undercity >>Reist nach Undercity
+step
+    .goto 1458/0,344.000,1423.800,50,0
+    .goto 1458/0,373.200,1362.100,50,0
+    .goto 1458/0,404.500,1434.700
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Master Apothecary Faranell::2055|r
+    >>|cRXP_WARN_Dies ist eine Vorquest für "Die neue Seuche"|r
+    .target Master Apothecary Faranell::2055
+    .turnin 451 >>Gebt die Quest Rezept für den Tod ab
+    .isQuestComplete 451
+step
+    .goto 1458/0,428.400,1417.70
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Theodore Griffs::11835|r
+    .accept 95216 >>Akzeptiert die Quest Die neue Seuche
+    .target Theodore Griffs::11835
+    .isQuestTurnedIn 451
+step
+    #optional
     #completewith next
     .zoneskip Silverpine Forest,1
     .goto 1421/0,1533.96,474.43
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Karos Razok::2226|r
-    .fly Undercity >>Fliege nach Unterstadt
+    .fly Undercity >>Fliegt nach Undercity
     .target Karos Razok::2226
     .zoneskip Undercity
 step
 .enabledungeon ROL
     #label EnterRoL
     .goto 1458/0,188.400,1804.500
-    .subzone 16611 >>Betretet Ruinen von Lordaeron
+    .subzone 16611 >>Betretet die Ruinen von Lordaeron über Undercity
 step
     #completewith RuinsRathma
     .isOnQuest 92421
@@ -2434,7 +2562,7 @@ step
     .target Deathguard Kristof::251001
 step
     .goto 1420/0,240.75,1877.57
-    .zone Undercity >>Kehrt nach Unterstadt zurück
+    .zone Undercity >>Kehrt nach Undercity zurück
 step
     .goto 1458/0,239.14,1749.54,35,0
     .goto 1458/0,255.64,1724.70,35,0
@@ -2442,7 +2570,7 @@ step
     .goto 1458/0,241.06,1660.12,10,0
     .goto 1458/0,257.08,1623.38,10,0
     .goto 1458/0,244.51,1598.73,15,0
-    .goto 1458/0,266.300,1567.200,20 >>Nehmt den Aufzug hinab nach Unterstadt
+    .goto 1458/0,266.300,1567.200,20 >>Nehmt den Aufzug hinab nach Undercity
 step
     .goto 1458/0,241.700,1633.200
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Tawny Grisette::4554|r
@@ -2782,13 +2910,13 @@ step
     #completewith RapHornsPickup
     .goto 1413/1,-2595.75,-437.35
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Devrak|r
-    .fly Ratchet >>Fliege nach Ratschet
+    .fly Ratchet >>Fliegt nach Ratchet
     .target Devrak
     .subzoneskip 392
 step << Rogue
     .goto 1413/1,-3767.800,-842.900
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Wrenix|r
-    .turnin 2382 >>Gebt die Quest Wrenix aus Ratschet ab
+    .turnin 2382 >>Gebt die Quest Wrenix aus Ratchet ab
     .accept 2381 >>Akzeptiert die Quest Das Ausplündern der Plünderer
     .target Wrenix the Wretched
 step << Rogue
@@ -2798,33 +2926,24 @@ step << Rogue
     .collect 7970,1,888,1 --E.C.A.C. (1)
     .collect 5060,1,888,1 --Thieves' Tools (1)
 step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Sputtervalve|r und |cRXP_FRIENDLY_Dizzywig|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Sputtervalve|r
     .turnin 902 >>Gebt die Quest Samophlang ab
     .turnin 863 >> Gebt die Quest Die Flucht ab
     .target +Sputtervalve
     .goto 1413/1,-3759.06,-902.18
-    .turnin 896 >> Gebt die Quest Des Minenarbeiters Vermögen ab
-    .target +Wharfmaster Dizzywig
-    .goto 1413/1,-3796.55,-985.28
-    .isQuestComplete 896
     .isQuestComplete 863
-step
-    #optional
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Sputtervalve|r und |cRXP_FRIENDLY_Dizzywig|r
-    .turnin 902 >>Gebt die Quest Samophlang ab
-    .target +Sputtervalve
-    .goto 1413/1,-3759.06,-902.18
-    .turnin 896 >> Gebt die Quest Des Minenarbeiters Vermögen ab
-    .target +Wharfmaster Dizzywig
-    .goto 1413/1,-3796.55,-985.28
-    .isQuestComplete 896
 step
     #optional
     .goto 1413/1,-3759.06,-902.18
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Sputtervalve|r
-    .turnin 863 >> Gebt die Quest Die Flucht ab
+    .turnin 902 >>Gebt die Quest Samophlang ab
     .target Sputtervalve
-    .isQuestComplete 863
+step << skip
+    .goto 1413/1,-3796.55,-985.28
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Dizzywig|r
+    .turnin 896 >> Gebt die Quest Des Minenarbeiters Vermögen ab
+    .target Wharfmaster Dizzywig
+    .isQuestComplete 896
 step
     #label RapHornsPickup
     .goto 1413/1,-3697.24,-929.20
@@ -3318,7 +3437,7 @@ step
     .mob Ishamuhale
 step
     #completewith BootyTurnin
-    .subzone 392 >> Reist nach Ratschet
+    .subzone 392 >> Reist nach Ratchet
 step
     .goto 1413/1,-3767.800,-842.900
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Wrenix|r
@@ -3396,9 +3515,9 @@ step
     .goto 1413/1,-3951.600,-1093.500
     .goto 1413/1,-4012.800,-1081.800
     .goto 1413/1,-3973.000,-1028.700
-    >>Tötet |cRXP_PICK_Bruuz|r (lvl 20 elite) im Meer neben Ratschet
+    >>Tötet |cRXP_PICK_Bruuz|r (lvl 20 elite) im Meer neben Ratchet
     >>|cRXP_WARN_Das ist schwierig! Bildet eine Gruppe, wenn möglich|r << !Rogue !Warrior
-    >>|cRXP_WARN_Versucht, ihn nach Ratschet zu den Wachen zu locken, die euch helfen werden, aber stellt sicher, dass ihr mindestens 50 % Schaden anrichtet!|r
+    >>|cRXP_WARN_Versucht, ihn nach Ratchet zu den Wachen zu locken, die euch helfen werden, aber stellt sicher, dass ihr mindestens 50% des Schadens verursacht!|r
     .complete 92706,1 --Kill Bruuz
     .mob Bruuz
     .isOnQuest 92706
@@ -3811,8 +3930,8 @@ step
 step
     #label SleepingBag1
     .goto 1413/1,-2075.00,-3380.64--c:The Barrens,46.361,73.904
-    >>Klickt die |cRXP_PICK_Verbrannten Überreste|r auf dem Boden an
-    .accept 79007 >> Nehmt an ...und diese Notiz, die Ihr gefunden habt.
+    >>Klickt auf die |cRXP_PICK_Ausgebrannten Überreste|r auf dem Boden
+    .accept 79007 >> Akzeptiert die Quest ...und diese Notiz, die Ihr gefunden habt.
 step
     #label LizardBlood
     #loop
@@ -3885,7 +4004,7 @@ step
     .turnin 884 >>Gebt die Quest Owatanka ab
     .turnin 913 >>Gebt die Quest Der Ruf des Donnerfalken ab
     .accept 874 >>Akzeptiert die Quest Mahren Skyseer
-    .accept 6382 >>Akzeptiert die Quest Die Jagd im Eschental << Hunter
+    .accept 6382 >>Akzeptiert die Quest Die Jagd in Ashenvale << Hunter
     .target Jorn Skyseer
     .isOnQuest 884
 step
@@ -3894,7 +4013,7 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Jorn Himmelsdeuter|r
     .turnin 913 >>Gebt die Quest Der Ruf des Donnerfalken ab
     .accept 874 >>Akzeptiert die Quest Mahren Skyseer
-    .accept 6382 >>Akzeptiert die Quest Die Jagd im Eschental << Hunter
+    .accept 6382 >>Akzeptiert die Quest Die Jagd in Ashenvale << Hunter
     .target Jorn Skyseer
 step
     #optional
@@ -3903,7 +4022,7 @@ step << !Tauren !Skyborne
     .goto 1413/1,-1891.48,-2391.93
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Quetschzahn|r
     .aura 16618 >>|cRXP_WARN_Falls ihr 10 habt|r |T134128:0|t[|cRXP_LOOT_Blutsplitter|r] |cRXP_WARN_übrig, benutzt sie, um|r |T136022:0|t[Geist des Windes] |cRXP_WARN_von|r |cRXP_FRIENDLY_Quetschzahn|r zu erhalten
-    >>|cRXP_WARN_Überspringen diesen Schritt, falls ihr die Donnerfels-Flugroute habt|r
+    >>|cRXP_WARN_Überspringt diesen Schritt, falls ihr die Thunder Bluff Flugroute habt|r
     .itemcount 5075,10
     .target Mangletooth
     .train 2645,1 << Shaman --skip if ghost wolf trained
@@ -3915,13 +4034,13 @@ step << !Tauren !Skyborne
 step << !Tauren !Skyborne
     #completewith DeathDUPpickup
     .goto 1456/1,184.96,-1308.69
-    .zone Thunder Bluff >>Nehmt den Aufzug nach Donnerfels
-    >>|cRXP_WARN_Wenn ihr die Donnerfels Flugroute habt, fliegt stattdessen dorthin|r
+    .zone Thunder Bluff >>Nehmt den Aufzug nach Thunder Bluff
+    >>|cRXP_WARN_Wenn ihr die Thunder Bluff Flugroute habt, fliegt stattdessen dorthin|r
 step << Tauren/Skyborne
     #completewith DeathDUPpickup
     .goto 1413/1,-1881.35,-2384.50
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Omusa|r
-    .fly Thunder Bluff >>Fliege nach Donnerfels
+    .fly Thunder Bluff >>Fliegt nach Thunder Bluff
     .target Omusa Thunderhorn
     .zoneskip Thunder Bluff
 step << Undead Warrior/Orc Warrior/Troll Warrior/Troll Shaman/Orc Shaman
@@ -3940,7 +4059,7 @@ step << Rogue !Skyborne
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Ansekhwa|r
     .train 198 >>Erlernt Streitkolben
     .target Ansekhwa
-step << Rogue
+step << skip --Rogue
     .goto 1456/1,110.13,-1299.65
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_Sprecht mit|r |cRXP_FRIENDLY_Kuruk|r|cRXP_BUY_. Kauft |r |T135423:0|t[Tödliche Wurfaxt] |cRXP_BUY_von ihm|r
     .collect 3137,1,6562,1 --Deadly Throwing Axe (200)
@@ -3978,7 +4097,7 @@ step
 step
     .goto 1456/1,38.32,-1300.48
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Gastwirtin Pala|r
-    .home >>Setzt euren Ruhestein in Donnerfels
+    .home >>Setzt euren Ruhestein in Thunder Bluff
     .target Innkeeper Pala
     .bindlocation 1638
     .isQuestAvailable 6442
@@ -4105,7 +4224,7 @@ step
     .skill firstaid,<1,1
 step
     .goto 1456/1,206.88,-997.45
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |r |cRXP_FRIENDLY_Pand|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit|r |cRXP_FRIENDLY_Pand|r
     >>|cRXP_WARN_Überspringt diesen Schritt, wenn ihr nicht genug|r |T132889:0|t[Leinenstoff] |cRXP_WARN_hattet, um Skill 80 zu erreichen|r
     .train 3277 >> Erlernt |T133684:0|t[Wollverband]
     .train 7934 >> Erlernt |T134437:0|t[Gegengift] << Rogue
@@ -4253,10 +4372,10 @@ step << Druid
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Dendrite Starblaze::11802|r
     .turnin 98738 >>Gebt die Quest Segnungen des Großen windgetragenen Katzengeists ab << Skyborne
     .turnin 98739 >>Gebt die Quest Segnungen des Großen Katzengeists ab << !Skyborne
-    .accept 98362 >>Akzeptiert die Quest Nach Donnerfels
+    .accept 98362 >>Akzeptiert die Quest Nach Thunder Bluff
     .target Dendrite Starblaze::11802
 step << Druid
-    .hs >> Ruhestein nach Donnerfels
+    .hs >> Ruhestein nach Thunder Bluff
     .use 6948
     .cooldown item,6948,>0
     .bindlocation 1638,1
@@ -4265,14 +4384,14 @@ step << Druid
     #completewith next
     .goto 1450/1,-2403.61,7785.31
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Bunthen|r
-    .fly Thunder Bluff >> Fliege nach Donnerfels
+    .fly Thunder Bluff >> Fliegt nach Thunder Bluff
     .target Bunthen Plainswind
     .zoneskip Thunder Bluff
     .cooldown item,6948,<0
 step << Druid
     .goto 1456/1,-281.59,-1039.61
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Turak|r
-    .turnin 98362 >>Gebt die Quest Nach Donnerfels ab
+    .turnin 98362 >>Gebt die Quest Nach Thunder Bluff ab
     .target Turak Runetotem
 step << Rogue
     .goto 1456/1,-36.52,-1244.05
@@ -4399,7 +4518,7 @@ RXPGuides.RegisterGuide([[
 #forever
 << Horde
 #name 21-22 Die Höhlen des Wehklagens
-#next 22-24 Hügellandhof
+#next 22-24 Hillsbrad
 #version 11
 #group RestedXP Forever Dungeonführer (H)
 #subgroup Dungeonführer 1-22
@@ -4618,7 +4737,7 @@ step
     .isOnQuest 962
 step
     #optional
-    >>Tötet |cRXP_ENEMY_Deviate Ravagers|r, |cRXP_ENEMY_Vipers|r, |cRXP_ENEMY_Shamblers|r und |cRXP_ENEMY_Dreadfangs|r. Plündert sie für |cRXP_ENEMY_Hides|r
+    >>Tötet |cRXP_ENEMY_Deviatverheerer|r, |cRXP_ENEMY_Deviatviper|r, |cRXP_ENEMY_Deviatschlurfer|r und |cRXP_ENEMY_Deviatschreckensfang|r. Plündert sie für |cRXP_ENEMY_Bälge|r
     .complete 1487,1 --Deviate Ravager (7)
     .mob +Deviate Ravager
     .complete 1487,2 --Deviate Viper (7)
@@ -4702,13 +4821,13 @@ step
     .isOnQuest 97003
 step
     #completewith GShard
-    .subzone 392 >>Reist nach Ratschet
+    .subzone 392 >>Reist nach Ratchet
     .subzoneskip 1699,1 --Thorn Hill
 step
     #completewith GShard
     .goto 1413/1,-2595.75,-437.35
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Devrak|r
-    .fly Ratchet >> Fliege nach Ratschet
+    .fly Ratchet >> Fliegt nach Ratchet
     .target Devrak
     .subzoneskip 392
     .subzoneskip 1699 --Thorn Hill
@@ -4860,7 +4979,7 @@ step
     >>Tötet |cRXP_ENEMY_Kriegsherr Krom'zar|r, sobald er erscheint. Plündert die |cRXP_PICK_Flagge|r, welche er auf dem Boden fallen lässt
     >>|cRXP_WARN_Seid vorsichtig! Er ist ein starker Elite und wird von mindestens zwei|r |cRXP_ENEMY_Kolkar|r |cRXP_WARN_mobs|r beschützt
     >>|cRXP_WARN_Es kann bis zu 3 Minuten dauern, bis er erscheint|r
-    .link https://www.youtube.com/watch?v=xrm0PWe5wf4 >>|cRXP_WARN_Klickt hier für ein Anleitungsvideo zum Kiten|r |cRXP_ENEMY_Kriegsherr Krom'zar|r
+    .link https://www.youtube.com/watch?v=xrm0PWe5wf4 >>|cRXP_WARN_Klickt hier für ein Anleitungsvideo zum Kiten von|r |cRXP_ENEMY_Kriegsherr Krom'zar|r
     .complete 4021,1 --Piece of Krom'zar's Banner (1)
     .unitscan Warlord Krom'zar
     .isQuestTurnedIn 852
@@ -5024,6 +5143,16 @@ step << Shaman
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Brine|r
     .turnin 1530 >>Gebt die Quest Ruf des Wassers ab
     .accept 1535 >>Akzeptiert die Quest Ruf des Wassers
+    .target Brine
+step << Shaman
+    .goto 1413/1,-1858.04,-3572.92
+    .use 7766 >> |cRXP_WARN_Füllt euren|r |T132825:0|t[Leerer brauner Wasserschlauch] |cRXP_WARN_in der Wasserstelle unterhalb von Brines Hütte|r
+    .complete 1535,1 --Filled Brown Waterskin (1)
+step << Shaman
+    .goto 1413/1,-1776.98,-3617.51
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Brine|r
+    .turnin 1535 >>Gebt die Quest Ruf des Wassers ab
+    .accept 1536 >>Akzeptiert die Quest Ruf des Wassers
     .target Brine
 step << Warlock/Shaman
     #completewith next
@@ -5316,7 +5445,7 @@ step << Hunter
     .train 24558 >> Erlernt eure Begleiterfähigkeiten
     .target Xao'tsu
     .xp <24,1
-step << Rogue
+step << skip --Rogue
     .goto 1454/1,-4355.53,1520.68
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_Sprecht mit|r |cRXP_FRIENDLY_Trak'gen|r|cRXP_BUY_. Kauft|r |T135423:0|t[Tödliche Wurfaxt] |cRXP_BUY_von ihm|r
     .collect 3137,1,6544,1 --Deadly Throwing Axe (200)

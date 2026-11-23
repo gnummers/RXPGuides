@@ -88,7 +88,7 @@ step << !Human
     .accept 153 >> Acceptez la quête Les masques en cuir rouge
 step
     .goto Westfall,52.86,53.71
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Innkeeper Heather|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Aubergiste Heather|r
     >>|cRXP_BUY_Achetez de la nourriture/eau si besoin|r
     .vendor >>Les |T133918:0|t[Lutjans à longue mâchoire] |cRXP_WARN_sont très peu coûteux|r
 	.target Innkeeper Heather
@@ -479,7 +479,7 @@ step << Human Mage/Human Rogue/Human Warrior/Human Warlock/Human Paladin/Human P
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Toldren Deepiron|r << Human Priest
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Dink|r << Human Mage
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Brandur Ironhammer|r << Human Paladin
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Eglantine|r << Human Warlock
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Briarthorn|r << Human Warlock
     .goto Ironforge,51.1,8.7,15,0 << Human Warlock
     .goto Ironforge,50.343,5.657 << Human Warlock
     .goto Ironforge,65.905,88.405 << Human Warrior
@@ -685,7 +685,7 @@ step
     >>Vous avez besoin de 50 en [Cuisine] pour une quête au Bois de la Pénombre plus tard
     >>|T133971:0|t[Cuisiner] les objets suivants:
     >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Morceau de viande de sanglier]|r en [Viande de sanglier rôtie]
-    >>|T133971:0|t[Cuisinez] les |cRXP_LOOT_[Stringy Wolf Meat]|r en [Viande de loup grillée]
+    >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Viande de loup maigre]|r en [Viande de loup grillée]
     .usespell 2550
     .zoneskip Darkshore
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -698,7 +698,7 @@ step
     #label DarkshoreCook5
     #completewith DarkshoreBoat
     >>Vous avez besoin de 50 en [Cuisine] pour une quête au Bois de la Pénombre plus tard
-    >>|T133971:0|t[Cuisinez] les |cRXP_LOOT_[Stringy Wolf Meat]|r en [Viande de loup grillée]
+    >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Viande de loup maigre]|r en [Viande de loup grillée]
     .usespell 2550
     .zoneskip Darkshore
     .itemcount 769,<1 --Chunk of Boar Meat (<1)
@@ -867,7 +867,7 @@ step
     .target Sentinel Glynda Nal'Shea
 step
     .goto 1439,38.843,43.416
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Soigneflore|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Treetender|r
     .accept 2118 >> Acceptez Plagued Lands
     .target Tharnariun Treetender
 step
@@ -955,7 +955,7 @@ step << Druid
     #completewith CliffspringEnd
     #label GatheringQ
     .skill herbalism,15 >>|cRXP_WARN_Montez votre|r |T136065:0|t[Herboristerie] |cRXP_WARN_à un niveau de 15 pour vous permettre de récolter des|r [Terrestrines] |cRXP_WARN_pour une quête de classe importante plus tard. Vous pourrez ensuite abandonner le métier|r
-    >>Si vous préférez acheter 5 [Terrestrine] à l'Hôtel des Ventes plus tard, vous pouvez passer cette étape
+    >>Si vous préférez acheter 5 [Terrestrine] à l'Hôtel des Ventes plus tard, passez cette étape
     .collect 2449,5,6123,1 --Earthroot (5)
     .disablecheckbox
 step << Druid
@@ -1118,7 +1118,7 @@ step
     .target Sentinel Glynda Nal'Shea
 step
     .goto 1439,38.843,43.416
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Soigneflore|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Treetender|r
     .turnin 2118 >> Rendez la quête Terres malades
     .accept 2138 >> Acceptez la quête Nettoyage de l'infection
     .target Tharnariun Treetender
@@ -2356,7 +2356,7 @@ step
 step
     #optional
     .goto 1439,38.843,43.416
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Soigneflore|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Treetender|r
     .turnin 2138 >> Rendez la quête Nettoyage de l'infection
     .accept 2139 >> Acceptez la quête Espoir de Tharnariun
     .target Tharnariun Treetender
@@ -2364,7 +2364,7 @@ step
 step
     #optional
     .goto 1439,38.843,43.416
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Soigneflore|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Treetender|r
     .accept 2139 >> Acceptez la quête Espoir de Tharnariun
     .target Tharnariun Treetender
     .isQuestTurnedIn 2138
@@ -2552,7 +2552,7 @@ step
     #season 0 << !Warrior !Rogue
     #completewith CrabTurtle
     >>Tuez des |cRXP_ENEMY_Jeunes trotteur des forêts|r et des |cRXP_ENEMY_Trotteur des forêts|r. Dépouillez-les pour leur |cRXP_LOOT_Viande de trotteur|r
-    >>Faites attention les |cRXP_ENEMY_Jeune trotteur des forêts|r s'enfuient à <30% de vie
+    >>Faites attention car les |cRXP_ENEMY_Foreststrider Fledglings|r s'enfuient à <30% de vie
     .collect 5469,5,2178,1 -- Strider Meat (5)
     .mob Foreststrider Fledgling
     .mob Foreststrider
@@ -2911,7 +2911,7 @@ step << !NightElf
 step
     .goto 1439,38.843,43.416
     #season 0
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Soigneflore|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Treetender|r
     .turnin 2138 >> Rendez la quête Nettoyage de l'infection
     .accept 2139 >> Acceptez la quête Espoir de Tharnariun
     .target Tharnariun Treetender
@@ -2919,7 +2919,7 @@ step
 step
     .goto 1439,38.843,43.416
     #season 0
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Soigneflore|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Treetender|r
     .accept 2139 >> Acceptez la quête Espoir de Tharnariun
     .target Tharnariun Treetender
     .isQuestTurnedIn 2138
@@ -3415,7 +3415,7 @@ step
 step
     .goto 1439,38.660,87.305
     #season 0
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à|cRXP_FRIENDLY_Therylune|r. Cela va commencer une escorte
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Therylune|r. Cela va commencer une escorte
     >>Passez cette étape si elle n'est pas présente
     .accept 945 >> Acceptez la quête L'évasion de Therylune
     .target Therylune
@@ -3482,7 +3482,7 @@ step << Hunter
     #season 0
     #label prospector
     .goto 1439,35.724,83.696
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Prospector Remtravel|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Prospector Remtravel|r
     >>|cRXP_WARN_Vous devrez peut-être attendre qu'il réapparaisse ou que les autres joueurs terminent l'escorte|r
     .turnin 729 >> Rendez la quête Les absences du Prospecteur
     .target Prospector Remtravel
@@ -3674,7 +3674,7 @@ step
     #label CleansingTharnariun
     #season 0
     .goto 1439,38.843,43.416
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Soigneflore|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Treetender|r
     .turnin 2138 >> Rendez la quête Nettoyage de l'infection
     .accept 2139 >> Acceptez la quête Espoir de Tharnariun
     .target Tharnariun Treetender
@@ -4172,7 +4172,7 @@ step
 step
     #xprate >1.59
     .goto 1439,38.843,43.416
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Soigneflore|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Treetender|r
     .turnin 2139 >> Rendez la quête Espoir de Tharnariun
     .target Tharnariun Treetender
 step
@@ -4546,7 +4546,7 @@ step << NightElf Warrior
     #season 1 --Not loading for now
     #optional << NightElf
     #completewith DeeprunDM
-    +Équipez les [Couteau de lancer perçant]
+    +Équipez le [Couteau de lancer perçant]
     .use 3107
     .itemcount 3107,1
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<6.3
@@ -4739,7 +4739,7 @@ step << Mage/Warlock/Rogue
     #completewith WepTrainNoDM << !Warrior
     >>|cRXP_WARN_Montez le niveau de compétence de vos|r |T135966:0|t[Premiers soins] |cRXP_WARN_et de votre|r |T133971:0|t[Cuisine] |cRXP_WARN_si nécessaire pendant le Tram|r
     >>|cRXP_WARN_Vous aurez besoin d'un niveau de 80+ en|r |T135966:0|t[Premiers soins] |cRXP_WARN_pour une quête à venir|r << Rogue !Dwarf
-    .zone Stormwind City >> Prenez le Tram des profondeurs vers Hurlevent
+    .zone Stormwind City >> Prenez le Tram des profondeurs vers Stormwind
     .zoneskip Darkshore << Warrior
     .zoneskip Elwynn Forest
     .zoneskip Westfall
@@ -4780,7 +4780,7 @@ step << NightElf Warrior
     #xprate >1.59
     #season 1 --Not loading for now
     .goto 1453,78.673,45.791
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Wu Shen|r à l'étage
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Wu Shen|r dans le bâtiment à l'étage
     .trainer >> Apprenez vos sorts de classe
     .target Wu Shen
     .zoneskip Darkshore
@@ -4846,7 +4846,7 @@ step << Rogue
     .dungeon !DM
 step << Rogue
     #xprate >1.59
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Renzik "The Shiv"|r et |cRXP_FRIENDLY_Master Mathias Shaw|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Renzik "The Shiv"|r et à|cRXP_FRIENDLY_Master Mathias Shaw|r
     .accept 2281 >> Acceptez la quête Le Rendez-vous des Carmines
     .goto StormwindClassic,75.76,60.35
     .target +Renzik "The Shiv"
@@ -5211,9 +5211,9 @@ step << Rogue
     .goto Westfall,71.01,75.72,30,0
     .goto Westfall,69.58,73.07,30,0
     >>|T133644:0|tUtilisez [Vol à la tire] sur le |cRXP_ENEMY_Malformed Defias Drone|r. Volez-lui la |cRXP_LOOT_Defias Tower Key|r
-    >>Vous devez être en [Camouflage] pour utiliser votre [Vol à la tire]
+    >>Vous devez être en [Camouflage] pour utiliser [Vol à la tire]
     >>|cRXP_WARN_Le |cRXP_ENEMY_Malformed Defias Drone|r apparaissent à l'entrée de la tour, puis font le tour de celle-ci|r
-    >>Faites attention car il fait BEAUCOUP de dégâts. Si vous perdez votre [Camouflage], utilisez vite votre [Sprint] pour vous enfuir
+    >>Faites attention, il tape TRÈS fort. Si vous perdez votre [Camouflage], utilisez rapidement votre [Sprint] et enfuyez-vous
     .complete 2359,2 --Collect Defias Tower Key (x1)
     .link https://www.youtube.com/watch?v=5sIew15IcG0 >> Cliquez ICI pour un guide vidéo
     .mob Malformed Defias Drone
@@ -5222,7 +5222,7 @@ step << Rogue
     #xprate >1.59
     #optional
     #completewith Mortwake
-    +Équipez la [Dague de Curvewood] pour cette quête si vous n'avez pas déjà de [Dague] équipée
+    +Équipez la [Dague de Curvewood] pour cette quête si vous n'avez pas déjà de [Dagues] équipée
     .use 15396
     .itemcount 15396,1
     .dungeon !DM
@@ -5293,7 +5293,7 @@ step << !Dwarf Rogue
     #requires AntiVenomEnd
     .goto 1453,43.070,26.155
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Shaina Fuller|r
-    >>Si vous avez un ami |cFFF48CBAPaladin|r ou |cFFFF7C0ADruid|r demandez-leur de vous enlever le debuff [Toucher de Zanzil]
+    >>Si vous avez un ami |cFFF48CBAPaladin|r ou |cFFFF7C0ADruid|r, demandez leur de vous enlever le debuff [Touch of Zanzil]
     .skill firstaid,80 >> Montez vos [Premier soins] à un niveau de compétence de 80
     .aura -9991
     .itemcount 6452,<1 --Anti-Venom (<1)
@@ -5303,8 +5303,8 @@ step << !Dwarf Rogue
     #label FirstAidEnd
     .goto 1453,43.070,26.155
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Shaina Fuller|r
-    >>Si vous avez un ami |cFFF48CBAPaladin|r ou |cFFFF7C0ADruid|r demandez-leur de vous enlever le debuff [Toucher de Zanzil]
-    .train 7934 >> Apprenez [Anti-Venom]
+    >>Si vous avez un ami |cFFF48CBAPaladin|r ou |cFFFF7C0ADruid|r, demandez leur de vous enlever le debuff [Touch of Zanzil]
+    .train 7934 >> Apprenez [Anti-Venin]
     .aura -9991
     .itemcount 6452,<1 --Anti-Venom (<1)
     .dungeon !DM
@@ -5769,7 +5769,7 @@ step << !NightElf
 step << !NightElf
     #xprate <1.59
     .goto 1439,38.843,43.416
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Soigneflore|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Treetender|r
     .turnin 2139 >> Rendez la quête Espoir de Tharnariun
     .target Tharnariun Treetender
 step << !NightElf
@@ -5969,7 +5969,7 @@ step << NightElf Hunter
 step << NightElf
     #xprate <1.59
     .goto 1439,38.843,43.416
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Soigneflore|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Treetender|r
     .turnin 2139 >> Rendez la quête Espoir de Tharnariun
     .target Tharnariun Treetender
 step << NightElf
@@ -6290,7 +6290,7 @@ step << NightElf Warrior
     #xprate >1.59
     #optional
     #completewith DeeprunDM
-    +Équipez les [Couteau de lancer perçant]
+    +Équipez le [Couteau de lancer perçant]
     .use 3107
     .itemcount 3107,1
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<6.3
@@ -6395,7 +6395,7 @@ step << skip --Warlock
     #xprate >1.59
     .goto Ironforge,51.1,8.7,15,0
     .goto Ironforge,50.343,5.657
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Eglantine|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Briarthorn|r
     .trainer >> Apprenez vos sorts de classe
     .target Briarthorn
     .zoneskip Elwynn Forest
@@ -6510,7 +6510,7 @@ step
     #completewith ShoniAccept
     >>|cRXP_WARN_Montez le niveau de compétence de vos|r |T135966:0|t[Premiers soins] |cRXP_WARN_et de votre|r |T133971:0|t[Cuisine] |cRXP_WARN_si nécessaire pendant le Tram|r
     >>|cRXP_WARN_Vous aurez besoin d'un niveau de 80+ en|r |T135966:0|t[Premiers soins] |cRXP_WARN_pour une quête à venir|r << Rogue !Dwarf
-    .zone Stormwind City >> Prenez le Tram des profondeurs vers Hurlevent
+    .zone Stormwind City >> Prenez le Tram des profondeurs vers Stormwind
     .zoneskip Wetlands << NightElf
     .zoneskip Elwynn Forest
     .zoneskip Westfall
@@ -6631,7 +6631,7 @@ step << Rogue
     .dungeon DM
 step << Rogue
     #xprate >1.59
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Renzik "The Shiv"|r et |cRXP_FRIENDLY_Master Mathias Shaw|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Renzik "The Shiv"|r et à|cRXP_FRIENDLY_Master Mathias Shaw|r
     .accept 2281 >> Acceptez la quête Le Rendez-vous des Carmines
     .goto StormwindClassic,75.76,60.35
     .target +Renzik "The Shiv"
@@ -6650,7 +6650,7 @@ step << Warrior
 step << Warrior
     #xprate >1.59
     .goto 1453,78.673,45.791
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Wu Shen|r à l'étage
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Wu Shen|r dans le bâtiment à l'étage
     .trainer >> Apprenez vos sorts de classe
     .target Wu Shen
     .dungeon DM
@@ -7163,9 +7163,9 @@ step << Rogue
     .goto Westfall,71.01,75.72,30,0
     .goto Westfall,69.58,73.07,30,0
     >>|T133644:0|tUtilisez [Vol à la tire] sur le |cRXP_ENEMY_Malformed Defias Drone|r. Volez-lui la |cRXP_LOOT_Defias Tower Key|r
-    >>Vous devez être en [Camouflage] pour utiliser votre [Vol à la tire]
+    >>Vous devez être en [Camouflage] pour utiliser [Vol à la tire]
     >>|cRXP_WARN_Le |cRXP_ENEMY_Malformed Defias Drone|r apparaissent à l'entrée de la tour, puis font le tour de celle-ci|r
-    >>Faites attention car il fait BEAUCOUP de dégâts. Si vous perdez votre [Camouflage], utilisez vite votre [Sprint] pour vous enfuir
+    >>Faites attention, il tape TRÈS fort. Si vous perdez votre [Camouflage], utilisez rapidement votre [Sprint] et enfuyez-vous
     .complete 2359,2 --Collect Defias Tower Key (x1)
     .link https://www.youtube.com/watch?v=5sIew15IcG0 >> Cliquez ICI pour un guide vidéo
     .mob Malformed Defias Drone
@@ -7174,7 +7174,7 @@ step << Rogue
     #xprate >1.59
     #optional
     #completewith Mortwake
-    +Équipez la [Dague de Curvewood] pour cette quête si vous n'avez pas déjà de [Dague] équipée
+    +Équipez la [Dague de Curvewood] pour cette quête si vous n'avez pas déjà de [Dagues] équipée
     .use 15396
     .itemcount 15396,1
     .dungeon DM
@@ -7245,7 +7245,7 @@ step << !Dwarf Rogue
     #requires AntiVenomEnd
     .goto 1453,43.070,26.155
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Shaina Fuller|r
-    >>Si vous avez un ami |cFFF48CBAPaladin|r ou |cFFFF7C0ADruid|r demandez-leur de vous enlever le debuff [Toucher de Zanzil]
+    >>Si vous avez un ami |cFFF48CBAPaladin|r ou |cFFFF7C0ADruid|r, demandez leur de vous enlever le debuff [Touch of Zanzil]
     .skill firstaid,80 >> Montez vos [Premier soins] à un niveau de compétence de 80
     .aura -9991
     .itemcount 6452,<1 --Anti-Venom (<1)
@@ -7255,8 +7255,8 @@ step << !Dwarf Rogue
     #label FirstAidEnd
     .goto 1453,43.070,26.155
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Shaina Fuller|r
-    >>Si vous avez un ami |cFFF48CBAPaladin|r ou |cFFFF7C0ADruid|r demandez-leur de vous enlever le debuff [Toucher de Zanzil]
-    .train 7934 >> Apprenez [Anti-Venom]
+    >>Si vous avez un ami |cFFF48CBAPaladin|r ou |cFFFF7C0ADruid|r, demandez leur de vous enlever le debuff [Touch of Zanzil]
+    .train 7934 >> Apprenez [Anti-Venin]
     .aura -9991
     .itemcount 6452,<1 --Anti-Venom (<1)
     .dungeon DM
@@ -7383,7 +7383,7 @@ step
     #xprate >1.59 << !Hunter
     #label BandanaStart
     .goto Westfall,56.67,47.35
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez |cRXP_FRIENDLY_Scout Riell|r tout en haut de la Tour
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Scout Riell|r au sommet de la Tour
     .accept 214 >> Acceptez la quête Les masques rouges en soie
     .target Scout Riell
     .dungeon DM
@@ -7708,7 +7708,7 @@ step
 step
     #xprate >1.59 << !Hunter
     .goto Westfall,56.67,47.35
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez |cRXP_FRIENDLY_Scout Riell|r tout en haut de la Tour
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Scout Riell|r au sommet de la Tour
     .turnin 214 >> Rendez la quête Les masques rouges en soie
     .target Scout Riell
     .dungeon DM
@@ -7832,7 +7832,7 @@ step << Warrior
     #xprate >1.59
     #optional
     .goto 1453,78.673,45.791
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Wu Shen|r à l'étage
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Wu Shen|r dans le bâtiment à l'étage
     .train 6192 >> Apprenez vos sorts de classe
     .target Wu Shen
     .xp <22,1
@@ -7932,7 +7932,7 @@ step << Warrior
 step << Warrior
     #xprate >1.59
     .goto 1453,78.673,45.791
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Wu Shen|r à l'étage
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Wu Shen|r dans le bâtiment à l'étage
     .train 6192 >> Apprenez vos sorts de classe
     .target Wu Shen
     .xp <22,1
@@ -8743,7 +8743,7 @@ step
     .target Gryan Stoutmantle
 step
 .dungeon DM
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez |cRXP_FRIENDLY_Scout Riell|r tout en haut de la Tour
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Scout Riell|r au sommet de la Tour
     .accept 214 >> Acceptez la quête Les masques rouges en soie
     .goto Westfall,56.67,47.35
     .target Scout Riell
@@ -9692,16 +9692,16 @@ step << Rogue
     .goto Westfall,71.01,75.72,30,0
     .goto Westfall,69.58,73.07,30,0
     >>|T133644:0|tUtilisez [Vol à la tire] sur le |cRXP_ENEMY_Malformed Defias Drone|r. Volez-lui la |cRXP_LOOT_Defias Tower Key|r
-    >>Vous devez être en [Camouflage] pour utiliser votre [Vol à la tire]
+    >>Vous devez être en [Camouflage] pour utiliser [Vol à la tire]
     >>|cRXP_WARN_Le |cRXP_ENEMY_Malformed Defias Drone|r apparaissent à l'entrée de la tour, puis font le tour de celle-ci|r
-    >>Faites attention car il fait BEAUCOUP de dégâts. Si vous perdez votre [Camouflage], utilisez vite votre [Sprint] pour vous enfuir
+    >>Faites attention, il tape TRÈS fort. Si vous perdez votre [Camouflage], utilisez rapidement votre [Sprint] et enfuyez-vous
     .complete 2359,2 --Collect Defias Tower Key (x1)
     .link https://www.youtube.com/watch?v=5sIew15IcG0 >> Cliquez ICI pour un guide vidéo
     .mob Malformed Defias Drone
 step << Rogue
     #optional
     #completewith Mortwake
-    +Équipez la [Dague de Curvewood] pour cette quête si vous n'avez pas déjà de [Dague] équipée
+    +Équipez la [Dague de Curvewood] pour cette quête si vous n'avez pas déjà de [Dagues] équipée
     .use 15396
     .itemcount 15396,1
 step << Rogue
@@ -9758,7 +9758,7 @@ step << !Dwarf Rogue
     #requires AntiVenomEnd
     .goto 1453,43.070,26.155
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Shaina Fuller|r
-    >>Si vous avez un ami |cFFF48CBAPaladin|r ou |cFFFF7C0ADruid|r demandez-leur de vous enlever le debuff [Toucher de Zanzil]
+    >>Si vous avez un ami |cFFF48CBAPaladin|r ou |cFFFF7C0ADruid|r, demandez leur de vous enlever le debuff [Touch of Zanzil]
     .skill firstaid,80 >> Montez vos [Premier soins] à un niveau de compétence de 80
     .aura -9991
     .itemcount 6452,<1 --Anti-Venom (<1)
@@ -9766,8 +9766,8 @@ step << !Dwarf Rogue
     #label FirstAidEnd
     .goto 1453,43.070,26.155
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Shaina Fuller|r
-    >>Si vous avez un ami |cFFF48CBAPaladin|r ou |cFFFF7C0ADruid|r demandez-leur de vous enlever le debuff [Toucher de Zanzil]
-    .train 7934 >> Apprenez [Anti-Venom]
+    >>Si vous avez un ami |cFFF48CBAPaladin|r ou |cFFFF7C0ADruid|r, demandez leur de vous enlever le debuff [Touch of Zanzil]
+    .train 7934 >> Apprenez [Anti-Venin]
     .aura -9991
     .itemcount 6452,<1 --Anti-Venom (<1)
 step << !Dwarf Rogue
@@ -10102,14 +10102,14 @@ step
     #sticky
     #label prospector
     .goto 1439,35.724,83.696
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Prospector Remtravel|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Prospector Remtravel|r
     >>|cRXP_WARN_Vous devrez peut-être attendre qu'il réapparaisse ou que les autres joueurs terminent l'escorte|r
     .turnin 729 >> Rendez la quête Les absences du Prospecteur
     .isOnQuest 729
     .target Prospector Remtravel
 step
     .goto Darkshore,35.72,83.69
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Prospector Remtravel|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Prospector Remtravel|r
     >>Ceci va démarrer une escorte
     .accept 731,1 >> Acceptez la quête Les absences du Prospecteur
     >>|cRXP_WARN_Cette quête est TRÈS difficile. Passez cette étape si vous n'arrivez pas à trouver un groupe ou à la faire seul|r
@@ -10135,7 +10135,7 @@ step
     --  .use 13536
 step
     .goto 1439,38.660,87.305
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à|cRXP_FRIENDLY_Therylune|r. Cela va commencer une escorte
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Therylune|r. Cela va commencer une escorte
     >>Passez cette étape si elle n'est pas présente
     .accept 945 >> Acceptez la quête L'évasion de Therylune
     .target Therylune
@@ -10295,7 +10295,7 @@ step
     .goto Ashenvale,27.26,35.58
     >>|cRXP_WARN_Escortez |cRXP_FRIENDLY_Kerlonian|r jusqu'au poste de Maestra à Orneval|r
     .use 13536 >> |cRXP_WARN_Utilisez la|r |T134229:0|t[|cRXP_LOOT_Corne de l'éveil|r] |cRXP_WARN_dès que |cRXP_FRIENDLY_Kerlonian|r s'endort|r
-    >>|cRXP_WARN_Évitez de rester sur la route principale autant que possible. Les ennemis n'apparaîtront que si vous restez sur la route|r
+    >>Évitez de rester sur la route principale autant que possible. Les ennemis n'apparaîtront que si vous restez sur la route
     .complete 5321,2
     .isOnQuest 5321
 step
@@ -10576,7 +10576,7 @@ step
     .goto Ashenvale,6.528,13.361
     >>Tuez |cRXP_ENEMY_Ruuzel|r. Dépouillez-la pour son |cRXP_LOOT_Ring of Zoram|r
     >>|cRXP_ENEMY_Ruuzel|r |cRXP_WARN_patrouille autour de l'île avec un |cRXP_ENEMY_Wrathtail Myrmidon|r et une |cRXP_ENEMY_Wrathtail Sea Witch|r. Tuez l'un des deux puis relancez le combat si nécessaire|r
-    >>Si vous avez des [Bombes]|cRXP_WARN_/|r[Grenades], vous pouvez aussi vous en servir pour pull |cRXP_ENEMY_Ruuzel|r à part
+    >>Si vous avez des [Bombes]|cRXP_WARN_/|r[Grenades], vous pouvez vous en servir pour ramener |cRXP_ENEMY_Ruuzel|r à part
     >>|cRXP_ENEMY_Lady Vespia|r |cRXP_WARN_ est un mob rare qui peut aussi donner le |cRXP_LOOT_Ring of Zoram|r si vous la voyez|r
     .link https://www.youtube.com/watch?v=H-IwZ6P-ldY >> Cliquez ici pour un exemple vidéo du "Split pulling"
 	.unitscan Lady Vespia
@@ -10977,7 +10977,7 @@ step
     .accept 950 >> Acceptez la quête La page qui rend fou
 step
     .goto 1439,38.660,87.305
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à|cRXP_FRIENDLY_Therylune|r. Cela va commencer une escorte
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Therylune|r. Cela va commencer une escorte
     >>Passez cette étape si elle n'est pas présente
     .accept 945 >> Acceptez la quête L'évasion de Therylune
     .target Therylune
@@ -11001,7 +11001,7 @@ step
     #sticky
     #label prospector
     .goto 1439,35.724,83.696
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Prospector Remtravel|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Prospector Remtravel|r
     >>|cRXP_WARN_Vous devrez peut-être attendre qu'il réapparaisse ou que les autres joueurs terminent l'escorte|r
     .turnin 729 >> Rendez la quête Les absences du Prospecteur
     .target Prospector Remtravel
@@ -11188,7 +11188,7 @@ step
     .goto Ashenvale,27.26,35.58
     +|cRXP_FRIENDLY_Kerlonian|r vous suivra et vous aidera occasionnellement en combat. |cRXP_WARN_Assurez-vous de ne pas le perdre car il arrêtera de bouger lorsqu'il s'endormira. Vous avez 25 minutes pour atteindre Orneval et compléter cette quête|r
     .use 13536 >> |cRXP_WARN_Utilisez la|r |T134229:0|t[|cRXP_LOOT_Corne de l'éveil|r] |cRXP_WARN_en vous tenant à côté de lui à chaque fois que |cRXP_FRIENDLY_Kerlonian|r s'endort pour le réveiller|r
-    >>|cRXP_WARN_Évitez de rester sur la route principale autant que possible. Les ennemis n'apparaîtront que si vous restez sur la route|r
+    >>Évitez de rester sur la route principale autant que possible. Les ennemis n'apparaîtront que si vous restez sur la route
     .isOnQuest 5321
 step
 #xprate <1.5
@@ -11225,7 +11225,7 @@ step
     .goto Ashenvale,27.26,35.58
     >>|cRXP_WARN_Escortez |cRXP_FRIENDLY_Kerlonian|r jusqu'au poste de Maestra à Orneval|r
     .use 13536 >> |cRXP_WARN_Utilisez la|r |T134229:0|t[|cRXP_LOOT_Corne de l'éveil|r] |cRXP_WARN_dès que |cRXP_FRIENDLY_Kerlonian|r s'endort|r
-    >>|cRXP_WARN_Évitez de rester sur la route principale autant que possible. Les ennemis n'apparaîtront que si vous restez sur la route|r
+    >>Évitez de rester sur la route principale autant que possible. Les ennemis n'apparaîtront que si vous restez sur la route
     .complete 5321,2
     .isOnQuest 5321
 step

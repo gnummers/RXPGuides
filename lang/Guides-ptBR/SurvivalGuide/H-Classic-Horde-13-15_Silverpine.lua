@@ -13,7 +13,7 @@ RXPGuides.RegisterGuide([[
 step << Undead Rogue
     #sticky
     #completewith RotHideCluesTurnIn
-    >>|cRXP_WARN_Se você vir|r |cRXP_FRIENDLY_Astolfo Hadren|r|cRXP_WARN_, fale com ele e mate-o. Saque-o pela carta. Ele patrula a estrada entre Montalvo e Sepulcro|r
+    >>|cRXP_WARN_Se você vir|r |cRXP_FRIENDLY_Astolfo Hadren|r|cRXP_WARN_, fale com ele e mate-o. Saqueie-o pela carta. Ele patrula a estrada entre Montalvo e Sepulcro|r
     .complete 1886,1 --Astor's Letter of Introduction (1)
     .unitscan Astor Hadren
 step
@@ -42,7 +42,7 @@ step
     .goto Silverpine Forest,56.25,11.43,30,0
     .goto Silverpine Forest,56.17,12.62,30,0
     .goto Silverpine Forest,53.46,13.45
-    >>Acompanhe |cRXP_FRIENDLY_Erland|r com segurança até |cRXP_FRIENDLY_Rane Yorick|r
+    >>Escolte o |cRXP_FRIENDLY_Sicário Orlando|r com segurança até |cRXP_FRIENDLY_Rane Yorick|r
     >>|cRXP_WARN_Tenha cuidado!|r |cRXP_ENEMY_Worgs|r |cRXP_WARN_podem surgir um em cima do outro, coma e beba sempre que conseguir|r
     .complete 435,1 --Erland must reach Rane Yorick (1)
     .mob Worg
@@ -104,7 +104,7 @@ step << Undead
 step
     #label BorderCrossings
     .goto Silverpine Forest,43.98,40.93
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Allister|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Sacerdote Sombrio Allister|r
     .accept 477 >>Aceite Cruzando fronteiras
     .target Shadow Priest Allister
 step
@@ -185,7 +185,7 @@ step
     .goto Silverpine Forest,51.54,13.91
     >>Mate |cRXP_ENEMY_Ivar, o Imundo|r. Saqueie-o para pegar sua |cRXP_LOOT_Cabeça|r
     >>|cRXP_WARN_Cuidado! Limpe toda a área frontal do celeiro e puxe os|r |cRXP_ENEMY_Ravenclaw Slaves|r |cRXP_WARN_um por um.|r
-    >>|cRXP_WARN_Ivar está protegido por dois|r |cRXP_ENEMY_Ravenclaw Slaves|r |cRXP_WARN_dentro do celeiro. Você pode puxar um deles isoladamente enquanto ele patrulha|r
+    >>|cRXP_WARN_Ivar está protegido por dois|r |cRXP_ENEMY_Escravos Corvinalle|r |cRXP_WARN_dentro do celeiro. Você pode puxar um deles sozinho quando ele patrulhar mais à frente|r
     >>|cRXP_WARN_Eles são imunes a Medo!|r << Priest/Warlock
     .complete 425,1 --Ivar's Head (1)
     .target Ivar the Foul
@@ -455,18 +455,18 @@ step
     .goto Silverpine Forest,44.20,39.73
 step
     .goto Silverpine Forest,43.98,40.93
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Allister|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Sacerdote Sombrio Allister|r
     .turnin 482 >>Entregue As intenções de Dalaran
     .target Shadow Priest Allister
 step
     .goto Silverpine Forest,43.98,40.93
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Allister|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Sacerdote Sombrio Allister|r
     .accept 479 >>Aceite Investigações de Ambermill
     .target Shadow Priest Allister
     .group
 step
     .goto Silverpine Forest,43.98,40.93
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Allister|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Sacerdote Sombrio Allister|r
     .turnin 482 >>Entregue As intenções de Dalaran
     .target Shadow Priest Allister
 step
@@ -480,7 +480,7 @@ step
     .goto Silverpine Forest,43.43,40.87
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Alto-executor Hadrec|r na cripta
     .turnin 439 >>Entregue Pistas dos Putricouro
-    .accept 440 >>Aceite O Anel Gravado
+    .accept 440 >>Aceite O anel gravado
     .target High Executor Hadrec
 step << Undead
     .goto Silverpine Forest,45.62,42.58
@@ -856,7 +856,7 @@ step
 step
     #label BerardsJournal
     .goto Silverpine Forest,42.98,73.22
-    >>Mate |cRXP_ENEMY_Boticário Berardo|r. Saque seu |cRXP_LOOT_Livro|r localizado na estante
+    >>Mate |cRXP_ENEMY_Boticário Berardo|r. Saque o |cRXP_LOOT_Livro|r localizado na estante de livros
     .complete 450,1 --Berard's Journal (1)
     .mob Apothecary Berard
     .isOnQuest 450
@@ -936,7 +936,7 @@ step
 step
     #label AmbermillTurnin
     .goto Silverpine Forest,43.98,40.93
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Allister|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Sacerdote Sombrio Allister|r
     .turnin 479 >>Entregue Investigações de Ambermill
     .target Shadow Priest Allister
     .isQuestComplete 479

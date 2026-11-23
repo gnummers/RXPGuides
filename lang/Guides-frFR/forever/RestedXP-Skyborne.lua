@@ -239,7 +239,7 @@ step << Horde !Warrior !Rogue/Alliance !Warrior !Rogue !Hunter
     .isQuestAvailable 93552 -- Harvesting Windstones
     .goto 2521,42.749,24.496
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Uualia Solcrête::251537|r
-    >>|cRXP_BUY_Achetez des|r [Refreshing Spring Water] |cRXP_BUY_à Duokna|r << !Hunter !Shaman
+    >>|cRXP_BUY_Achetez des|r [Eau de source] |cRXP_BUY_à Shara|r << !Hunter !Shaman
     .vendor 251537 >>Vendez tout ce dont nous n'avez pas besoin
     *Ne vendez pas votre |T133970:0|t[Viande maigre] et vos |T132889:0|t[Étoffes de lin]. << Alliance
     .collect 159,20 << !Hunter !Shaman --Refreshing Spring Water (20)
@@ -1905,7 +1905,7 @@ step
     .goto 2521,41.67,44.79
     >>Cliquez sur la macro dans le cadre des Objets actifs pour vous asseoir.
     .complete 96101,1 --1/1 Use the /sit emote near the campfire
-    .macro Sit,134400 >>Asseyez-vous 
+    .macro Sit,134400 >>Asseyez-vous
     .timer 59,Durée jusqu'à la complétion 1
 step << Alliance
     .aura -1289723
@@ -1951,7 +1951,7 @@ step
     *|cRXP_WARN_Ne vous déplacez pas et ne sautez pas jusqu'à ce que la quête soit terminée|r.
     .complete 96101,2 --Gain the Boosted Rest buff
     .timer 59,Durée jusqu'à la complétion 2
-    .macro Sit,134400 >>Asseyez-vous 
+    .macro Sit,134400 >>Asseyez-vous
 step << Alliance
     .train 3273,3 -- First Aid Trained
     .itemcount 2589,1 -- Linen Cloth
@@ -2303,6 +2303,14 @@ step
     .turnin 97965 >>Rendez la quête Introduction au camping : les premiers soins
     .target Naleeia Tattermend::257018
 step
+    .train 2366,3 --Herbalism Trained
+    .isQuestComplete 97968 --Camping 101: Herbalism
+    .isQuestComplete 92516 --Hippogryph Harassment
+    .goto 2521,43.0,43.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Halassa Fernbreeze::257021|r.
+    .turnin 97968 >>Rendez la quête Introduction au camping : l'herboristerie
+    .target Halassa Fernbreeze::257021
+step
     .train 7411,3 -- Enchanting Trained
     .isQuestComplete 98286 -- Camping 101: Enchanting
     .isQuestComplete 92516 -- Hippogryph Harassment
@@ -2566,7 +2574,7 @@ step << Horde Shaman
     .goto 2521,44.71,45.48
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Veena Vérinuage::254358|r
     .vendor 254358 >>|cRXP_BUY_Achetez jusqu'à trois|r |T133634:0|t[Petites sacoches marrons] |cRXP_BUY_si nécessaire|r.
-    >>|cRXP_BUY_Achetez du|r [Lait frais] |cRXP_BUY_à Kauth|r
+    >>|cRXP_BUY_Achetez du|r [Lait frais] |cRXP_BUY_à Grosk|r
     *|cRXP_WARN_Lorsque vous équipez des sacs, assurez-vous que votre Sac de composants est dans l'emplacement dédié au Sac de composants|r.
     *Ne vendez pas les |T132832:0|t[Petits œufs] et la |T133972:0|t[Viande de trotteur].
     .target Veena Vericloud::254358
@@ -3119,6 +3127,14 @@ step
     .turnin 98286 >>Rendez la quête Introduction au camping : l’enchantement
     .target Nasalanna Windsinger::257020
 step
+    .train 2366,3 --Herbalism Trained
+    .isQuestComplete 97968 --Camping 101: Herbalism
+    .isQuestComplete 92550 -- Havoc in the Highlands
+    .goto 2521,43.0,43.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Halassa Fernbreeze::257021|r.
+    .turnin 97968 >>Rendez la quête Introduction au camping : l'herboristerie
+    .target Halassa Fernbreeze::257021
+step
     .train 3273,3 -- First Aid Trained
     .itemcount 2589,1 -- Linen Cloth
     .goto 2521,43.08,46.31
@@ -3187,7 +3203,7 @@ step
     .goto 2521,44.71,45.48
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Veena Vérinuage::254358|r
     .vendor 254358 >>Vendez votre camelote. |cRXP_BUY_Achetez jusqu'à trois|r |T133634:0|t[Petites sacoches marrons] |cRXP_BUY_si nécessaire|r.
-    *|cRXP_BUY_Achetez du|r [Lait frais] |cRXP_BUY_à Kauth|r << Druid/Mage/Priest/Warlock/Paladin
+    *|cRXP_BUY_Achetez du|r [Lait frais] |cRXP_BUY_à Grosk|r << Druid/Mage/Priest/Warlock/Paladin
     -- *|cRXP_BUY_Buy|r |T132382:0|t[Rough Arrows] and |T132382:0|t[Sharp Arrows] << Hunter
     *|cRXP_BUY_Achetez des|r [Flèche pointue] << Hunter
     -- *|cRXP_BUY_Buy|r |T132382:0|t[Sharp Arrows] << Alliance Rogue
@@ -3380,7 +3396,7 @@ step << Alliance Hunter
     #completewith Deliver the Signet
     .xp <9,1
     .itemcount 277110,1 --Zephrali Bow
-    +|cRXP_WARN_Équipez l'|r |T7810733:0|t[Arc zéphrali].
+    .equip 18,277110 >>|cRXP_WARN_Équipez l'|r |T7810733:0|t[Arc zéphrali].
     .use 277110 --Zephrali Bow
 step << Alliance Warrior/Alliance Paladin
     .xp <9,1
@@ -3403,7 +3419,7 @@ step << Alliance Warrior/Alliance Paladin
     #completewith Deliver the Signet
     .xp <9,1
     .itemcount 277106,1 --Zephrali Smasher
-    +|cRXP_WARN_Équipez le|r |T7792097:0|t[Fracasseur zéphrali].
+    .equip 16,277106 >>|cRXP_WARN_Équipez le|r |T7792097:0|t[Fracasseur zéphrali].
     .use 277106 --Zephrali Smasher
 step << Alliance Shaman/Alliance Druid
     .xp <9,1
@@ -3422,7 +3438,7 @@ step << Alliance Shaman/Alliance Druid
     #completewith Deliver the Signet
     .xp <9,1
     .itemcount 277109,1 --Zephrali Greatstaff
-    +|cRXP_WARN_Équipez le|r |T7798447:0|t[Grand bâton zéphrali].
+    .equip 16,277109 >>|cRXP_WARN_Équipez le|r |T7798447:0|t[Grand bâton zéphrali].
     .use 277109 --Zephrali Greatstaff
 step << Alliance Rogue
     .xp <9,1
@@ -3445,7 +3461,7 @@ step << Alliance Rogue
     #completewith Deliver the Signet
     .xp <9,1
     .itemcount 277107,1 --Zephrali Bludgeon
-    +|cRXP_WARN_Équipez le|r |T7791298:0|t[Gourdin zéphrali].
+    .equip 16,277107 >>|cRXP_WARN_Équipez le|r |T7791298:0|t[Gourdin zéphrali].
     .use 277107 --Zephrali Bludgeon
 -- step << Mage/Priest/Warlock
 --     .xp <9,1
@@ -3577,7 +3593,7 @@ step << Alliance
     .cooldown spell,1259416,>0,1 -- Walk on Air
     .goto 2521,66.47,76.68,10,0
     .goto 2521,66.63,79.94
-    .cast 1259416 >>Sautez de la montagne et utilisez |T132845:0|t[Marche sur l’air] pour voler vers le donneur de quête.
+    .cast 1259416 >>Sautez de l'arbre et utilisez |T132845:0|t[Marche sur l'air] pour voler vers le donneur de quête.
     *|cRXP_WARN_Si vous le faites au bon timing, vous pouvez l'annuler en l'air pour tomber dans le bâtiment|r
     .usespell 1259416
     .macro Cancel Walk on Air,132845 >>Annulez Marche sur l'air
@@ -3773,7 +3789,7 @@ step << Horde Hunter
     #completewith LeavingValanaarA
     .xp <9,1
     .itemcount 277110,1 --Zephrali Bow
-    +|cRXP_WARN_Équipez l'|r |T7810733:0|t[Arc zéphrali].
+    .equip 18,277110 >>|cRXP_WARN_Équipez l'|r |T7810733:0|t[Arc zéphrali].
     .use 277110 --Zephrali Bow
 step << Horde Warrior
     .xp <9,1
@@ -3795,7 +3811,7 @@ step << Horde Warrior
     #completewith LeavingValanaarA
     .xp <9,1
     .itemcount 277106,1 --Zephrali Smasher
-    +|cRXP_WARN_Équipez le|r |T7792097:0|t[Fracasseur zéphrali].
+    .equip 16,277106 >>|cRXP_WARN_Équipez le|r |T7792097:0|t[Fracasseur zéphrali].
     .use 277106 --Zephrali Smasher
 step << Horde Shaman/Horde Druid
     .xp <9,1
@@ -3818,7 +3834,7 @@ step << Horde Shaman/Horde Druid
     #completewith LeavingValanaarA
     .xp <9,1
     .itemcount 277109,1 --Zephrali Greatstaff
-    +|cRXP_WARN_Équipez le|r |T7798447:0|t[Grand bâton zéphrali].
+    .equip 16,277109 >>|cRXP_WARN_Équipez le|r |T7798447:0|t[Grand bâton zéphrali].
     .use 277109 --Zephrali Greatstaff
 step << Horde Rogue
     .xp <9,1
@@ -3840,15 +3856,15 @@ step << Horde Rogue
     #completewith LeavingValanaarA
     .xp <9,1
     .itemcount 277107,1 --Zephrali Bludgeon
-    +|cRXP_WARN_Équipez le|r |T7791298:0|t[Gourdin zéphrali].
+    .equip 16,277107 >>|cRXP_WARN_Équipez le|r |T7791298:0|t[Gourdin zéphrali].
     .use 277107 --Zephrali Bludgeon
-step << Horde
-    .train 2366,3 -- Herbalism Trained
-    .isQuestComplete 97968 -- Camping 101: Herbalism
-    .goto 2521,57.890,75.514
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Syriel Noctepluie::254345|r.
-    .target Syriel Nightrain::254345
-    .turnin 97968 >>Rendez la quête Introduction au camping : l'herboristerie
+-- step << Horde
+--     .train 2366,3 -- Herbalism Trained
+--     .isQuestComplete 97968 -- Camping 101: Herbalism
+--     .goto 2521,57.890,75.514
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Syriel Nightrain::254345|r.
+--     .target Syriel Nightrain::254345
+--     .turnin 97968 >>Turn in Camping 101: Herbalism
 step << Hunter Horde
     .money <0.1345
     .isOnQuest 93735 -- The Broken Construct
@@ -4107,7 +4123,7 @@ step << Horde Shaman
     .isQuestNotComplete 97244
     .showwhiledead
     .goto 2521,54.99,68.14
-    .deathskip >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à l'|cRXP_FRIENDLY_Spirit Soins::6491|r.
+    .deathskip >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Spirit Soins::6491|r.
     .skipgossipid 96031
     .skipgossipid 98031
     .target Spirit Healer::6491
@@ -4122,14 +4138,14 @@ step << Horde Shaman
     .isQuestComplete 97244
     .goto 2521,62.384,64.393,-1
     .goto 2521,54.99,68.14,-1
-    +Mourez et ressuscitez auprès de l'|cRXP_FRIENDLY_Spirit Soins::6491|r.
+    +Mourez et ressuscitez auprès du |cRXP_FRIENDLY_Spirit Soins::6491|r.
 step << Horde Shaman
     .isOnQuest 97244
     .isQuestComplete 97244
     #ignorecorpse
     .showwhiledead
     .goto 2521,54.99,68.14
-    .deathskip >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à l'|cRXP_FRIENDLY_Spirit Soins::6491|r.
+    .deathskip >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Spirit Soins::6491|r.
     .skipgossipid 96031
     .skipgossipid 98031
     .target Spirit Healer::6491
@@ -4258,7 +4274,7 @@ step << Horde !Shaman
     .showwhiledead
     .goto 2521,48.823,83.150,-1
     .goto 2521,54.99,68.14,-1
-    .deathskip >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tMourez, puis parlez à l'|cRXP_FRIENDLY_Spirit Soins::6491|r.
+    .deathskip >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tMourez puis parlez au |cRXP_FRIENDLY_Spirit Soins::6491|r.
     .skipgossipid 96031
     .skipgossipid 98031
     .target Spirit Healer::6491
@@ -4365,9 +4381,9 @@ step
     .target Alvarion Windfield::252448
 step
     #completewith Accept Catching Wind
-    *|cRXP_WARN_Équipez la|r |T134435:0|t[Pelle à plantations] << Warrior/Shaman/Paladin
-    *|cRXP_WARN_Équipez le|r |T133057:0|t[Marteau à toiture] << Druid/Priest
-    *|cRXP_WARN_Équipez la|r |T134520:0|t[Clé à molette fiable] << Rogue
+    .equip 16,263312 >>|cRXP_WARN_Équipez la|r |T134435:0|t[Pelle à plantations] << Warrior/Shaman/Paladin
+    .equip 16,263314 >>|cRXP_WARN_Équipez le|r |T133057:0|t[Marteau à toiture] << Druid/Priest
+    .equip 16,263313 >>|cRXP_WARN_Équipez la|r |T134520:0|t[Clé à molette fiable] << Rogue
     .use 263312 << Warrior/Shaman/Paladin -- Planting Shovel
     .use 263314 << Druid/Priest -- Roofing Hammer
     .use 263313 << Rogue -- Trusty Wrench
@@ -4438,7 +4454,7 @@ step << Warrior/Paladin
     #completewith Learn << Horde
     .xp <9,1
     .itemcount 277106,1 --Zephrali Smasher
-    +|cRXP_WARN_Équipez le|r |T7792097:0|t[Fracasseur zéphrali].
+    .equip 16,277106 >>|cRXP_WARN_Équipez le|r |T7792097:0|t[Fracasseur zéphrali].
     .use 277106 --Zephrali Smasher
 step << Shaman/Druid
     .xp <9,1
@@ -4461,7 +4477,7 @@ step << Shaman/Druid
     #completewith Learn << Horde
     .xp <9,1
     .itemcount 277109,1 --Zephrali Greatstaff
-    +|cRXP_WARN_Équipez le|r |T7798447:0|t[Grand bâton zéphrali].
+    .equip 16,277109 >>|cRXP_WARN_Équipez le|r |T7798447:0|t[Grand bâton zéphrali].
     .use 277109 --Zephrali Greatstaff
 step << Rogue
     .money <0.09
@@ -4500,7 +4516,7 @@ step << Rogue
     #completewith Learn << Horde
     .xp <9,1
     .itemcount 277107,1 --Zephrali Bludgeon
-    +|cRXP_WARN_Équipez le|r |T7791298:0|t[Gourdin zéphrali].
+    .equip 16,277107 >>|cRXP_WARN_Équipez le|r |T7791298:0|t[Gourdin zéphrali].
     .use 277107 --Zephrali Bludgeon
 step << Hunter
     .goto 2521,59.55,73.3,25,0
@@ -4538,7 +4554,7 @@ step << Hunter
     #completewith Learn << Horde
     .xp <9,1
     .itemcount 277110,1 --Zephrali Bow
-    +|cRXP_WARN_Équipez l'|r |T7810733:0|t[Arc zéphrali].
+    .equip 18,277110 >>|cRXP_WARN_Équipez l'|r |T7810733:0|t[Arc zéphrali].
     .use 277110 --Zephrali Bow
 step << Horde Druid
     .subzoneskip 16638,1 -- Valanaar
@@ -4716,8 +4732,8 @@ step << Horde Hunter
     -- .goto 2521,53.799,72.161,35,0
     >>|cRXP_WARN_Lancez|r |T132164:0|t[Apprivoise une bête] |cRXP_WARN_sur un |cRXP_ENEMY_Clampant chantevent::254588|r pour le dompter|r -- .tame 1997
     *|cRXP_WARN_NOTE:|r Si tous les crabes sont morts, vous pouvez aussi dompter un |cRXP_ENEMY_Trotteur des trombes hargneux::251707|r jusqu'à ce que vous trouviez un crabe.
-    .train 2981 >> Attaquez des mobs avec celui-ci pour qu'il apprenne [Claw (Rank 2)]
-    .link https://www.wow-petopia.com/classic/training.php >> Cliquez ici pour plus d'information sur le dressage des familiers
+    .train 2981 >> Attaquez des créatures avec pour qu'il apprenne [Griffe (Rang 2)]
+    .link https://www.wow-petopia.com/classic/training.php >> |cRXP_WARN_Cliquez ici pour plus d'information sur le dressage des familiers|r
 	.mob Windsong Crawler::254588
 step << Horde Hunter
     .isOnQuest 93317
@@ -4743,7 +4759,7 @@ step << Alliance
     .isOnQuest 92840 -- Catching Wind
     .showwhiledead
     .goto 2521,54.99,68.14
-    .deathskip >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à l'|cRXP_FRIENDLY_Spirit Soins::6491|r.
+    .deathskip >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Spirit Soins::6491|r.
     .skipgossipid 96031
     .skipgossipid 98031
     .target Spirit Healer::6491
@@ -4864,13 +4880,13 @@ step << Alliance Hunter
     .turnin 94979 >>Rendez la quête Dompter la bête
     .accept 94013 >>Acceptez la quête Dompter la bête
     .target Quel'ana Quickgale::252389
-step << Alliance Hunter
-    .train 2366,3 -- Herbalism Trained
-    .isQuestComplete 97968 -- Camping 101: Herbalism
-    .goto 2521,57.890,75.514
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Syriel Noctepluie::254345|r.
-    .turnin 97968 >>Rendez la quête Introduction au camping : l'herboristerie
-    .target Syriel Nightrain::254345
+-- step << Alliance Hunter
+--     .train 2366,3 -- Herbalism Trained
+--     .isQuestComplete 97968 -- Camping 101: Herbalism
+--     .goto 2521,57.890,75.514
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Syriel Nightrain::254345|r.
+--     .turnin 97968 >>Turn in Camping 101: Herbalism
+--     .target Syriel Nightrain::254345
 step << Alliance Hunter
     #optional
     #completewith next
@@ -4931,8 +4947,8 @@ step << Alliance Hunter
     .goto 2521,53.799,72.161,35,0
     >>|cRXP_WARN_Lancez|r |T132164:0|t[Apprivoise une bête] |cRXP_WARN_sur un |cRXP_ENEMY_Clampant chantevent::254588|r pour le dompter|r -- .tame 1997
     *|cRXP_WARN_NOTE:|r Si tous les crabes sont morts, vous pouvez aussi dompter un |cRXP_ENEMY_Trotteur des trombes hargneux::251707|r jusqu'à ce que vous trouviez un crabe.
-    .train 2981 >> Attaquez des mobs avec celui-ci pour qu'il apprenne [Claw (Rank 2)]
-    .link https://www.wow-petopia.com/classic/training.php >> Cliquez ici pour plus d'information sur le dressage des familiers
+    .train 2981 >> Attaquez des créatures avec pour qu'il apprenne [Griffe (Rang 2)]
+    .link https://www.wow-petopia.com/classic/training.php >> |cRXP_WARN_Cliquez ici pour plus d'information sur le dressage des familiers|r
 	.mob Windsong Crawler::254588
 step << Mage
     #label SkyhopperMultiClass
@@ -4954,13 +4970,13 @@ step << Mage
     >>Tuez les |cRXP_ENEMY_Sauteciels::251314|r.
     .complete 93949,1 --|8/8 Enchanted Skyhopper Exterminated
     .mob Skyhopper::251314
-step << Alliance !Hunter
-    .train 2366,3 -- Herbalism Trained
-    .isQuestComplete 97968 -- Camping 101: Herbalism
-    .goto 2521,57.890,75.514
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Syriel Noctepluie::254345|r.
-    .turnin 97968 >>Rendez la quête Introduction au camping : l'herboristerie
-    .target Syriel Nightrain::254345
+-- step << Alliance !Hunter
+--     .train 2366,3 -- Herbalism Trained
+--     .isQuestComplete 97968 -- Camping 101: Herbalism
+--     .goto 2521,57.890,75.514
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Syriel Nightrain::254345|r.
+--     .turnin 97968 >>Turn in Camping 101: Herbalism
+--     .target Syriel Nightrain::254345
 step << Alliance !Mage/Alliance !Hunter
     #loop
     .goto 2521,58.85,75.49,30,0
@@ -5212,7 +5228,7 @@ step << Alliance !Druid
     .cooldown spell,1259416,>0,1 -- Walk on Air
     .goto 2521,66.47,76.64,10,0
     .goto 2521,65.36,71.79
-    .cast 1259416 >>Sautez de la montagne et utilisez |T132845:0|t[Marche sur l’air] pour voler jusqu'à l'emplacement du point de repère.
+    .cast 1259416 >>Sautez de l'arbre et utilisez |T132845:0|t[Marche sur l'air] pour voler vers la position.
     .usespell 1259416
 step << Alliance
     .goto 2521,65.956,74.309
@@ -5449,7 +5465,7 @@ step << Alliance
     .goto 2521,66.47,76.61,8,0
     .goto 2521,66.31,76.18,15,0
     .goto 2521,63.14,76.9
-    .cast 1259416 >>Sautez de la montagne et utilisez |T132845:0|t[Marche sur l’air] pour voler jusqu'à l'emplacement du point de repère.
+    .cast 1259416 >>Sautez de l'arbre et utilisez |T132845:0|t[Marche sur l'air] pour voler vers la position.
     .usespell 1259416
 step << Alliance
     .subzoneskip 16638,1 -- Valanaar
@@ -5485,7 +5501,7 @@ step << Hunter Alliance
     #completewith secluded house
     .xp <9,1
     .itemcount 277110,1 --Zephrali Bow
-    +|cRXP_WARN_Équipez l'|r |T7810733:0|t[Arc zéphrali].
+    .equip 18,277110 >>|cRXP_WARN_Équipez l'|r |T7810733:0|t[Arc zéphrali].
     .use 277110 --Zephrali Bow
 step << Warrior Alliance/Paladin Alliance
     .xp <9,1
@@ -5508,7 +5524,7 @@ step << Warrior Alliance/Paladin Alliance
     #completewith secluded house
     .xp <9,1
     .itemcount 277106,1 --Zephrali Smasher
-    +|cRXP_WARN_Équipez le|r |T7792097:0|t[Fracasseur zéphrali].
+    .equip 16,277106 >>|cRXP_WARN_Équipez le|r |T7792097:0|t[Fracasseur zéphrali].
     .use 277106 --Zephrali Smasher
 step << Rogue Alliance
     .xp <9,1
@@ -5531,7 +5547,7 @@ step << Rogue Alliance
     #completewith secluded house
     .xp <9,1
     .itemcount 277107,1 --Zephrali Bludgeon
-    +|cRXP_WARN_Équipez le|r |T7791298:0|t[Gourdin zéphrali].
+    .equip 16,277107 >>|cRXP_WARN_Équipez le|r |T7791298:0|t[Gourdin zéphrali].
     .use 277107 --Zephrali Bludgeon
 -- step << Alliance
 --     .subzoneskip 16638,1 -- Valanaar
@@ -5646,10 +5662,10 @@ step << Rogue Alliance
 step << Alliance
     .isNotOnQuest 98512 --Al'Aketh Assassins
     .isQuestAvailable 98512 --Al'Aketh Assassins
-    .goto 2521,66.49,76.65,8,0
+    -- .goto 2521,66.49,76.65,8,0
     .goto 2521,68.84,78.42,-1
     .goto 2521,60.74,78.02,-1
-    .subzone 16626 >>Sautez du précipice
+    .subzone 16626 >>Sautez de la falaise
 step << Alliance
     #ignorecorpse
     .subzoneskip 16626,1 -- Gustberry Lowlands
@@ -5657,7 +5673,7 @@ step << Alliance
     .isQuestAvailable 98512 --Al'Aketh Assassins
     .showwhiledead
     .goto 2521,54.99,68.14
-    .deathskip >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à l'|cRXP_FRIENDLY_Spirit Soins::6491|r.
+    .deathskip >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Spirit Soins::6491|r.
     .skipgossipid 96031
     .skipgossipid 98031
     .target Spirit Healer::6491
@@ -6045,7 +6061,6 @@ step
     #hidewindow
     #completewith ToHermit << Alliance
     #completewith ForestHollowsA << Horde
-    #loop
     .goto 2521,62.83,38.25,35,0
     .goto 2521,62.08,36.7,35,0
     .goto 2521,61.17,35.44,35,0
@@ -6212,6 +6227,12 @@ step
     .turnin 93165,2 >>Rendez la quête La miséricorde tombe dans l’oreille d’un sourd << Mage/Priest/Warlock
     .turnin 93165,3 >>Rendez la quête La miséricorde tombe dans l’oreille d’un sourd << Warrior/Paladin
     .target Vayn Moongaze::254151
+step << Alliance
+    .goto 2521,63.80,36.00
+    .itemcount 265476,1
+    >>Utilisez le |T134332:0|t[Ripped Missive] dans vos sacs pour commencer la quête.
+    .accept 94490 >>Acceptez la quête Ripped Missive
+    .use 265476 -- Ripped Missive
 step
     .goto 2521,63.93,33.76,20,0
     .goto 2521,63.69,32.49,20,0
@@ -6300,7 +6321,7 @@ step
     .collect 1179,20 << Mage/Druid/Shaman/Priest/Warlock/Paladin -- Ice Cold Milk
     *Ne vendez pas la |T133970:0|t[Viande maigre], les |T132832:0|t[Petits œufs], ou la |T133972:0|t[Viande de trotteur]. << Alliance
     *Ne vendez pas |T132832:0|t[Petit Eggs] et |T133972:0|t[Strider Viande]. << Horde
-    *|cRXP_WARN_We need them for Cuisine later|r.
+    *|cRXP_WARN_Nous en avons besoin pour Cuisine plus tard|r.
     .skipgossipid 137078
     .target Donaal Downbreeze::255940
 
@@ -6473,7 +6494,7 @@ step << Alliance
     .cooldown spell,1259416,>0,1 -- Walk on Air
     .goto 2521,66.49,76.64,8,0
     .goto 2521,63.33,78.16
-    .cast 1259416 >>Sautez de la montagne et utilisez |T132845:0|t[Marche sur l’air] pour voler jusqu'à l'emplacement du point de repère.
+    .cast 1259416 >>Sautez de l'arbre et utilisez |T132845:0|t[Marche sur l'air] pour voler vers la position.
     .usespell 1259416
 step << Alliance
     .goto 2521,63.33,78.16,30,0
@@ -6562,7 +6583,7 @@ step << Alliance
     .goto 2521,66.49,76.64,8,0
     .goto 2521,66.39,76.26,10,0
     .goto 2521,63.9,74.16
-    .cast 1259416 >>Sautez de la montagne et utilisez |T132845:0|t[Marche sur l’air] pour voler jusqu'à l'emplacement du point de repère.
+    .cast 1259416 >>Sautez de l'arbre et utilisez |T132845:0|t[Marche sur l'air] pour voler vers la position.
     .usespell 1259416
 step << Alliance
     .subzoneskip 16638,1 -- Valanaar
@@ -6918,7 +6939,7 @@ step << Alliance Druid
     .target Archmage Ansirem Runeweaver::2543
 step << Alliance
     .goto 1416/0,445.93,450.00
-    >>|TInterface/cursor/crosshair/interact.blp:20|tCliquez sur le |cRXP_PICK_Portail|r
+    >>|TInterface/cursor/crosshair/interact.blp:20|tCliquez sur le |cRXP_PICK_Portail|r.
     .complete 94947,1 --Take the Skyborne Portal to Stormwind
 step << Alliance Druid
     .goto 1453/0,1100.200,-8776.400
@@ -7081,7 +7102,7 @@ step << Alliance Hunter
     >>Vous avez besoin de 50 en [Cuisine] pour une quête au Bois de la Pénombre plus tard
     >>|T133971:0|t[Cuisiner] les objets suivants:
     >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Morceau de viande de sanglier]|r en [Viande de sanglier rôtie]
-    >>|T133971:0|t[Cuisinez] les |cRXP_LOOT_[Stringy Wolf Meat]|r en [Viande de loup grillée]
+    >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Viande de loup maigre]|r en [Viande de loup grillée]
     .usespell 2550
     .zoneskip Darkshore
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -7094,7 +7115,7 @@ step << Alliance Hunter
     #label DarkshoreCook5
     #completewith DarkshoreBoat
     >>Vous avez besoin de 50 en [Cuisine] pour une quête au Bois de la Pénombre plus tard
-    >>|T133971:0|t[Cuisinez] les |cRXP_LOOT_[Stringy Wolf Meat]|r en [Viande de loup grillée]
+    >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Viande de loup maigre]|r en [Viande de loup grillée]
     .usespell 2550
     .zoneskip Darkshore
     .itemcount 769,<1 --Chunk of Boar Meat (<1)
@@ -7197,7 +7218,7 @@ step << Horde
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Railee Thriceforged::257422|r.
     .vendor 257422 >>|cRXP_WARN_Allez au Vendeur et réparez si nécessaire|r.
     *Ne vendez pas |T132832:0|t[Petit Eggs] et |T133972:0|t[Strider Viande].
-    *|cRXP_WARN_We need them for Cuisine later|r.
+    *|cRXP_WARN_Nous en avons besoin pour Cuisine plus tard|r.
     .target Railee Thriceforged::257422
 step << Horde
     #optional
@@ -7243,12 +7264,12 @@ step << Horde
     .isOnQuest 95350
     .subzoneskip 17045,1 -- Skywatcher Plateau
     .goto 1412/1,323.300,-731.200
-    .subzone 1638 >>Sautez du précipice.
+    .subzone 1638 >>Sautez de la falaise.
 step << Horde
     .isOnQuest 95350
     .subzoneskip 1638,1
     .goto 1456/1,-74.900,-981.700
-    .deathskip >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à l'|cRXP_FRIENDLY_Spirit Soins::6491|r.
+    .deathskip >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Spirit Soins::6491|r.
     .skipgossipid 96031
     .skipgossipid 98031
     .target Spirit Healer::6491

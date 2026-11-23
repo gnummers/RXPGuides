@@ -3,18 +3,18 @@ RXPGuides.RegisterGuide([[
 #classic
 #season 2
 #group RestedXP Alptraum Incursion Dailies
-#name (25-32) Dämmerwald Alptraum Incursion
+#name (25-32) Alptraumeinfall im Dämmerwald
 
 step
     #optional
     #completewith travel
-    +|cRXP_WARN_Ihr habt diese Eindringlingszone übertroffen und die XP-Belohnungen für das Questen hier lassen nach. Wählt eine andere Eindringlingszone aus der Liste, die besser für von Euch geeignet ist.|r
-    >>|cRXP_WARN_Ruf-Gewinne sind gleich, unabhängig von der Stufe von Euch. Sobald ihr Stufe 53 erreicht, könnt ihr einfach eine unendliche Berufsrohstoff-Abgabequeste für extrem schnellen Ruf machen.|r
+    +|cRXP_WARN_Ihr habt diese Alptraumeinfallszone überlevelt und die XP-Belohnungen für das Questen hier lassen nach. Wählt eine andere Alptraumeinfallszone aus der Liste, die besser für eurer Level geeignet ist.|r
+    >>|cRXP_WARN_Erhaltener Ruf ist gleich, unabhängig von eurer Stufe. Sobald ihr Stufe 53 erreicht, könnt ihr einfach eine unendliche Berufsrohstoff-Abgabequeste für extrem schnellen Ruf machen.|r
     .xp <33,1
     .xp >53,1
 step
 #ah
-    >>Kauft 10 |T133852:0|t[|cRXP_LOOT_Alptraum-Moos|r], 10 |T134314:0|t[|cRXP_LOOT_Traum-berührte Drachenschuppe|r] und 10 |T134575:0|t[|cRXP_LOOT_Kalt-Eisenerz|r] vom Auktionshaus, bevor ihr nach Dämmerwald aufbrecht.
+    >>Kauft 10 |T133852:0|t[|cRXP_LOOT_Alptraummoos|r], 10 |T134314:0|t[|cRXP_LOOT_Traumberührte Drachenschuppe|r] und 10 |T134575:0|t[|cRXP_LOOT_Kalteisenerz|r] vom Auktionshaus, bevor ihr nach Dämmerwald reist
     >>|cRXP_WARN_Überspringt diesen Schritt, wenn ihr nicht in der Nähe eines Auktionshaus-Ort seid oder die Preise nicht lohnenswert sind. Diese drei Quests geben zusammen 16.000 XP und 225 Ruf.|r
     .collect 219399,10 --Nightmare Moss
     .collect 219402,10 --Dream-Touched Dragonscale
@@ -29,7 +29,7 @@ step
   .goto 1431/0,-438.800,-10793.400,30 >> Geht zum Weg, der zum Zwielichtshain führt.
   .maxlevel 53
 step
-    .goto 1431/0,-376.600,-10768.500,30 >> Geht den Weg hinauf.
+    .goto 1431/0,-376.600,-10768.500,30 >> Geht den Weg hinauf
     .maxlevel 53
 step
     >>Sucht einen Quartiermeister der |cRXP_FRIENDLY_The Emerald Wardens|r am Ort auf und kauft von ihm eine Rune für von Euch.

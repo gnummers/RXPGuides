@@ -359,7 +359,7 @@ step
     .accept 153 >> Acceptez la quête Les masques en cuir rouge
 step << Rogue
     .goto Westfall,52.8,53.6
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Innkeeper Heather|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Aubergiste Heather|r
     .target Innkeeper Heather
     .home >> Liez votre Pierre de foyer à la Marche de l'Ouest
 step
@@ -987,7 +987,7 @@ step
     .target Gryan Stoutmantle
 step
 .dungeon DM
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez |cRXP_FRIENDLY_Scout Riell|r tout en haut de la Tour
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Scout Riell|r au sommet de la Tour
     .accept 214 >> Acceptez la quête Les masques rouges en soie
     .goto Westfall,56.67,47.35
     .target Scout Riell
@@ -1015,16 +1015,16 @@ step << Rogue
     .goto Westfall,71.01,75.72,30,0
     .goto Westfall,69.58,73.07,30,0
     >>|T133644:0|tUtilisez [Vol à la tire] sur le |cRXP_ENEMY_Malformed Defias Drone|r. Volez-lui la |cRXP_LOOT_Defias Tower Key|r
-    >>Vous devez être en [Camouflage] pour utiliser votre [Vol à la tire]
+    >>Vous devez être en [Camouflage] pour utiliser [Vol à la tire]
     >>|cRXP_WARN_Le |cRXP_ENEMY_Malformed Defias Drone|r apparaissent à l'entrée de la tour, puis font le tour de celle-ci|r
-    >>Faites attention car il fait BEAUCOUP de dégâts. Si vous perdez votre [Camouflage], utilisez vite votre [Sprint] pour vous enfuir
+    >>Faites attention, il tape TRÈS fort. Si vous perdez votre [Camouflage], utilisez rapidement votre [Sprint] et enfuyez-vous
     .complete 2359,2 --Collect Defias Tower Key (x1)
     .link https://www.youtube.com/watch?v=5sIew15IcG0 >> Cliquez ICI pour un guide vidéo
     .mob Malformed Defias Drone
 step << Rogue
     #optional
     #completewith Mortwake
-    +Équipez la [Dague de Curvewood] pour cette quête si vous n'avez pas déjà de [Dague] équipée
+    +Équipez la [Dague de Curvewood] pour cette quête si vous n'avez pas déjà de [Dagues] équipée
     .use 15396
     .itemcount 15396,1
 step << Rogue
@@ -1081,7 +1081,7 @@ step << !Dwarf Rogue
     #requires AntiVenomEnd
     .goto 1453,43.070,26.155
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Shaina Fuller|r
-    >>Si vous avez un ami |cFFF48CBAPaladin|r ou |cFFFF7C0ADruid|r demandez-leur de vous enlever le debuff [Toucher de Zanzil]
+    >>Si vous avez un ami |cFFF48CBAPaladin|r ou |cFFFF7C0ADruid|r, demandez leur de vous enlever le debuff [Touch of Zanzil]
     .skill firstaid,80 >> Montez vos [Premier soins] à un niveau de compétence de 80
     .aura -9991
     .itemcount 6452,<1 --Anti-Venom (<1)
@@ -1089,8 +1089,8 @@ step << !Dwarf Rogue
     #label FirstAidEnd
     .goto 1453,43.070,26.155
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Shaina Fuller|r
-    >>Si vous avez un ami |cFFF48CBAPaladin|r ou |cFFFF7C0ADruid|r demandez-leur de vous enlever le debuff [Toucher de Zanzil]
-    .train 7934 >> Apprenez [Anti-Venom]
+    >>Si vous avez un ami |cFFF48CBAPaladin|r ou |cFFFF7C0ADruid|r, demandez leur de vous enlever le debuff [Touch of Zanzil]
+    .train 7934 >> Apprenez [Anti-Venin]
     .aura -9991
     .itemcount 6452,<1 --Anti-Venom (<1)
 step << !Dwarf Rogue
@@ -1420,7 +1420,7 @@ step
 step << Warlock
     .goto Ironforge,51.1,8.7,15,0
     .goto Ironforge,50.343,5.657
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Eglantine|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Briarthorn|r
     .trainer >> Apprenez vos sorts de classe
     .target Briarthorn
 step << Warlock

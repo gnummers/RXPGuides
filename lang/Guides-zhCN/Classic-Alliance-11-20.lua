@@ -641,7 +641,7 @@ step
     #label DarkshoreCook1
     #completewith DarkshoreBoat
     >>如果船只刚到就登船，如果船只刚走就在码头等：
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Darkshore
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -655,7 +655,7 @@ step
     #label DarkshoreCook2
     #completewith DarkshoreBoat
     >>如果船只刚到就登船，如果船只刚走就在码头等：
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Darkshore
     .itemcount 769,<1 --Chunk of Boar Meat (<1)
@@ -669,7 +669,7 @@ step
     #label DarkshoreCook3
     #completewith DarkshoreBoat
     >>如果船只刚到就登船，如果船只刚走就在码头等：
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Darkshore
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -989,7 +989,7 @@ step
     .goto 1439,39.129,59.176,50,0
     >>|cRXP_WARN_使用|r |T134335:0|t[萨纳瑞恩的希望] |cRXP_WARN_对|r |cRXP_ENEMY_狂暴蓟熊|r |cRXP_WARN_。只要你的目标是熊，就可以在任何距离使用|r
     >>==如果附近没有熊，请不要使用该任务物品==
-    >>你可能会浪费陷阱，导致该任务无法完成！如果发生这种情况，你需要返回任务给予者那里再领取一个新的陷阱
+    >>|cRXP_WARN_你可能会浪费陷阱，导致该任务无法完成！如果发生这种情况，你需要返回任务给予者那里再领取一个新的陷阱|r
     .complete 2118,1 --Rabid Thistle Bear Captured (1)
     .unitscan 狂暴蓟熊
     .use 7586
@@ -2829,7 +2829,7 @@ step << NightElf !Druid
     #optional
     #completewith CavetoAuber
     #season 0
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
 step << skip --logout skip
     #hardcore << NightElf !Druid
@@ -3032,7 +3032,7 @@ step << Druid
     .goto Darnassus,35.375,8.405
     #season 0
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_玛斯雷·驭熊者|r 对话
-    .accept 26 >> 接受任务必修的课程
+    .accept 26 >> 接受任务 必修的课程
     .trainer >> 训练你的职业技能
     .target 玛斯雷·驭熊者
 step << Druid
@@ -3083,7 +3083,7 @@ step << Druid
     #season 0
     .goto Moonglade,36.517,40.104
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_塔加里|r 对话
-    .turnin 29 >> 交任务 湖中试炼
+    .turnin 29 >> 交任务湖中试炼
     .accept 272 >> 接受任务 海狮试炼
     .target 塔加里
 step << Druid
@@ -4232,7 +4232,7 @@ step << Warrior/Paladin/Mage/Warlock/Rogue
     #requires TravelMenethilNoDMBoat
     #completewith MenethilNoDMBoat
     >>如果船只刚到就登船，如果船只刚走就在码头等：
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Wetlands
     .zoneskip Elwynn Forest
@@ -4341,7 +4341,7 @@ step << !NightElf Warrior/Paladin
 step << !NightElf Warrior/Paladin/Mage/Warlock/!NightElf Rogue
     #xprate >1.59
     .goto Wetlands,9.490,59.694
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_谢尔雷·布隆迪尔|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_谢尔雷·布隆迪尔|r 对话
     .fly Ironforge >> 飞往铁炉堡
     .target 谢尔雷·布隆迪尔
     .zoneskip Darkshore << Warrior/Paladin
@@ -4352,7 +4352,7 @@ step << !NightElf Warrior/Paladin/Mage/Warlock/!NightElf Rogue
 step << NightElf Rogue
     #xprate >1.59
     .goto Wetlands,9.490,59.694
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_谢尔雷·布隆迪尔|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_谢尔雷·布隆迪尔|r 对话
     .fp Menethil Harbor >> 获取米奈希尔港的飞行路径
     .target 谢尔雷·布隆迪尔
     .dungeon !DM
@@ -4847,10 +4847,10 @@ step << Rogue
 step << Rogue
     #xprate >1.59
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_"剃刀"雷吉克|r 和 |cRXP_FRIENDLY_马迪亚斯·肖尔大师|r 对话
-    .accept 2281 >> 接受任务赤脊山的联络员
+    .accept 2281 >> 接受任务 赤脊山的联络员
     .goto StormwindClassic,75.76,60.35
     .target +Renzik "The Shiv"
-    .accept 2360 >> 接受任务马迪亚斯和迪菲亚盗贼
+    .accept 2360 >> 接受任务 马迪亚斯和迪菲亚盗贼
     .goto StormwindClassic,75.78,59.84
     .target +Master Mathias Shaw
     .dungeon !DM
@@ -5049,7 +5049,7 @@ step << Rogue
     #xprate >1.59
     #label Rendevous
     .goto Redridge Mountains,28.07,52.02
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与|cRXP_FRIENDLY_卢修斯|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_卢修斯|r 对话
     .turnin 2281 >> 交任务 赤脊山的联络员
     .accept 2282 >> 接受任务 奥瑟尔伐木场
     .target Lucius
@@ -5124,7 +5124,7 @@ step << Rogue
     #xprate >1.59
     .goto Redridge Mountains,28.07,52.02
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_卢修斯|r 对话
-    .turnin 2282 >> 交任务奥瑟尔伐木场
+    .turnin 2282 >> 交任务 奥瑟尔伐木场
     .target Lucius
     .dungeon !DM
 step << Rogue
@@ -5196,7 +5196,7 @@ step << Rogue
     .goto Westfall,68.50,70.08
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_密探吉尔妮|r 对话
     >>|cRXP_WARN_你必须完成这个任务来获取你的|r|T132290:0|t[毒药]
-    .turnin 2360 >> 交任务 马迪亚斯和迪菲亚盗贼
+    .turnin 2360 >> 交任务马迪亚斯和迪菲亚盗贼
     .accept 2359 >> 接受任务 克拉文之塔
     .target Agent Kearnen
     .dungeon !DM
@@ -5292,7 +5292,7 @@ step << !Dwarf Rogue
     #xprate >1.59
     #requires AntiVenomEnd
     .goto 1453,43.070,26.155
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_珊娜·弗勒|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_珊娜·弗勒|r 对话
     >>|cRXP_WARN_如果你有|r |T626003:0|t|cFFF48CBA圣骑士|r |cRXP_WARN_或者|r |T625999:0|t|cFFFF7C0A德鲁伊|r |cRXP_WARN_朋友，建议让他们帮你移除|r |T136230:0|t[赞吉尔之触] |cRXP_WARN_，而不是自己处理|r
     .skill firstaid,80 >> |cRXP_WARN_将你的|r |T135966:0|t[急救] |cRXP_WARN_提升到 80|r
     .aura -9991
@@ -5302,7 +5302,7 @@ step << !Dwarf Rogue
     #xprate >1.59
     #label FirstAidEnd
     .goto 1453,43.070,26.155
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_珊娜·弗勒|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_珊娜·弗勒|r 对话
     >>|cRXP_WARN_如果你有|r |T626003:0|t|cFFF48CBA圣骑士|r |cRXP_WARN_或者|r |T625999:0|t|cFFFF7C0A德鲁伊|r |cRXP_WARN_朋友，建议让他们帮你移除|r |T136230:0|t[赞吉尔之触] |cRXP_WARN_，而不是自己处理|r
     .train 7934 >> |cRXP_WARN_学习|r |T134437:0|t[抗毒药剂]
     .aura -9991
@@ -5343,7 +5343,7 @@ step << Rogue
     >>|cRXP_WARN_如果你之前切换成了|r |T135641:0|t[匕首] |cRXP_WARN_，记得重新装备你的主武器|r << Rogue !sod
     .turnin 135 >> 交任务 迪菲亚兄弟会
 --  .accept 141 >> Accept The Defias Brotherhood
-    .turnin 2359 >> 交任务 克拉文之塔
+    .turnin 2359 >> 交任务克拉文之塔
     .target 马迪亚斯·肖尔大师
     .dungeon !DM
 step << Rogue
@@ -5743,7 +5743,7 @@ step << !NightElf !Hunter
     #softcore
     #optional
     #completewith next
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
 step << !NightElf
     #xprate <1.59
@@ -5801,7 +5801,7 @@ step << Dwarf Hunter
     #requires TravelDarnDwarfHBoat
     #completewith DarnDwarfHBoat
     >>如果船只刚到就登船，如果船只刚走就在码头等：
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Teldrassil
     .zoneskip Darnassus
@@ -6013,7 +6013,7 @@ step
     #requires TravelMenethilDMBoat
     #completewith MenethilDMBoat
     >>如果船只刚到就登船，如果船只刚走就在码头等：
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .itemcount 6889,1 --Small Egg (1+)
     .itemcount 4470,1 --Simple Wood (1+)
@@ -6108,7 +6108,7 @@ step << !NightElf
     #optional
     #completewith next
     .goto Wetlands,9.490,59.694
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_谢尔雷·布隆迪尔|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_谢尔雷·布隆迪尔|r 对话
     .fly Ironforge >> 飞往铁炉堡
     .target 谢尔雷·布隆迪尔
     .zoneskip Elwynn Forest
@@ -6118,7 +6118,7 @@ step << !NightElf
 step << NightElf
     #xprate >1.59 << !Hunter
     .goto Wetlands,9.490,59.694
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_谢尔雷·布隆迪尔|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_谢尔雷·布隆迪尔|r 对话
     .fp Menethil Harbor >> 获取米奈希尔港的飞行路径
     .target 谢尔雷·布隆迪尔
     .dungeon DM
@@ -6632,10 +6632,10 @@ step << Rogue
 step << Rogue
     #xprate >1.59
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_"剃刀"雷吉克|r 和 |cRXP_FRIENDLY_马迪亚斯·肖尔|r 对话
-    .accept 2281 >> 接受任务赤脊山的联络员
+    .accept 2281 >> 接受任务 赤脊山的联络员
     .goto StormwindClassic,75.76,60.35
     .target +Renzik "The Shiv"
-    .accept 2360 >> 接受任务马迪亚斯和迪菲亚盗贼
+    .accept 2360 >> 接受任务 马迪亚斯和迪菲亚盗贼
     .goto StormwindClassic,75.78,59.84
     .target +Master Mathias Shaw
     .dungeon DM
@@ -7057,7 +7057,7 @@ step
 step << Rogue
     #xprate >1.59
     .goto Redridge Mountains,28.07,52.02
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与|cRXP_FRIENDLY_卢修斯|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_卢修斯|r 对话
     .turnin 2281 >> 交任务 赤脊山的联络员
     .accept 2282 >> 接受任务 奥瑟尔伐木场
     .target Lucius
@@ -7079,7 +7079,7 @@ step << Rogue
     #xprate >1.59
     .goto Redridge Mountains,28.07,52.02
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与|cRXP_FRIENDLY_卢修斯|r 对话
-    .turnin 2282 >> 交任务奥瑟尔伐木场
+    .turnin 2282 >> 交任务 奥瑟尔伐木场
     .target Lucius
     .dungeon DM
 step << Rogue
@@ -7148,7 +7148,7 @@ step << Rogue
     .goto Westfall,68.50,70.08
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_密探吉尔妮|r 对话
     >>|cRXP_WARN_你必须完成这个任务来获取你的|r|T132290:0|t[毒药]
-    .turnin 2360 >> 交任务 马迪亚斯和迪菲亚盗贼
+    .turnin 2360 >> 交任务马迪亚斯和迪菲亚盗贼
     .accept 2359 >> 接受任务 克拉文之塔
     .target Agent Kearnen
     .dungeon DM
@@ -7244,7 +7244,7 @@ step << !Dwarf Rogue
     #xprate >1.59
     #requires AntiVenomEnd
     .goto 1453,43.070,26.155
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_珊娜·弗勒|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_珊娜·弗勒|r 对话
     >>|cRXP_WARN_如果你有|r |T626003:0|t|cFFF48CBA圣骑士|r |cRXP_WARN_或者|r |T625999:0|t|cFFFF7C0A德鲁伊|r |cRXP_WARN_朋友，建议让他们帮你移除|r |T136230:0|t[赞吉尔之触] |cRXP_WARN_，而不是自己处理|r
     .skill firstaid,80 >> |cRXP_WARN_将你的|r |T135966:0|t[急救] |cRXP_WARN_提升到 80|r
     .aura -9991
@@ -7254,7 +7254,7 @@ step << !Dwarf Rogue
     #xprate >1.59
     #label FirstAidEnd
     .goto 1453,43.070,26.155
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_珊娜·弗勒|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_珊娜·弗勒|r 对话
     >>|cRXP_WARN_如果你有|r |T626003:0|t|cFFF48CBA圣骑士|r |cRXP_WARN_或者|r |T625999:0|t|cFFFF7C0A德鲁伊|r |cRXP_WARN_朋友，建议让他们帮你移除|r |T136230:0|t[赞吉尔之触] |cRXP_WARN_，而不是自己处理|r
     .train 7934 >> |cRXP_WARN_学习|r |T134437:0|t[抗毒药剂]
     .aura -9991
@@ -7295,7 +7295,7 @@ step
     >>|cRXP_WARN_如果你之前切换成了|r |T135641:0|t[匕首] |cRXP_WARN_，记得重新装备你的主武器|r << Rogue
     .turnin 135 >> 交任务 迪菲亚兄弟会
     .accept 141 >> 接受任务 迪菲亚兄弟会
-    .turnin 2359 >> 交任务 克拉文之塔 << Rogue
+    .turnin 2359 >> 交任务克拉文之塔 << Rogue
     .target 马迪亚斯·肖尔大师
     .dungeon DM
 step
@@ -8124,7 +8124,7 @@ step << !Hunter
     #requires TravelMenethilRRBoat
     #completewith MenethilRRBoat
     >>如果船只刚到就登船，如果船只刚走就在码头等：
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Loch Modan
     .zoneskip Dun Morogh
@@ -8187,8 +8187,8 @@ step << !Hunter NightElf
     #xprate <1.59
     .goto Wetlands,8.509,55.697
     .target 詹姆斯·哈洛兰
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_詹姆斯·哈洛兰|r 对话
-    .accept 484 >> 接受任务小鳄鱼皮
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_詹姆斯·哈洛兰|r 对话
+    .accept 484 >> 接受任务 小鳄鱼皮
 step << !Hunter NightElf
     #xprate <1.59
     .goto Wetlands,9.49,59.69
@@ -8273,7 +8273,7 @@ step << !Hunter NightElf
     #xprate <1.5
     #softcore
     #completewith next
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
 step << !Hunter NightElf
     #xprate <1.59
     .goto Loch Modan,33.938,50.954
@@ -8449,7 +8449,7 @@ step << Rogue
     .goto StormwindClassic,78.67,60.13,5 >> 进入军情7处总部。上楼去找 |cRXP_FRIENDLY_"剃刀"雷吉克|r
 step << Rogue
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_"剃刀"雷吉克|r对话
-    .accept 2281 >> 接受任务赤脊山的联络员
+    .accept 2281 >> 接受任务 赤脊山的联络员
     .goto StormwindClassic,75.76,60.35
     .target Renzik "The Shiv"
 step << Warrior !NightElf
@@ -8939,7 +8939,7 @@ step
     .goto StormwindClassic,49.193,30.285
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_巴隆斯·阿历克斯顿|r 对话
     .turnin 373 >> 交任务 未寄出的信
-    .accept 389 >> 接受任务 巴基尔·斯瑞德
+    .accept 389 >> 接受任务巴基尔·斯瑞德
     .target 巴隆斯·阿历克斯顿
 step
 .dungeon DM
@@ -8966,7 +8966,7 @@ step << Rogue
 step << Rogue
 .dungeon DM
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_马迪亚斯·肖尔大师|r 对话
-    .accept 2360 >> 接受任务马迪亚斯和迪菲亚盗贼
+    .accept 2360 >> 接受任务 马迪亚斯和迪菲亚盗贼
     .goto StormwindClassic,75.78,59.84
     .target 马迪亚斯·肖尔大师
 step << Warrior
@@ -9133,7 +9133,7 @@ step
     #label BMenace
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_治安官马瑞斯|r 对话
     .goto Redridge Mountains,33.50,48.97
-    .accept 20 >> 接受任务 黑石氏族的威胁
+    .accept 20 >> 接受任务黑石氏族的威胁
     .target 治安官马瑞斯
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与|cRXP_FRIENDLY_工头奥斯洛|r 对话
@@ -9422,10 +9422,10 @@ step
     .goto Redridge Mountains,26.80,44.30
     .turnin 131 >> 交任务 水仙诉衷情
 step << Rogue
-	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与|cRXP_FRIENDLY_卢修斯|r 对话
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_卢修斯|r 对话
 	.target Lucius
     .goto Redridge Mountains,28.07,52.02
-    .turnin 2282 >> 交任务奥瑟尔伐木场
+    .turnin 2282 >> 交任务 奥瑟尔伐木场
 step
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_希拉里|r 对话
 	.target Hilary
@@ -9619,7 +9619,7 @@ step << Rogue
 step << Rogue
 .dungeon !DM
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_马迪亚斯·肖尔大师|r 对话
-    .accept 2360 >> 接受任务马迪亚斯和迪菲亚盗贼
+    .accept 2360 >> 接受任务 马迪亚斯和迪菲亚盗贼
     .goto StormwindClassic,75.78,59.84
     .target 马迪亚斯·肖尔大师
 step << Warrior
@@ -9674,12 +9674,12 @@ step << Rogue
     +|cRXP_WARN_==注意接下来的内容==|r
     >>|cRXP_WARN_按下 Esc，然后进入 → 选项 → 控制|r
     >>|cRXP_WARN_勾选 "启用交互键" 并将 "与目标互动" 绑定到一个按键|r
-    >>|cRXP_WARN_另外，建议启用敌方姓名板（默认按键：V）这样可以在塔内的一些拐角处看到躲在后面的敌人|r
+    >>|cRXP_WARN_另外，建议启用敌方姓名板 (默认按键：V) 这样可以在塔内的一些拐角处看到躲在后面的敌人|r
 step << Rogue
     .goto Westfall,68.50,70.08
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_密探吉尔妮|r 对话
     >>|cRXP_WARN_你必须完成这个任务来获取你的|r|T132290:0|t[毒药]
-    .turnin 2360 >> 交任务 马迪亚斯和迪菲亚盗贼
+    .turnin 2360 >> 交任务马迪亚斯和迪菲亚盗贼
     .accept 2359 >> 接受任务 克拉文之塔
     .target Agent Kearnen
 step << Rogue
@@ -9757,7 +9757,7 @@ step << !Dwarf Rogue
 step << !Dwarf Rogue
     #requires AntiVenomEnd
     .goto 1453,43.070,26.155
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_珊娜·弗勒|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_珊娜·弗勒|r 对话
     >>|cRXP_WARN_如果你有|r |T626003:0|t|cFFF48CBA圣骑士|r |cRXP_WARN_或者|r |T625999:0|t|cFFFF7C0A德鲁伊|r |cRXP_WARN_朋友，建议让他们帮你移除|r |T136230:0|t[赞吉尔之触] |cRXP_WARN_，而不是自己处理|r
     .skill firstaid,80 >> |cRXP_WARN_将你的|r |T135966:0|t[急救] |cRXP_WARN_提升到 80|r
     .aura -9991
@@ -9765,7 +9765,7 @@ step << !Dwarf Rogue
 step << !Dwarf Rogue
     #label FirstAidEnd
     .goto 1453,43.070,26.155
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_珊娜·弗勒|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_珊娜·弗勒|r 对话
     >>|cRXP_WARN_如果你有|r |T626003:0|t|cFFF48CBA圣骑士|r |cRXP_WARN_或者|r |T625999:0|t|cFFFF7C0A德鲁伊|r |cRXP_WARN_朋友，建议让他们帮你移除|r |T136230:0|t[赞吉尔之触] |cRXP_WARN_，而不是自己处理|r
     .train 7934 >> |cRXP_WARN_学习|r |T134437:0|t[抗毒药剂]
     .aura -9991
@@ -9798,7 +9798,7 @@ step << Rogue
     .goto StormwindClassic,75.78,59.84
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_马迪亚斯·肖尔大师|r 对话
     >>|cRXP_WARN_如果你之前切换成了|r |T135641:0|t[匕首] |cRXP_WARN_，记得重新装备你的主武器|r << Rogue
-    .turnin 2359 >> 交任务 克拉文之塔
+    .turnin 2359 >> 交任务克拉文之塔
     .target 马迪亚斯·肖尔大师
 
 
@@ -10824,7 +10824,7 @@ step
     .hs >> 炉石回到奥伯丁
 step
     .goto Darkshore,37.21,44.22
-    >>点击 |cRXP_PICK_通缉布告|r
+    >>点击 |cRXP_PICK_通缉告示|r
     .accept 4740 >> 接受任务 通缉：莫克迪普！
 step
     .goto 1439,37.322,43.640

@@ -511,7 +511,7 @@ step << Tauren Shaman
 step << Tauren Shaman
     .goto Durotar,38.52,58.93
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Telf|r
-    .turnin 1525 >>Entregue Call of Fogo
+    .turnin 1525 >>Entregue Call of Fogo - Missão - Missão
     .accept 1526 >>Aceite Clamor do Fogo
     .target Telf Joolam
     .dungeon RFC
@@ -530,13 +530,13 @@ step << Tauren Shaman
 step << Tauren Shaman
     .goto Durotar,38.96,58.22
     >>Clique no |cRXP_PICK_Braseiro|r no chão
-    .turnin 1526 >>Entregue Call of Fogo
+    .turnin 1526 >>Entregue Call of Fogo - Missão - Missão
     .accept 1527 >>Aceite Clamor do Fogo
     .dungeon RFC
 step << Tauren Shaman
     .goto The Barrens,55.86,19.95
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Kranal|r
-    .turnin 1527 >>Entregue Call of Fogo
+    .turnin 1527 >>Entregue Call of Fogo - Missão - Missão
     .target Kranal Fiss
     .dungeon RFC
 step << Tauren Shaman
@@ -567,7 +567,7 @@ step << Tauren
 step << !Undead
     .goto Orgrimmar,31.74,37.82
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Thrall|r
-    .accept 5726 >>Aceite Inimigos Escondidos
+    .accept 5726 >>Aceite Inimigos ocultos
     .target Thrall
     .dungeon RFC
 step << !Undead
@@ -579,7 +579,7 @@ step << !Undead
     .goto Orgrimmar,31.74,37.82
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Thrall|r
     .turnin 5726 >> Entregue Inimigos ocultos
-    .accept 5727 >> Aceite Inimigos Escondidos
+    .accept 5727 >> Aceite Inimigos ocultos
     .target Thrall
     .dungeon RFC
 step << !Undead
@@ -600,7 +600,7 @@ step << !Undead
     .goto Orgrimmar,31.74,37.82
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Thrall|r
     .turnin 5727 >> Entregue Inimigos ocultos
-    .accept 5728 >> Aceite Inimigos Escondidos
+    .accept 5728 >> Aceite Inimigos ocultos
     .target Thrall
     .dungeon RFC
 step << !Undead
@@ -694,14 +694,14 @@ step << !Undead
     .goto Orgrimmar,31.74,37.82
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Thrall|r
     .turnin 5728 >> Entregue Inimigos ocultos
-    .accept 5729 >> Aceite Inimigos Escondidos
+    .accept 5729 >> Aceite Inimigos ocultos
     .target Thrall
     .isQuestComplete 5728
     .dungeon RFC
 step << !Undead
     .goto Orgrimmar,31.74,37.82
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Thrall|r
-    .accept 5729 >> Aceite Inimigos Escondidos
+    .accept 5729 >> Aceite Inimigos ocultos
     .target Thrall
     .isQuestTurnedIn 5728
     .dungeon RFC
@@ -709,7 +709,7 @@ step << !Undead
     .goto Orgrimmar,49.6,50.4
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Neeru Cortafogo|r
     .turnin 5729 >> Entregue Inimigos ocultos
-    .accept 5730 >> Aceite Inimigos Escondidos
+    .accept 5730 >> Aceite Inimigos ocultos
     .target Neeru Fireblade
     .dungeon RFC
     .isQuestTurnedIn 5728
@@ -955,7 +955,7 @@ step << Shaman
     #requires ShamanDurotar
     .goto Durotar,38.52,58.93
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Telf|r
-    .turnin 1525 >>Entregue Call of Fogo
+    .turnin 1525 >>Entregue Call of Fogo - Missão - Missão
     .accept 1526 >>Aceite Clamor do Fogo
     .target Telf Joolam
 step << Shaman
@@ -971,7 +971,7 @@ step << Shaman
 step << Shaman
     .goto Durotar,38.96,58.22
     >>Clique no |cRXP_PICK_Braseiro|r no chão
-    .turnin 1526 >>Entregue Call of Fogo
+    .turnin 1526 >>Entregue Call of Fogo - Missão - Missão
     .accept 1527 >>Aceite Clamor do Fogo
 step << Shaman
     #optional
@@ -991,7 +991,7 @@ step << Shaman
     #label FireEnd
     .goto The Barrens,55.86,19.95
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Kranal|r
-    .turnin 1527 >>Entregue Call of Fogo
+    .turnin 1527 >>Entregue Call of Fogo - Missão - Missão
     .target Kranal Fiss
 step << Shaman
     .goto The Barrens,55.78,20.00
@@ -1638,7 +1638,7 @@ step << skip --!Tauren
     .isQuestComplete 5723
 step << skip --!Tauren
     .goto Stonetalon Mountains,74.69,98.10
-    .goto Thunder Bluff,56.65,18.96,30 >>|cRXP_WARN_Pule em uma das jaulas. Faça um Logout Skip saindo e entrando no jogo|r
+    .goto Thunder Bluff,56.65,18.96,30 >>|cRXP_WARN_Pule em uma das jaulas. Faça o atalho por reconexão saindo e entrando no jogo novamente|r
     .link https://www.youtube.com/watch?v=cp2YI86AO4Y&ab >> |cRXP_WARN_CLIQUE AQUI para um exemplo|r
     .dungeon RFC
     .isOnQuest 5724
@@ -1978,7 +1978,7 @@ step
     .dungeon DM
 step << skip
     .goto The Barrens,60.48,3.76
-    .goto Orgrimmar,40.05,68.05,30 >>|cRXP_WARN_Pule na viga de madeira. Faça um Logout Skip saindo e entrando no jogo. Volte a Orgrimmar se não conseguir|r
+    .goto Orgrimmar,40.05,68.05,30 >>|cRXP_WARN_Pule na viga de madeira. Faça o atalho por reconexão saindo e entrando no jogo novamente. Volte a Orgrimmar se não conseguir|r
     .link https://www.youtube.com/watch?v=U7YfoaO-X8E&ab_channel=RestedXP >> |cRXP_WARN_CLIQUE AQUI para ver um exemplo|r
     .zoneskip Orgrimmar
 step
@@ -2908,7 +2908,7 @@ step
     .target +Gazrog
     .goto The Barrens,51.93,30.32
 step
-    .destroy 5165 >>|cRXP_WARN_Destrua quaisquer|r |T132914:0|t[Penas de Helióscamo] |cRXP_WARN_que ainda tiver|r
+    .destroy 5165 >>|cRXP_WARN_Descarte as|r |T132914:0|t[Penas de Helióscamo] |cRXP_WARN_restantes|r
     .itemcount 5165,1
 step << Hunter
     .goto The Barrens,51.11,29.07
@@ -3112,7 +3112,7 @@ step
     >>Mate |cRXP_ENEMY_Senhor da Guerra Krom'zar|r quando aparecer. Pegue o |cRXP_PICK_Estandarte|r que ele deixa no chão
     >>|cRXP_WARN_Cuidado! Ele é um elite forte e protegido por pelo menos dois|r |cRXP_ENEMY_inimigos|r |cRXP_WARN_Kolkar|r
     >>|cRXP_WARN_Ele pode levar até 3 minutos para aparecer|r
-    .link https://www.youtube.com/watch?v=xrm0PWe5wf4 >>|cRXP_WARN_Clique aqui para um vídeo de guia sobre como você pode kitar|r |cRXP_ENEMY_Senhor da Guerra Krom'zar|r
+    .link https://www.youtube.com/watch?v=xrm0PWe5wf4 >>|cRXP_WARN_Clique aqui para ver como atrair e manter à distância o|r |cRXP_ENEMY_Senhor da Guerra Krom'zar|r
     .complete 4021,1 --Piece of Krom'zar's Banner (1)
     .unitscan Warlord Krom'zar
     .isOnQuest 4021
@@ -4626,7 +4626,7 @@ step
 step << !Tauren !Shaman !Warrior/Undead
     .goto The Barrens,44.55,59.27
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Denterroto|r
-    .aura 16618 >>|cRXP_WARN_Se você tem 10|r |T134128:0|t[|cRXP_LOOT_Fragmentos Sanguíneos|r] |cRXP_WARN_restantes, use-os para obter|r |T136022:0|t[Espírito of the Vento - Missão - Missão] |cRXP_WARN_de|r |cRXP_FRIENDLY_Denterroto|r
+    .aura 16618 >>|cRXP_WARN_Se você tem 10|r |T134128:0|t[|cRXP_LOOT_Estilhaços de Sangue|r] |cRXP_WARN_sobrando, use-os para obter|r |T136022:0|t[Espírito do vento] |cRXP_WARN_de|r |cRXP_FRIENDLY_Denterroto|r
     >>|cRXP_WARN_Pule esta etapa se tiver a rota de voo de Penhasco do Trovão|r
     .itemcount 5075,10
     .target Mangletooth
@@ -5552,7 +5552,7 @@ step
     >>Mate |cRXP_ENEMY_Senhor da Guerra Krom'zar|r quando aparecer. Pegue o |cRXP_PICK_Estandarte|r que ele deixa no chão
     >>|cRXP_WARN_Cuidado! Ele é um elite forte e protegido por pelo menos dois|r |cRXP_ENEMY_inimigos|r |cRXP_WARN_Kolkar|r
     >>|cRXP_WARN_Ele pode levar até 3 minutos para aparecer|r
-    .link https://www.youtube.com/watch?v=xrm0PWe5wf4 >>|cRXP_WARN_Clique aqui para um vídeo de guia sobre como você pode kitar|r |cRXP_ENEMY_Senhor da Guerra Krom'zar|r
+    .link https://www.youtube.com/watch?v=xrm0PWe5wf4 >>|cRXP_WARN_Clique aqui para ver como atrair e manter à distância o|r |cRXP_ENEMY_Senhor da Guerra Krom'zar|r
     .complete 4021,1 --Piece of Krom'zar's Banner (1)
     .unitscan Warlord Krom'zar
     .isQuestTurnedIn 852
@@ -5754,7 +5754,7 @@ step
     .target Xen'Zilla
 step << skip
     .goto Stonetalon Mountains,74.69,98.10
-    .goto Thunder Bluff,56.65,18.96,30 >>|cRXP_WARN_Pule em uma das jaulas. Faça um Logout Skip saindo e entrando no jogo|r
+    .goto Thunder Bluff,56.65,18.96,30 >>|cRXP_WARN_Pule em uma das jaulas. Faça o atalho por reconexão saindo e entrando no jogo novamente|r
     .link https://www.youtube.com/watch?v=cp2YI86AO4Y&ab >> |cRXP_WARN_CLIQUE AQUI para um exemplo|r
 step << skip
     #completewith ElderCroneTurnin
@@ -5921,8 +5921,8 @@ step
 step << skip
     #xprate <1.5
     .goto Stonetalon Mountains,71.83,60.34
-    .goto Stonetalon Mountains,57.57,61.99,30 >>|cRXP_WARN_Pule na roda de madeira. Faça um Logout Skip saindo e entrando no jogo|r
-    .link https://www.youtube.com/watch?v=8s1SRza7qFg&ab_channel=RestedXP >> |cRXP_WARN_CLIQUE AQUI para um exemplo|r
+    .goto Stonetalon Mountains,57.57,61.99,30 >>|cRXP_WARN_Pule na roda de madeira. Faça o atalho por reconexão saindo e entrando no jogo novamente|r
+    .link https://www.youtube.com/watch?v=8s1SRza7qFg&ab_channel=RestedXP >> |cRXP_WARN_CLIQUE AQUI para ver um exemplo|r
     .group
 step
     #xprate <1.5
@@ -6002,7 +6002,7 @@ step
 step << skip
     #xprate <1.5
     .goto Stonetalon Mountains,78.89,41.24
-    .goto Ashenvale,40.40,53.06,30 >>|cRXP_WARN_Pule na pedra branca à direita. Faça um Logout Skip saindo e entrando no jogo|r
+    .goto Ashenvale,40.40,53.06,30 >>|cRXP_WARN_Pule na pedra branca à sua direita. Faça o atalho por reconexão saindo e entrando no jogo novamente|r
     .link https://www.youtube.com/watch?v=h2s4ZjFBLtg&ab_channel=RestedXP >> |cRXP_WARN_CLIQUE AQUI para ver um exemplo|r
     .zoneskip Ashenvale
 step
@@ -6655,7 +6655,7 @@ step << skip --Rogue/Druid
 step << skip --Rogue/Druid
     #hardcore
     .goto The Barrens,60.48,3.76
-    .goto Orgrimmar,40.05,68.05,30 >>|cRXP_WARN_Pule na viga de madeira. Faça um Logout Skip saindo e entrando no jogo. Volte a Orgrimmar se não conseguir|r
+    .goto Orgrimmar,40.05,68.05,30 >>|cRXP_WARN_Pule na viga de madeira. Faça o atalho por reconexão saindo e entrando no jogo novamente. Volte a Orgrimmar se não conseguir|r
     .link https://www.youtube.com/watch?v=U7YfoaO-X8E&ab_channel=RestedXP >> |cRXP_WARN_CLIQUE AQUI para ver um exemplo|r
     .zoneskip Orgrimmar
 step << Rogue/Druid
@@ -7457,7 +7457,7 @@ step << Tauren Shaman
 step << Tauren Shaman
     .goto Durotar,38.52,58.93
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Telf|r
-    .turnin 1525 >>Entregue Call of Fogo
+    .turnin 1525 >>Entregue Call of Fogo - Missão - Missão
     .accept 1526 >>Aceite Clamor do Fogo
     .target Telf Joolam
     .dungeon RFC
@@ -7476,13 +7476,13 @@ step << Tauren Shaman
 step << Tauren Shaman
     .goto Durotar,38.96,58.22
     >>Clique no |cRXP_PICK_Braseiro|r no chão
-    .turnin 1526 >>Entregue Call of Fogo
+    .turnin 1526 >>Entregue Call of Fogo - Missão - Missão
     .accept 1527 >>Aceite Clamor do Fogo
     .dungeon RFC
 step << Tauren Shaman
     .goto The Barrens,55.86,19.95
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Kranal|r
-    .turnin 1527 >>Entregue Call of Fogo
+    .turnin 1527 >>Entregue Call of Fogo - Missão - Missão
     .target Kranal Fiss
     .dungeon RFC
 step << Tauren Shaman
@@ -7512,7 +7512,7 @@ step << Tauren
 step << !Undead
     .goto Orgrimmar,31.74,37.82
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Thrall|r
-    .accept 5726 >>Aceite Inimigos Escondidos
+    .accept 5726 >>Aceite Inimigos ocultos
     .target Thrall
     .dungeon RFC
 step << !Undead
@@ -7524,7 +7524,7 @@ step << !Undead
     .goto Orgrimmar,31.74,37.82
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Thrall|r
     .turnin 5726 >> Entregue Inimigos ocultos
-    .accept 5727 >> Aceite Inimigos Escondidos
+    .accept 5727 >> Aceite Inimigos ocultos
     .target Thrall
     .dungeon RFC
 step << !Undead
@@ -7545,7 +7545,7 @@ step << !Undead
     .goto Orgrimmar,31.74,37.82
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Thrall|r
     .turnin 5727 >> Entregue Inimigos ocultos
-    .accept 5728 >> Aceite Inimigos Escondidos
+    .accept 5728 >> Aceite Inimigos ocultos
     .target Thrall
     .dungeon RFC
 step << !Undead
@@ -7639,14 +7639,14 @@ step << !Undead
     .goto Orgrimmar,31.74,37.82
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Thrall|r
     .turnin 5728 >> Entregue Inimigos ocultos
-    .accept 5729 >> Aceite Inimigos Escondidos
+    .accept 5729 >> Aceite Inimigos ocultos
     .target Thrall
     .isQuestComplete 5728
     .dungeon RFC
 step << !Undead
     .goto Orgrimmar,31.74,37.82
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Thrall|r
-    .accept 5729 >> Aceite Inimigos Escondidos
+    .accept 5729 >> Aceite Inimigos ocultos
     .target Thrall
     .isQuestTurnedIn 5728
     .dungeon RFC
@@ -7654,7 +7654,7 @@ step << !Undead
     .goto Orgrimmar,49.6,50.4
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Neeru Cortafogo|r
     .turnin 5729 >> Entregue Inimigos ocultos
-    .accept 5730 >> Aceite Inimigos Escondidos
+    .accept 5730 >> Aceite Inimigos ocultos
     .target Neeru Fireblade
     .dungeon RFC
     .isQuestTurnedIn 5728
@@ -7903,7 +7903,7 @@ step << Shaman
     #requires ShamanDurotar
     .goto Durotar,38.52,58.93
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Telf|r
-    .turnin 1525 >>Entregue Call of Fogo
+    .turnin 1525 >>Entregue Call of Fogo - Missão - Missão
     .accept 1526 >>Aceite Clamor do Fogo
     .target Telf Joolam
 step << Shaman
@@ -7919,7 +7919,7 @@ step << Shaman
 step << Shaman
     .goto Durotar,38.96,58.22
     >>Clique no |cRXP_PICK_Braseiro|r no chão
-    .turnin 1526 >>Entregue Call of Fogo
+    .turnin 1526 >>Entregue Call of Fogo - Missão - Missão
     .accept 1527 >>Aceite Clamor do Fogo
 step << Shaman
     #completewith FireEnd
@@ -7937,7 +7937,7 @@ step << Shaman
     #label FireEnd
     .goto The Barrens,55.86,19.95
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Kranal|r
-    .turnin 1527 >>Entregue Call of Fogo
+    .turnin 1527 >>Entregue Call of Fogo - Missão - Missão
     .target Kranal Fiss
 step << Shaman
     .goto The Barrens,55.78,20.00
@@ -8696,7 +8696,7 @@ step << skip --!Tauren
     .isQuestComplete 5723
 step << skip --!Tauren
     .goto Stonetalon Mountains,74.69,98.10
-    .goto Thunder Bluff,56.65,18.96,30 >>|cRXP_WARN_Pule em uma das jaulas. Faça um Logout Skip saindo e entrando no jogo|r
+    .goto Thunder Bluff,56.65,18.96,30 >>|cRXP_WARN_Pule em uma das jaulas. Faça o atalho por reconexão saindo e entrando no jogo novamente|r
     .link https://www.youtube.com/watch?v=cp2YI86AO4Y&ab >> |cRXP_WARN_CLIQUE AQUI para um exemplo|r
     .dungeon RFC
     .isOnQuest 5724
@@ -9128,7 +9128,7 @@ step
     .dungeon DM
 step << skip
     .goto The Barrens,60.48,3.76
-    .goto Orgrimmar,40.05,68.05,30 >>|cRXP_WARN_Pule na viga de madeira. Faça um Logout Skip saindo e entrando no jogo. Volte a Orgrimmar se não conseguir|r
+    .goto Orgrimmar,40.05,68.05,30 >>|cRXP_WARN_Pule na viga de madeira. Faça o atalho por reconexão saindo e entrando no jogo novamente. Volte a Orgrimmar se não conseguir|r
     .link https://www.youtube.com/watch?v=U7YfoaO-X8E&ab_channel=RestedXP >> |cRXP_WARN_CLIQUE AQUI para ver um exemplo|r
     .zoneskip Orgrimmar
 step
@@ -10290,7 +10290,7 @@ step
     >>Mate |cRXP_ENEMY_Senhor da Guerra Krom'zar|r quando aparecer. Pegue o |cRXP_PICK_Estandarte|r que ele deixa no chão
     >>|cRXP_WARN_Cuidado! Ele é um elite forte e protegido por pelo menos dois|r |cRXP_ENEMY_inimigos|r |cRXP_WARN_Kolkar|r
     >>|cRXP_WARN_Ele pode levar até 3 minutos para aparecer|r
-    .link https://www.youtube.com/watch?v=xrm0PWe5wf4 >>|cRXP_WARN_Clique aqui para um vídeo de guia sobre como você pode kitar|r |cRXP_ENEMY_Senhor da Guerra Krom'zar|r
+    .link https://www.youtube.com/watch?v=xrm0PWe5wf4 >>|cRXP_WARN_Clique aqui para ver como atrair e manter à distância o|r |cRXP_ENEMY_Senhor da Guerra Krom'zar|r
     .complete 4021,1 --Piece of Krom'zar's Banner (1)
     .unitscan Warlord Krom'zar
     .isOnQuest 4021
@@ -12008,7 +12008,7 @@ step << Shaman
     >>Mate |cRXP_ENEMY_Owatanka|r. Pegue a |T133723:0|t[|cRXP_LOOT_Ponta da Cauda de Owatanka|r]
     >>|cRXP_WARN_Use a |T133723:0|t[|cRXP_LOOT_Ponta da Cauda de Owatanka|r] para iniciar a missão|r
     >>|cRXP_WARN_Ele tem 4 pontos de aparecimento (marcados no mapa)|r
-    >>|cRXP_WARN_Pule este passo por enquanto se você não conseguir encontrá-lo|r
+    >>|cRXP_WARN_Pule esta etapa por enquanto se não conseguir encontrá-lo|r
     .collect 5102,1,884,1 --Collect Owatanka's Tailspike
     .accept 884 >>Aceite Owatanka
     .use 5102
@@ -12044,7 +12044,7 @@ step
 step << !Tauren
     .goto The Barrens,44.55,59.27
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Denterroto|r
-    .aura 16618 >>|cRXP_WARN_Se você tem 10|r |T134128:0|t[|cRXP_LOOT_Fragmentos Sanguíneos|r] |cRXP_WARN_restantes, use-os para obter|r |T136022:0|t[Espírito of the Vento - Missão - Missão] |cRXP_WARN_de|r |cRXP_FRIENDLY_Denterroto|r
+    .aura 16618 >>|cRXP_WARN_Se você tem 10|r |T134128:0|t[|cRXP_LOOT_Estilhaços de Sangue|r] |cRXP_WARN_sobrando, use-os para obter|r |T136022:0|t[Espírito do vento] |cRXP_WARN_de|r |cRXP_FRIENDLY_Denterroto|r
     >>|cRXP_WARN_Pule esta etapa se tiver a rota de voo de Penhasco do Trovão|r
     .itemcount 5075,10
     .target Mangletooth
@@ -12929,7 +12929,7 @@ step
     >>Mate |cRXP_ENEMY_Senhor da Guerra Krom'zar|r quando aparecer. Pegue o |cRXP_PICK_Estandarte|r que ele deixa no chão
     >>|cRXP_WARN_Cuidado! Ele é um elite forte e protegido por pelo menos dois|r |cRXP_ENEMY_inimigos|r |cRXP_WARN_Kolkar|r
     >>|cRXP_WARN_Ele pode levar até 3 minutos para aparecer|r
-    .link https://www.youtube.com/watch?v=xrm0PWe5wf4 >>|cRXP_WARN_Clique aqui para um vídeo de guia sobre como você pode kitar|r |cRXP_ENEMY_Senhor da Guerra Krom'zar|r
+    .link https://www.youtube.com/watch?v=xrm0PWe5wf4 >>|cRXP_WARN_Clique aqui para ver como atrair e manter à distância o|r |cRXP_ENEMY_Senhor da Guerra Krom'zar|r
     .complete 4021,1 --Piece of Krom'zar's Banner (1)
     .unitscan Warlord Krom'zar
     .isQuestTurnedIn 852
@@ -13072,7 +13072,7 @@ step
     >>Mate |cRXP_ENEMY_Senhor da Guerra Krom'zar|r quando aparecer. Pegue o |cRXP_PICK_Estandarte|r que ele deixa no chão
     >>|cRXP_WARN_Cuidado! Ele é um elite forte e protegido por pelo menos dois|r |cRXP_ENEMY_inimigos|r |cRXP_WARN_Kolkar|r
     >>|cRXP_WARN_Ele pode levar até 3 minutos para aparecer|r
-    .link https://www.youtube.com/watch?v=xrm0PWe5wf4 >>|cRXP_WARN_Clique aqui para um vídeo de guia sobre como você pode kitar|r |cRXP_ENEMY_Senhor da Guerra Krom'zar|r
+    .link https://www.youtube.com/watch?v=xrm0PWe5wf4 >>|cRXP_WARN_Clique aqui para ver como atrair e manter à distância o|r |cRXP_ENEMY_Senhor da Guerra Krom'zar|r
     .complete 4021,1 --Piece of Krom'zar's Banner (1)
     .unitscan Warlord Krom'zar
     .isQuestTurnedIn 852
@@ -13131,7 +13131,7 @@ step
 step << skip
     #xprate <2.1
     .goto Stonetalon Mountains,74.69,98.10
-    .goto Thunder Bluff,56.65,18.96,30 >>|cRXP_WARN_Pule em uma das jaulas. Faça um Logout Skip saindo e entrando no jogo|r
+    .goto Thunder Bluff,56.65,18.96,30 >>|cRXP_WARN_Pule em uma das jaulas. Faça o atalho por reconexão saindo e entrando no jogo novamente|r
     .link https://www.youtube.com/watch?v=cp2YI86AO4Y&ab >> |cRXP_WARN_CLIQUE AQUI para um exemplo|r
 step << skip
     #xprate <2.1 << !Warlock
@@ -13310,7 +13310,7 @@ step << skip --Rogue/Druid
 step << skip --Rogue
     #hardcore
     .goto The Barrens,60.48,3.76
-    .goto Orgrimmar,40.05,68.05,30 >>|cRXP_WARN_Pule na viga de madeira. Faça um Logout Skip saindo e entrando no jogo. Volte a Orgrimmar se não conseguir|r
+    .goto Orgrimmar,40.05,68.05,30 >>|cRXP_WARN_Pule na viga de madeira. Faça o atalho por reconexão saindo e entrando no jogo novamente. Volte a Orgrimmar se não conseguir|r
     .link https://www.youtube.com/watch?v=U7YfoaO-X8E&ab_channel=RestedXP >> |cRXP_WARN_CLIQUE AQUI para ver um exemplo|r
     .zoneskip Orgrimmar
 step << Rogue

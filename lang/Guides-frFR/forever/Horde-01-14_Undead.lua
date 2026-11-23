@@ -24,7 +24,7 @@ step
     #completewith next
     .goto 1420/0,1675.90,1645.00,8,0
     .goto 1420/0,1665.51,1645.00,8,0
-    .goto 1420/0,1667.77,1679.04,10 >> Sortez de la crypte vers |cRXP_FRIENDLY_Mordo|r
+    .goto 1420/0,1667.77,1679.04,10 >> Sortez de la crypte vers  |cRXP_FRIENDLY_Mordo|r
 step
     .goto 1420/0,1667.77,1679.04
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Mordo|r
@@ -212,7 +212,7 @@ step << Mage/Warlock/Priest
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Sarvis|r et à |cRXP_FRIENDLY_Elreth|r << !Warlock !Mage !Priest
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Sarvis|r, |cRXP_FRIENDLY_Elreth|r, et à |cRXP_FRIENDLY_Maximillion|r << Warlock
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Sarvis|r, |cRXP_FRIENDLY_Elreth|r, et à |cRXP_FRIENDLY_Maximillion|r << Mage
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Sarvis|r, |cRXP_FRIENDLY_Elreth|r, et à |cRXP_FRIENDLY_Isabella|r << Mage
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Sarvis|r, |cRXP_FRIENDLY_Elreth|r, et à |cRXP_FRIENDLY_Duesten|r << Priest
     .turnin 364 >> Rendez la quête Lever le voile
     .accept 3095 >> Acceptez la quête Parchemin simple << Warrior
@@ -381,7 +381,7 @@ step << Priest
 step << Priest
     .goto 1420/0,1627.55,1848.65
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Duesten|r
-    .train 2052 >> Apprenez [Soins inférieurs rang 2]
+    .train 2052 >> Apprenez [Soins inférieurs Rang 2]
     .train 589 >> Apprenez [Mot de l'ombre : Douleur]
     .target Dark Cleric Duesten
     .money <0.021
@@ -784,7 +784,7 @@ step
     .goto 1411/1,-4715.200,140.100
     >>|cRXP_WARN_Tapez /assis près du feu de camp et attendez une minute jusqu'à ce que vous obteniez le buff "Avantages du camp"|r
     .complete 96607,1 --|1/1 Use the /sit emote near the campfire
-    .macro Sit,134400 >>Asseyez-vous 
+    .macro Sit,134400 >>Asseyez-vous
     .timer 59, RP
     .complete 96607,2 --|Gain the Boosted Rest buff
 step
@@ -942,7 +942,7 @@ step << Priest
     .accept 5650 >> Acceptez la quête Vêtements des ténèbres
 	.train 591 >>Apprenez [Châtiment]
     .train 17 >>Apprenez [Mot de pouvoir : Bouclier]
-    .train 2052 >>Apprenez [Soins inférieurs rang 2]
+    .train 2052 >>Apprenez [Soins inférieurs Rang 2]
     .target Dark Cleric Beryl
 step << Mage
     .goto 1420/0,233.06,2256.84
@@ -959,7 +959,7 @@ step << Warrior
 step << Rogue
     .goto 1420/0,243.01,2271.00
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Marion|r au second étage
-    .train 1757 >> Apprenez [Attaque Pernicieuse]
+    .train 1757 >> Apprenez [Attaque pernicieuse]
     .target Marion Call
     .money <0.01
 step << Warlock
@@ -991,9 +991,9 @@ step << Priest/Warlock
 step
     .goto 1420/0,244.81,2269.19
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Innkeeper Renee|r
-    .vendor >>|cRXP_BUY_Achetez autant|r |T132815:0|t[Lait glacé] |cRXP_BUY_d'elle que vous pouvez|r << Mage/Priest/Paladin
-    .vendor >>|cRXP_BUY_Achetez autant|r |T134532:0|t[rouge(s)-speckled Mushrooms] |cRXP_BUY_d'elle que vous pouvez|r << Warrior/Rogue
-    .vendor >>|cRXP_BUY_Achetez autant|r |T132815:0|t[Lait glacé] |cRXP_BUY_et|r |T134532:0|t[rouge(s)-speckled Mushrooms] |cRXP_BUY_d'elle que vous pouvez|r << Warlock
+    .vendor >>|cRXP_BUY_Achetez autant de|r |T132815:0|t[Lait glacé] |cRXP_BUY_ auprès d'elle que vous le pouvez|r << Mage/Priest/Paladin
+    .vendor >>|cRXP_BUY_Achetez autant de|r |T134532:0|t[Champignons à pois rouges] |cRXP_BUY_auprès d'elle que vous le pouvez|r << Warrior/Rogue
+    .vendor >>|cRXP_BUY_Achetez autant de|r |T132815:0|t[Lait glacé] |cRXP_BUY_et de|r |T134532:0|t[Champignons à pois rouges] |cRXP_BUY_que vous le pouvez auprès d'elle|r << Warlock
     .money <0.0125
     .target Innkeeper Renee
 step
@@ -1062,7 +1062,7 @@ step
     .goto 1420/0,496.96,2256.54,0
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Gordo|r.
     >>|cRXP_WARN_C'est une abomination qui patrouille le long de la route pour Brill|r
-    >>|cRXP_WARN_Sélectionnez "I need a report for Exécuteur Zygand|r"
+    >>|cRXP_WARN_Sélectionnez "J'ai besoin d'un rapport pour l'exécuteur Zygand"|r
     .complete 99141,3 --|1/1 Gordo's Report
     .target Gordo
     --.gossipoption 142737
@@ -1187,7 +1187,7 @@ step
 step
     .goto 1420/0,403.300,2287.700
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Nécrogarde Dillinger|r.
-    >>|cRXP_WARN_Sélectionnez "I need a report for Exécuteur Zygand|r"
+    >>|cRXP_WARN_Sélectionnez "J'ai besoin d'un rapport pour l'exécuteur Zygand"|r
     .turnin 404 >>Rendez la quête Une tâche putride
     .accept 426 >>Acceptez la quête La chute des moulins
     .complete 99141,1 --|1/1 Dillinger's Report
@@ -1301,8 +1301,8 @@ step << Warlock
 step << Mage/Priest/Warlock
     .goto 1420/0,244.81,2269.19
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Innkeeper Renee|r
-    .vendor >>|cRXP_BUY_Achetez autant|r |T132815:0|t[Lait glacé] |cRXP_BUY_d'elle que vous pouvez|r << Mage/Priest
-    .vendor >>|cRXP_BUY_Achetez autant|r |T132815:0|t[Lait glacé] |cRXP_BUY_et|r |T134532:0|t[rouge(s)-speckled Mushrooms] |cRXP_BUY_d'elle que vous pouvez|r << Warlock
+    .vendor >>|cRXP_BUY_Achetez autant de|r |T132815:0|t[Lait glacé] |cRXP_BUY_ auprès d'elle que vous le pouvez|r << Mage/Priest
+    .vendor >>|cRXP_BUY_Achetez autant de|r |T132815:0|t[Lait glacé] |cRXP_BUY_et de|r |T134532:0|t[Champignons à pois rouges] |cRXP_BUY_que vous le pouvez auprès d'elle|r << Warlock
     .money <0.0125
     .target Innkeeper Renee
 step
@@ -2261,7 +2261,7 @@ step << Rogue
 step << Rogue
     #optional
     #completewith LogoutSkip1
-    +Équipez les [Couteau de lancer perçant]
+    +Équipez le [Couteau de lancer perçant]
     .use 3107
     .itemcount 3107,1
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<6.3
@@ -2878,25 +2878,25 @@ step << !Paladin
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à la |cRXP_FRIENDLY_Nécrogarde Linnea|r
     .turnin 356 >>Rendez la quête Patrouille d'arrière-garde
     .target Deathguard Linnea
-step
+step << !Paladin
     .goto 1420/0,73.800,2022.300
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Deathguard Linnea::1495|r
-    >>|cRXP_WARN_Ceci est une quête préalable pour "The Courroux of Rath'mael"|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à la |cRXP_FRIENDLY_Garde noir Linnea::1495|r
+    >>|cRXP_WARN_Il s'agit d'une pré-quête pour "La colère de Rath’mael"|r
     .turnin 356 >>Rendez la quête Patrouille d'arrière-garde
     .target Deathguard Linnea::1495
     .accept 99156 >>Acceptez la quête Patrouille d'arrière-garde
     .dungeon ROL
-step
+step << !Paladin
     .goto 1420/0,-765.200,2518.700
-    >>Tuez |cRXP_ENEMY_Riptear|r |cRXP_WARN_(level 13 elite)|r. Ramassez le |T134339:0|t[|cRXP_LOOT_Riptear's Cœur|r]
-    >>|cRXP_WARN_Ceci est une quête préalable pour "The Courroux of Rath'mael"|r
+    >>Tuez |cRXP_ENEMY_Fendécorche|r |cRXP_WARN_(élite de niveau 13)|r. Dépouillez-le pour le |T134339:0|t[|cRXP_LOOT_Cœur de Fendécorche|r]
+    >>|cRXP_WARN_Il s'agit d'une pré-quête pour "La colère de Rath’mael"|r
     .complete 99156,1 --|1/1 Riptear's Heart
     .mob Riptear
     .dungeon ROL
-step
+step << !Paladin
     .goto 1420/0,74.200,2022.400
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Deathguard Linnea::1495|r
-    >>|cRXP_WARN_Ceci est une quête préalable pour "The Courroux of Rath'mael"|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à la |cRXP_FRIENDLY_Garde noir Linnea::1495|r
+    >>|cRXP_WARN_Il s'agit d'une pré-quête pour "La colère de Rath’mael"|r
     .turnin 99156 >>Rendez la quête Patrouille d'arrière-garde
     .target Deathguard Linnea::1495
     .dungeon ROL
@@ -2940,6 +2940,7 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Glix Xizzix|r
     .turnin 98545 >>Rendez la quête La lettre de Leonid
     .target Glix Xizzix
+    .isOnQuest 98545
 step << Rogue
     #ssf
     .goto 1458/0,133.71,1561.730
@@ -3182,6 +3183,28 @@ step << Paladin
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à la |cRXP_FRIENDLY_Nécrogarde Linnea|r
     .turnin 356 >>Rendez la quête Patrouille d'arrière-garde
     .target Deathguard Linnea
+step << Paladin
+    .goto 1420/0,73.800,2022.300
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à la |cRXP_FRIENDLY_Garde noir Linnea::1495|r
+    >>|cRXP_WARN_Il s'agit d'une pré-quête pour "La colère de Rath’mael"|r
+    .turnin 356 >>Rendez la quête Patrouille d'arrière-garde
+    .target Deathguard Linnea::1495
+    .accept 99156 >>Acceptez la quête Patrouille d'arrière-garde
+    .dungeon ROL
+step << Paladin
+    .goto 1420/0,-765.200,2518.700
+    >>Tuez |cRXP_ENEMY_Fendécorche|r |cRXP_WARN_(élite de niveau 13)|r. Dépouillez-le pour le |T134339:0|t[|cRXP_LOOT_Cœur de Fendécorche|r]
+    >>|cRXP_WARN_Il s'agit d'une pré-quête pour "La colère de Rath’mael"|r
+    .complete 99156,1 --|1/1 Riptear's Heart
+    .mob Riptear
+    .dungeon ROL
+step << Paladin
+    .goto 1420/0,74.200,2022.400
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à la |cRXP_FRIENDLY_Garde noir Linnea::1495|r
+    >>|cRXP_WARN_Il s'agit d'une pré-quête pour "La colère de Rath’mael"|r
+    .turnin 99156 >>Rendez la quête Patrouille d'arrière-garde
+    .target Deathguard Linnea::1495
+    .dungeon ROL
 step << Paladin
     .goto 1420/0,311.600,2251.000
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Shari Morpuits|r
@@ -3431,7 +3454,7 @@ step << !Mage !Priest
 step
     .goto 1421/0,1602.84,549.75
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Edwin|r
-    >>|cRXP_BUY_Achetez du|r [Lait frais] |cRXP_BUY_à Kauth|r << Mage/Warlock/Priest/Shaman/Druid
+    >>|cRXP_BUY_Achetez du|r [Lait frais] |cRXP_BUY_à Grosk|r << Mage/Warlock/Priest/Shaman/Druid
     .vendor >> |cRXP_BUY_Achetez-lui des|r |T134830:0|t[Potions de soins inférieure] |cRXP_BUY_si elles sont disponibles|r
     >>|cRXP_WARN_Ne vendez PAS vos|r |T133884:0|t[|cRXP_LOOT_Yeux de murloc|r]
     .collect 1179,20,421,1 << Mage/Warlock/Priest/Shaman/Druid --Ice Cold Milk (20)
@@ -3466,7 +3489,7 @@ step
     .target High Executor Hadrec
 step << Mage/Priest/Warlock
     .goto 1421/0,1626.100,511.500
-    >>Ramassez le |cRXP_PICK_Glowing Livre|r sur le sol
+    >>Ramassez le |cRXP_PICK_Livre Scintillant|r au sol
     .collect 210177,1,79096,1 --Ataeric: On Arcane Curiosities
     --Other classes won't be nearby turnin in UC, probably not worth since it's only 160xp
 step
@@ -3680,7 +3703,7 @@ step << !Mage !Priest
 step
     .goto 1421/0,1602.84,549.75
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Edwin|r
-    >>|cRXP_BUY_Achetez du|r [Lait frais] |cRXP_BUY_à Kauth|r << Warlock/Priest/Shaman/Druid
+    >>|cRXP_BUY_Achetez du|r [Lait frais] |cRXP_BUY_à Grosk|r << Warlock/Priest/Shaman/Druid
     .vendor >> |cRXP_BUY_Achetez-lui des|r |T134830:0|t[Potions de soins inférieure] |cRXP_BUY_si elles sont disponibles|r
     .collect 1179,20,423,1 << Warlock/Priest/Shaman/Druid --Ice Cold Milk (20)
     .target Edwin Harly
@@ -3872,8 +3895,8 @@ step
     .target Shadow Priest Allister
 step
     .goto 1421/0,1579.600,461.700
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tabitha Heartweaver::250686|r
-    .accept 92401 >>Acceptez la quête Une requête effrayée
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tabitha Tissecœur::250686|r
+    .accept 92401 >>Acceptez la quête Une requête apeurée
     .target Tabitha Heartweaver::250686
     .xp <15,1
     .dungeon ROL
@@ -3901,7 +3924,7 @@ step << Rogue
     #ssf
     .goto 1458/0,286.53,1616.21
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParler à |cRXP_FRIENDLY_Louis Warren|r dans le Quartier des Marchands
-    >>|cRXP_BUY_Achetez une|r [Cimeterre] |cRXP_BUY_au marchand|r
+    >>|cRXP_BUY_Achetez une|r [Cimeterre] |cRXP_BUY_à Louis|r
     .collect 2027,1 --Collect Scimitar (1)
     .money <0.3815
     .itemStat 16,QUALITY,<7
@@ -3911,7 +3934,7 @@ step << Rogue
     #ah
     .goto 1458/0,286.53,1616.21
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParler à |cRXP_FRIENDLY_Louis Warren|r dans le Quartier des Marchands
-    >>|cRXP_BUY_Achetez une|r [Cimeterre] |cRXP_BUY_au marchand|r
+    >>|cRXP_BUY_Achetez une|r [Cimeterre] |cRXP_BUY_à Louis|r
     >>Sinon, vous pouvez regarder à l'Hôtel des Ventes si vous trouvez une alternative meilleure ou moins onéreuse
     .collect 2027,1 --Collect Scimitar (1)
     .money <0.3815
@@ -4015,7 +4038,7 @@ step
     .goto 1458/0,371.68,1370.64,15,0--c:1458,52.275,79.254
     .goto 1458/0,381.23,1366.35,15,0--c:1458,51.279,79.923
     .goto 1458/0,396.45,1372.88,15,0--c:1458,49.693,78.903
-    .goto 1458/0,413.16,1390.37,15 >>Rendez-vous à l'Apothecarium--c:1458,47.951,76.171
+    .goto 1458/0,413.16,1390.37,15 >>Dirigez-vous vers l'Apothicarium--c:1458,47.951,76.171
 step
     .goto 1458/0,426.100,1403.600
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Docteur Martin Felben|r
@@ -4031,6 +4054,18 @@ step
     .accept 1358 >> Acceptez la quête Un échantillon pour Helbrim
     .target +Apothecary Zinge
     .goto 1458/0,391.97,1442.87
+    .dungeon !ROL
+step
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Maître apothicaire Faranell|r et à l' |cRXP_FRIENDLY_Apothicaire Zinge|r à l'Apothicarium
+    .turnin 447 >>Rendez la quête Une recette mortelle
+    .accept 450 >>Acceptez la quête Une recette mortelle
+    .target +Master Apothecary Faranell
+    .goto 1458/0,404.63,1434.67
+    .turnin 1359 >> Rendez la quête Une livraison pour Zinge
+    .accept 1358 >> Acceptez la quête Un échantillon pour Helbrim
+    .target +Apothecary Zinge
+    .goto 1458/0,391.97,1442.87
+    .dungeon ROL
 step
     .goto 1458/0,334.02,1262.17--c:Undercity,56.2,96.2
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Varimathras|r
@@ -4123,7 +4158,7 @@ step << Priest/Mage/Warlock
     .goto 1458/0,168.200,1663.100
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Owen Thadd::211022|r
     .target Owen Thadd::211022
-    .turnin 79096 >>Rendre la quête Ataeric : À propos des curiosités des arcanes
+    .turnin 79096 >>Rendez la quête Ataeric : À propos des curiosités des arcanes
     .itemcount 210177,1
 step << Priest/Mage/Warlock
     #ssf
@@ -4242,7 +4277,7 @@ step << Undead/Skyborne
 step << Undead/Skyborne
     #completewith Gazzuz
     >>Tuez les |cRXP_ENEMY_Burning Blade Orcs|r. Dépouillez-les pour une |cRXP_LOOT_Lieutenant's Insignia|r
-    >>|cRXP_WARN_C'est une quête préalable pour RFC. Elle a un faible taux de loot|r
+    >>|cRXP_WARN_Il s'agir d'une pré-quête pour Ragefeu. Celle-ci n'a que peu de chance de tomber|r
     .complete 5726,1 --Lieutenant's Insignia (1)
     .mob Burning Blade Fanatic
     .mob Burning Blade Apprentice
@@ -4252,9 +4287,9 @@ step << Undead/Skyborne
     .goto 1411/1,-4701.42,1455.83
     >>Tuez |cRXP_ENEMY_Gazz'uz|r. Dépouillez-le pour son [|cRXP_LOOT_Eye of Burning Shadow|r]
     >>|cRXP_WARN_Utilisez le [|cRXP_LOOT_Eye of Burning Shadow|r] pour commencer la quête|r
-    >>|cRXP_WARN_Utilisez LoS (ligne de mire) pour éviter |cRXP_ENEMY_Gazz'uz|r ses Traits de l'ombre|r
+    >>|cRXP_WARN_Cachez-vous (LoS) pour éviter les Traits de l'ombre de |cRXP_ENEMY_Gazz'uz|r|r
     >>Vous pouvez aller dans les points d'eau dans la grotte pour vous échapper (evade) des |cRXP_ENEMY_Voidwalker|r après avoir tué |cRXP_ENEMY_Gazz'uz|r
-    >>|cRXP_WARN_Soyez prudents car c'est difficile. Vous pouvez passer cette quête si vous le souhaitez|r
+    >>|cRXP_WARN_Faites attention comme il est difficile. Vous pouvez passer cette quête si vous en avez besoin|r
     .collect 4903,1,832,1 --Collect Eye of Burning Shadow
     .accept 832 >>Acceptez la quête Ombres ardentes
     .use 4903
@@ -4274,7 +4309,7 @@ step << Undead/Skyborne
     .goto 1411/1,-4684.50,1466.06,15,0
     .goto 1411/1,-4805.59,1495.67,15,0
     >>Tuez les |cRXP_ENEMY_Burning Blade Orcs|r. Dépouillez-les pour une |cRXP_LOOT_Lieutenant's Insignia|r
-    >>|cRXP_WARN_C'est une quête préalable pour RFC. Elle a un faible taux de loot|r
+    >>|cRXP_WARN_Il s'agir d'une pré-quête pour Ragefeu. Celle-ci n'a que peu de chance de tomber|r
     .complete 5726,1 --Lieutenant's Insignia (1)
     .mob Burning Blade Fanatic
     .mob Burning Blade Apprentice

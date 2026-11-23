@@ -1,9 +1,9 @@
-if not _G.GetNumTalentTabs then return end
 local _, addon = ...
 local L = addon.locale.Get
 local AceGUI = LibStub("AceGUI-3.0")
 
-if not (addon.game == "CLASSIC" or addon.game == "TBC" or addon.game == "CATA") then return end
+if not (addon.game == "CLASSIC" or addon.game == "TBC" or addon.game == "CATA" or
+    addon.game == "FOREVER") then return end
 
 local locale = GetLocale()
 
@@ -15,10 +15,12 @@ local fmt, tinsert, ipairs, pairs, next, type, wipe, tonumber, strlower, smatch 
 
 local GetItemInfo = C_Item and C_Item.GetItemInfo or _G.GetItemInfo
 local GetItemInfoInstant = C_Item and C_Item.GetItemInfoInstant or _G.GetItemInfoInstant
+local GetItemLinkByGUID = C_Item and C_Item.GetItemLinkByGUID
 local IsEquippedItem = C_Item and C_Item.IsEquippedItem or _G.IsEquippedItem
 local GetItemStats = C_Item and C_Item.GetItemStats or _G.GetItemStats
 local UnitLevel = _G.UnitLevel
 local GetInventoryItemLink = _G.GetInventoryItemLink
+local AddTooltipPostCall = _G.TooltipDataProcessor and _G.TooltipDataProcessor.AddTooltipPostCall
 
 local ItemArmorSubclass, ItemWeaponSubclass = Enum.ItemArmorSubclass, Enum.ItemWeaponSubclass
 
@@ -128,6 +130,7 @@ local CLASS_MAP = {
         ["WeaponType"] = {
             [ItemWeaponSubclass.Mace1H] = true,
             [ItemWeaponSubclass.Mace2H] = true,
+            [ItemWeaponSubclass.Polearm] = function() return addon.game == "FOREVER" and UnitLevel("player") >= 20 end,
             [ItemWeaponSubclass.Staff] = true,
             [ItemWeaponSubclass.Unarmed] = true,
             [ItemWeaponSubclass.Dagger] = true
@@ -157,6 +160,7 @@ local CLASS_MAP = {
             [ItemWeaponSubclass.Staff] = true,
             [ItemWeaponSubclass.Unarmed] = true,
             [ItemWeaponSubclass.Dagger] = true,
+            [ItemWeaponSubclass.Thrown] = addon.game == "FOREVER",
             [ItemWeaponSubclass.Crossbow] = true
         }
     },
@@ -209,6 +213,7 @@ local CLASS_MAP = {
         },
         ["ArmorType"] = {[ItemArmorSubclass.Leather] = true},
         ["WeaponType"] = {
+            [ItemWeaponSubclass.Axe1H] = addon.game == "FOREVER",
             [ItemWeaponSubclass.Bows] = true,
             [ItemWeaponSubclass.Guns] = true,
             [ItemWeaponSubclass.Mace1H] = true,
@@ -220,7 +225,7 @@ local CLASS_MAP = {
         }
     },
     ["SHAMAN"] = {
-        ["Slot"] = {{["INVTYPE_SHIELD"] = _G.INVSLOT_OFFHAND}},
+        ["Slot"] = {["INVTYPE_SHIELD"] = _G.INVSLOT_OFFHAND},
         ["ArmorType"] = {
             [ItemArmorSubclass.Shield] = true,
             [ItemArmorSubclass.Leather] = true,
@@ -484,11 +489,25 @@ local function enableTotalEPLines(itemData, lines)
     end
 end
 
-local function TooltipSetItem(tooltip, ...)
+local function TooltipSetItem(tooltip, data)
     if not addon.settings.profile.enableItemUpgrades or not addon.settings.profile.enableTips or
         addon.settings.profile.disableUpgradeTooltip then return end
 
-    local _, itemLink = tooltip:GetItem()
+    local itemLink
+    if data then
+        if tooltip ~= GameTooltip and tooltip ~= ItemRefTooltip and tooltip ~= ShoppingTooltip1 then return end
+
+        itemLink = data.hyperlink
+
+        if not itemLink and data.guid and GetItemLinkByGUID then
+            itemLink = GetItemLinkByGUID(data.guid)
+        end
+
+        if not itemLink and data.id then itemLink = select(2, GetItemInfo(data.id)) end
+    elseif tooltip.GetItem then
+        _, itemLink = tooltip:GetItem()
+    end
+
     if not itemLink then return end
     -- print("TooltipSetItem", tooltip:GetName(), itemLink)
 
@@ -593,7 +612,7 @@ local function TooltipSetItem(tooltip, ...)
         for _, line in ipairs(lines) do tooltip:AddLine(line) end
     end
 
-    tooltip:Show()
+    if not data then tooltip:Show() end
 end
 
 function addon.itemUpgrades:UpdateSlotMap()
@@ -648,15 +667,14 @@ function addon.itemUpgrades:Setup()
     -- Add out-of-band (aka hackery) stat parsing
     for key, regex in pairs(OUT_OF_BAND_KEYS) do session.statsRegexes[key] = regex end
 
-    -- Inventory
-    GameTooltip:HookScript("OnTooltipSetItem", TooltipSetItem)
+    if addon.game == "FOREVER" and AddTooltipPostCall then
+        AddTooltipPostCall(Enum.TooltipDataType.Item, TooltipSetItem)
+    else
+        GameTooltip:HookScript("OnTooltipSetItem", TooltipSetItem)
+        ItemRefTooltip:HookScript("OnTooltipSetItem", TooltipSetItem)
 
-    -- Vendor?
-    ItemRefTooltip:HookScript("OnTooltipSetItem", TooltipSetItem)
-
-    -- Enable AH
-    ShoppingTooltip1:HookScript("OnTooltipSetItem", TooltipSetItem)
-    -- ShoppingTooltip2:HookScript("OnTooltipSetItem", TooltipSetItem)
+        if ShoppingTooltip1 then ShoppingTooltip1:HookScript("OnTooltipSetItem", TooltipSetItem) end
+    end
 
     session.isInitialized = true
 
@@ -769,31 +787,40 @@ end
 function addon.itemUpgrades:ActivateSpecWeights()
     if not session.specWeights then return end
 
-    local spec = getSpec()
+    local spec
+    if addon.game == "FOREVER" then
+        spec = addon.settings.profile.itemUpgradeSpec
+        if not session.specWeights[spec] then
+            spec = next(session.specWeights)
+            if spec then addon.settings.profile.itemUpgradeSpec = spec end
+        end
+    else
+        spec = getSpec()
 
-    -- Uninitialized spec, so set to calculated value
-    if not addon.settings.profile.itemUpgradeSpec then
-        addon.settings.profile.itemUpgradeSpec = spec
-    elseif addon.settings.profile.itemUpgradeSpec ~= spec then
-        -- Handle spec name changes
-        if not session.specWeights[addon.settings.profile.itemUpgradeSpec] then
+        -- Uninitialized spec, so set to calculated value
+        if not addon.settings.profile.itemUpgradeSpec then
             addon.settings.profile.itemUpgradeSpec = spec
+        elseif addon.settings.profile.itemUpgradeSpec ~= spec then
+            -- Handle spec name changes
+            if not session.specWeights[addon.settings.profile.itemUpgradeSpec] then
+                addon.settings.profile.itemUpgradeSpec = spec
+            end
+
+            -- Chosen talents don't match itemUpgradeSpec
+            -- Leave alone as is, don't spam user if there's a mismatch
+            addon.comms.PrettyDebug("ItemUpgrades selected spec (%s) differs from calculated spec (%s)",
+                                    addon.settings.profile.itemUpgradeSpec, spec)
         end
 
-        -- Chosen talents don't match itemUpgradeSpec
-        -- Leave alone as is, don't spam user if there's a mismatch
-        addon.comms.PrettyDebug("ItemUpgrades selected spec (%s) differs from calculated spec (%s)",
-                                addon.settings.profile.itemUpgradeSpec, spec)
+        spec = addon.settings.profile.itemUpgradeSpec
+        if not spec then return end
     end
 
-    if not addon.settings.profile.itemUpgradeSpec then return end
-
-    addon.comms.PrettyDebug("Activating spec weights for %s", addon.settings.profile.itemUpgradeSpec)
-
-    session.activeStatWeights = session.specWeights[addon.settings.profile.itemUpgradeSpec]
+    session.activeStatWeights = session.specWeights[spec]
 
     if not session.activeStatWeights then return end
 
+    addon.comms.PrettyDebug("Activating spec weights for %s", spec)
     session.activeStatWeights.extraWeight = ITEM_WEIGHT_ADDITIONS[addon.player.class] or {}
 
     return session.activeStatWeights ~= nil
@@ -824,9 +851,11 @@ local function GetTooltipLines(tooltip, baseItemData)
     local setMatch = {}
 
     for _, r in ipairs(regions) do
+        rText = r:IsObjectType("FontString") and r:GetText()
+        -- A partial scan could miss stats and cache an incorrect score.
+        if addon.IsSecretValue(rText) then return end
 
-        if r:IsObjectType("FontString") and r:GetText() then
-            rText = r:GetText()
+        if rText then
             -- print("GetTooltipLines, regions", rText)
 
             -- Set bonus, so stop gathering lines past set bonus
@@ -1093,8 +1122,6 @@ function addon.itemUpgrades:GetItemData(itemLink, tooltip)
     -- Parse tooltip for all additional stats
     if tooltip then
         tooltipTextLines = GetTooltipLines(tooltip, itemData)
-
-        if not tooltipTextLines then return end
     else -- If not tooltip, set hidden comparison tooltip
         tooltip = GetComparisonTip()
 
@@ -1108,15 +1135,11 @@ function addon.itemUpgrades:GetItemData(itemLink, tooltip)
         -- print("RXPItemUpgradesComparison:SetHyperlink", itemLink)
 
         tooltipTextLines = GetTooltipLines(tooltip, itemData)
-
-        if not tooltipTextLines then
-            -- print("Comparisontip lines empty")
-            return
-        end
-
         -- Would bug out if cache is reset or invalidated
         tooltip:ClearLines()
     end
+
+    if not tooltipTextLines then return end
 
     local match1, match2
 
@@ -1531,7 +1554,8 @@ end
 addon.itemUpgrades.AH = addon:NewModule("ItemUpgradesAH", "AceEvent-3.0")
 
 function addon.itemUpgrades.AH:Setup()
-    if not addon.settings.profile.enableItemUpgradesAH or addon.game == "CATA" then return end
+    if not addon.settings.profile.enableItemUpgradesAH or addon.game == "CATA" or
+        addon.game == "FOREVER" then return end
 
     if ahSession.isInitialized then return end
 
@@ -1972,7 +1996,7 @@ function addon.itemUpgrades.AH:Analyze()
     RXPCData.itemUpgradeAHCache = cache
 end
 
-local function isAHV2Enabled() return addon.v2 and addon.v2:IsGuideWindowEnabled() end
+local function isAHV2Enabled() return addon.v2 and addon.v2:IsEnabled() end
 
 local function setKindIcon(frame, image)
     if not frame or not image then

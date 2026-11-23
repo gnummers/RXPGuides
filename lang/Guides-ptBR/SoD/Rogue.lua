@@ -928,7 +928,7 @@ step << Horde
 step << Alliance
     .goto Ironforge,55.501,47.742
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Grif Trovino|r
-    .fly Southshore >> Voe para Costa Sul
+    .fly Southshore >> Voe até Costa Sul
     .target Gryth Thurden
     .zoneskip Silverpine Forest
     .train 400080,1
@@ -1584,7 +1584,7 @@ step << Horde
 step << Alliance
     .goto Ironforge,55.501,47.742
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Grif Trovino|r
-    .fly Southshore >> Voe para Costa Sul
+    .fly Southshore >> Voe até Costa Sul
     .target Gryth Thurden
     .zoneskip Silverpine Forest
     .train 400101,1
@@ -1617,7 +1617,7 @@ step
     .collect 5060,1 >>|cRXP_WARN_Você também precisa|r |T134065:0|t[Ferramentas de Ladrões]
 step
     #completewith next
-    .zone Swamp of Sorrows >>Vá para Pântano das Mágoas
+    .zone Swamp of Sorrows >>Vá ao Pântano das Mágoas
 step
     .goto Swamp of Sorrows,41.48,29.97
     .train 400096,1
@@ -1646,11 +1646,11 @@ step
 step
     .train 425103,1
     #completewith next
-    .zone Stranglethorn Vale >>Vá para Stranglethorn Vale
+    .zone Stranglethorn Vale >>Vá para Vale do Espinho
 step
     .train 425103,1
     #completewith Uniform
-    .goto Stranglethorn Vale,46.30,7.61,30 >> Entre em The Stockpile (Kurzen's Cave)
+    .goto Stranglethorn Vale,46.30,7.61,30 >> Entre na Reserva (Caverna de Kurzen)
 step
     .train 425103,1
     #completewith next
@@ -1662,7 +1662,7 @@ step
     #label Uniform
     .train 425103,1
     .goto Stranglethorn Vale,49.616,7.743
-    >>Abra o |cRXP_PICK_Kurzen Caixote de Suprimentos|r. Pegue o |cRXP_LOOT_Uniforme do Combatente de Kurzen|r
+    >>Abra o |cRXP_PICK_Caixote de Suprimentos de Kurzen|r. Saque-o pelo |cRXP_LOOT_Uniforme do Combatente de Kurzen|r
     .collect 216617,1
 step
     .train 425103,1
@@ -1689,10 +1689,10 @@ step
 step
     .train 425103,1
     #completewith next
-    .subzone 35 >>Viaje para Baía das Bruxas
+    .subzone 35 >>Vá para Angra do Butim
 step
     .train 425103,1
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Capitã Aransas|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com a |cRXP_FRIENDLY_Capitã Aransas|r
     >>Ela lhe dará |T133640:0|t[|cRXP_LOOT_Recompensa da Capitã Aransas|r]
     .goto Stranglethorn Vale,27.681,76.648
     .skipgossip

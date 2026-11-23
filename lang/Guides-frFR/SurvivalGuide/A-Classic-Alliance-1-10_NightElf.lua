@@ -256,7 +256,7 @@ step
     #sticky
     #label vial1
     .goto Teldrassil,59.9,33.0
-	.use 5185 >> Utilisez la [Fiole de cristal] au puits de lune
+	.use 5185 >> Utilisez la [Flasque de cristal] au puits de lune
     .complete 921,1 --Collect Filled Crystal Phial (x1)
 step << Hunter
     .goto Teldrassil,59.8,34.1
@@ -1139,8 +1139,8 @@ step << Hunter
 	.goto Teldrassil,45.6,31.4,0
 	.goto Teldrassil,37.6,28.8,0
     >>Lancez [Apprivoiser une bête] |cRXP_WARN_sur un |cRXP_ENEMY_Strigid Hunter|r pour le dompter|r -- .tame 1997
-    .train 2981 >> Attaquez des mobs avec celui-ci pour qu'il apprenne [Claw (Rank 2)]
-    .link https://www.wow-petopia.com/classic/training.php >> Cliquez ici pour plus d'information sur le dressage des familiers
+    .train 2981 >> Attaquez des créatures avec pour qu'il apprenne [Griffe (Rang 2)]
+    .link https://www.wow-petopia.com/classic/training.php >> |cRXP_WARN_Cliquez ici pour plus d'information sur le dressage des familiers|r
 	.unitscan Strigid Hunter
 step
     .goto Teldrassil,43.2,42.8,55,0
@@ -1166,7 +1166,7 @@ step
 step << Rogue
     .goto Teldrassil,38.0,25.2
     >>Lancez [Vol à la tire] sur |cRXP_ENEMY_Sethir the Ancient|r
-    >>Vous devez être en [Camouflage] pour utiliser votre [Vol à la tire]
+    >>Vous devez être en [Camouflage] pour utiliser [Vol à la tire]
     >>|cRXP_ENEMY_Sethir the Ancient|r marche le long de la grande branche d'arbre
     >>|cRXP_WARN_Évitez d'affronter |cRXP_ENEMY_Sethir the Ancient|r. Laissez le passez devant vous, puis utilisez|r [Camouflage] et ensuite [Vol à la tire] lorsque vous êtes derrière lui
     .complete 2242,1

@@ -633,7 +633,7 @@ step
     #optional
     #softcore
     #completewith next
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
 -- .subzoneskip 59,1
 step << Priest/Mage
@@ -731,7 +731,7 @@ step
     .target Shinyfinder Narf
 step
     #completewith next
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
 step
     #optional
@@ -799,7 +799,7 @@ step << skip -- removing for now for camp fire buff/questline
     #season 0,1 << Rogue
     #softcore
     #completewith Goldshire
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
     .subzoneskip 87
 
@@ -1526,7 +1526,7 @@ step
 step
     #softcore
     #completewith Exchange
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
 step
     #label Exchange
@@ -2420,7 +2420,7 @@ step << !Warlock
     #softcore
     #label EVDeathskip
     #completewith RedridgeS
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
     .zoneskip Redridge Mountains
     .xp >10,1 -- shows to 9 and under
@@ -2485,7 +2485,7 @@ step << !Warlock
 step << !Warlock
     #softcore
     #completewith RRFP
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
     .xp >10,1 -- shows to 9 and under
 step << !Warlock
@@ -2841,7 +2841,7 @@ step
     .accept 11 >> 接受任务 悬赏河爪豺狼人 << Warlock
     .goto 1429/0,694.29,-9662.790
     .target 瑞尼尔副队长
-    >>点击 |cRXP_PICK_通缉布告|r << Warlock
+    >>点击 |cRXP_PICK_通缉告示|r << Warlock
     .accept 176 >> 接受任务 通缉：霍格 << Warlock
     .goto 1429/0,683.40,-9667.93 << Warlock
 step << Warlock
@@ -2991,15 +2991,11 @@ step << skip
     .target 灵魂医者
 -- .subzoneskip 108
 step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_治安官格里安·斯托曼|r 和 |cRXP_FRIENDLY_丹努文队长|r 对话 << !Hunter
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_格里安·斯托曼|r 对话 << Hunter
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_格里安·斯托曼|r 对话
     .turnin 109 >> 交任务 向格里安·斯托曼报到
     .accept 12 >> 接受任务 西部荒野人民军 << !Hunter
     .goto 1436/0,1045.22,-10508.800
-    .target +Gryan Stoutmantle
-    .accept 102 >> 接受任务 西部荒野的豺狼人 << !Hunter
-    .goto 1436/0,1041.93,-10511.20 << !Hunter
-    .target +Captain Danuvin << !Hunter
+    .target 格里安·斯托曼
 step << Human
     #optional
     .goto 1436/0,1055.27,-10128.70
@@ -3414,7 +3410,7 @@ step << Warlock
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_黑暗缚灵者加科因|r 对话
     .target 黑暗缚灵者加科因
     .goto 1453/0,1041.54,-8983.29
-    .turnin 1689 >> 交任务誓缚
+    .turnin 1689 >> 交任务 誓缚
 
 
 ----Warlock Elwynn Voidwalker Section End----
@@ -3470,7 +3466,7 @@ step << Rogue
 step << Human
     #label Continue
     .goto 1453/0,382.02,-8702.290
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_奥斯瑞克·斯图恩|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与|cRXP_FRIENDLY_奥斯瑞克·斯图恩|r 对话
     .turnin 6281 >> 交任务 前往暴风城
     .accept 6261 >> 接受任务 杜加尔·朗德瑞克 << !Hunter
     .target 奥斯瑞克·斯图恩
@@ -3551,7 +3547,7 @@ step << skip
     #label TramCook1
     #completewith TramEnd
     >>|cRXP_WARN_地铁到站时：|r
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Ironforge
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -3565,7 +3561,7 @@ step << skip
     #label TramCook2
     #completewith TramEnd
     >>|cRXP_WARN_地铁到站时：|r
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Ironforge
     .itemcount 769,<1 --Chunk of Boar Meat (<1)
@@ -3579,7 +3575,7 @@ step << skip
     #label TramCook3
     #completewith TramEnd
     >>|cRXP_WARN_地铁到站时：|r
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Ironforge
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -3739,7 +3735,7 @@ step << Mage
     .target 丁克
 step << Paladin
     .goto 1455/0,-896.47,-4601.65
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_布兰度尔·铁锤|r 对话，NPC在里面
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_布兰度尔·铁锤|r 对话，NPC在里面
     .train 633 >> 训练你的职业技能
     .target 布兰度尔·铁锤
 step << skip -- for dungeon route only

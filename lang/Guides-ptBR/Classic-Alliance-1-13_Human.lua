@@ -175,7 +175,7 @@ step << Warrior
     .target +Brother Danil
     .goto Elwynn Forest,47.486,41.566
     >>|interface/worldmap/chatbubble_64grey.blp:20|t Fale com |cRXP_FRIENDLY_Lane Beshere|r no andar de baixo
-    .train 6673 >>Treine |T132333:0|t[Brado de Batalha]
+    .train 6673 >>Aprenda |T132333:0|t[Brado de Batalha]
     .target +Llane Beshere
     .goto Elwynn Forest,50.242,42.287
     .mob Young Wolf
@@ -769,7 +769,7 @@ step << Rogue
     .goto Elwynn Forest,55.09,49.00,30,0
     .goto Elwynn Forest,55.43,45.87,30,0
     .goto Elwynn Forest,53.86,47.05,30,0
-    .xp 4 >> Farme até o nível 4
+    .xp 4 >> Mate inimigos até atingir o nível 4
 step << Human Rogue
     #xprate <1.59
     #season 2
@@ -2853,7 +2853,7 @@ step << !Warlock
     #label RRFP
     .goto Redridge Mountains,30.590,59.410
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Ariena Penafúria|r
-    .fp Redridge Mountains >> Aprenda a rota de voo para Montanhas Cristarrubra
+    .fp Redridge Mountains >> Pegue o ponto de voo das Montanhas Cristarrubra
     .target Ariena Stormfeather
 step << Paladin
     #xprate <1.5
@@ -2861,14 +2861,14 @@ step << Paladin
     #label RRFP
     .goto Redridge Mountains,30.590,59.410
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Ariena Penafúria|r
-    .fp Redridge Mountains >> Aprenda a rota de voo para Montanhas Cristarrubra
+    .fp Redridge Mountains >> Pegue o ponto de voo das Montanhas Cristarrubra
     .target Ariena Stormfeather
 step << Paladin
     #xprate >1.49
     #season 2
     .goto Redridge Mountains,30.590,59.410
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Ariena Penafúria|r
-    .fp Redridge Mountains >> Aprenda a rota de voo para Montanhas Cristarrubra
+    .fp Redridge Mountains >> Pegue o ponto de voo das Montanhas Cristarrubra
     .target Ariena Stormfeather
     .train 410015,3
 step << Paladin
@@ -2877,8 +2877,8 @@ step << Paladin
     #label RRFP
     .goto Redridge Mountains,30.590,59.410
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Ariena Penafúria|r
-    .fp Redridge Mountains >> Aprenda a rota de voo para Montanhas Cristarrubra
-    .fly Stormwind >> Voe para a Cidade de Ventobravo
+    .fp Redridge Mountains >> Pegue o ponto de voo das Montanhas Cristarrubra
+    .fly Stormwind >> Voe para Ventobravo
     .target Ariena Stormfeather
     .train 410015,1
 step << Paladin
@@ -3494,7 +3494,7 @@ step << Rogue
 step << Rogue
     #xprate <1.5
     .goto 1453,58.380,61.683
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com Túlio Malheiros|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com o |cRXP_FRIENDLY_Túlio Malheiros|r
     >>|cRXP_BUY_Compre|r |T135425:0|t[Keen Arremessando Knives] |cRXP_BUY_dele|r
     .collect 3107,200 --Collect Keen Throwing Knife (200)
     .target Thurman Mullby
@@ -3505,7 +3505,7 @@ step << Rogue
 step << Rogue
     #xprate <1.5
     .goto 1453,58.380,61.683
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com Túlio Malheiros|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com o |cRXP_FRIENDLY_Túlio Malheiros|r
     >>|cRXP_BUY_Compre|r |T135641:0|t[Equilibrado Arremessando Adagas] |cRXP_BUY_dele|r
     .collect 2946,200 --Collect Balanced Throwing Dagger (200)
     .target Thurman Mullby
@@ -3514,7 +3514,7 @@ step << Rogue
 step << Rogue
     #xprate >1.49
     .goto 1453,58.380,61.683
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com Túlio Malheiros|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com o |cRXP_FRIENDLY_Túlio Malheiros|r
     >>|cRXP_BUY_Compre|r |T135425:0|t[Keen Arremessando Knives] |cRXP_BUY_dele|r
     .collect 3107,200 --Collect Keen Throwing Knife (200)
     .target Thurman Mullby
@@ -3524,7 +3524,7 @@ step << Rogue
 step << Rogue
     #xprate >1.49
     .goto 1453,58.380,61.683
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com Túlio Malheiros|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com o |cRXP_FRIENDLY_Túlio Malheiros|r
     >>|cRXP_BUY_Compre|r |T135641:0|t[Equilibrado Arremessando Adagas] |cRXP_BUY_dele|r
     .collect 2946,200 --Collect Balanced Throwing Dagger (200)
     .target Thurman Mullby
@@ -3622,7 +3622,7 @@ step
     #xprate <1.5
     .goto StormwindClassic,52.623,65.701
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Estalajadeira Cristine|r
-    .home >> Defina sua Pedra de Retorno na Cidade de Ventobravo
+    .home >> Defina sua Pedra de Regresso para a Cidade de Ventobravo
     .target Innkeeper Allison
 step << skip --Warrior
     #season 2
@@ -3908,7 +3908,7 @@ step << Warlock
 step << Warlock
     .goto Redridge Mountains,30.590,59.410
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Ariena Penafúria|r
-    .fp Redridge Mountains >> Aprenda a rota de voo para Montanhas Cristarrubra
+    .fp Redridge Mountains >> Pegue o ponto de voo das Montanhas Cristarrubra
     .fly Stormwind >> Voe para Ventobravo
     .target Ariena Stormfeather
 step << Warlock
@@ -4168,7 +4168,7 @@ step
     >>Você precisa de 50 em [Culinária] para uma missão mais tarde na Floresta do Crepúsculo
     >>|T133971:0|t[Cozinhe] os seguintes itens
     >>|T133971:0|t[Cozinhe] os |cRXP_LOOT_[Naco de Carne de Javali]|r em [Carne Assada de Porco]
-    >>|T133971:0|t[Cozinhe] a |cRXP_LOOT_[Carne Fibrosa de Lobo]|r em [Carne de Lobo Chamuscada]
+    >>|T133971:0|t[Cozinhe] a |cRXP_LOOT_[Acém de Lobo]|r em [Carne Tostada de Lobo]
     .usespell 2550
     .zoneskip Ironforge
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -4181,7 +4181,7 @@ step
     #label TramCook5
     #completewith TramEnd
     >>Você precisa de 50 em [Culinária] para uma missão mais tarde na Floresta do Crepúsculo
-    >>|T133971:0|t[Cozinhe] a |cRXP_LOOT_[Carne Fibrosa de Lobo]|r em [Carne de Lobo Chamuscada]
+    >>|T133971:0|t[Cozinhe] a |cRXP_LOOT_[Acém de Lobo]|r em [Carne Tostada de Lobo]
     .usespell 2550
     .zoneskip Ironforge
     .itemcount 769,<1 --Chunk of Boar Meat (<1)
@@ -4205,46 +4205,46 @@ step
     #xprate <1.59
     #optional
     #label TramEnd
-    >>|cRXP_WARN_Pegue o Bonde das Profundezas para o lado de Ironforge|r
+    >>|cRXP_WARN_Pegue o Deeprun Tram para o lado de Ironforge|r
     >>|cRXP_WARN_Aumente de Nível em|r |T135966:0|t[Primeiros Socorros] |cRXP_WARN_enquanto espera pelo Bonde para Ironforge se necessário|r << Rogue/Warrior/Paladin
     >>|cRXP_WARN_Você precisará de sua|r |T135966:0|t[Primeiros Socorros] |cRXP_WARN_estar em nível 80 para uma missão do nível 24|r << Rogue !Dwarf
     >>|cRXP_WARN_Lance|r |T136221:0|t[Evocar Emissário do Caos] |cRXP_WARN_e|r |T135230:0|t[Criar Pedra de Vida] |cRXP_WARN_enquanto espera pelo Bonde para Ironforge se necessário|r << Warlock
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Monty|r na plataforma do meio no lado de Ironforge do Tram de Profundezas
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Monty|r na plataforma intermediária no lado de Ironforge do Deeprun Tram
     .accept 6661 >> Aceite Ratos de Porão
     .target Monty
 step
     #xprate <1.59
-    >>|cRXP_WARN_Use a|r |T133942:0|t[Rato Catcher's Flute] |cRXP_WARN_em |cRXP_ENEMY_Deeprun Ratos|r dentro do Bonde das Profundezas|r
+    >>|cRXP_WARN_Use o|r |T133942:0|t[Rato Catcher's Flute] |cRXP_WARN_em |cRXP_ENEMY_Deeprun Ratos|r dentro do Deeprun Tram|r
     .complete 6661,1 --Rats Captured (x5)
     .use 17117
     .mob Deeprun Rat
 step
     #xprate <1.59
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Monty|r dentro do Tram de Profundezas
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Monty|r dentro do Deeprun Tram
     .turnin 6661 >> Entregue Ratos de Porão
     .target Monty
 step
     #xprate >1.59
     #optional
     #label TramEnd
-    >>|cRXP_WARN_Pegue o Bonde das Profundezas para o lado de Ironforge|r
+    >>|cRXP_WARN_Pegue o Deeprun Tram para o lado de Ironforge|r
     >>|cRXP_WARN_Aumente de Nível em|r |T135966:0|t[Primeiros Socorros] |cRXP_WARN_enquanto espera pelo Bonde para Ironforge se necessário|r << Rogue/Warrior/Paladin
     >>|cRXP_WARN_Você precisará de sua|r |T135966:0|t[Primeiros Socorros] |cRXP_WARN_estar em nível 80 para uma missão do nível 24|r << Rogue !Dwarf
     >>|cRXP_WARN_Lance|r |T136221:0|t[Evocar Emissário do Caos] |cRXP_WARN_e|r |T135230:0|t[Criar Pedra de Vida] |cRXP_WARN_enquanto espera pelo Bonde para Ironforge se necessário|r << Warlock
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Monty|r na plataforma do meio no lado de Ironforge do Tram de Profundezas
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Monty|r na plataforma intermediária no lado de Ironforge do Deeprun Tram
     .accept 6661 >> Aceite Ratos de Porão
     .target Monty
     .zoneskip Ironforge
 step
     #xprate >1.59
-    >>|cRXP_WARN_Use a|r |T133942:0|t[Rato Catcher's Flute] |cRXP_WARN_em |cRXP_ENEMY_Deeprun Ratos|r dentro do Bonde das Profundezas|r
+    >>|cRXP_WARN_Use o|r |T133942:0|t[Rato Catcher's Flute] |cRXP_WARN_em |cRXP_ENEMY_Deeprun Ratos|r dentro do Deeprun Tram|r
     .complete 6661,1 --Rats Captured (x5)
     .use 17117
     .mob Deeprun Rat
     .zoneskip Ironforge
 step
     #xprate >1.59
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Monty|r dentro do Tram de Profundezas
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Monty|r dentro do Deeprun Tram
     .turnin 6661 >> Entregue Ratos de Porão
     .target Monty
     .zoneskip Ironforge
@@ -4252,7 +4252,7 @@ step
     #completewith next
     .goto StormwindClassic,61.149,11.568,25,0
     .goto StormwindClassic,64.0,8.10
-    >>|cRXP_WARN_Nível seu|r |T135966:0|t[Primeiros Socorros] |cRXP_WARN_se necessário enquanto aguarda o bonde|r << Rogue/Warrior/Paladin
+    >>|cRXP_WARN_Aumente o Nível de seu|r |T135966:0|t[Primeiros Socorros] |cRXP_WARN_se necessário enquanto espera o bonde|r << Rogue/Warrior/Paladin
     .zone Ironforge >>Pegue o Bonde para Ironforge
 step
     .zone Ironforge >>Entre em Ironforge
@@ -4587,7 +4587,7 @@ step
     .goto Ironforge,25.800,75.500,-1
     .goto Ironforge,24.200,74.600,-1
     .goto Ironforge,23.800,71.800,-1
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com um |cRXP_FRIENDLY_Leiloeiro de Ironforge|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com um |cRXP_FRIENDLY_Leiloeiro de Altaforja|r
     >>|cRXP_BUY_Compre|r |T133970:0|t|cRXP_LOOT_[Nacos de Carne de Javali]|r |cRXP_BUY_e/ou|r |T133970:0|t|cRXP_LOOT_[Acém de Lobo]|r |cRXP_BUY_para aumentar sua habilidade de|r |T133971:0|t[Culinária] |cRXP_BUY_mais tarde|r
     >>|cRXP_WARN_Você precisará de 50 em|r |T133971:0|t[Culinária] |cRXP_WARN_para uma missão em Vila Sombria mais tarde|r
     >>Se você não quiser ou não puder fazer isso, pule esta etapa
@@ -4616,7 +4616,7 @@ step
     .goto Ironforge,25.800,75.500,-1
     .goto Ironforge,24.200,74.600,-1
     .goto Ironforge,23.800,71.800,-1
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com um |cRXP_FRIENDLY_Leiloeiro de Ironforge|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com um |cRXP_FRIENDLY_Leiloeiro de Altaforja|r
     >>Se você não quiser ou não puder fazer isso, pule esta etapa
     >>|cRXP_BUY_Compre os itens a seguir para uma entrega mais rápida em Loch Modan em breve:|r
     >>|T134342:0|t[Javali Intestines]
@@ -4640,7 +4640,7 @@ step << skip --logout skip
 step
     .goto 1426,53.47,35.02
     >>Saia de Altaforja
-    .zone Dun Morogh >> Viagem para Dun Morogh
+    .zone Dun Morogh >> Vá para Dun Morogh
 --logout skip - remove if logout skips re-added
 step
     #optional
@@ -5891,7 +5891,7 @@ step << Mage/Priest/Warlock
     #xprate >1.49
     #ah
     #optional
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com um |cRXP_FRIENDLY_Leiloeiro de Ironforge|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com um |cRXP_FRIENDLY_Leiloeiro de Altaforja|r
     >>|cRXP_BUY_Compre uma|r |T135144:0|t[Varinha Mágica Maior] |cRXP_BUY_se custar menos de 33p 40c|r
     .goto Ironforge,25.800,75.500,-1
     .goto Ironforge,24.200,74.600,-1
@@ -5947,7 +5947,7 @@ step
     .goto Ironforge,25.800,75.500,-1
     .goto Ironforge,24.200,74.600,-1
     .goto Ironforge,23.800,71.800,-1
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com um |cRXP_FRIENDLY_Leiloeiro de Ironforge|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com um |cRXP_FRIENDLY_Leiloeiro de Altaforja|r
     >>|cRXP_BUY_Compre|r |T133970:0|t|cRXP_LOOT_[Nacos de Carne de Javali]|r |cRXP_BUY_e/ou|r |T133970:0|t|cRXP_LOOT_[Acém de Lobo]|r |cRXP_BUY_para aumentar sua habilidade de|r |T133971:0|t[Culinária] |cRXP_BUY_mais tarde|r
     >>|cRXP_WARN_Você precisará de 50 em|r |T133971:0|t[Culinária] |cRXP_WARN_para uma missão em Vila Sombria mais tarde|r
     >>Se você não quiser ou não puder fazer isso, pule esta etapa
@@ -5974,7 +5974,7 @@ step
     .goto Ironforge,25.800,75.500,-1
     .goto Ironforge,24.200,74.600,-1
     .goto Ironforge,23.800,71.800,-1
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com um |cRXP_FRIENDLY_Leiloeiro de Ironforge|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com um |cRXP_FRIENDLY_Leiloeiro de Altaforja|r
     >>Se você não quiser ou não puder fazer isso, pule esta etapa
     >>|cRXP_BUY_Compre os itens a seguir para entregas mais rápidas em Costa Negra em breve:|r
     >>|T133972:0|t[Carne de Moa]
@@ -6106,7 +6106,7 @@ step << Dwarf/Gnome
     #completewith DarkshoreBoat
     .goto Ironforge,55.501,47.742
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Grif Trovino|r
-    .fly Wetlands>> Voe para Terras do Interior
+    .fly Wetlands>> Voe para Pantanal
     .target Gryth Thurden
 step
     #xprate >1.49
@@ -6318,7 +6318,7 @@ step
     >>Você precisa de 50 em [Culinária] para uma missão mais tarde na Floresta do Crepúsculo
     >>|T133971:0|t[Cozinhe] os seguintes itens
     >>|T133971:0|t[Cozinhe] os |cRXP_LOOT_[Naco de Carne de Javali]|r em [Carne Assada de Porco]
-    >>|T133971:0|t[Cozinhe] a |cRXP_LOOT_[Carne Fibrosa de Lobo]|r em [Carne de Lobo Chamuscada]
+    >>|T133971:0|t[Cozinhe] a |cRXP_LOOT_[Acém de Lobo]|r em [Carne Tostada de Lobo]
     .usespell 2550
     .zoneskip Darkshore
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -6332,7 +6332,7 @@ step
     #label DarkshoreCook5
     #completewith DarkshoreBoat
     >>Você precisa de 50 em [Culinária] para uma missão mais tarde na Floresta do Crepúsculo
-    >>|T133971:0|t[Cozinhe] a |cRXP_LOOT_[Carne Fibrosa de Lobo]|r em [Carne de Lobo Chamuscada]
+    >>|T133971:0|t[Cozinhe] a |cRXP_LOOT_[Acém de Lobo]|r em [Carne Tostada de Lobo]
     .usespell 2550
     .zoneskip Darkshore
     .itemcount 769,<1 --Chunk of Boar Meat (<1)

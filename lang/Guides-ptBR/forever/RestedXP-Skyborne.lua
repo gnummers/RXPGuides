@@ -2303,6 +2303,14 @@ step
     .turnin 97965 >>Entregue Introdução ao Acampamento: Primeiros Socorros
     .target Naleeia Tattermend::257018
 step
+    .train 2366,3 --Herbalism Trained
+    .isQuestComplete 97968 --Camping 101: Herbalism
+    .isQuestComplete 92516 --Hippogryph Harassment
+    .goto 2521,43.0,43.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Halassa Relvento::257021|r.
+    .turnin 97968 >>Entregue Introdução ao Acampamento: Herborismo
+    .target Halassa Fernbreeze::257021
+step
     .train 7411,3 -- Enchanting Trained
     .isQuestComplete 98286 -- Camping 101: Enchanting
     .isQuestComplete 92516 -- Hippogryph Harassment
@@ -3119,6 +3127,14 @@ step
     .turnin 98286 >>Entregue Introdução ao Acampamento: Encantamento
     .target Nasalanna Windsinger::257020
 step
+    .train 2366,3 --Herbalism Trained
+    .isQuestComplete 97968 --Camping 101: Herbalism
+    .isQuestComplete 92550 -- Havoc in the Highlands
+    .goto 2521,43.0,43.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Halassa Relvento::257021|r.
+    .turnin 97968 >>Entregue Introdução ao Acampamento: Herborismo
+    .target Halassa Fernbreeze::257021
+step
     .train 3273,3 -- First Aid Trained
     .itemcount 2589,1 -- Linen Cloth
     .goto 2521,43.08,46.31
@@ -3380,7 +3396,7 @@ step << Alliance Hunter
     #completewith Deliver the Signet
     .xp <9,1
     .itemcount 277110,1 --Zephrali Bow
-    +|cRXP_WARN_Equipe o|r |T7810733:0|t[Arco Zefrali].
+    .equip 18,277110 >>|cRXP_WARN_Equipe o|r |T7810733:0|t[Arco Zefrali].
     .use 277110 --Zephrali Bow
 step << Alliance Warrior/Alliance Paladin
     .xp <9,1
@@ -3403,7 +3419,7 @@ step << Alliance Warrior/Alliance Paladin
     #completewith Deliver the Signet
     .xp <9,1
     .itemcount 277106,1 --Zephrali Smasher
-    +|cRXP_WARN_Equipe o|r |T7792097:0|t[Arrebentador Zefrali].
+    .equip 16,277106 >>|cRXP_WARN_Equipe o|r |T7792097:0|t[Arrebentador Zefrali].
     .use 277106 --Zephrali Smasher
 step << Alliance Shaman/Alliance Druid
     .xp <9,1
@@ -3422,7 +3438,7 @@ step << Alliance Shaman/Alliance Druid
     #completewith Deliver the Signet
     .xp <9,1
     .itemcount 277109,1 --Zephrali Greatstaff
-    +|cRXP_WARN_Equipe o|r |T7798447:0|t[Grande Cajado Zefrali].
+    .equip 16,277109 >>|cRXP_WARN_Equipe o|r |T7798447:0|t[Grande Cajado Zefrali].
     .use 277109 --Zephrali Greatstaff
 step << Alliance Rogue
     .xp <9,1
@@ -3445,7 +3461,7 @@ step << Alliance Rogue
     #completewith Deliver the Signet
     .xp <9,1
     .itemcount 277107,1 --Zephrali Bludgeon
-    +|cRXP_WARN_Equipe o|r |T7791298:0|t[Porrete Zefrali].
+    .equip 16,277107 >>|cRXP_WARN_Equipe o|r |T7791298:0|t[Porrete Zefrali].
     .use 277107 --Zephrali Bludgeon
 -- step << Mage/Priest/Warlock
 --     .xp <9,1
@@ -3577,7 +3593,7 @@ step << Alliance
     .cooldown spell,1259416,>0,1 -- Walk on Air
     .goto 2521,66.47,76.68,10,0
     .goto 2521,66.63,79.94
-    .cast 1259416 >>Pule da montanha e use |T132845:0|t[Andar no Ar] para planar até o PNJ que oferece a missão.
+    .cast 1259416 >>Pule da árvore e use |T132845:0|t[Andar no Ar] para voar até quem oferece a missão.
     *|cRXP_WARN_Se calcular bem o momento, pode cancelar o efeito no ar para pousar dentro do prédio|r
     .usespell 1259416
     .macro Cancel Walk on Air,132845 >>Cancele Andar no Ar
@@ -3773,7 +3789,7 @@ step << Horde Hunter
     #completewith LeavingValanaarA
     .xp <9,1
     .itemcount 277110,1 --Zephrali Bow
-    +|cRXP_WARN_Equipe o|r |T7810733:0|t[Arco Zefrali].
+    .equip 18,277110 >>|cRXP_WARN_Equipe o|r |T7810733:0|t[Arco Zefrali].
     .use 277110 --Zephrali Bow
 step << Horde Warrior
     .xp <9,1
@@ -3795,7 +3811,7 @@ step << Horde Warrior
     #completewith LeavingValanaarA
     .xp <9,1
     .itemcount 277106,1 --Zephrali Smasher
-    +|cRXP_WARN_Equipe o|r |T7792097:0|t[Arrebentador Zefrali].
+    .equip 16,277106 >>|cRXP_WARN_Equipe o|r |T7792097:0|t[Arrebentador Zefrali].
     .use 277106 --Zephrali Smasher
 step << Horde Shaman/Horde Druid
     .xp <9,1
@@ -3818,7 +3834,7 @@ step << Horde Shaman/Horde Druid
     #completewith LeavingValanaarA
     .xp <9,1
     .itemcount 277109,1 --Zephrali Greatstaff
-    +|cRXP_WARN_Equipe o|r |T7798447:0|t[Grande Cajado Zefrali].
+    .equip 16,277109 >>|cRXP_WARN_Equipe o|r |T7798447:0|t[Grande Cajado Zefrali].
     .use 277109 --Zephrali Greatstaff
 step << Horde Rogue
     .xp <9,1
@@ -3840,15 +3856,15 @@ step << Horde Rogue
     #completewith LeavingValanaarA
     .xp <9,1
     .itemcount 277107,1 --Zephrali Bludgeon
-    +|cRXP_WARN_Equipe o|r |T7791298:0|t[Porrete Zefrali].
+    .equip 16,277107 >>|cRXP_WARN_Equipe o|r |T7791298:0|t[Porrete Zefrali].
     .use 277107 --Zephrali Bludgeon
-step << Horde
-    .train 2366,3 -- Herbalism Trained
-    .isQuestComplete 97968 -- Camping 101: Herbalism
-    .goto 2521,57.890,75.514
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Syriel Serenoite::254345|r.
-    .target Syriel Nightrain::254345
-    .turnin 97968 >>Entregue Introdução ao Acampamento: Herborismo
+-- step << Horde
+--     .train 2366,3 -- Herbalism Trained
+--     .isQuestComplete 97968 -- Camping 101: Herbalism
+--     .goto 2521,57.890,75.514
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Syriel Nightrain::254345|r.
+--     .target Syriel Nightrain::254345
+--     .turnin 97968 >>Turn in Camping 101: Herbalism
 step << Hunter Horde
     .money <0.1345
     .isOnQuest 93735 -- The Broken Construct
@@ -4365,9 +4381,9 @@ step
     .target Alvarion Windfield::252448
 step
     #completewith Accept Catching Wind
-    *|cRXP_WARN_Equipe a|r |T134435:0|t[Pá para Plantio] << Warrior/Shaman/Paladin
-    *|cRXP_WARN_Equipe o|r |T133057:0|t[Martelo de Telhador] << Druid/Priest
-    *|cRXP_WARN_Equipe a|r |T134520:0|t[Chave de Boca Confiável] << Rogue
+    .equip 16,263312 >>|cRXP_WARN_Equipe a|r |T134435:0|t[Pá para Plantio] << Warrior/Shaman/Paladin
+    .equip 16,263314 >>|cRXP_WARN_Equipe o|r |T133057:0|t[Martelo de Telhador] << Druid/Priest
+    .equip 16,263313 >>|cRXP_WARN_Equipe a|r |T134520:0|t[Chave de Boca Confiável] << Rogue
     .use 263312 << Warrior/Shaman/Paladin -- Planting Shovel
     .use 263314 << Druid/Priest -- Roofing Hammer
     .use 263313 << Rogue -- Trusty Wrench
@@ -4406,7 +4422,7 @@ step << Warrior
     .goto 2521,59.889,72.869
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Seena Rompe-céus::252377|r.
     .target Seena Skybreaker::252377
-    .accept 94003 >>Aceite O Rompe-Céus Baluarte
+    .accept 94003 >>Aceite O Baluarte do Rompe-céus
 step << Warrior
     .money <0.12
     .xp <10,1
@@ -4438,7 +4454,7 @@ step << Warrior/Paladin
     #completewith Learn << Horde
     .xp <9,1
     .itemcount 277106,1 --Zephrali Smasher
-    +|cRXP_WARN_Equipe o|r |T7792097:0|t[Arrebentador Zefrali].
+    .equip 16,277106 >>|cRXP_WARN_Equipe o|r |T7792097:0|t[Arrebentador Zefrali].
     .use 277106 --Zephrali Smasher
 step << Shaman/Druid
     .xp <9,1
@@ -4461,7 +4477,7 @@ step << Shaman/Druid
     #completewith Learn << Horde
     .xp <9,1
     .itemcount 277109,1 --Zephrali Greatstaff
-    +|cRXP_WARN_Equipe o|r |T7798447:0|t[Grande Cajado Zefrali].
+    .equip 16,277109 >>|cRXP_WARN_Equipe o|r |T7798447:0|t[Grande Cajado Zefrali].
     .use 277109 --Zephrali Greatstaff
 step << Rogue
     .money <0.09
@@ -4500,7 +4516,7 @@ step << Rogue
     #completewith Learn << Horde
     .xp <9,1
     .itemcount 277107,1 --Zephrali Bludgeon
-    +|cRXP_WARN_Equipe o|r |T7791298:0|t[Porrete Zefrali].
+    .equip 16,277107 >>|cRXP_WARN_Equipe o|r |T7791298:0|t[Porrete Zefrali].
     .use 277107 --Zephrali Bludgeon
 step << Hunter
     .goto 2521,59.55,73.3,25,0
@@ -4538,7 +4554,7 @@ step << Hunter
     #completewith Learn << Horde
     .xp <9,1
     .itemcount 277110,1 --Zephrali Bow
-    +|cRXP_WARN_Equipe o|r |T7810733:0|t[Arco Zefrali].
+    .equip 18,277110 >>|cRXP_WARN_Equipe o|r |T7810733:0|t[Arco Zefrali].
     .use 277110 --Zephrali Bow
 step << Horde Druid
     .subzoneskip 16638,1 -- Valanaar
@@ -4864,13 +4880,13 @@ step << Alliance Hunter
     .turnin 94979 >>Entregue Domando a fera
     .accept 94013 >>Aceite Domando a fera
     .target Quel'ana Quickgale::252389
-step << Alliance Hunter
-    .train 2366,3 -- Herbalism Trained
-    .isQuestComplete 97968 -- Camping 101: Herbalism
-    .goto 2521,57.890,75.514
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Syriel Serenoite::254345|r.
-    .turnin 97968 >>Entregue Introdução ao Acampamento: Herborismo
-    .target Syriel Nightrain::254345
+-- step << Alliance Hunter
+--     .train 2366,3 -- Herbalism Trained
+--     .isQuestComplete 97968 -- Camping 101: Herbalism
+--     .goto 2521,57.890,75.514
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Syriel Nightrain::254345|r.
+--     .turnin 97968 >>Turn in Camping 101: Herbalism
+--     .target Syriel Nightrain::254345
 step << Alliance Hunter
     #optional
     #completewith next
@@ -4954,13 +4970,13 @@ step << Mage
     >>Mate |cRXP_ENEMY_Saltacéus::251314|r.
     .complete 93949,1 --|8/8 Enchanted Skyhopper Exterminated
     .mob Skyhopper::251314
-step << Alliance !Hunter
-    .train 2366,3 -- Herbalism Trained
-    .isQuestComplete 97968 -- Camping 101: Herbalism
-    .goto 2521,57.890,75.514
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Syriel Serenoite::254345|r.
-    .turnin 97968 >>Entregue Introdução ao Acampamento: Herborismo
-    .target Syriel Nightrain::254345
+-- step << Alliance !Hunter
+--     .train 2366,3 -- Herbalism Trained
+--     .isQuestComplete 97968 -- Camping 101: Herbalism
+--     .goto 2521,57.890,75.514
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Syriel Nightrain::254345|r.
+--     .turnin 97968 >>Turn in Camping 101: Herbalism
+--     .target Syriel Nightrain::254345
 step << Alliance !Mage/Alliance !Hunter
     #loop
     .goto 2521,58.85,75.49,30,0
@@ -5212,7 +5228,7 @@ step << Alliance !Druid
     .cooldown spell,1259416,>0,1 -- Walk on Air
     .goto 2521,66.47,76.64,10,0
     .goto 2521,65.36,71.79
-    .cast 1259416 >>Pule da montanha e use |T132845:0|t[Andar no Ar] para planar até o ponto indicado.
+    .cast 1259416 >>Pule da árvore e use |T132845:0|t[Andar no Ar] para voar até o ponto indicado pela seta.
     .usespell 1259416
 step << Alliance
     .goto 2521,65.956,74.309
@@ -5449,7 +5465,7 @@ step << Alliance
     .goto 2521,66.47,76.61,8,0
     .goto 2521,66.31,76.18,15,0
     .goto 2521,63.14,76.9
-    .cast 1259416 >>Pule da montanha e use |T132845:0|t[Andar no Ar] para planar até o ponto indicado.
+    .cast 1259416 >>Pule da árvore e use |T132845:0|t[Andar no Ar] para voar até o ponto indicado pela seta.
     .usespell 1259416
 step << Alliance
     .subzoneskip 16638,1 -- Valanaar
@@ -5485,7 +5501,7 @@ step << Hunter Alliance
     #completewith secluded house
     .xp <9,1
     .itemcount 277110,1 --Zephrali Bow
-    +|cRXP_WARN_Equipe o|r |T7810733:0|t[Arco Zefrali].
+    .equip 18,277110 >>|cRXP_WARN_Equipe o|r |T7810733:0|t[Arco Zefrali].
     .use 277110 --Zephrali Bow
 step << Warrior Alliance/Paladin Alliance
     .xp <9,1
@@ -5508,7 +5524,7 @@ step << Warrior Alliance/Paladin Alliance
     #completewith secluded house
     .xp <9,1
     .itemcount 277106,1 --Zephrali Smasher
-    +|cRXP_WARN_Equipe o|r |T7792097:0|t[Arrebentador Zefrali].
+    .equip 16,277106 >>|cRXP_WARN_Equipe o|r |T7792097:0|t[Arrebentador Zefrali].
     .use 277106 --Zephrali Smasher
 step << Rogue Alliance
     .xp <9,1
@@ -5531,7 +5547,7 @@ step << Rogue Alliance
     #completewith secluded house
     .xp <9,1
     .itemcount 277107,1 --Zephrali Bludgeon
-    +|cRXP_WARN_Equipe o|r |T7791298:0|t[Porrete Zefrali].
+    .equip 16,277107 >>|cRXP_WARN_Equipe o|r |T7791298:0|t[Porrete Zefrali].
     .use 277107 --Zephrali Bludgeon
 -- step << Alliance
 --     .subzoneskip 16638,1 -- Valanaar
@@ -5646,7 +5662,7 @@ step << Rogue Alliance
 step << Alliance
     .isNotOnQuest 98512 --Al'Aketh Assassins
     .isQuestAvailable 98512 --Al'Aketh Assassins
-    .goto 2521,66.49,76.65,8,0
+    -- .goto 2521,66.49,76.65,8,0
     .goto 2521,68.84,78.42,-1
     .goto 2521,60.74,78.02,-1
     .subzone 16626 >>Pule do penhasco
@@ -5818,7 +5834,7 @@ step << Alliance
 
 step << Warrior
     .goto 2521,56.56,50.36
-    >>Mate |cRXP_ENEMY_Zaal Escudo Tonante::257196|r. Saqueie-o para o |T134959:0|t[|cRXP_LOOT_Skybreaker Baluarte|r].
+    >>Mate |cRXP_ENEMY_Zaal Escudo Tonante::257196|r. Pegue o |T134959:0|t[|cRXP_LOOT_Baluarte do Rompe-céus|r].
     .complete 94003,1 --|1/1 Skybreaker Bulwark
     .mob Zaal Stormshield::257196
 
@@ -6045,7 +6061,6 @@ step
     #hidewindow
     #completewith ToHermit << Alliance
     #completewith ForestHollowsA << Horde
-    #loop
     .goto 2521,62.83,38.25,35,0
     .goto 2521,62.08,36.7,35,0
     .goto 2521,61.17,35.44,35,0
@@ -6212,6 +6227,12 @@ step
     .turnin 93165,2 >>Entregue Menos misericórdia, mais orelhas << Mage/Priest/Warlock
     .turnin 93165,3 >>Entregue Menos misericórdia, mais orelhas << Warrior/Paladin
     .target Vayn Moongaze::254151
+step << Alliance
+    .goto 2521,63.80,36.00
+    .itemcount 265476,1
+    >>Use a |T134332:0|t[Missiva Rasgada] nas bolsas para iniciar a missão.
+    .accept 94490 >>Aceite Missiva Rasgada
+    .use 265476 -- Ripped Missive
 step
     .goto 2521,63.93,33.76,20,0
     .goto 2521,63.69,32.49,20,0
@@ -6312,7 +6333,7 @@ step << Alliance Warrior
     .goto 2521,59.886,72.863
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Seena Rompe-céus::252377|r.
     .target Seena Skybreaker::252377
-    .turnin 94003 >>Entregue O Rompe-céus Baluarte
+    .turnin 94003 >>Entregue O Baluarte do Rompe-céus
 -- step << Alliance Rogue
 --     .goto 2521,59.9,72.48
 --     *|cRXP_WARN_Use the Interact Key through the Wall|r
@@ -6473,7 +6494,7 @@ step << Alliance
     .cooldown spell,1259416,>0,1 -- Walk on Air
     .goto 2521,66.49,76.64,8,0
     .goto 2521,63.33,78.16
-    .cast 1259416 >>Pule da montanha e use |T132845:0|t[Andar no Ar] para planar até o ponto indicado.
+    .cast 1259416 >>Pule da árvore e use |T132845:0|t[Andar no Ar] para voar até o ponto indicado pela seta.
     .usespell 1259416
 step << Alliance
     .goto 2521,63.33,78.16,30,0
@@ -6562,7 +6583,7 @@ step << Alliance
     .goto 2521,66.49,76.64,8,0
     .goto 2521,66.39,76.26,10,0
     .goto 2521,63.9,74.16
-    .cast 1259416 >>Pule da montanha e use |T132845:0|t[Andar no Ar] para planar até o ponto indicado.
+    .cast 1259416 >>Pule da árvore e use |T132845:0|t[Andar no Ar] para voar até o ponto indicado pela seta.
     .usespell 1259416
 step << Alliance
     .subzoneskip 16638,1 -- Valanaar
@@ -6914,7 +6935,7 @@ step << Alliance
 step << Alliance Druid
     .goto 1416/0,385.700,385.400
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Arquimago Ansirem Tecerrunas::2543|r.
-    .accept 94912 >>Aceite Child of Nature
+    .accept 94912 >>Aceite Cria da natureza
     .target Archmage Ansirem Runeweaver::2543
 step << Alliance
     .goto 1416/0,445.93,450.00
@@ -6924,7 +6945,7 @@ step << Alliance Druid
     .goto 1453/0,1100.200,-8776.400
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Sheldras Lunárvore::5504|r
     .target Sheldras Moontree::5504
-    .turnin 94912 >>Entregue Child of Nature
+    .turnin 94912 >>Entregue Cria da natureza
     .accept 94914 >>Aceite Clareira da Lua
 step << Alliance Hunter
     .goto 1453/0,765.700,-8804.000
@@ -7081,7 +7102,7 @@ step << Alliance Hunter
     >>Você precisa de 50 em [Culinária] para uma missão mais tarde na Floresta do Crepúsculo
     >>|T133971:0|t[Cozinhe] os seguintes itens
     >>|T133971:0|t[Cozinhe] os |cRXP_LOOT_[Naco de Carne de Javali]|r em [Carne Assada de Porco]
-    >>|T133971:0|t[Cozinhe] a |cRXP_LOOT_[Carne Fibrosa de Lobo]|r em [Carne de Lobo Chamuscada]
+    >>|T133971:0|t[Cozinhe] a |cRXP_LOOT_[Acém de Lobo]|r em [Carne Tostada de Lobo]
     .usespell 2550
     .zoneskip Darkshore
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -7094,7 +7115,7 @@ step << Alliance Hunter
     #label DarkshoreCook5
     #completewith DarkshoreBoat
     >>Você precisa de 50 em [Culinária] para uma missão mais tarde na Floresta do Crepúsculo
-    >>|T133971:0|t[Cozinhe] a |cRXP_LOOT_[Carne Fibrosa de Lobo]|r em [Carne de Lobo Chamuscada]
+    >>|T133971:0|t[Cozinhe] a |cRXP_LOOT_[Acém de Lobo]|r em [Carne Tostada de Lobo]
     .usespell 2550
     .zoneskip Darkshore
     .itemcount 769,<1 --Chunk of Boar Meat (<1)
@@ -7139,7 +7160,7 @@ step << Horde
 step << Horde Warrior
     .goto 2521,59.886,72.863
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Seena Rompe-céus::252377|r.
-    .turnin 94003 >>Entregue O Rompe-céus Baluarte
+    .turnin 94003 >>Entregue O Baluarte do Rompe-céus
     .target Seena Skybreaker::252377
 step << Horde Warrior
     .money <0.3
@@ -7232,10 +7253,10 @@ step << Horde Druid Skyborne
     .goto 1412/1,423.400,-659.000
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Muln Earthfury::259118|r.
     .target Muln Earthfury::259118
-    .accept 94911 >>Aceite Child of Nature
+    .accept 94911 >>Aceite Cria da natureza
 step << Horde
     .goto 1412/1,426.100,-658.000
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Alaana Stormwalker::259119|r.
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Alaana Tempesvaga::259119|r.
     .accept 95350 >>Aceite Boas-Vindas a Azeroth
     .target Alaana Stormwalker::259119
 step << Horde
@@ -7248,7 +7269,7 @@ step << Horde
     .isOnQuest 95350
     .subzoneskip 1638,1
     .goto 1456/1,-74.900,-981.700
-    .deathskip >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com o |cRXP_FRIENDLY_Spirit Curador::6491|r.
+    .deathskip >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Anjo da Cura::6491|r.
     .skipgossipid 96031
     .skipgossipid 98031
     .target Spirit Healer::6491
@@ -7257,7 +7278,7 @@ step << Horde Druid Skyborne
     #label ChildOfNatureA
     #hidewindow
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Turak Runa Totem::3033|r.
-    .turnin 94911 >>Entregue Child of Nature
+    .turnin 94911 >>Entregue Cria da natureza
     .accept 94913 >>Aceite Clareira da Lua
     .target Turak Runetotem::3033
 step << Horde Druid Skyborne
@@ -7279,7 +7300,7 @@ step << Horde Druid Skyborne
     #requires ChildOfNatureC
     .goto 1456/1,-281.500,-1039.900
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Turak Runa Totem::3033|r.
-    .turnin 94911 >>Entregue Child of Nature
+    .turnin 94911 >>Entregue Cria da natureza
     .accept 94913 >>Aceite Clareira da Lua
     .target Turak Runetotem::3033
 step << Horde Druid Skyborne
@@ -7445,10 +7466,10 @@ step << Horde
 step << Horde
     .goto 1454/1,-4126.300,1920.100
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Thrall::4949|r.
-    .turnin 95350 >>Entregue Bem-vindo a Azeroth
+    .turnin 95350 >>Entregue Boas-Vindas a Azeroth
     .accept 98024 >>Aceite Jornada para a Encruzilhada
     --.accept 93739 >>Accept Exploring the Horde
-    .accept 5726 >>Aceite Escondido Enemies
+    .accept 5726 >>Aceite Inimigos ocultos
     .target Thrall::4949
     .dungeon RFC
 step << skip --Horde

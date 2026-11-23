@@ -51,7 +51,7 @@ step << Priest/Mage
     #label Vendor
     .goto Tirisfal Glades,32.29,65.44
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Josué|r
-    >>|cRXP_BUY_Compre|r |T132794:0|t[Água Refrescante da Fonte] |cRXP_BUY_dele|r
+    >>|cRXP_BUY_Compre|r |T132794:0|t[Água Refrescante da Fonte] |cRXP_BUY_com ele|r
     .vendor >> Venda os itens de lixo
 	.collect 159,10,383,1 --Collect Refreshing Spring Water (10)
     .target Joshua Kien
@@ -117,7 +117,7 @@ step << Warrior
     #label Training1
     .goto Tirisfal Glades,32.68,65.56
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Dannal Stern|r
-    .train 6673 >>Treine |T132333:0|t[Brado de Batalha]
+    .train 6673 >>Aprenda |T132333:0|t[Brado de Batalha]
     .target Dannal Stern
 step << Warlock
     #requires Piercing
@@ -145,7 +145,7 @@ step << Warlock
     .goto Tirisfal Glades,32.23,65.59,8,0
     .goto Tirisfal Glades,32.29,65.44
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Josué|r
-    >>|cRXP_BUY_Compre|r |T132794:0|t[Água Refrescante da Fonte] |cRXP_BUY_dele|r
+    >>|cRXP_BUY_Compre|r |T132794:0|t[Água Refrescante da Fonte] |cRXP_BUY_com ele|r
 	.collect 159,5,383,1 --Collect Refreshing Spring Water (5)
     .target Joshua Kien
     .isOnQuest 1470
@@ -191,7 +191,7 @@ step << Mage/Warlock/Priest
     .goto Tirisfal Glades,32.23,65.59,8,0
     .goto Tirisfal Glades,32.29,65.44
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Josué|r
-    >>|cRXP_BUY_Compre|r |T132794:0|t[Água Refrescante da Fonte] |cRXP_BUY_dele|r
+    >>|cRXP_BUY_Compre|r |T132794:0|t[Água Refrescante da Fonte] |cRXP_BUY_com ele|r
     .collect 159,10,383,1 --Collect Refreshing Spring Water (10)
     .vendor >> Venda os itens de lixo
     .target Joshua Kien
@@ -203,7 +203,7 @@ step << Mage/Warlock/Priest
     .goto Tirisfal Glades,32.23,65.59,8,0
     .goto Tirisfal Glades,32.29,65.44
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Josué|r
-    >>|cRXP_BUY_Compre|r |T132794:0|t[Água Refrescante da Fonte] |cRXP_BUY_dele|r
+    >>|cRXP_BUY_Compre|r |T132794:0|t[Água Refrescante da Fonte] |cRXP_BUY_com ele|r
     .collect 159,5,383,1 --Collect Refreshing Spring Water (5)
     .vendor >> Venda os itens de lixo
     .target Joshua Kien
@@ -211,7 +211,7 @@ step << Mage/Warlock/Priest
     .money >0.0050
     .itemcount 159,<5
 step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Sarvis|r e |cRXP_FRIENDLY_Elreth|r << !Warlock !Mage !Priest
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Sacerdote Sombrio Sarvis|r e |cRXP_FRIENDLY_Noviça Elvira|r << !Warlock !Mage !Priest
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Sacerdote Sombrio Sarvis|r, |cRXP_FRIENDLY_Noviça Elvira|r e |cRXP_FRIENDLY_Maximillion|r << Warlock
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Sacerdote Sombrio Sarvis|r, |cRXP_FRIENDLY_Noviça Elvira|r e |cRXP_FRIENDLY_Isabella|r << Mage
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Sacerdote Sombrio Sarvis|r, |cRXP_FRIENDLY_Noviça Elvira|r e |cRXP_FRIENDLY_Clérigo das Trevas Duesten|r << Priest
@@ -241,7 +241,7 @@ step << Mage/Warlock/Priest
     .goto Tirisfal Glades,32.23,65.59,8,0
     .goto Tirisfal Glades,32.29,65.44
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Josué|r
-    >>|cRXP_BUY_Compre|r |T132794:0|t[Água Refrescante da Fonte] |cRXP_BUY_dele|r
+    >>|cRXP_BUY_Compre|r |T132794:0|t[Água Refrescante da Fonte] |cRXP_BUY_com ele|r
     .collect 159,10,383,1 --Collect Refreshing Spring Water (10)
     .target Joshua Kien
     .isOnQuest 364
@@ -318,7 +318,7 @@ step << Mage/Warlock/Priest
     .goto Tirisfal Glades,32.25,65.59,8,0
     .goto Tirisfal Glades,32.29,65.44
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Josué|r
-    >>|cRXP_BUY_Compre|r |T132794:0|t[Água Refrescante da Fonte] |cRXP_BUY_dele|r
+    >>|cRXP_BUY_Compre|r |T132794:0|t[Água Refrescante da Fonte] |cRXP_BUY_com ele|r
     >>|cRXP_WARN_NÃO fique com menos de 1 de Prata|r << Mage/Warlock/Priest
     .collect 159,15,380,1 --Collect Refreshing Spring Water (10)
     .target Joshua Kien
@@ -326,7 +326,7 @@ step << Mage/Warlock/Priest
     .isOnQuest 3901
     .itemcount 159,<20
 step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Sarvis|r e |cRXP_FRIENDLY_Elreth|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Sacerdote Sombrio Sarvis|r e |cRXP_FRIENDLY_Noviça Elvira|r
     .turnin 3901 >> Entregue Desossando alguns Range-ossos
     .target +Shadow Priest Sarvis
     .goto Tirisfal Glades,31.35,66.21,10,0
@@ -369,7 +369,7 @@ step << Warlock
 step << Mage
     .goto Tirisfal Glades,30.94,66.06
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Isabella|r
-    .train 116 >> Treine |T135846:0|t[Seta de Gelo]
+    .train 116 >> Aprenda |T135846:0|t[Seta de Gelo]
     .target Isabella
 step
     .goto Tirisfal Glades,31.35,66.21,10,0
@@ -514,7 +514,7 @@ step << Rogue/Warrior
 step << Warlock/Mage/Priest
     .goto Tirisfal Glades,32.29,65.44
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Josué|r
-    >>|cRXP_BUY_Compre|r |T132794:0|t[Água Refrescante da Fonte] |cRXP_BUY_dele|r
+    >>|cRXP_BUY_Compre|r |T132794:0|t[Água Refrescante da Fonte] |cRXP_BUY_com ele|r
 	.collect 159,15,383,1 << Warlock/Mage/Priest --Collect Refreshing Spring Water (15)
     .vendor >> Venda os itens de lixo
     .target Joshua Kien
@@ -667,7 +667,7 @@ step << Priest/Warlock
     .goto Tirisfal Glades,52.59,55.53
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Bowen Brisboise|r
     .train 3908 >> Aprenda |T136249:0|t[Alfaiataria]
-    >>|cRXP_WARN_Guarde seus|r |T132889:0|t[Linho]|cRXP_WARN_. Isso permitirá que você crie uma varinha depois|r
+    >>|cRXP_WARN_Guarde seu|r |T132889:0|t[Linho]|cRXP_WARN_. Assim, poderá criar uma varinha mais tarde|r
     .target Bowen Brisboise
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Dillinger|r e |cRXP_FRIENDLY_Zygand|r
@@ -1088,7 +1088,7 @@ step
 step
     .goto Durotar,49.89,40.39
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Férrano Escarnecenho|r
-    .accept 791 >>Aceite Carregar Seu Peso
+    .accept 791 >>Aceite Carregue suas tralhas
     .target Furl Scornbrow
 step
     #completewith TravelToTiragarde
@@ -1120,7 +1120,7 @@ step
     .accept 817 >>Aceite Presa prática
     .target +Vel'rin Fang
     .goto Durotar,55.95,73.93
-    .accept 818 >>Aceite Um Espírito Solvente
+    .accept 818 >>Aceite Um espírito solvente
     .target +Master Vornal
     .goto Durotar,55.94,74.40
     .accept 808 >>Aceite O Crânio de Minshina
@@ -1642,10 +1642,10 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com o |cRXP_FRIENDLY_Estalajadeiro Grosk|r
     >>|cRXP_BUY_Compre|r |T132815:0|t[Leite Gelado] |cRXP_BUY_dele|r << Mage/Warlock/Priest/Shaman/Druid
     >>|cRXP_BUY_Compre|r |T133974:0|t[Pernil de Carne] |cRXP_BUY_dele|r << Rogue/Warrior
-    >>|cRXP_WARN_Guarde 4 de prata para seus feitiços de classe!|r << Rogue/Warrior/Shaman/Warlock
+    >>|cRXP_WARN_Reserve 4 moedas de prata para os feitiços da sua classe!|r << Rogue/Warrior/Shaman/Warlock
     >>|cRXP_WARN_Guarde 2 de prata para os feitiços da sua classe!|r << Priest
     .vendor >> Venda os itens de lixo
-    .turnin 2161 >>Entregue O Fardo do Peão
+    .turnin 2161 >>Entregue O fardo de um peão
     .target Innkeeper Grosk
     .train 6760,1 << Rogue
     .train 139,1 << Priest
@@ -1659,7 +1659,7 @@ step << !Mage !Hunter !Druid
     >>|cRXP_BUY_Compre|r |T132815:0|t[Leite Gelado] |cRXP_BUY_dele|r << Mage/Warlock/Priest/Shaman/Druid
     >>|cRXP_BUY_Compre|r |T133974:0|t[Pernil de Carne] |cRXP_BUY_dele|r << Rogue/Warrior
     .vendor >> Venda os itens de lixo
-    .turnin 2161 >>Entregue O Fardo do Peão
+    .turnin 2161 >>Entregue O fardo de um peão
     .target Innkeeper Grosk
     .train 6760,3 << Rogue
     .train 139,3 << Priest
@@ -1706,7 +1706,7 @@ step
 step
     .goto Durotar,54.39,42.18
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Jark|r
-    >>|cRXP_BUY_Compre uma|r |T133634:0|t[Pequeno Brown Pouch] |cRXP_BUY_de|r |cRXP_BUY_dele|r
+    >>|cRXP_BUY_Compre uma|r |T133634:0|t[Bolsa Marrom Pequena] |cRXP_BUY_de|r |cRXP_BUY_dela|r
     .collect 4496,1,818,1 --Small Brown Pouch (1)
     .target Jark
     .money <0.05
@@ -1731,11 +1731,11 @@ step
     .goto Durotar,62.51,60.56,20,0
     .goto Durotar,63.24,58.10,20,0
     .goto Durotar,62.25,56.34,20,0
-    >>Saque as |cRXP_PICK_Gnomish Toolboxes|r dentro e ao redor dos barcos
+    >>Saqueie as |cRXP_PICK_Caixas de Ferramentas Gnômicas|r dentro dos barcos e ao redor deles
     .complete 825,1 --Gnomish Tools (3)
 step
     #completewith TaillasherEggs
-    .goto Durotar,67.10,69.29,100 >> Nade para a Ilha
+    .goto Durotar,67.10,69.29,100 >> Nade até a ilha
 step
     #completewith Fur
     >>Mate os |cRXP_ENEMY_Tigers|r. Saqueie-os para obter seu |cRXP_LOOT_Fur|r. Isto não precisa ser terminado agora
@@ -1937,7 +1937,7 @@ step
     .goto Durotar,51.12,42.46,150 >> Corra para Razor Hill
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com|r |cRXP_FRIENDLY_Cozinheiro Torka|r e |cRXP_FRIENDLY_Gar'Thok|r
-    .turnin 815 >>Entregue Quebre Alguns Ovos
+    .turnin 815 >>Entregue Quebrar alguns ovos
     .target +Cook Torka
     .goto Durotar,51.12,42.46
     .turnin 825 >>Entregue Dos destroços...
@@ -2000,7 +2000,7 @@ step
     .goto Durotar,41.64,38.27,50,0
     .goto Durotar,41.94,40.46,50,0
     .goto Durotar,43.30,40.40,50,0
-    >>Mate os |cRXP_ENEMY_Razormane Dustrunners|r e os |cRXP_ENEMY_Razormane Battleguards|r
+    >>Mate |cRXP_ENEMY_Levanta-poeira Crinavalha|r e |cRXP_ENEMY_Guardas de Batalha Crinavalha|r
     .complete 837,3 --Razormane Dustrunner (4)
     .mob +Razormane Dustrunner
     .complete 837,4 --Razormane Battleguard (4)
@@ -2090,7 +2090,7 @@ step
     .goto Durotar,44.72,24.86,40,0
     .goto Durotar,42.28,25.45,30,0
     .goto Durotar,41.66,25.68,20 >>Pule para dentro do Desfiladeiro do Trovão << !Hunter !Warlock
-    .cast 2641 >>|cRXP_WARN_Lance|r |T136095:0|t[Dispensar Ajudante] |cRXP_WARN_e então pule para Trovão Serra|r << Hunter
+    .cast 2641 >>|cRXP_WARN_Use|r |T136095:0|t[Dispensar Ajudante] |cRXP_WARN_e depois pule para dentro do Desfiladeiro do Trovão|r << Hunter
     +|cRXP_WARN_Dispense seu diabrete e depois pule para Serra do Trovão|r << Warlock
     .group
 step
@@ -2132,7 +2132,7 @@ step
     .group
 step
     .goto Durotar,52.24,43.15
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com Orgnil|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Orgnil Chaganalma|r
     .turnin 806 >>Entregue Tempestades sombrias
     .accept 828 >>Aceite Margoz
     .target Orgnil Soulscar
@@ -2140,7 +2140,7 @@ step
     .group
 step
     .goto Durotar,52.24,43.15
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com Orgnil|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Orgnil Chaganalma|r
     .accept 828 >>Aceite Margoz
     .target Orgnil Soulscar
     .isQuestTurnedIn 806
@@ -2461,7 +2461,7 @@ step << !Mage
     .money <0.05 << !Warlock
     .target Innkeeper Renee
 step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Burgess|r, |cRXP_FRIENDLY_Cartaz Procurado|r e |cRXP_FRIENDLY_Sevren|r dentro do prédio
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Necroguarda Belchior|r, |cRXP_FRIENDLY_Pôster de Procura-se|r e |cRXP_FRIENDLY_Magistrado Sevren|r dentro do prédio
     .accept 374 >>Aceite Prova da morte
     .target +Deathguard Burgess
     .goto Tirisfal Glades,60.93,52.01
@@ -2604,7 +2604,7 @@ step << Undead Rogue
     #optional
     #sticky
     #completewith UnluckyRogue
-    >>|cRXP_WARN_Se você vir|r |cRXP_FRIENDLY_Astolfo Hadren|r|cRXP_WARN_, fale com ele e mate-o. Saque-o pela carta. Ele patrula a estrada entre Montalvo e Sepulcro|r
+    >>|cRXP_WARN_Se você vir|r |cRXP_FRIENDLY_Astolfo Hadren|r|cRXP_WARN_, fale com ele e mate-o. Saqueie-o pela carta. Ele patrula a estrada entre Montalvo e Sepulcro|r
     .complete 1886,1 --Astor's Letter of Introduction (1)
     .unitscan Astor Hadren
     .isOnQuest 1886
@@ -3094,7 +3094,7 @@ step
     .goto Tirisfal Glades,65.49,60.25
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Necroguarda Lina|r
     .turnin 359 >>Entregue Deveres Renegados
-    .accept 360 >>Aceite Retornar ao Magistrado
+    .accept 360 >>Aceite De volta ao Magistrado
     .accept 356 >>Aceite Patrulha da retaguarda
     .target Deathguard Linnea
     .isQuestTurnedIn 358
@@ -3437,7 +3437,7 @@ step << Warrior
     .group 2
 step << skip
     .goto Tirisfal Glades,51.68,25.67
-    .goto Tirisfal Glades,56.24,49.42,30 >>|cRXP_WARN_Pule em uma das estantes de armas. Faça um Logout Pular desconectando e reconectando|r
+    .goto Tirisfal Glades,56.24,49.42,30 >>|cRXP_WARN_Pule em um dos suportes de armas. Faça o atalho por reconexão saindo e entrando no jogo novamente|r
     .link https://www.youtube.com/watch?v=bH_NYmWf8Lc&ab >> |cRXP_WARN_CLIQUE AQUI para ver um exemplo|r
     .isQuestComplete 408
     .group

@@ -9,8 +9,8 @@ RXPGuides.RegisterGuide([[
 #displayname 1-9级 天裔 << Horde
 #group RestedXP 无限指南 (联盟) << Alliance
 #group RestedXP 无限指南 (部落) << Horde
-#subgroup 速通指南 1-20级 << Alliance
-#subgroup 速通指南 1-22级 << Horde
+#subgroup Speedrun 指南 1-20 << Alliance
+#subgroup Speedrun 指南 1-22 << Horde
 #next 9-13级 泽风岛
 #defaultfor Skyborne
 
@@ -2303,6 +2303,14 @@ step
     .turnin 97965 >>交任务 露营基础：急救
     .target Naleeia Tattermend::257018
 step
+    .train 2366,3 --Herbalism Trained
+    .isQuestComplete 97968 --Camping 101: Herbalism
+    .isQuestComplete 92516 --Hippogryph Harassment
+    .goto 2521,43.0,43.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_Halassa Fernbreeze::257021|r 对话。
+    .turnin 97968 >>交任务 露营基础：草药学
+    .target Halassa Fernbreeze::257021
+step
     .train 7411,3 -- Enchanting Trained
     .isQuestComplete 98286 -- Camping 101: Enchanting
     .isQuestComplete 92516 -- Hippogryph Harassment
@@ -3119,6 +3127,14 @@ step
     .turnin 98286 >>交任务 露营基础：附魔
     .target Nasalanna Windsinger::257020
 step
+    .train 2366,3 --Herbalism Trained
+    .isQuestComplete 97968 --Camping 101: Herbalism
+    .isQuestComplete 92550 -- Havoc in the Highlands
+    .goto 2521,43.0,43.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_Halassa Fernbreeze::257021|r 对话。
+    .turnin 97968 >>交任务 露营基础：草药学
+    .target Halassa Fernbreeze::257021
+step
     .train 3273,3 -- First Aid Trained
     .itemcount 2589,1 -- Linen Cloth
     .goto 2521,43.08,46.31
@@ -3225,8 +3241,8 @@ RXPGuides.RegisterGuide([[
 #displayname 9-12级 天裔 << Horde
 #group RestedXP 无限指南 (联盟) << Alliance
 #group RestedXP 无限指南 (部落) << Horde
-#subgroup 速通指南 1-20级 << Alliance
-#subgroup 速通指南 1-22级 << Horde
+#subgroup Speedrun 指南 1-20 << Alliance
+#subgroup Speedrun 指南 1-22 << Horde
 #next 13-15级 西部荒野 << Alliance !Hunter
 #next 14-16级 黑海岸 << Alliance Hunter
 #next 12-14级 银松森林 << Horde !Hunter
@@ -3380,7 +3396,7 @@ step << Alliance Hunter
     #completewith Deliver the Signet
     .xp <9,1
     .itemcount 277110,1 --Zephrali Bow
-    +|cRXP_WARN_装备|r |T7810733:0|t[泽风弓]。
+    .equip 18,277110 >>|cRXP_WARN_装备|r |T7810733:0|t[泽风弓]。
     .use 277110 --Zephrali Bow
 step << Alliance Warrior/Alliance Paladin
     .xp <9,1
@@ -3403,7 +3419,7 @@ step << Alliance Warrior/Alliance Paladin
     #completewith Deliver the Signet
     .xp <9,1
     .itemcount 277106,1 --Zephrali Smasher
-    +|cRXP_WARN_装备|r |T7792097:0|t[泽风粉碎者]。
+    .equip 16,277106 >>|cRXP_WARN_装备|r |T7792097:0|t[泽风粉碎者]。
     .use 277106 --Zephrali Smasher
 step << Alliance Shaman/Alliance Druid
     .xp <9,1
@@ -3422,7 +3438,7 @@ step << Alliance Shaman/Alliance Druid
     #completewith Deliver the Signet
     .xp <9,1
     .itemcount 277109,1 --Zephrali Greatstaff
-    +|cRXP_WARN_装备|r |T7798447:0|t[泽风巨杖]。
+    .equip 16,277109 >>|cRXP_WARN_装备|r |T7798447:0|t[泽风巨杖]。
     .use 277109 --Zephrali Greatstaff
 step << Alliance Rogue
     .xp <9,1
@@ -3445,7 +3461,7 @@ step << Alliance Rogue
     #completewith Deliver the Signet
     .xp <9,1
     .itemcount 277107,1 --Zephrali Bludgeon
-    +|cRXP_WARN_装备|r |T7791298:0|t[泽风大头棒]。
+    .equip 16,277107 >>|cRXP_WARN_装备|r |T7791298:0|t[泽风大头棒]。
     .use 277107 --Zephrali Bludgeon
 -- step << Mage/Priest/Warlock
 --     .xp <9,1
@@ -3577,7 +3593,7 @@ step << Alliance
     .cooldown spell,1259416,>0,1 -- Walk on Air
     .goto 2521,66.47,76.68,10,0
     .goto 2521,66.63,79.94
-    .cast 1259416 >>从山上跳下，使用 |T132845:0|t[踏空而行] 飞向任务发布者。
+    .cast 1259416 >>从树上跳下并使用 |T132845:0|t[踏空而行] 飞向任务发布者。
     *|cRXP_WARN_如果时机把握准确，你可以在半空中取消飞行，从而落入建筑内|r
     .usespell 1259416
     .macro Cancel Walk on Air,132845 >>取消踏空而行
@@ -3773,7 +3789,7 @@ step << Horde Hunter
     #completewith LeavingValanaarA
     .xp <9,1
     .itemcount 277110,1 --Zephrali Bow
-    +|cRXP_WARN_装备|r |T7810733:0|t[泽风弓]。
+    .equip 18,277110 >>|cRXP_WARN_装备|r |T7810733:0|t[泽风弓]。
     .use 277110 --Zephrali Bow
 step << Horde Warrior
     .xp <9,1
@@ -3795,7 +3811,7 @@ step << Horde Warrior
     #completewith LeavingValanaarA
     .xp <9,1
     .itemcount 277106,1 --Zephrali Smasher
-    +|cRXP_WARN_装备|r |T7792097:0|t[泽风粉碎者]。
+    .equip 16,277106 >>|cRXP_WARN_装备|r |T7792097:0|t[泽风粉碎者]。
     .use 277106 --Zephrali Smasher
 step << Horde Shaman/Horde Druid
     .xp <9,1
@@ -3818,7 +3834,7 @@ step << Horde Shaman/Horde Druid
     #completewith LeavingValanaarA
     .xp <9,1
     .itemcount 277109,1 --Zephrali Greatstaff
-    +|cRXP_WARN_装备|r |T7798447:0|t[泽风巨杖]。
+    .equip 16,277109 >>|cRXP_WARN_装备|r |T7798447:0|t[泽风巨杖]。
     .use 277109 --Zephrali Greatstaff
 step << Horde Rogue
     .xp <9,1
@@ -3840,15 +3856,15 @@ step << Horde Rogue
     #completewith LeavingValanaarA
     .xp <9,1
     .itemcount 277107,1 --Zephrali Bludgeon
-    +|cRXP_WARN_装备|r |T7791298:0|t[泽风大头棒]。
+    .equip 16,277107 >>|cRXP_WARN_装备|r |T7791298:0|t[泽风大头棒]。
     .use 277107 --Zephrali Bludgeon
-step << Horde
-    .train 2366,3 -- Herbalism Trained
-    .isQuestComplete 97968 -- Camping 101: Herbalism
-    .goto 2521,57.890,75.514
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_希瑞尔·夜雨::254345|r 对话。
-    .target Syriel Nightrain::254345
-    .turnin 97968 >>交任务 露营基础：草药学
+-- step << Horde
+--     .train 2366,3 -- Herbalism Trained
+--     .isQuestComplete 97968 -- Camping 101: Herbalism
+--     .goto 2521,57.890,75.514
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Syriel Nightrain::254345|r.
+--     .target Syriel Nightrain::254345
+--     .turnin 97968 >>Turn in Camping 101: Herbalism
 step << Hunter Horde
     .money <0.1345
     .isOnQuest 93735 -- The Broken Construct
@@ -4365,9 +4381,9 @@ step
     .target Alvarion Windfield::252448
 step
     #completewith Accept Catching Wind
-    *|cRXP_WARN_装备|r |T134435:0|t[种植铲] << Warrior/Shaman/Paladin
-    *|cRXP_WARN_装备|r |T133057:0|t[屋面锤] << Druid/Priest
-    *|cRXP_WARN_装备|r |T134520:0|t[可靠的扳手] << Rogue
+    .equip 16,263312 >>|cRXP_WARN_装备|r |T134435:0|t[种植铲] << Warrior/Shaman/Paladin
+    .equip 16,263314 >>|cRXP_WARN_装备|r |T133057:0|t[屋面锤] << Druid/Priest
+    .equip 16,263313 >>|cRXP_WARN_装备|r |T134520:0|t[可靠的扳手] << Rogue
     .use 263312 << Warrior/Shaman/Paladin -- Planting Shovel
     .use 263314 << Druid/Priest -- Roofing Hammer
     .use 263313 << Rogue -- Trusty Wrench
@@ -4438,7 +4454,7 @@ step << Warrior/Paladin
     #completewith Learn << Horde
     .xp <9,1
     .itemcount 277106,1 --Zephrali Smasher
-    +|cRXP_WARN_装备|r |T7792097:0|t[泽风粉碎者]。
+    .equip 16,277106 >>|cRXP_WARN_装备|r |T7792097:0|t[泽风粉碎者]。
     .use 277106 --Zephrali Smasher
 step << Shaman/Druid
     .xp <9,1
@@ -4461,7 +4477,7 @@ step << Shaman/Druid
     #completewith Learn << Horde
     .xp <9,1
     .itemcount 277109,1 --Zephrali Greatstaff
-    +|cRXP_WARN_装备|r |T7798447:0|t[泽风巨杖]。
+    .equip 16,277109 >>|cRXP_WARN_装备|r |T7798447:0|t[泽风巨杖]。
     .use 277109 --Zephrali Greatstaff
 step << Rogue
     .money <0.09
@@ -4500,7 +4516,7 @@ step << Rogue
     #completewith Learn << Horde
     .xp <9,1
     .itemcount 277107,1 --Zephrali Bludgeon
-    +|cRXP_WARN_装备|r |T7791298:0|t[泽风大头棒]。
+    .equip 16,277107 >>|cRXP_WARN_装备|r |T7791298:0|t[泽风大头棒]。
     .use 277107 --Zephrali Bludgeon
 step << Hunter
     .goto 2521,59.55,73.3,25,0
@@ -4538,7 +4554,7 @@ step << Hunter
     #completewith Learn << Horde
     .xp <9,1
     .itemcount 277110,1 --Zephrali Bow
-    +|cRXP_WARN_装备|r |T7810733:0|t[泽风弓]。
+    .equip 18,277110 >>|cRXP_WARN_装备|r |T7810733:0|t[泽风弓]。
     .use 277110 --Zephrali Bow
 step << Horde Druid
     .subzoneskip 16638,1 -- Valanaar
@@ -4864,13 +4880,13 @@ step << Alliance Hunter
     .turnin 94979 >>交任务 驯服野兽
     .accept 94013 >>接受任务 驯服野兽
     .target Quel'ana Quickgale::252389
-step << Alliance Hunter
-    .train 2366,3 -- Herbalism Trained
-    .isQuestComplete 97968 -- Camping 101: Herbalism
-    .goto 2521,57.890,75.514
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_希瑞尔·夜雨::254345|r 对话。
-    .turnin 97968 >>交任务 露营基础：草药学
-    .target Syriel Nightrain::254345
+-- step << Alliance Hunter
+--     .train 2366,3 -- Herbalism Trained
+--     .isQuestComplete 97968 -- Camping 101: Herbalism
+--     .goto 2521,57.890,75.514
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Syriel Nightrain::254345|r.
+--     .turnin 97968 >>Turn in Camping 101: Herbalism
+--     .target Syriel Nightrain::254345
 step << Alliance Hunter
     #optional
     #completewith next
@@ -4954,13 +4970,13 @@ step << Mage
     >>击杀 |cRXP_ENEMY_天空跳跃者::251314|r。
     .complete 93949,1 --|8/8 Enchanted Skyhopper Exterminated
     .mob Skyhopper::251314
-step << Alliance !Hunter
-    .train 2366,3 -- Herbalism Trained
-    .isQuestComplete 97968 -- Camping 101: Herbalism
-    .goto 2521,57.890,75.514
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_希瑞尔·夜雨::254345|r 对话。
-    .turnin 97968 >>交任务 露营基础：草药学
-    .target Syriel Nightrain::254345
+-- step << Alliance !Hunter
+--     .train 2366,3 -- Herbalism Trained
+--     .isQuestComplete 97968 -- Camping 101: Herbalism
+--     .goto 2521,57.890,75.514
+--     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Syriel Nightrain::254345|r.
+--     .turnin 97968 >>Turn in Camping 101: Herbalism
+--     .target Syriel Nightrain::254345
 step << Alliance !Mage/Alliance !Hunter
     #loop
     .goto 2521,58.85,75.49,30,0
@@ -5075,7 +5091,7 @@ step << Horde Druid
 step << Horde
     .goto 2521,59.528,66.902,30,0 << Druid
     .goto 2521,56.81,61.11
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与|cRXP_FRIENDLY_芬达尔·风石::273017|r 对话。
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与|cRXP_FRIENDLY_芬达尔·风石::273017|r交谈。
     *|cRXP_WARN_如果附近有龙卷风，接触它可获得40%移动速度加成，持续5分钟。造成伤害会移除该效果|r。
     .accept 98512 >>接受任务 奥拉凯斯刺客
     .target Fendaal Windstone::273017
@@ -5091,7 +5107,7 @@ step << Horde
     .mob Al'Aketh Assassin::254626
 step << Horde
     .goto 2521,56.80,61.10
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与|cRXP_FRIENDLY_芬达尔·风石::273017|r交谈。
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与|cRXP_FRIENDLY_芬达尔·风石::273017|r 对话。
     .turnin 98512 >>交任务 奥拉凯斯刺客
     .target Fendaal Windstone::273017
 step << Horde Druid
@@ -5212,7 +5228,7 @@ step << Alliance !Druid
     .cooldown spell,1259416,>0,1 -- Walk on Air
     .goto 2521,66.47,76.64,10,0
     .goto 2521,65.36,71.79
-    .cast 1259416 >>从山上跳下，使用 |T132845:0|t[踏空而行] 飞向路径点位置。
+    .cast 1259416 >>从树上跳下，使用 |T132845:0|t[踏空而行] 飞向路径点位置。
     .usespell 1259416
 step << Alliance
     .goto 2521,65.956,74.309
@@ -5449,7 +5465,7 @@ step << Alliance
     .goto 2521,66.47,76.61,8,0
     .goto 2521,66.31,76.18,15,0
     .goto 2521,63.14,76.9
-    .cast 1259416 >>从山上跳下，使用 |T132845:0|t[踏空而行] 飞向路径点位置。
+    .cast 1259416 >>从树上跳下，使用 |T132845:0|t[踏空而行] 飞向路径点位置。
     .usespell 1259416
 step << Alliance
     .subzoneskip 16638,1 -- Valanaar
@@ -5485,7 +5501,7 @@ step << Hunter Alliance
     #completewith secluded house
     .xp <9,1
     .itemcount 277110,1 --Zephrali Bow
-    +|cRXP_WARN_装备|r |T7810733:0|t[泽风弓]。
+    .equip 18,277110 >>|cRXP_WARN_装备|r |T7810733:0|t[泽风弓]。
     .use 277110 --Zephrali Bow
 step << Warrior Alliance/Paladin Alliance
     .xp <9,1
@@ -5508,7 +5524,7 @@ step << Warrior Alliance/Paladin Alliance
     #completewith secluded house
     .xp <9,1
     .itemcount 277106,1 --Zephrali Smasher
-    +|cRXP_WARN_装备|r |T7792097:0|t[泽风粉碎者]。
+    .equip 16,277106 >>|cRXP_WARN_装备|r |T7792097:0|t[泽风粉碎者]。
     .use 277106 --Zephrali Smasher
 step << Rogue Alliance
     .xp <9,1
@@ -5531,7 +5547,7 @@ step << Rogue Alliance
     #completewith secluded house
     .xp <9,1
     .itemcount 277107,1 --Zephrali Bludgeon
-    +|cRXP_WARN_装备|r |T7791298:0|t[泽风大头棒]。
+    .equip 16,277107 >>|cRXP_WARN_装备|r |T7791298:0|t[泽风大头棒]。
     .use 277107 --Zephrali Bludgeon
 -- step << Alliance
 --     .subzoneskip 16638,1 -- Valanaar
@@ -5646,7 +5662,7 @@ step << Rogue Alliance
 step << Alliance
     .isNotOnQuest 98512 --Al'Aketh Assassins
     .isQuestAvailable 98512 --Al'Aketh Assassins
-    .goto 2521,66.49,76.65,8,0
+    -- .goto 2521,66.49,76.65,8,0
     .goto 2521,68.84,78.42,-1
     .goto 2521,60.74,78.02,-1
     .subzone 16626 >>跳下悬崖
@@ -6045,7 +6061,6 @@ step
     #hidewindow
     #completewith ToHermit << Alliance
     #completewith ForestHollowsA << Horde
-    #loop
     .goto 2521,62.83,38.25,35,0
     .goto 2521,62.08,36.7,35,0
     .goto 2521,61.17,35.44,35,0
@@ -6212,6 +6227,12 @@ step
     .turnin 93165,2 >>交任务 充耳不闻的怜悯 << Mage/Priest/Warlock
     .turnin 93165,3 >>交任务 充耳不闻的怜悯 << Warrior/Paladin
     .target Vayn Moongaze::254151
+step << Alliance
+    .goto 2521,63.80,36.00
+    .itemcount 265476,1
+    >>使用你背包中的 |T134332:0|t[撕破的信件] 来开始任务。
+    .accept 94490 >>接受任务 撕破的信件
+    .use 265476 -- Ripped Missive
 step
     .goto 2521,63.93,33.76,20,0
     .goto 2521,63.69,32.49,20,0
@@ -6473,7 +6494,7 @@ step << Alliance
     .cooldown spell,1259416,>0,1 -- Walk on Air
     .goto 2521,66.49,76.64,8,0
     .goto 2521,63.33,78.16
-    .cast 1259416 >>从山上跳下，使用 |T132845:0|t[踏空而行] 飞向路径点位置。
+    .cast 1259416 >>从树上跳下，使用 |T132845:0|t[踏空而行] 飞向路径点位置。
     .usespell 1259416
 step << Alliance
     .goto 2521,63.33,78.16,30,0
@@ -6562,7 +6583,7 @@ step << Alliance
     .goto 2521,66.49,76.64,8,0
     .goto 2521,66.39,76.26,10,0
     .goto 2521,63.9,74.16
-    .cast 1259416 >>从山上跳下，使用 |T132845:0|t[踏空而行] 飞向路径点位置。
+    .cast 1259416 >>从树上跳下，使用 |T132845:0|t[踏空而行] 飞向路径点位置。
     .usespell 1259416
 step << Alliance
     .subzoneskip 16638,1 -- Valanaar
@@ -7602,7 +7623,7 @@ step << Horde !Hunter
     .goto 1458/0,224.300,1648.200
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_拍卖师凯恩::15682|r 对话
     >>|cRXP_BUY_从拍卖行|r |cRXP_BUY_购买三个|r |T133884:0|t[鱼人的眼球]
-    >>|cRXP_WARN_如果你愿意，可以跳过这一步，这只能节省一点点时间|r
+    >>|cRXP_WARN_如果你愿意的话可以跳过，这只是个小捷径|r
     .collect 730,3,91920,1 --Collect Murloc Eyes (x3)
     .target Auctioneer Cain::15682
 step << Horde !Hunter

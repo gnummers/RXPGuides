@@ -802,7 +802,7 @@ step << !Human/!Rogue
     #requires CALEENCI2 << Mage
     #requires Libram4 << Paladin
     #requires Shadowstrike2 << Rogue
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
 --   .subzoneskip 59,1
 step << Human Rogue
@@ -1083,7 +1083,7 @@ step
     #optional
     #softcore
     #completewith next
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
 -- .subzoneskip 59,1
 step << Priest/Mage
@@ -1198,7 +1198,7 @@ step
     #season 0,1 << Rogue
     #softcore
     #completewith Goldshire
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
     .subzoneskip 87
 step << Warrior/Rogue/Paladin
@@ -1831,7 +1831,7 @@ step
 step
     #softcore
     #completewith Exchange
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
 step
     #label Exchange
@@ -2769,7 +2769,7 @@ step << !Warlock
     #softcore
     #label EVDeathskip
     #completewith RedridgeS
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
     .zoneskip Redridge Mountains
 --XX not worth deathskipping as a warlock due to having to resumm pet
@@ -2830,7 +2830,7 @@ step << !Warlock
 step << !Warlock
     #softcore
     #completewith RRFP
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
 step << !Warlock
     #hardcore
@@ -3198,7 +3198,7 @@ step
     .accept 11 >> 接受任务 悬赏河爪豺狼人 << Warlock
     .goto Elwynn Forest,24.234,74.450
     .target 瑞尼尔副队长
-    >>点击 |cRXP_PICK_通缉布告|r << Warlock
+    >>点击 |cRXP_PICK_通缉告示|r << Warlock
     .accept 176 >> 接受任务 通缉：霍格 << Warlock
     .goto Elwynn Forest,24.548,74.672 << Warlock
 step << Warlock
@@ -3946,7 +3946,7 @@ step << Warlock
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_黑暗缚灵者加科因|r 对话
     .target 黑暗缚灵者加科因
     .goto StormwindClassic,25.25,78.59
-    .turnin 1689 >> 交任务誓缚
+    .turnin 1689 >> 交任务 誓缚
 
 
 ----Warlock Elwynn Voidwalker Section End----
@@ -4124,7 +4124,7 @@ step
     #label TramCook1
     #completewith TramEnd
     >>|cRXP_WARN_地铁到站时：|r
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Ironforge
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -4138,7 +4138,7 @@ step
     #label TramCook2
     #completewith TramEnd
     >>|cRXP_WARN_地铁到站时：|r
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Ironforge
     .itemcount 769,<1 --Chunk of Boar Meat (<1)
@@ -4152,7 +4152,7 @@ step
     #label TramCook3
     #completewith TramEnd
     >>|cRXP_WARN_地铁到站时：|r
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Ironforge
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -6247,7 +6247,7 @@ step
     #xprate >1.49
     #hardcore << !Human
     .goto Wetlands,9.49,59.69
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 在外面与 |cRXP_FRIENDLY_谢尔雷|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t在外面与 |cRXP_FRIENDLY_谢尔雷|r 对话
     .fp Wetlands >> 获取湿地的飞行路径
     .target 谢尔雷·布隆迪尔
 step
@@ -6271,7 +6271,7 @@ step
     #label DarkshoreCook1
     #completewith DarkshoreBoat
     >>如果船只刚到就登船，如果船只刚走就在码头等：
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Darkshore
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -6286,7 +6286,7 @@ step
     #label DarkshoreCook2
     #completewith DarkshoreBoat
     >>如果船只刚到就登船，如果船只刚走就在码头等：
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Darkshore
     .itemcount 769,<1 --Chunk of Boar Meat (<1)
@@ -6301,7 +6301,7 @@ step
     #label DarkshoreCook3
     #completewith DarkshoreBoat
     >>如果船只刚到就登船，如果船只刚走就在码头等：
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Darkshore
     .itemcount 769,1 --Chunk of Boar Meat (1+)
