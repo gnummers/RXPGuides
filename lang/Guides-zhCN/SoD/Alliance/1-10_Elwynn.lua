@@ -683,7 +683,7 @@ step
     #optional
     #softcore
     #completewith next
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
 step << !Warlock
     #xprate >1.59
@@ -851,7 +851,7 @@ step
     #optional
     #softcore
     #completewith #label RestandR
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
     .subzoneskip 59,1
 step
@@ -906,7 +906,7 @@ step
     #season 0,1 << Rogue
     #softcore
     #completewith Goldshire
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
     .subzoneskip 87
 step
@@ -1486,7 +1486,7 @@ step
 step
     #softcore
     #completewith Exchange
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
 step
     #label Exchange
@@ -1973,7 +1973,7 @@ step << Rogue
     #season 2
     #softcore
     #completewith AcceptBundle
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
     .train 398196,1
     .subzoneskip 87 --Skip the Quick Draw steps if the user went back to goldshire instead
@@ -2040,7 +2040,7 @@ step << Priest
     #softcore
     #label EVDeathskip
     #completewith RedridgeS
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
     .zoneskip Redridge Mountains
 --XX not worth deathskipping as a warlock due to having to resumm pet
@@ -2060,7 +2060,7 @@ step << Priest/Rogue
 step << Priest/Rogue
     #softcore
     #completewith RRFP
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
     .subzoneskip 87 --Skip the Quick Draw steps if the user went back to goldshire instead
 step << Priest/Rogue
@@ -2349,7 +2349,7 @@ step
     .turnin 239 >> 交任务 西泉要塞
     .goto Elwynn Forest,24.234,74.450
     .target 瑞尼尔副队长
-    >>点击 |cRXP_PICK_通缉布告|r << Warlock
+    >>点击 |cRXP_PICK_通缉告示|r << Warlock
     .accept 176 >> 接受任务 通缉：霍格 << Warlock
     .goto Elwynn Forest,24.548,74.672 << Warlock
 step << Warlock
@@ -2811,7 +2811,7 @@ step << Warlock
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_黑暗缚灵者加科因|r 对话
     .target 黑暗缚灵者加科因
     .goto StormwindClassic,25.25,78.59
-    .turnin 1689 >> 交任务誓缚
+    .turnin 1689 >> 交任务 誓缚
 
 
 ----Warlock Elwynn Voidwalker Section End----
@@ -3175,7 +3175,7 @@ step << Paladin/Warrior
     >>击败|cRXP_ENEMY_布鲁阿特|r
     >>|cRXP_WARN_小心他施放|r |T132939:0|t|T132939:0|t[反手一击] |cRXP_WARN_（击晕你2秒）|r
     >>|cRXP_WARN_记得预读|r |T135924:0|t|T135924:0|t[十字军圣印] |cRXP_WARN_对他|r << Paladin
-    >>|cRXP_WARN_不要意外对他施放|r |T135906:0|t|T135906:0|t[力量祝福] |cRXP_WARN_ |r << Paladin
+    >>|cRXP_WARN_千万不要对他施放|r |T135906:0|t[力量祝福] |cRXP_WARN_|r << Paladin
     >>|cRXP_WARN_将他风筝到楼上的阳台，然后从旅店外跳下，必要时施放|r |T135920:0|t|T135920:0|t[圣光术] |cRXP_WARN_如果必要的话|r << Paladin
     >>|cRXP_WARN_将他风筝到楼上的阳台，然后从旅店外跳下，如果有/需要的话使用|r |T133688:0|t|T133688:0|t[绷带]|cRXP_WARN_ |r << Warrior
     >>|cRXP_WARN_尝试使用|r |T132316:0|t|T132324:0|t[|cRXP_FRIENDLY_断筋|r] |cRXP_WARN_和|r |T132324:0|t|T132324:0|t[|cRXP_FRIENDLY_投掷|r]来风筝他 << Warrior
@@ -3193,7 +3193,7 @@ step << Paladin/Warrior
     >>击败|cRXP_ENEMY_布鲁阿特|r
     >>|cRXP_WARN_小心他施放|r |T132939:0|t|T132939:0|t[反手一击] |cRXP_WARN_（击晕你2秒）|r
     >>|cRXP_WARN_记得预读|r |T135924:0|t|T135924:0|t[十字军圣印] |cRXP_WARN_对他|r << Paladin
-    >>|cRXP_WARN_不要意外对他施放|r |T135906:0|t|T135906:0|t[力量祝福] |cRXP_WARN_ |r << Paladin
+    >>|cRXP_WARN_千万不要对他施放|r |T135906:0|t[力量祝福] |cRXP_WARN_|r << Paladin
     >>|cRXP_WARN_将他风筝到楼上的阳台，然后从旅店外跳下，必要时施放|r |T135920:0|t|T135920:0|t[圣光术] |cRXP_WARN_如果必要的话|r << Paladin
     >>|cRXP_WARN_将他风筝到楼上的阳台，然后从旅店外跳下，如果有/需要的话使用|r |T133688:0|t|T133688:0|t[绷带]|cRXP_WARN_ |r << Warrior
     >>|cRXP_WARN_击败|cRXP_ENEMY_布鲁阿尔特|r后：|r

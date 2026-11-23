@@ -97,7 +97,7 @@ step
 step
     #completewith LibramS
     #label Dun1
-    .zone Dun Morogh >> Viagem para Dun Morogh
+    .zone Dun Morogh >> Vá para Dun Morogh
     .train 410002,1
     .xp <4,1
 step
@@ -753,7 +753,7 @@ step
     .xp <8,1
 step
     #completewith next
-    .zone Dun Morogh >> Viagem para Dun Morogh
+    .zone Dun Morogh >> Vá para Dun Morogh
     .train 425619,1
     .xp <8,1
 step
@@ -1163,7 +1163,7 @@ step
 step
     #completewith LibramS
     #label Dun1
-    .zone Dun Morogh >> Viagem para Dun Morogh
+    .zone Dun Morogh >> Vá para Dun Morogh
     .train 410011,1
 step
     #completewith next
@@ -2146,7 +2146,7 @@ step << Horde
     .complete 81970,4 --1/1 Symbol of Faith
 step << Horde
     #completewith next
-    .zone Searing Gorge >>Viaje para Garganta Abrasadora
+    .zone Searing Gorge >>Vá à Garganta Abrasadora
     .train 410013,1
 step << Horde
     >>|cRXP_WARN_É recomendado formar um grupo de 5 jogadores e você precisará de 3 ouro.|r

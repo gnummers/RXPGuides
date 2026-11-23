@@ -1652,7 +1652,7 @@ RXPGuides.RegisterGuide([[
 #classic
 #tbc
 << Alliance
-#name 20-21 Dunkelküste/Eschental
+#name 20-21 Dunkelküste/Ashenvale
 #version 1
 #group RestedXP Überlebens-Guide (A)
 #subgroup RXP Überlebens-Guide 1-20
@@ -2136,12 +2136,12 @@ step
     .goto The Barrens,53.87,21.52,120,0
     .goto The Barrens,59.15,25.48,120,0
     .goto The Barrens,63.087,37.607
-    .subzone 392 >> Reist nach Ratschet im Brachland. Folgt dem Pfeil, um die |cRXP_ENEMY_Brachland-Wachen|r zu vermeiden
+    .subzone 392 >> Reist nach Ratchet im Brachland. Folgt dem Pfeil, um die |cRXP_ENEMY_Wachen des Brachlandes|r zu vermeiden
 step
 .dungeon WC
     .goto The Barrens,63.084,37.163
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Bragok|r
-    .fp Ratchet >> Erlernt die Ratschet-Flugroute
+    .fp Ratchet >> Erlernt die Flugroute nach Ratchet
     .target Bragok
 step
 .dungeon WC
@@ -2243,7 +2243,7 @@ step
 .dungeon WC
     #completewith RatchetTurnin
     .goto The Barrens,62.984,37.218
-    .subzone 392 >> Reist nach Ratschet. Ihr werdet die oben genannten Quests bald abgeben
+    .subzone 392 >> Reist nach Ratchet. Ihr werdet die Quests über HDW bald abgeben
     .isOnQuest 6981,959
 step
 .dungeon WC

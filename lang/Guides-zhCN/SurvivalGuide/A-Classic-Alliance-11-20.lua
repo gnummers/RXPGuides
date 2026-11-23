@@ -396,7 +396,7 @@ step << !NightElf
     .goto Wetlands,10.496,60.201
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与楼上的 |cRXP_FRIENDLY_萨莫尔·菲斯蒂沃斯|r 对话
     .vendor >> |cRXP_BUY_尽可能多购买|r |T134831:0|t[治疗药水] |cRXP_BUY_有库存的话|r
-    >>|cRXP_WARN_这是限量供应物品，如果 |cRXP_FRIENDLY_萨莫尔·菲斯蒂沃斯|r 没有库存，请跳过此步骤|r
+    >>|cRXP_WARN_这是限量供应物品。如果 |cRXP_FRIENDLY_萨莫尔·菲斯蒂沃斯|r 没有库存，请跳过此步骤|r
     .target 萨莫尔·菲斯蒂沃斯
 step << !NightElf
     .goto Wetlands,9.49,59.69
@@ -448,7 +448,7 @@ step << Druid
     .goto Darnassus,35.375,8.405
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_玛斯雷·驭熊者|r 对话
     .accept 6121 >> 接受任务 新的课程
-    .accept 26 >> 接受任务必修的课程
+    .accept 26 >> 接受任务 必修的课程
     .trainer >> 训练你的职业技能
     .target 玛斯雷·驭熊者
 step << Druid
@@ -480,7 +480,7 @@ step << Druid
 step << Druid
     .goto Moonglade,36.517,40.104
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_塔加里|r 对话
-    .turnin 29 >> 交任务 湖中试炼
+    .turnin 29 >> 交任务湖中试炼
     .target 塔加里
     .accept 272 >> 接受任务 海狮试炼
 step << NightElf Priest
@@ -512,7 +512,7 @@ step << NightElf Hunter
     .target 弗德瑞克·斯图瓦
 step << NightElf
     .goto StormwindClassic,43.065,26.156
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_珊娜·弗勒|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_珊娜·弗勒|r 对话
     >>升级你的|T135966:0|t[急救]
     .train 3274 >> 学习 中级急救
     .target Shaina Fuller
@@ -1110,7 +1110,7 @@ step << !NightElf Hunter/!NightElf Warrior
     .train 227 >> 学习法杖
     .target 伊琳尼雅·月火
 step << !NightElf !Mage !Paladin !Warlock
-    .goto Darnassus,30.7,41.3,15 >> 使用紫色传送门返回鲁瑟兰村
+    .goto Darnassus,30.7,41.3,15 >> 通过紫色传送门返回鲁瑟兰村
     .zoneskip Darkshore
     .zoneskip Teldrassil
 step << !NightElf !Mage !Paladin !Warlock
@@ -1626,7 +1626,7 @@ step << Druid
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t上楼与 |cRXP_FRIENDLY_玛斯雷·驭熊者|r 对话
     .turnin 6125 >> 交任务 解毒之术
 step << Druid
-    .goto Darnassus,30.7,41.3 >> 使用紫色传送门返回鲁瑟兰村
+    .goto Darnassus,30.7,41.3 >> 通过紫色传送门返回鲁瑟兰村
     .zoneskip Darkshore
     .zoneskip Teldrassil
 step << Druid
@@ -2122,7 +2122,7 @@ step
 .dungeon WC
     #completewith TravelRatchet
     .goto Ashenvale,20.31,42.33,0
-    .zone The Barrens >> 在寻找哀嚎洞穴队伍的同时，刷|cRXP_ENEMY_咸水嘴鱼人|r。它们的位置已标记在你的地图上
+    .zone The Barrens >> 在寻找哀嚎洞穴 队伍的同时，刷 |cRXP_ENEMY_咸水嘴鱼人|r。它们的位置已标记在你的地图上
 	.mob 盐沫战士
 	.mob 盐沫泥浆鱼人
 	.mob 盐沫智者
@@ -2141,7 +2141,7 @@ step
 .dungeon WC
     .goto The Barrens,63.084,37.163
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_布拉高克|r 对话
-    .fp Ratchet >> 获取棘齿城飞行路径
+    .fp Ratchet >> 开启棘齿城飞行点
     .target 布拉高克
 step
 .dungeon WC

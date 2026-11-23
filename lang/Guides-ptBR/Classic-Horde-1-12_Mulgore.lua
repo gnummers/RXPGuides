@@ -46,7 +46,7 @@ step << Warrior/Shaman
 step << Warrior
     .goto Mulgore,44.02,76.14
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Harutt|r
-    .train 6673 >>Treine |T132333:0|t[Brado de Batalha]
+    .train 6673 >>Aprenda |T132333:0|t[Brado de Batalha]
     .target Harutt Thunderhorn
 step << Shaman
     .goto Mulgore,45.01,75.95
@@ -280,14 +280,14 @@ step << Druid
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Gart|r
     .turnin 3094 >>Entregue Bilhete verdejante
     .accept 77648 >>Aceite Relíquias dos Taurens
-    .train 8921 >> Treine |T136096:0|t[Fogo Lunar]
+    .train 8921 >> Aprenda |T136096:0|t[Fogo Lunar]
     .target Gart Mistrunner
 step << Druid
     #season 0
     .goto Mulgore,45.09,75.93
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Gart|r
     .turnin 3094 >>Entregue Bilhete verdejante
-    .train 8921 >> Treine |T136096:0|t[Fogo Lunar]
+    .train 8921 >> Aprenda |T136096:0|t[Fogo Lunar]
     .target Gart Mistrunner
 step << Shaman
     .goto Mulgore,44.73,76.18
@@ -573,7 +573,7 @@ step << Warrior
 step
     .goto Mulgore,38.51,81.54
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Antur|r
-    .accept 1656 >>Aceite Uma Tarefa Inacabada
+    .accept 1656 >>Aceite Serviço pela metade
     .target Antur Fallow
 ]])
 
@@ -656,7 +656,7 @@ step << Shaman/Druid
 step << Warrior
     .goto Mulgore,45.66,58.60
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Mahnott Ferida Aberta|r
-    .vendor >> Lixo de vendedor. Venda sua arma se ela render dinheiro suficiente para uma |T133053:0|t[Marreta de Madeira] (7s 1c). Volte depois se ainda não tiver o suficiente
+    .vendor >> Venda os lixos. Venda sua arma se ela lhe der dinheiro suficiente para uma |T133053:0|t[Marreta de Madeira] (7p 1c). Você voltará depois se ainda não tiver o suficiente
     .target Mahnott Roughwound
     .itemStat 16,QUALITY,<7
     .itemStat 16,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<4.9
@@ -919,7 +919,7 @@ step << Shaman/Druid
 step << Warrior
     .goto Mulgore,45.66,58.60
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Mahnott Ferida Aberta|r
-    .vendor >> Lixo de vendedor. Venda sua arma se ela render dinheiro suficiente para uma |T133053:0|t[Marreta de Madeira] (7s 1c). Volte depois se ainda não tiver o suficiente
+    .vendor >> Venda os lixos. Venda sua arma se ela lhe der dinheiro suficiente para uma |T133053:0|t[Marreta de Madeira] (7p 1c). Você voltará depois se ainda não tiver o suficiente
     .target Mahnott Roughwound
     .itemStat 16,QUALITY,<7
     .itemStat 16,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<4.9
@@ -1093,7 +1093,7 @@ step << Shaman/Druid
 step << Warrior
     .goto Mulgore,45.66,58.60
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Mahnott Ferida Aberta|r
-    .vendor >> Lixo de vendedor. Venda sua arma se ela render dinheiro suficiente para uma |T133053:0|t[Marreta de Madeira] (7s 1c). Volte depois se ainda não tiver o suficiente
+    .vendor >> Venda os lixos. Venda sua arma se ela lhe der dinheiro suficiente para uma |T133053:0|t[Marreta de Madeira] (7p 1c). Você voltará depois se ainda não tiver o suficiente
     .target Mahnott Roughwound
     .itemStat 16,QUALITY,<7
     .itemStat 16,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<4.9
@@ -1803,7 +1803,7 @@ step << Shaman
 step << Hunter
     .goto Mulgore,47.81,55.69
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Yaw Crina Cortante|r
-    .accept 6061 >>Aceite Adestramento da Fera - Missão
+    .accept 6061 >>Aceite Domando a Fera
     .trainer >> Treine suas magias de classe
     .target Yaw Sharpmane
 step << Druid
@@ -1831,7 +1831,7 @@ step << Hunter
     .goto Mulgore,47.81,55.69
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Yaw Crina Cortante|r
     .turnin 6061 >>Entregue Domando a fera
-    .accept 6087 >>Aceite Adestramento da Fera - Missão
+    .accept 6087 >>Aceite Domando a Fera
     .target Yaw Sharpmane
 step << Hunter
     #loop
@@ -1847,7 +1847,7 @@ step << Hunter
     .goto Mulgore,47.81,55.69
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Yaw Crina Cortante|r
     .turnin 6087 >>Entregue Domando a fera
-    .accept 6088 >>Aceite Adestramento da Fera - Missão
+    .accept 6088 >>Aceite Domando a Fera
     .target Yaw Sharpmane
 step << Hunter
     #loop
@@ -2195,7 +2195,7 @@ step << Hunter
 step << Hunter
 	.goto Thunder Bluff,57.4,89.4
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Holto Chifre Troante|r
-	.turnin 6089 >> Entregue Treinamento da Fera - Missão
+	.turnin 6089 >> Entregue Treinando a fera
     .target Holt Thunderhorn
 step << Hunter
     .goto Thunder Bluff,54.08,84.08
@@ -2225,7 +2225,7 @@ step << Shaman
     #season 2
     .goto Thunder Bluff,39.45,65.86
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Javaton Totem das Sombras|r
-    >>|cRXP_WARN_Ele é|r |T132320:0|t[Furtivo]
+    >>|cRXP_WARN_Ele está|r |T132320:0|t[Furtivo]
     .accept 76156 >>Aceite À espreita com a Mãe Terra
     .target Boarton Shadetotem
     .train 410104,1
@@ -2326,7 +2326,7 @@ step
 step << Hunter
     .goto Thunder Bluff,52.32,47.79
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Kara Corre com a Névoa|r
-    >>|cRXP_BUY_Compre|r |T133972:0|t[Fortalecer Jerky] |cRXP_BUY_dela para alimentar seu animal de estimação|r
+    >>|cRXP_BUY_Compre|r |T133972:0|t[Carne-seca Dura] |cRXP_BUY_dela para alimentar seu ajudante|r
     .collect 117,5,744,1 --Tough Jerky (5)
     .target Kaga Mistrunner
 step << Shaman
@@ -2404,8 +2404,8 @@ step << Shaman
     #season 2
     .goto Thunder Bluff,39.45,65.86
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Javaton Totem das Sombras|r
-    >>|cRXP_WARN_Ele é|r |T132320:0|t[Furtivo]
-    .turnin 76156 >>Entregue À Espreita com a Mãe Terra
+    >>|cRXP_WARN_Ele está|r |T132320:0|t[Furtivo]
+    .turnin 76156 >>Entregue À espreita com a Mãe Terra
     .accept 76160 >>Aceite À espreita com a Mãe Terra
     .target Boarton Shadetotem
     .train 410104,1
@@ -2586,8 +2586,8 @@ step << Shaman
     #season 2
     .goto Thunder Bluff,39.45,65.86
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Javaton Totem das Sombras|r
-    >>|cRXP_WARN_Ele é|r |T132320:0|t[Furtivo]
-    .turnin 76160 >>Entregue À Espreita com a Mãe Terra
+    >>|cRXP_WARN_Ele está|r |T132320:0|t[Furtivo]
+    .turnin 76160 >>Entregue À espreita com a Mãe Terra
     .accept 76240 >>Aceite À espreita com a Mãe Terra
     .target Boarton Shadetotem
     .train 410104,1
@@ -2644,7 +2644,7 @@ step << Shaman
     #completewith Fish
     #requires Kah
     #label Pole
-    .equip 16,6256 >> |cRXP_WARN_Equipe o|r |T132932:0|t[Vara de Pescar]
+    .equip 16,6256 >> |cRXP_WARN_Equipe a|r |T132932:0|t[Vara de Pescar]
     .use 6256
     .train 410104,1
     .xp <4,1
@@ -2678,8 +2678,8 @@ step << Shaman
     #season 2
     .goto Thunder Bluff,39.45,65.86
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Javaton Totem das Sombras|r
-    >>|cRXP_WARN_Ele é|r |T132320:0|t[Furtivo]
-    .turnin 76240 >>Entregue À Espreita com a Mãe Terra
+    >>|cRXP_WARN_Ele está|r |T132320:0|t[Furtivo]
+    .turnin 76240 >>Entregue À espreita com a Mãe Terra
 -- .train 410104 >>|cRXP_WARN_You will train|r |T236289:0|t[Lava Lash] |cRXP_WARN_and|r |T132147:0|t[Dual Wield] |cRXP_WARN_upon turnin|r
     .target Boarton Shadetotem
     .train 410104,1
@@ -2885,7 +2885,7 @@ step << Shaman
 step << Shaman
     .goto The Barrens,55.86,19.95
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Kranal|r
-    .turnin 2984 >>Entregue Call of Fogo
+    .turnin 2984 >>Entregue Call of Fogo - Missão - Missão
     .accept 1524 >>Aceite Clamor do Fogo
     .target Kranal Fiss
 step << Shaman
@@ -2900,13 +2900,13 @@ step << Shaman
     .goto Durotar,38.05,57.79,8,0
     .goto Durotar,38.93,57.54,8,0
     .goto Durotar,39.19,57.90,8,0
-    .goto Durotar,39.16,58.56,10 >> Siga o caminho montanha acima até |cRXP_FRIENDLY_Telf|r
+    .goto Durotar,39.16,58.56,10 >> Suba pela trilha da montanha até |cRXP_FRIENDLY_Telf Joolam|r
     >>|cRXP_WARN_Tome cuidado para não cair da montanha, pois o caminho é muito estreito. Você pode morrer se cair|r
 step << Shaman
     #label CallofFire2
     .goto Durotar,38.52,58.93
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Telf|r
-    .turnin 1524 >>Entregue Call of Fogo
+    .turnin 1524 >>Entregue Call of Fogo - Missão - Missão
     .accept 1525 >>Aceite Clamor do Fogo
     .target Telf Joolam
 step << Warrior
@@ -3097,13 +3097,13 @@ step << Warrior
     #season 0
     .goto Mulgore,44.02,76.14
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Harutt|r
-    .train 6673 >>Treine |T132333:0|t[Brado de Batalha]
+    .train 6673 >>Aprenda |T132333:0|t[Brado de Batalha]
     .target Harutt Thunderhorn
 step << Warrior
     #season 2
     .goto Mulgore,44.02,76.14
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Harutt|r
-    .train 6673 >>Treine |T132333:0|t[Brado de Batalha]
+    .train 6673 >>Aprenda |T132333:0|t[Brado de Batalha]
     .accept 77651 >>Aceite Entre as Espinheiras
     .turnin 77651 >>Entregue Entre as Espinheiras
     .target Harutt Thunderhorn
@@ -3385,14 +3385,14 @@ step << Druid
     .goto Mulgore,45.09,75.93
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Gart|r
     .turnin 3094 >>Entregue Bilhete verdejante
-    .train 8921 >> Treine |T136096:0|t[Fogo Lunar]
+    .train 8921 >> Aprenda |T136096:0|t[Fogo Lunar]
     .target Gart Mistrunner
 step << Druid
     #season 0
     .goto Mulgore,45.09,75.93
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Gart|r
     .turnin 3094 >>Entregue Bilhete verdejante
-    .train 8921 >> Treine |T136096:0|t[Fogo Lunar]
+    .train 8921 >> Aprenda |T136096:0|t[Fogo Lunar]
     .target Gart Mistrunner
 step << Shaman
     .goto Mulgore,44.73,76.18
@@ -3635,7 +3635,7 @@ step
 step
     .goto Mulgore,38.51,81.54
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Antur|r
-    .accept 1656 >>Aceite Uma Tarefa Inacabada
+    .accept 1656 >>Aceite Serviço pela metade
     .target Antur Fallow
 ]])
 
@@ -3730,7 +3730,7 @@ step << Shaman/Druid
 step << Warrior
     .goto Mulgore,45.66,58.60
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Mahnott Ferida Aberta|r
-    .vendor >> Lixo de vendedor. Venda sua arma se ela render dinheiro suficiente para uma |T133053:0|t[Marreta de Madeira] (7s 1c). Volte depois se ainda não tiver o suficiente
+    .vendor >> Venda os lixos. Venda sua arma se ela lhe der dinheiro suficiente para uma |T133053:0|t[Marreta de Madeira] (7p 1c). Você voltará depois se ainda não tiver o suficiente
     .target Mahnott Roughwound
     .itemStat 16,QUALITY,<7
     .itemStat 16,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<4.9
@@ -4004,7 +4004,7 @@ step << Shaman/Druid
 step << Warrior
     .goto Mulgore,45.66,58.60
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Mahnott Ferida Aberta|r
-    .vendor >> Lixo de vendedor. Venda sua arma se ela render dinheiro suficiente para uma |T133053:0|t[Marreta de Madeira] (7s 1c). Volte depois se ainda não tiver o suficiente
+    .vendor >> Venda os lixos. Venda sua arma se ela lhe der dinheiro suficiente para uma |T133053:0|t[Marreta de Madeira] (7p 1c). Você voltará depois se ainda não tiver o suficiente
     .target Mahnott Roughwound
     .itemStat 16,QUALITY,<7
     .itemStat 16,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<4.9
@@ -4192,7 +4192,7 @@ step << Warrior
     #xprate <2.1
     .goto Mulgore,45.66,58.60
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Mahnott Ferida Aberta|r
-    .vendor >> Lixo de vendedor. Venda sua arma se ela render dinheiro suficiente para uma |T133053:0|t[Marreta de Madeira] (7s 1c). Volte depois se ainda não tiver o suficiente
+    .vendor >> Venda os lixos. Venda sua arma se ela lhe der dinheiro suficiente para uma |T133053:0|t[Marreta de Madeira] (7p 1c). Você voltará depois se ainda não tiver o suficiente
     .target Mahnott Roughwound
     .itemStat 16,QUALITY,<7
     .itemStat 16,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<4.9
@@ -4336,7 +4336,7 @@ step << Hunter
     #optional
     .goto Mulgore,47.81,55.69
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Yaw Crina Cortante|r
-    .accept 6061 >>Aceite Adestramento da Fera - Missão
+    .accept 6061 >>Aceite Domando a Fera
     .trainer >> Treine suas magias de classe
     .target Yaw Sharpmane
     .xp <10,1
@@ -4356,14 +4356,14 @@ step << Hunter
     .goto Mulgore,47.81,55.69
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Yaw Crina Cortante|r
     .turnin 6061 >>Entregue Domando a fera
-    .accept 6087 >>Aceite Adestramento da Fera - Missão
+    .accept 6087 >>Aceite Domando a Fera
     .target Yaw Sharpmane
     .isQuestComplete 6061
 step << Hunter
     #optional
     .goto Mulgore,47.81,55.69
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Yaw Crina Cortante|r
-    .accept 6087 >>Aceite Adestramento da Fera - Missão
+    .accept 6087 >>Aceite Domando a Fera
     .target Yaw Sharpmane
     .isQuestTurnedIn 6061
 step << Hunter
@@ -4383,7 +4383,7 @@ step << Hunter
     .goto Mulgore,47.81,55.69
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Yaw Crina Cortante|r
     .turnin 6087 >>Entregue Domando a fera
-    .accept 6088 >>Aceite Adestramento da Fera - Missão
+    .accept 6088 >>Aceite Domando a Fera
     .target Yaw Sharpmane
     .isQuestTurnedIn 6061
 step << Hunter
@@ -4570,7 +4570,7 @@ step << Shaman
     #season 2
     .goto Thunder Bluff,39.45,65.86
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Javaton Totem das Sombras|r
-    >>|cRXP_WARN_Ele é|r |T132320:0|t[Furtivo]
+    >>|cRXP_WARN_Ele está|r |T132320:0|t[Furtivo]
     .accept 76156 >>Aceite À espreita com a Mãe Terra
     .target Boarton Shadetotem
     .train 410104,1
@@ -4662,7 +4662,7 @@ step << Druid
 step << Hunter
 	.goto Thunder Bluff,57.4,89.4
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Holto Chifre Troante|r
-	.turnin 6089 >> Entregue Treinamento da Fera - Missão
+	.turnin 6089 >> Entregue Treinando a fera
     .target Holt Thunderhorn
     .isOnQuest 6089
 step << Hunter
@@ -5022,7 +5022,7 @@ step << Shaman
 step << Hunter
     .goto Mulgore,47.81,55.69
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Yaw Crina Cortante|r
-    .accept 6061 >>Aceite Adestramento da Fera - Missão
+    .accept 6061 >>Aceite Domando a Fera
     .train 13165 >>Treine suas magias de classe
     .target Yaw Sharpmane
     .isQuestAvailable 6061
@@ -5060,7 +5060,7 @@ step << Hunter
     .goto Mulgore,47.81,55.69
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Yaw Crina Cortante|r
     .turnin 6061 >>Entregue Domando a fera
-    .accept 6087 >>Aceite Adestramento da Fera - Missão
+    .accept 6087 >>Aceite Domando a Fera
     .target Yaw Sharpmane
 step << Hunter
     #loop
@@ -5076,7 +5076,7 @@ step << Hunter
     .goto Mulgore,47.81,55.69
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Yaw Crina Cortante|r
     .turnin 6087 >>Entregue Domando a fera
-    .accept 6088 >>Aceite Adestramento da Fera - Missão
+    .accept 6088 >>Aceite Domando a Fera
     .target Yaw Sharpmane
 step << Hunter
     #loop
@@ -5552,7 +5552,7 @@ step
 step << Hunter
 	.goto Thunder Bluff,57.4,89.4
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Holto Chifre Troante|r
-	.turnin 6089 >> Entregue Treinamento da Fera - Missão
+	.turnin 6089 >> Entregue Treinando a fera
     .target Holt Thunderhorn
 step << Hunter
     #optional
@@ -5595,8 +5595,8 @@ step << Shaman
     #season 2
     .goto Thunder Bluff,39.45,65.86
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Javaton Totem das Sombras|r
-    >>|cRXP_WARN_Ele é|r |T132320:0|t[Furtivo]
-    .turnin 76156 >>Entregue À Espreita com a Mãe Terra
+    >>|cRXP_WARN_Ele está|r |T132320:0|t[Furtivo]
+    .turnin 76156 >>Entregue À espreita com a Mãe Terra
     .accept 76160 >>Aceite À espreita com a Mãe Terra
     .target Boarton Shadetotem
     .train 410104,1
@@ -5721,7 +5721,7 @@ step
 step << Hunter
     .goto Thunder Bluff,52.32,47.79
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Kara Corre com a Névoa|r
-    >>|cRXP_BUY_Compre|r |T133972:0|t[Fortalecer Jerky] |cRXP_BUY_dela para alimentar seu animal de estimação|r
+    >>|cRXP_BUY_Compre|r |T133972:0|t[Carne-seca Dura] |cRXP_BUY_dela para alimentar seu ajudante|r
     .collect 117,5,744,1 --Tough Jerky (5)
     .target Kaga Mistrunner
 step << Shaman
@@ -5781,8 +5781,8 @@ step << Shaman
     #season 2
     .goto Thunder Bluff,39.45,65.86
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Javaton Totem das Sombras|r
-    >>|cRXP_WARN_Ele é|r |T132320:0|t[Furtivo]
-    .turnin 76160 >>Entregue À Espreita com a Mãe Terra
+    >>|cRXP_WARN_Ele está|r |T132320:0|t[Furtivo]
+    .turnin 76160 >>Entregue À espreita com a Mãe Terra
     .accept 76240 >>Aceite À espreita com a Mãe Terra
     .target Boarton Shadetotem
     .train 410104,1
@@ -5834,7 +5834,7 @@ step << Shaman
     #completewith Fish
     #requires Kah
     #label Pole
-    .equip 16,6256 >> |cRXP_WARN_Equipe o|r |T132932:0|t[Vara de Pescar]
+    .equip 16,6256 >> |cRXP_WARN_Equipe a|r |T132932:0|t[Vara de Pescar]
     .use 6256
     .train 410104,1
 step << Shaman
@@ -5864,8 +5864,8 @@ step << Shaman
     #season 2
     .goto Thunder Bluff,39.45,65.86
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Javaton Totem das Sombras|r
-    >>|cRXP_WARN_Ele é|r |T132320:0|t[Furtivo]
-    .turnin 76240 >>Entregue À Espreita com a Mãe Terra
+    >>|cRXP_WARN_Ele está|r |T132320:0|t[Furtivo]
+    .turnin 76240 >>Entregue À espreita com a Mãe Terra
 -- .train 410104 >>|cRXP_WARN_You will train|r |T236289:0|t[Lava Lash] |cRXP_WARN_and|r |T132147:0|t[Dual Wield] |cRXP_WARN_upon turnin|r
     .target Boarton Shadetotem
     .train 410104,1
@@ -5952,7 +5952,7 @@ step << Shaman
 step << Shaman
     .goto The Barrens,55.86,19.95
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Kranal|r
-    .turnin 2984 >>Entregue Call of Fogo
+    .turnin 2984 >>Entregue Call of Fogo - Missão - Missão
     .accept 1524 >>Aceite Clamor do Fogo
     .target Kranal Fiss
 step << Shaman
@@ -5967,13 +5967,13 @@ step << Shaman
     .goto Durotar,38.05,57.79,8,0
     .goto Durotar,38.93,57.54,8,0
     .goto Durotar,39.19,57.90,8,0
-    .goto Durotar,39.16,58.56,10 >> Siga o caminho montanha acima até |cRXP_FRIENDLY_Telf|r
+    .goto Durotar,39.16,58.56,10 >> Suba pela trilha da montanha até |cRXP_FRIENDLY_Telf Joolam|r
     >>|cRXP_WARN_Tome cuidado para não cair da montanha, pois o caminho é muito estreito. Você pode morrer se cair|r
 step << Shaman
     #label CallofFire2
     .goto Durotar,38.52,58.93
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Telf|r
-    .turnin 1524 >>Entregue Call of Fogo
+    .turnin 1524 >>Entregue Call of Fogo - Missão - Missão
     .accept 1525 >>Aceite Clamor do Fogo
     .target Telf Joolam
 step << Shaman

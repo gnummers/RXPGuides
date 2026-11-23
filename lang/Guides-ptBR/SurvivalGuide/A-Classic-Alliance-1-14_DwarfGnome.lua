@@ -36,7 +36,7 @@ step << Warrior
     .target +Grundel Harkin
     .goto Dun Morogh,28.793,67.838
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Thran Khorman|r
-    .train 6673 >>Treine |T132333:0|t[Brado de Batalha]
+    .train 6673 >>Aprenda |T132333:0|t[Brado de Batalha]
     .target +Thran Khorman
     .goto Dun Morogh,28.832,67.242
     .mob Ragged Young Wolf
@@ -1248,7 +1248,7 @@ step << Hunter
     .goto Dun Morogh,45.810,53.039
     .target Grif Wildheart
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Grif Selvacuore|r
-    .accept 6064 >>Aceite Adestramento da Fera - Missão
+    .accept 6064 >>Aceite Domando a Fera
 step << Hunter
     .goto Dun Morogh,48.3,56.9
     >>|cRXP_WARN_Use o|r |T132164:0|t[Bastão de Adestramento] |cRXP_WARN_em um|r |cRXP_ENEMY_Grande Rochetusco|r
@@ -1259,7 +1259,7 @@ step << Hunter
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Grif Selvacuore|r
     .turnin 6064 >>Entregue Domando a fera
     .target Grif Wildheart
-    .accept 6084 >>Aceite Adestramento da Fera - Missão
+    .accept 6084 >>Aceite Domando a Fera
 step << Hunter
     .goto Dun Morogh,49.4,59.4
     >>|cRXP_WARN_Use o|r |T132164:0|t[Bastão de Adestramento] |cRXP_WARN_em um|r |cRXP_ENEMY_Leopardo da Neve|r
@@ -1270,7 +1270,7 @@ step << Hunter
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Grif Selvacuore|r
     .turnin 6084 >>Entregue Domando a fera
     .target Grif Wildheart
-    .accept 6085 >>Aceite Adestramento da Fera - Missão
+    .accept 6085 >>Aceite Domando a Fera
 step << Hunter
     .goto Dun Morogh,50.4,59.7
     >>|cRXP_WARN_Use o|r |T132164:0|t[Bastão de Adestramento] |cRXP_WARN_em um|r |cRXP_ENEMY_Urso Garra de Gelo|r
@@ -1295,7 +1295,7 @@ step << Hunter
     .goto Ironforge,70.86,85.83
     .target Belia Thundergranite
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Bélia Granitrondo|r
-    .turnin 6086 >> Entregue Treinamento da Fera - Missão
+    .turnin 6086 >> Entregue Treinando a fera
 step << Warrior
     .goto Ironforge,62.237,89.628
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Bixi Bateagita|r
@@ -1443,7 +1443,7 @@ step
 step << !Paladin
     .goto Loch Modan,35.534,48.404
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Estalajadeiro Fornalenha|r
-    .home >> Defina sua Pedra de Retorno em Thelsamar
+    .home >> Defina sua Pedra de Regresso em Thelsamar
     .target Innkeeper Hearthstove
 step
     #label HonorStudents
@@ -1690,7 +1690,7 @@ step << Rogue
 step << Rogue
     .goto StormwindClassic,57.32,62.08,20,0
     .goto StormwindClassic,58.362,61.678
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com Túlio Malheiros|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com o |cRXP_FRIENDLY_Túlio Malheiros|r
     .vendor >> |cRXP_BUY_Compre um|r |T135425:0|t[Faca de Arremesso Afiada]|cRXP_BUY_. Equipe quando estiver no nível 11|r
     .target Thurman Mullby
 ]])
@@ -2024,7 +2024,7 @@ step
 step
     .goto Redridge Mountains,30.590,59.410
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Ariena Penafúria|r
-    .fp Redridge Mountains >> Aprenda a rota de voo para Montanhas Cristarrubra
+    .fp Redridge Mountains >> Pegue o ponto de voo das Montanhas Cristarrubra
     .fly Stormwind >> Voe para Ventobravo
     .target Ariena Stormfeather
 step
@@ -2350,7 +2350,7 @@ step
     .fly Stormwind >> Voe para Ventobravo << Dwarf Paladin
     .target Thor
 step << !Paladin
-    .hs >> Volte para Loch Modan
+    .hs >> Use a Pedra de Regresso para voltar a Loch Modan
 step << Dwarf Paladin
     .goto StormwindClassic,61.149,11.568,25,0
     .goto StormwindClassic,64.0,8.10
@@ -2685,7 +2685,7 @@ step << !Dwarf/!Paladin
 step << Dwarf Paladin
     #completewith next
     .goto Dun Morogh,86.09,51.15
-    .zone Dun Morogh >> Viagem para Dun Morogh
+    .zone Dun Morogh >> Vá para Dun Morogh
 step << Dwarf Paladin
     #completewith next
     .goto Dun Morogh,78.321,58.088
@@ -2734,7 +2734,7 @@ step << Mage
     .target Dink
 step << Mage/Priest/Warlock
     #ah
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com um |cRXP_FRIENDLY_Leiloeiro de Ironforge|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com um |cRXP_FRIENDLY_Leiloeiro de Altaforja|r
     >>|cRXP_BUY_Compre uma|r |T135144:0|t[Varinha Mágica Maior] |cRXP_BUY_se custar menos de 33p 40c|r
     .goto Ironforge,25.800,75.500,-1
     .goto Ironforge,24.200,74.600,-1

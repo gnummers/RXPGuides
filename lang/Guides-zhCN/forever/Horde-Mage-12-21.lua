@@ -471,7 +471,7 @@ step
 >>与 |cRXP_FRIENDLY_图加·符文图腾|r 对话
     .turnin 870 >> 交任务  遗忘之池
 .target 图加·符文图腾
-    .accept 877 >> 接受任务死水绿洲
+    .accept 877 >> 接受任务 死水绿洲
 step
     .goto 1413/1,-2646.42,-522.480
 .target 曼科里克
@@ -595,7 +595,7 @@ step
     .goto 1413/1,-1886.42,-2387.20
 .target 碎牙
 >>与 |cRXP_FRIENDLY_碎牙|r 对话
-    .accept 878 >>接受任务野猪人的内战
+    .accept 878 >>接受任务 野猪人的内战
 step
     .goto 1413/1,-1886.42,-2387.20
     .fp Camp Taurajo >> 获得陶拉祖营地的飞行点
@@ -698,9 +698,9 @@ step
 step
     .goto 1413/1,-954.15,-272.49
 >>与 |cRXP_FRIENDLY_希雷斯·碎石|r 对话
-    .turnin 1061 >> 交任务石爪之灵
+    .turnin 1061 >> 交任务  石爪之灵
 .target 希雷斯·碎石
-    .accept 1062 >> 接受任务 地精侵略者
+    .accept 1062 >> 接受任务地精侵略者
 .target 玛卡巴·扁蹄
 >>与 |cRXP_FRIENDLY_玛卡巴·扁蹄|r 对话
     .accept 6548 >> 接受任务 为我的村庄复仇
@@ -780,7 +780,7 @@ step
 >>与 |cRXP_FRIENDLY_菲兹克斯|r 对话
     .turnin 1483 >> 交任务  菲兹克斯
 .target 菲兹克斯
-    .accept 1093 >> 接受任务超级收割机6000
+    .accept 1093 >> 接受任务 超级收割机6000
 step
     #sticky
     #requires deepmossegg
@@ -819,7 +819,7 @@ step
 step
     .goto 1413/1,-1926.95,-2380.44
 >>与 |cRXP_FRIENDLY_乔恩·星眼|r 对话
-    .turnin 3261 >>交任务  乔恩·星眼
+    .turnin 3261 >>交任务  [DEPRECATED in 4.x] 乔恩·星眼
 .target 乔恩·星眼
     .accept 882 >>接受任务 伊沙姆哈尔
 step
@@ -916,7 +916,7 @@ step
     .goto 1413/1,-2646.42,-522.48
 .target 曼科里克
 >>与 |cRXP_FRIENDLY_曼科里克|r 对话
-    .turnin 899 >>交任务复仇的怒火
+    .turnin 899 >>交任务  复仇的怒火
 step
     >>塔顶
     .goto 1413/1,-2605.88,-475.180
@@ -1099,7 +1099,7 @@ step
 step
     .goto 1456/1,-303.93,-1048.73
 >>与 |cRXP_FRIENDLY_大德鲁伊哈缪尔·符文图腾|r 对话
-    .turnin 1489 >> 交任务  哈缪尔·符文图腾
+    .turnin 1489 >> 交任务哈缪尔·符文图腾
 .target 大德鲁伊哈缪尔·符文图腾
     .accept 1490 >> 接受任务 纳拉·蛮鬃
 step

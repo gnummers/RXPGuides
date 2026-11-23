@@ -212,7 +212,7 @@ step << Priest/Mage/Warlock
     .goto 1426,21.813,72.584,0
     .goto 1426,19.578,72.086,0
     .goto 1426,20.627,70.415,0
-    >>Tuez les|cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
+    >>Tuez les |cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
     .complete 170,1 --Kill Rockjaw Trogg (x6)
     .mob +Rockjaw Trogg
     .complete 170,2 --Kill Burly Rockjaw Trogg (x6)
@@ -421,7 +421,7 @@ step
     .goto 1426,21.813,72.584,0
     .goto 1426,19.578,72.086,0
     .goto 1426,20.627,70.415,0
-    >>Tuez les|cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
+    >>Tuez les |cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
     .complete 170,1 --Kill Rockjaw Trogg (x6)
     .mob +Rockjaw Trogg
     .complete 170,2 --Kill Burly Rockjaw Trogg (x6)
@@ -483,7 +483,7 @@ step << Paladin/Warlock/Hunter
     .goto 1426,31.138,74.048,50,0
     .goto 1426,30.077,74.479,50,0
     .goto 1426,29.280,75.500,50,0
-    >>Tuez les|cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
+    >>Tuez les |cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
     .complete 170,1 --Kill Rockjaw Trogg (x6)
     .mob +Rockjaw Trogg
     .complete 170,2 --Kill Burly Rockjaw Trogg (x6)
@@ -675,7 +675,7 @@ step << !Paladin !Warlock !Hunter
     .waypoint 1426,25.920,74.571,55,0
     .waypoint 1426,28.812,76.397,55,0
     .waypoint 1426,29.303,77.337,55,0
-    >>Tuez les|cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
+    >>Tuez les |cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
     .complete 170,1 --Kill Rockjaw Trogg (x6)
     .mob +Rockjaw Trogg
     .complete 170,2 --Kill Burly Rockjaw Trogg (x6)
@@ -1646,7 +1646,7 @@ step
     .target Pilot Bellowfiz
 step << Warrior/Paladin/Rogue
     #optional
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Beldin Steelgrill|r et |cRXP_FRIENDLY_Loslor Rudge|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Beldin Steelgrill|r et à |cRXP_FRIENDLY_Loslor Rudge|r
     >>|cRXP_BUY_Achetez une|r [Pioche de mineur] |cRXP_BUY_à |cRXP_FRIENDLY_Loslor Rudge|r
     >>Si vous ne pouvez pas vous le permettre, passez cette étape
     .turnin 400 >> Rendez la quête Des outils pour Grillacier
@@ -1658,7 +1658,7 @@ step << Warrior/Paladin/Rogue
     .target +Loslor Rudge
     .train 2018,3 --Blacksmithing
 step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Beldin Steelgrill|r et |cRXP_FRIENDLY_Loslor Rudge|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Beldin Steelgrill|r et à |cRXP_FRIENDLY_Loslor Rudge|r
     .turnin 400 >> Rendez la quête Des outils pour Grillacier
     .goto Dun Morogh,50.443,49.092
     .target +Beldin Steelgrill
@@ -3050,7 +3050,7 @@ step << Rogue
     #season 2
     .goto Dun Morogh,25.4,50.8
     >>Utilisez |T133644:0|t[Vol à la tire] sur les |cRXP_ENEMY_Trolls Crins-de-givre|r. Récupérez le |T134327:0|t[|cRXP_LOOT_Morceau supérieur droit de carte|r]
-    >>Vous devez être en [Camouflage] pour utiliser votre [Vol à la tire]
+    >>Vous devez être en [Camouflage] pour utiliser [Vol à la tire]
     .collect 208213,1 -- Top-Right Map Piece (1)
     .mob Frostmane Seer
     .mob Frostmane Headhunter
@@ -3127,7 +3127,7 @@ step << Rogue
     #season 2
     #completewith next
     >>Utilisez le |T133644:0|t[Vol à la tire] sur les |cRXP_ENEMY_Gnomes lépreux|r. Récupérez le |T134269:0|t[|cRXP_LOOT_Morceau inférieur droit de carte]|r
-    >>Vous devez être en [Camouflage] pour utiliser votre [Vol à la tire]
+    >>Vous devez être en [Camouflage] pour utiliser [Vol à la tire]
     .collect 208218,1 -- Bottom-Right Map Piece (1)
     .mob Leper Gnome
     .train 398196,1
@@ -3213,7 +3213,7 @@ step << Rogue
     .goto 1426,25.540,45.374,55,0
     .goto 1426,25.950,43.930,55,0
     >>Utilisez le |T133644:0|t[Vol à la tire] sur les |cRXP_ENEMY_Gnomes lépreux|r. Récupérez le |T134269:0|t[|cRXP_LOOT_Morceau inférieur droit de carte]|r
-    >>Vous devez être en [Camouflage] pour utiliser votre [Vol à la tire]
+    >>Vous devez être en [Camouflage] pour utiliser [Vol à la tire]
     .collect 208218,1 -- Bottom-Right Map Piece (1)
     .mob Leper Gnome
     .train 398196,1
@@ -3232,7 +3232,7 @@ step
     .waypoint 1426,23.373,51.385,30,0
     .waypoint 1426,23.568,50.924,30,0
     .waypoint 1426,24.301,50.898,30,0
-    >>Tuez |cRXP_ENEMY_Frostmane Headhunters|r à l'intérieur de la grotte
+    >>Tuez les|cRXP_ENEMY_Frostmane Headhunters|r à l'intérieur de la grotte
     .complete 287,1 --Kill Frostmane Headhunter (x5)
     .mob Frostmane Headhunter
 step
@@ -3386,7 +3386,7 @@ step << Warrior
 step << Warrior
     #optional
     #completewith Dirt
-    +Équipez les [Couteau de lancer perçant]
+    +Équipez le [Couteau de lancer perçant]
     .use 3107
     .itemcount 3107,1
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<6.3
@@ -3634,7 +3634,7 @@ step << Rogue
     #season 2
     .goto Dun Morogh,77.86,61.66
     >>Utilisez |T133644:0|t[Vol à la tire] sur les |cRXP_ENEMY_Espion Sombrefer|r. Récupérez la |T134331:0|t[Note de Ratnoir] et le |T134327:0|t[|cRXP_LOOT_Morceau inférieur gauche de carte]|r
-    >>Vous devez être en [Camouflage] pour utiliser votre [Vol à la tire]
+    >>Vous devez être en [Camouflage] pour utiliser [Vol à la tire]
     .collect 208205,1 --Blackrat's Note (1)
     .collect 208219,1 -- Bottom-Left Map Piece (1)
     .mob Dark Iron Spy
@@ -3645,7 +3645,7 @@ step << Rogue
     #optional
     .goto Dun Morogh,77.86,61.66
     >>Utilisez |T133644:0|t[Vol à la tire] sur les |cRXP_ENEMY_Espions Sombrefers|r. Récupérez la |T134331:0|t[Note de Ratnoir]
-    >>Vous devez être en [Camouflage] pour utiliser votre [Vol à la tire]
+    >>Vous devez être en [Camouflage] pour utiliser [Vol à la tire]
     .collect 208205,1
     .mob Dark Iron Spy
     .train 400094,1
@@ -3654,7 +3654,7 @@ step << Rogue
     #optional
     .goto Dun Morogh,77.86,61.66
     >>Utilisez |T133644:0|t[Vol à la tire] sur les |cRXP_ENEMY_Espion Sombrefer|r. Récupérez le |T134327:0|t[|cRXP_LOOT_Morceau inférieur gauche de carte]|r
-    >>Vous devez être en [Camouflage] pour utiliser votre [Vol à la tire]
+    >>Vous devez être en [Camouflage] pour utiliser [Vol à la tire]
     .collect 208219,1 -- Bottom-Left Map Piece (1)
     .mob Dark Iron Spy
     .train 398196,1
@@ -4010,7 +4010,7 @@ step << Human
     #xprate <1.59
     #label Stormpike1
     .goto Loch Modan,24.77,18.40
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Mountaineer Stormpike|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Mountaineer Stormpike|r
     .turnin 1339 >> Rendez la quête La mission du Montagnard Foudrepique
     .accept 1338 >> Acceptez la quête La mission de Foudrepique
     .accept 307 >> Acceptez la quête Bas les pattes !
@@ -4020,7 +4020,7 @@ step << Human
     #xprate >1.59
     #label Stormpike1
     .goto Loch Modan,24.77,18.40
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Mountaineer Stormpike|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Mountaineer Stormpike|r
     .turnin 1339 >> Rendez la quête La mission du Montagnard Foudrepique
     .accept 1338 >> Acceptez la quête La mission de Foudrepique << Mage/Warlock/Rogue
     .accept 307 >> Acceptez la quête Bas les pattes !
@@ -4487,7 +4487,7 @@ step << Warrior
 step << Warrior
     #optional
     #completewith Dirt
-    +Équipez les [Couteau de lancer perçant]
+    +Équipez le [Couteau de lancer perçant]
     .use 3107
     .itemcount 3107,1
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<6.3
@@ -4646,7 +4646,7 @@ step
     >>Vous avez besoin de 50 en [Cuisine] pour une quête au Bois de la Pénombre plus tard
     >>|T133971:0|t[Cuisiner] les objets suivants:
     >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Morceau de viande de sanglier]|r en [Viande de sanglier rôtie]
-    >>|T133971:0|t[Cuisinez] les |cRXP_LOOT_[Stringy Wolf Meat]|r en [Viande de loup grillée]
+    >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Viande de loup maigre]|r en [Viande de loup grillée]
     .usespell 2550
     .zoneskip Stormwind City
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -4659,7 +4659,7 @@ step
     #label TramCook5
     #completewith TramEnd
     >>Vous avez besoin de 50 en [Cuisine] pour une quête au Bois de la Pénombre plus tard
-    >>|T133971:0|t[Cuisinez] les |cRXP_LOOT_[Stringy Wolf Meat]|r en [Viande de loup grillée]
+    >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Viande de loup maigre]|r en [Viande de loup grillée]
     .usespell 2550
     .zoneskip Stormwind City
     .itemcount 769,<1 --Chunk of Boar Meat (<1)
@@ -5928,7 +5928,7 @@ step << Rogue
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<3.0
 step << Rogue
     #optional
-    +Équipez les [Couteau de lancer perçant]
+    +Équipez le [Couteau de lancer perçant]
     .use 3107
     .itemcount 3107,1
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<6.3
@@ -6361,7 +6361,7 @@ step
 step
     #label PawsDelivery
     .goto Loch Modan,24.77,18.40
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Mountaineer Stormpike|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Mountaineer Stormpike|r
     .turnin 307 >> Rendez la quête Bas les pattes !
     .turnin 353 >> Rendez la quête Livraison pour Foudrepique
     .target Mountaineer Stormpike
@@ -6662,7 +6662,7 @@ step << Warlock
     #xprate <1.5
     .goto Ironforge,51.1,8.7,15,0
     .goto Ironforge,50.343,5.657
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Eglantine|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Briarthorn|r
     .trainer >> Apprenez vos sorts de classe
     .target Briarthorn
 step << Warlock/Rogue
@@ -6782,7 +6782,7 @@ step << !Paladin
     >>Vous avez besoin de 50 en [Cuisine] pour une quête au Bois de la Pénombre plus tard
     >>|T133971:0|t[Cuisiner] les objets suivants:
     >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Morceau de viande de sanglier]|r en [Viande de sanglier rôtie]
-    >>|T133971:0|t[Cuisinez] les |cRXP_LOOT_[Stringy Wolf Meat]|r en [Viande de loup grillée]
+    >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Viande de loup maigre]|r en [Viande de loup grillée]
     .usespell 2550
     .zoneskip Stormwind City
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -6796,7 +6796,7 @@ step << !Paladin
     #label WestfallTramCook5
     #completewith WestfallTramEnd
     >>Vous avez besoin de 50 en [Cuisine] pour une quête au Bois de la Pénombre plus tard
-    >>|T133971:0|t[Cuisinez] les |cRXP_LOOT_[Stringy Wolf Meat]|r en [Viande de loup grillée]
+    >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Viande de loup maigre]|r en [Viande de loup grillée]
     .usespell 2550
     .zoneskip Stormwind City
     .itemcount 769,<1 --Chunk of Boar Meat (<1)
@@ -7095,7 +7095,7 @@ step << Warlock
     #xprate >1.49
     .goto Ironforge,51.1,8.7,15,0
     .goto Ironforge,50.343,5.657
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Eglantine|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Briarthorn|r
     .trainer >> Apprenez vos sorts de classe
     .target Briarthorn
 step << Warlock
@@ -7518,7 +7518,7 @@ step
     >>Vous avez besoin de 50 en [Cuisine] pour une quête au Bois de la Pénombre plus tard
     >>|T133971:0|t[Cuisiner] les objets suivants:
     >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Morceau de viande de sanglier]|r en [Viande de sanglier rôtie]
-    >>|T133971:0|t[Cuisinez] les |cRXP_LOOT_[Stringy Wolf Meat]|r en [Viande de loup grillée]
+    >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Viande de loup maigre]|r en [Viande de loup grillée]
     .usespell 2550
     .zoneskip Darkshore
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -7532,7 +7532,7 @@ step
     #label DarkshoreCook5
     #completewith DarkshoreBoat
     >>Vous avez besoin de 50 en [Cuisine] pour une quête au Bois de la Pénombre plus tard
-    >>|T133971:0|t[Cuisinez] les |cRXP_LOOT_[Stringy Wolf Meat]|r en [Viande de loup grillée]
+    >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Viande de loup maigre]|r en [Viande de loup grillée]
     .usespell 2550
     .zoneskip Darkshore
     .itemcount 769,<1 --Chunk of Boar Meat (<1)
@@ -8450,7 +8450,7 @@ step
     .mob +Forest Lurker
 step
     .goto Loch Modan,24.77,18.40
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Mountaineer Stormpike|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Mountaineer Stormpike|r
     .turnin 307 >> Rendez la quête Bas les pattes !
     .target Mountaineer Stormpike
 step
@@ -8743,7 +8743,7 @@ step
 step
     #softcore
     .goto Loch Modan,24.77,18.40
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Mountaineer Stormpike|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Mountaineer Stormpike|r
     .turnin 353 >> Rendez la quête Livraison pour Foudrepique
     .target Mountaineer Stormpike
 step
@@ -8886,7 +8886,7 @@ step
     >>Vous avez besoin de 50 en [Cuisine] pour une quête au Bois de la Pénombre plus tard
     >>|T133971:0|t[Cuisiner] les objets suivants:
     >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Morceau de viande de sanglier]|r en [Viande de sanglier rôtie]
-    >>|T133971:0|t[Cuisinez] les |cRXP_LOOT_[Stringy Wolf Meat]|r en [Viande de loup grillée]
+    >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Viande de loup maigre]|r en [Viande de loup grillée]
     .usespell 2550
     .zoneskip Darkshore
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -8899,7 +8899,7 @@ step
     #label DarkshoreCook5
     #completewith DarkshoreBoat
     >>Vous avez besoin de 50 en [Cuisine] pour une quête au Bois de la Pénombre plus tard
-    >>|T133971:0|t[Cuisinez] les |cRXP_LOOT_[Stringy Wolf Meat]|r en [Viande de loup grillée]
+    >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Viande de loup maigre]|r en [Viande de loup grillée]
     .usespell 2550
     .zoneskip Darkshore
     .itemcount 769,<1 --Chunk of Boar Meat (<1)

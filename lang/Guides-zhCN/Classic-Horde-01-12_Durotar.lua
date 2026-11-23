@@ -1500,7 +1500,7 @@ step << Shaman
 step << Shaman
     #completewith next
     #requires Shrine
-    .cast 8202 >>|cRXP_WARN_使用|r |T134743:0|t[大地灵契]
+    .cast 8202 >>|cRXP_WARN_使用 |T134743:0|t[大地显形图腾]|r
     .use 6635
 step << Shaman
     #label CallOE1
@@ -3342,7 +3342,7 @@ step << Warrior/Shaman
     #xprate >1.49
     #softcore
     .goto Durotar,47.04,17.58
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .isQuestComplete 806
 step << Warrior/Shaman
     #xprate >1.49
@@ -3486,7 +3486,7 @@ step << Warrior/Shaman/Hunter
     #xprate <1.5 << Shaman/Warrior
     #softcore
     .goto Durotar,47.04,17.58
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .isQuestComplete 806
 step << Warrior/Shaman/Hunter
     #xprate <1.5 << Shaman/Warrior
@@ -3497,7 +3497,7 @@ step << !Warrior !Shaman !Hunter
     #xprate >1.49
     #softcore
     .goto Durotar,47.04,17.58
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .isQuestComplete 806
 step << !Warrior !Shaman !Hunter
     #xprate >1.49
@@ -3818,7 +3818,7 @@ step << Warrior/Shaman
 step << Warrior/Shaman
     #softcore
     #completewith next
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
 step << Warrior/Shaman
     #label PoolsPickup
     .goto The Barrens,52.26,31.93
@@ -3899,7 +3899,7 @@ step << Warrior/Shaman
 step << Warrior/Shaman
     #softcore
     #completewith next
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
 step << Warrior/Shaman
     #label FungalSporesComplete
     .goto The Barrens,51.44,30.15
@@ -4860,7 +4860,7 @@ step
     #xprate <1.5
     #softcore
     #completewith SecuringLinesTurnIn
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .isQuestComplete 813 << Warrior/Shaman/Hunter
 step
     #xprate <1.5
@@ -5544,7 +5544,7 @@ step
     #optional
     #softcore
     #completewith ProofofDemiseTurnin
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .isQuestComplete 427
 step
     #optional
@@ -5890,7 +5890,7 @@ step << Warlock
 step << Warlock
     .goto Undercity,85.04,25.97
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_凯伦丁|r 对话
-    .turnin 1471 >>交任务誓缚
+    .turnin 1471 >>交任务 誓缚
     .target 凯伦丁·哈加尔
     .isQuestAvailable 1504
 step << skip --Warlock
@@ -6072,7 +6072,7 @@ step
     #optional
     #softcore
     #completewith MillsTurnin
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
 step
     #optional
     #hardcore
@@ -6640,7 +6640,7 @@ step << skip --Warrior
 step << Warrior
     #softcore
     #completewith next
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
 step << Warrior
     #hardcore
     #completewith next
@@ -8438,7 +8438,7 @@ step << Shaman
 step << Shaman
     #completewith next
     #requires Shrine
-    .cast 8202 >>|cRXP_WARN_使用|r |T134743:0|t[大地灵契]
+    .cast 8202 >>|cRXP_WARN_使用 |T134743:0|t[大地显形图腾]|r
     .use 6635
 step << Shaman
     #label CallOE1
@@ -9723,7 +9723,7 @@ step
     #xprate <2.1
     #softcore
     .goto Durotar,47.04,17.58
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .isQuestComplete 806
 step
     #xprate <2.1
@@ -9849,7 +9849,7 @@ step
     #softcore
     #completewith
     .goto The Barrens,50.72,32.61
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .subzoneskip 380
 step
     #xprate >2.09
@@ -10216,7 +10216,7 @@ step << Warlock
 step << Warlock
     .goto Orgrimmar,48.246,45.281
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与|r |cRXP_FRIENDLY_甘鲁尔·血眼|r 对话
-    .turnin 1504 >>交任务誓缚
+    .turnin 1504 >>交任务 誓缚
     .target 甘鲁尔·血眼
 step << Warlock
     .goto Orgrimmar,31.74,37.82

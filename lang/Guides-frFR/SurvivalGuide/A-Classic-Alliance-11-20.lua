@@ -83,7 +83,7 @@ step << !Human
     .accept 153 >> Acceptez la quête Les masques en cuir rouge
 step
     .goto Westfall,52.86,53.71
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Innkeeper Heather|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Aubergiste Heather|r
 	>>|cRXP_BUY_Achetez de la nourriture/eau si besoin|r << !Warrior !Rogue
 	>>|cRXP_BUY_Achetez de la nourriture si besoin|r << Warrior/Rogue
     .vendor >>Les |T133918:0|t[Lutjans à longue mâchoire] |cRXP_WARN_sont très peu coûteux|r
@@ -579,7 +579,7 @@ step
 step
 #map Darkshore
     .goto Felwood,21.63,18.15
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Soigneflore|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Treetender|r
     .accept 2118 >> Acceptez Plagued Lands
     .target Tharnariun Treetender
 step
@@ -705,7 +705,7 @@ step
     .accept 4811 >> Accept Les Red Crystal
 step
 #map Darkshore
-	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Soigneflore|r
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Treetender|r
 	.target Tharnariun Treetender
     .goto Felwood,21.63,18.15
     .turnin 2118 >> Rendez la quête Terres malades
@@ -841,7 +841,7 @@ step
     .goto Darkshore,47.36,36.86,40,0
     .goto Darkshore,44.80,36.91,40,0
     .goto Darkshore,46.30,39.01
-    >>Tuez les |cRXP_ENEMY_Grell sauvage|r et les |cRXP_ENEMY_Fée vile|r. Dépouillez-les pour leur |cRXP_LOOT_Boucle d'oreille de Grell|r
+    >>Tuez les |cRXP_ENEMY_Grells sauvages|r et les |cRXP_ENEMY_Fées viles|r. Dépouillez-les pour leurr |cRXP_LOOT_Boucles d'oreille de Grell|r
     .complete 955,1
     .mob Wild Grell
     .mob Vile Sprite
@@ -964,7 +964,7 @@ step
     .goto Darkshore,42.92,62.50,50,0
     .goto Darkshore,43.30,58.70
     >>Tuez |cRXP_ENEMY_Anaya Dawnrunner|r. Dépouillez-la pour son |cRXP_LOOT_Pendentif|r
-    >>|cRXP_ENEMY_Anaya Coursaurore|r |cRXP_WARN_patrouille dans Ameth'Aran. Elle a un temps de respawn très long et si vous ne la trouvez pas, vous pouvez passer cette étape|r
+    >>|cRXP_ENEMY_Anaya Dawnrunner|r patrouille dans Ameth'Aran. Elle a un temps de respawn très long et si vous ne la trouvez pas, vous pouvez passer cette étape
     .complete 963,1
     .unitscan Anaya Dawnrunner
 step
@@ -1174,7 +1174,7 @@ step
 step
 #requires tube1
 #map Darkshore
-	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Soigneflore|r
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Treetender|r
 	.target Tharnariun Treetender
     .goto Felwood,21.63,18.15
     .turnin 2138 >> Rendez la quête Nettoyage de l'infection
@@ -1515,7 +1515,7 @@ step
 step
 .group
 #map Darkshore
-	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Soigneflore|r
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Treetender|r
 	.target Tharnariun Treetender
     .goto Felwood,21.63,18.15
     .turnin 2139 >> Rendez la quête Espoir de Tharnariun
@@ -1705,7 +1705,7 @@ step
     .target Gershala Nightwhisper
 step
 #map Darkshore
-	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Soigneflore|r
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Treetender|r
 	.target Tharnariun Treetender
     .goto Felwood,21.63,18.15
     .accept 2139 >> Acceptez la quête Espoir de Tharnariun
@@ -1768,7 +1768,7 @@ step
     .accept 948 >> Acceptez la quête Onu
 step
 #map Darkshore
-	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Soigneflore|r
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Tharnariun Treetender|r
 	.target Tharnariun Treetender
     .goto Felwood,21.63,18.15
     .turnin 2139 >> Rendez la quête Espoir de Tharnariun
@@ -1840,7 +1840,7 @@ step
     >>Les |cRXP_ENEMY_Disciples du crépuscule|r |cRXP_WARN_lancent|r |T135953:0|t[Rénovation] |cRXP_WARN_et un sort de |T135915:0|t[Soins] de 3 secondes|r
 step
     .goto Ashenvale,22.36,3.98
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à|cRXP_FRIENDLY_Therylune|r. Cela va commencer une escorte
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Therylune|r. Cela va commencer une escorte
     >>Passez cette étape si elle n'est pas présente
     >>Les |cRXP_ENEMY_Nervis du crépuscule|r |cRXP_WARN_peuvent|r utiliser |T132343:0|t[Désarmement] |cRXP_WARN_sur vous pendant 6 secondes|r << Rogue/Paladin/Warrior
     >>Les |cRXP_ENEMY_Disciples du crépuscule|r |cRXP_WARN_lancent|r |T135953:0|t[Rénovation] |cRXP_WARN_et un sort de |T135915:0|t[Soins] de 3 secondes|r
@@ -1874,12 +1874,12 @@ step
     #sticky
     #label prospector
     .goto Felwood,18.08,64.03
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Prospector Remtravel|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Prospector Remtravel|r
     .turnin 729 >> Rendez la quête Les absences du Prospecteur
     .target Prospector Remtravel
 step
     .goto Darkshore,35.72,83.69
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Prospector Remtravel|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Prospector Remtravel|r
     >>Ceci va démarrer une escorte
     .accept 731,1 >> Acceptez la quête Les absences du Prospecteur
     >>|cRXP_WARN_Cette quête est TRÈS difficile. Passez cette étape si vous n'arrivez pas à trouver un groupe ou à la faire seul|r
@@ -1995,7 +1995,7 @@ step
     .goto Ashenvale,27.26,35.58
     >>|cRXP_WARN_Escortez |cRXP_FRIENDLY_Kerlonian|r jusqu'au poste de Maestra à Orneval|r
     .use 13536 >> |cRXP_WARN_Utilisez la|r |T134229:0|t[|cRXP_LOOT_Corne de l'éveil|r] |cRXP_WARN_dès que |cRXP_FRIENDLY_Kerlonian|r s'endort|r
-    >>|cRXP_WARN_Évitez de rester sur la route principale autant que possible. Les ennemis n'apparaîtront que si vous restez sur la route|r
+    >>Évitez de rester sur la route principale autant que possible. Les ennemis n'apparaîtront que si vous restez sur la route
     .complete 5321,2
     .isOnQuest 5321
 step
@@ -2225,7 +2225,7 @@ step
 .dungeon WC
     >>Tuez |cRXP_ENEMY_Lord Cobrahn|r, |cRXP_ENEMY_Lord Pythas|r, |cRXP_ENEMY_Lord Serpentis|r et |cRXP_ENEMY_Lady Anacondra|r puis parlez au |cRXP_FRIENDLY_Disciple of Naralex|r au début du donjon pour commencer son escorte
     >>Escortez le |cRXP_FRIENDLY_Disciple of Naralex|r à travers les Cavernes des Lamentations et compléter son rituel
-    >>Tuez|cRXP_ENEMY_Mutanus the Devourer|r. Dépouillez-le pour sa [|cRXP_LOOT_Glowing Shard|r]
+    >>Tuez|cRXP_ENEMY_Mutanus the Devourer|r. Dépouillez-le pour son [|cRXP_LOOT_Glowing Shard|r]
     >>|cRXP_WARN_Utilisez le [|cRXP_LOOT_Glowing Shard|r] pour commencer la quête|r
     .collect 10441,1,6981,1 -- Glowing Shard (1)
     .accept 6981 >> Acceptez la quête L'Éclat luminescent

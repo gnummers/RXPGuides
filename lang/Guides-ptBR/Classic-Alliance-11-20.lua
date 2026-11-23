@@ -126,7 +126,7 @@ step
 step
     #sticky
     #completewith bennytime
-    >>Mate os |cRXP_ENEMY_Harvest Watchers|r localizados em qualquer um dos campos conforme você passa por eles
+    >>Mate os |cRXP_ENEMY_Harvest Watchers|r localizados em qualquer um dos campos ao passar por eles
     >>Saque-os para obter seus |cRXP_LOOT_Okra|r e |cRXP_LOOT_Flasks of Oil|r
     .mob Harvest Watcher
     .complete 9,1 --Havest Watcher slain (20)
@@ -452,13 +452,13 @@ step << Gnome Rogue/Dwarf Rogue
 step << Dwarf !Paladin/Gnome
     #label end
     #completewith DarkshoreBoat
-    .hs >> Vá para Thelsamar
+    .hs >> Use sua Pedra de Retorno para ir a Thelsamar
 step << Dwarf !Paladin/Gnome
     #softcore
     #completewith DarkshoreBoat
     .goto Loch Modan,33.94,50.95
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Thorgrum Borrelson|r
-    .fly Wetlands >> Voe para Terras do Interior
+    .fly Wetlands >> Voe para Pantanal
     .target Thorgrum Borrelson
 step << Dwarf !Paladin/Gnome
     #hardcore
@@ -552,7 +552,7 @@ step << Dwarf Paladin
     #completewith DarkshoreBoat
     .goto Ironforge,55.501,47.742
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Grif Trovino|r
-    .fly Wetlands>> Voe para Terras do Interior
+    .fly Wetlands>> Voe para Pantanal
     .target Gryth Thurden
 step
     #hardcore << !Human
@@ -625,7 +625,7 @@ step << Human/Dwarf Paladin
 step
     .goto Wetlands,7.95,56.38
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Devin Tremulaurora|r
-    .vendor 1453 >> |cRXP_WARN_Compre quantas|r |T134831:0|t[Cura Potions] |cRXP_WARN_estiverem disponíveis|r
+    .vendor 1453 >> |cRXP_WARN_Compre o máximo possível de|r |T134831:0|t[Poçãos de Cura] |cRXP_WARN_que estiverem disponíveis|r
     >>|cRXP_WARN_Este é um item de suprimento limitado. Pule esta etapa se o|cRXP_FRIENDLY_ Devin Tremulaurora|r não tiver nenhuma|r
     .target Dewin Shimmerdawn
 step
@@ -685,7 +685,7 @@ step
     >>Você precisa de 50 em [Culinária] para uma missão mais tarde na Floresta do Crepúsculo
     >>|T133971:0|t[Cozinhe] os seguintes itens
     >>|T133971:0|t[Cozinhe] os |cRXP_LOOT_[Naco de Carne de Javali]|r em [Carne Assada de Porco]
-    >>|T133971:0|t[Cozinhe] a |cRXP_LOOT_[Carne Fibrosa de Lobo]|r em [Carne de Lobo Chamuscada]
+    >>|T133971:0|t[Cozinhe] a |cRXP_LOOT_[Acém de Lobo]|r em [Carne Tostada de Lobo]
     .usespell 2550
     .zoneskip Darkshore
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -698,7 +698,7 @@ step
     #label DarkshoreCook5
     #completewith DarkshoreBoat
     >>Você precisa de 50 em [Culinária] para uma missão mais tarde na Floresta do Crepúsculo
-    >>|T133971:0|t[Cozinhe] a |cRXP_LOOT_[Carne Fibrosa de Lobo]|r em [Carne de Lobo Chamuscada]
+    >>|T133971:0|t[Cozinhe] a |cRXP_LOOT_[Acém de Lobo]|r em [Carne Tostada de Lobo]
     .usespell 2550
     .zoneskip Darkshore
     .itemcount 769,<1 --Chunk of Boar Meat (<1)
@@ -1861,7 +1861,7 @@ step << Druid
     #optional
     #season 0
 	#completewith next
-	.cast 18960 >> Lance Teleporte: Clareira da Lua
+	.cast 18960 >> Use Teleporte: Clareira da Lua
 	.zoneskip Moonglade
 step << Druid
     #season 0
@@ -3050,7 +3050,7 @@ step << Druid
     #optional
 	#completewith TotL
     #season 0
-	.cast 18960 >> Lance Teleporte: Clareira da Lua
+	.cast 18960 >> Use Teleporte: Clareira da Lua
 	.zoneskip Moonglade
 step << Druid
     #season 0
@@ -3070,7 +3070,7 @@ step << Druid
     #optional
     #season 0
     #completewith next
-    .cast 18960 >> Lance Teleporte: Clareira da Lua
+    .cast 18960 >> Use Teleporte: Clareira da Lua
     .itemcount 15877,1 -- Shrine Bauble (1)
 step << Druid
     #season 0
@@ -3593,7 +3593,7 @@ step << Druid
     #season 0
     #requires earthroot
 	#completewith FlyDarkshore
-	.cast 18960 >> Lance Teleporte: Clareira da Lua
+	.cast 18960 >> Use Teleporte: Clareira da Lua
 	.zoneskip Moonglade
 step << Druid
     #requires earthroot
@@ -3699,7 +3699,7 @@ step << Hunter
     #season 0
     .goto Darkshore,37.4,40.6
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Dalmond|r
-    .vendor >>|cRXP_BUY_Reabasteça de Munição|r
+    .vendor >>|cRXP_BUY_Reabasteça em Munição|r
     .target Dalmond
 step << Druid
     #xprate <1.5
@@ -4099,7 +4099,7 @@ step << Druid
     #xprate >1.59
     #optional
 	#completewith next
-	.cast 18960 >> Lance Teleporte: Clareira da Lua
+	.cast 18960 >> Use Teleporte: Clareira da Lua
 	.zoneskip Moonglade
     .xp <20,1
 step << Druid
@@ -4372,7 +4372,7 @@ step << NightElf Rogue
     .goto Ironforge,17.089,83.373,-1
     .zone Ironforge >>Use o recurso de auto-destravamento do personagem unstuck para pular para Altaforja. Você precisará deslogar no local, depois acessar o menu de ajuda em outro personagem (alternativamente, cole o link de destravamento abaixo no navegador), role até autoatendimento. Clique em destravar no seu personagem e mova-se. Se não conseguir se destravar, ignore esta etapa e nade ao longo das montanhas até Cerro Oeste
     .link https://www.youtube.com/watch?v=oVoxsr4zcg4 >> Clique aqui para ver o vídeo de referência
-    .link https://us.battle.net/support/en/help/product/wow/197/834/solution >> Clique aqui para o link de desbloqueio
+    .link https://us.battle.net/support/en/help/product/wow/197/834/solution >> Clique aqui para acessar o link de desbloqueio
     .subzoneskip 809 --IF Gates
     .subzoneskip 2257 --Deeprun Tram
     .zoneskip Elwynn Forest
@@ -4698,7 +4698,7 @@ step << skip --logout skip Warlock/Rogue
     #optional
     #completewith DeeprunNoDM
     .goto 1455,56.207,46.844
-    .goto 1455,76.414,51.226,20 >>|cRXP_WARN_Salte no topo da Cabeça do Grifo. Execute um Logout Pular desconectando e reconectando|r
+    .goto 1455,76.414,51.226,20 >>|cRXP_WARN_Pule sobre a Cabeça do Grifo. Faça um Pulo de Logout saindo e entrando novamente.|r
     .zoneskip Darkshore << Warrior
     .zoneskip Elwynn Forest
     .zoneskip Stormwind City
@@ -4737,8 +4737,8 @@ step << Mage/Warlock/Rogue
 step << Mage/Warlock/Rogue
     #xprate >1.59
     #completewith WepTrainNoDM << !Warrior
-    >>|cRXP_WARN_Aumente seu Nível de|r |T135966:0|t[Primeiros Socorros] |cRXP_WARN_e|r |T133971:0|t[Culinária] |cRXP_WARN_se necessário enquanto estiver no Tram|r
-    >>|cRXP_WARN_Você precisará que seu|r |T135966:0|t[Primeiros Socorros] |cRXP_WARN_chegue a 80+ para uma missão mais tarde|r << Rogue !Dwarf
+    >>|cRXP_WARN_Suba seu|r |T135966:0|t[Primeiros Socorros] |cRXP_WARN_e|r |T133971:0|t[Culinária] |cRXP_WARN_se necessário enquanto estiver no bonde|r
+    >>|cRXP_WARN_Você precisará do seu|r |T135966:0|t[Primeiros Socorros] |cRXP_WARN_ser 80+ para uma missão mais tarde|r << Rogue !Dwarf
     .zone Stormwind City >> Pegue o Metrô Correfundo para Ventobravo
     .zoneskip Darkshore << Warrior
     .zoneskip Elwynn Forest
@@ -5142,7 +5142,7 @@ step << Rogue
     #completewith next
     .goto Redridge Mountains,30.59,59.42
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Ariena Penafúria|r
-    .fp Redridge Mountains >> Aprenda a rota de voo para Montanhas Cristarrubra << !Human
+    .fp Redridge Mountains >> Pegue o ponto de voo das Montanhas Cristarrubra << !Human
     .fly Westfall >> Voe para Cerro Oeste
     .target Ariena Stormfeather
     .dungeon !DM
@@ -5186,10 +5186,10 @@ step << Rogue
     #xprate >1.59
     #optional
     #completewith TowerKey
-    +|cRXP_WARN_==PRESTE ATENÇÃO NA PRÓXIMA SEÇÃO==|r
+    +|cRXP_WARN_==PRESTE ATENÇÃO À PRÓXIMA SEÇÃO==|r
     >>Pressione Escape, depois vá em -> Opções -> Controles
     >>Marque "Ativar Tecla de Interação" e vincule a opção "Interagir com o Alvo" a uma tecla
-    >>|cRXP_WARN_Além disso, recomenda-se ativar as Placas de Nome de Inimigos (Tecla Padrão: V) para ver inimigos atrás de alguns cantos da torre|r
+    >>|cRXP_WARN_Além disso, é recomendável ativar as placas de nome dos inimigos (tecla padrão: V), pois isso permite ver os inimigos atrás de alguns cantos dentro da torre.|r
     .dungeon !DM
 step << Rogue
     #xprate >1.59
@@ -5234,7 +5234,7 @@ step << Rogue
     >>Saia manualmente de [Furtividade]|cRXP_WARN_, depois pressione sua tecla de atalho "Interagir com Alvo" para abrir o |cRXP_PICK_Baú da Floresta do Crepúsculo|r. Saqueie-o para obter |cRXP_LOOT_Diário de Filipe Pinel|r |r
     >>OBS.: Sua [Furtividade] vai parar de funcionar temporariamente após saquear |cRXP_LOOT_Diário de Filipe Pinel|r
     >>|cRXP_WARN_Esteja preparado para correr se você não matar as |cRXP_ENEMY_Sentinelas da Torre Défias|r no 2º andar. Elas provavelmente vão te manter em aggro permanente (mas sem te atacar) quando você estiver em cima da estante pois é um ponto de evade|r
-    >>Se você tiver uma [Adaga] na bolsa ou equipada, você pode usar [Emboscada] |cRXP_WARN_nos |cRXP_ENEMY_Patrulheiros da Torre Défias|r e nas |cRXP_ENEMY_Sentinelas da Torre Défias|r lá dentro para matá-los instantaneamente. Esteja pronto para correr depois de matar a primeira |cRXP_ENEMY_Sentinela da Torre Défias|r e lembre-se você pode levar golpes vindos de cima. É mais lento, mas MUITO mais seguro|r
+    >>|cRXP_WARN_Se você tiver um|r |T135641:0|t[Adaga] |cRXP_WARN_nas suas bolsas ou equipado, você pode lançar|r |T132282:0|t[Emboscada] |cRXP_WARN_no |cRXP_ENEMY_Patrulheiros da Torre Défias|r e |cRXP_ENEMY_Sentinelas da Torre Défias|r lá dentro para matá-los instantaneamente. Prepare-se para correr depois de matar o primeiro |cRXP_ENEMY_Sentinela da Torre Défias|r e lembre-se de que você pode ser atingido de cima. É mais lento, mas MUITO mais seguro|r
     >>|cRXP_WARN_Tome cuidado, pois |cRXP_ENEMY_Parasita Défias Mal Formado|r e |cRXP_ENEMY_Parasita Défias|r podem ficar na entrada da torre, caso você precise sair correndo dela|r
     .complete 2359,1 --Collect Klaven Mortwake's Journal (x1)
     .link https://www.youtube.com/watch?v=5sIew15IcG0 >> Clique AQUI para o guia em vídeo
@@ -5340,7 +5340,7 @@ step << Rogue
     #label KlavenFinish
     .goto Stormwind City,75.78,59.84
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Mestre Mathias Shaw|r
-    >>|cRXP_WARN_Lembre-se de reequipar sua arma principal se você trocou para um|r |T135641:0|t[Dagger] |cRXP_WARN_antes|r << Rogue !sod
+    >>|cRXP_WARN_Lembre-se|r de re-equipar sua arma principal se você trocou para uma |T135641:0|t[Adaga] |cRXP_WARN_anteriormente|r << Rogue !sod
     .turnin 135 >> Entregue A Irmandade Défias
 --  .accept 141 >> Accept The Defias Brotherhood
     .turnin 2359 >> Entregue A Torre de Klaven
@@ -5506,7 +5506,7 @@ step << Rogue
     #xprate >1.59
     .goto StormwindClassic,39.834,54.360
     >>|cRXP_WARN_Entre em Stockades em Ventobravo|r
-    >>|cRXP_WARN_Uma vez dentro:|r
+    >>|cRXP_WARN_Assim que entrar:|r
     .link /run InviteUnit("aa");C_Timer.After(1,function() LeaveParty() end) >> |cRXP_WARN_Clique aqui para Copiar + Colar esta macro no chat para fazer ghetto hearth de volta a Auberdine|r
     .zone Darkshore >>|cRXP_WARN_Se você não conseguir fazer isso, volte para Auberdine|r
     .zoneskip Teldrassil
@@ -5533,7 +5533,7 @@ step << NightElf Rogue
     #optional
     #label NEWarRogNoDMNoFP1
     #completewith NEWarRogNoDMIFPP
-    >>|cRXP_WARN_Aumente seu Nível de|r |T135966:0|t[Primeiros Socorros] |cRXP_WARN_e|r |T133971:0|t[Culinária] |cRXP_WARN_se necessário enquanto estiver no Tram|r
+    >>|cRXP_WARN_Suba seu|r |T135966:0|t[Primeiros Socorros] |cRXP_WARN_e|r |T133971:0|t[Culinária] |cRXP_WARN_se necessário enquanto estiver no bonde|r
     .zone Ironforge >> Pegue o Deeprun Tram para Ironforge
     .zoneskip Darkshore
     .zoneskip Teldrassil
@@ -5650,7 +5650,7 @@ step << Mage/Warlock/Rogue
     #requires Torment2NoDMEnd << Warlock
     .goto StormwindClassic,39.834,54.360
     >>|cRXP_WARN_Entre em Stockades em Ventobravo|r
-    >>|cRXP_WARN_Uma vez dentro:|r
+    >>|cRXP_WARN_Assim que entrar:|r
     .link /run InviteUnit("aa");C_Timer.After(1,function() LeaveParty() end) >> |cRXP_WARN_Clique aqui para Copiar + Colar esta macro no chat para fazer ghetto hearth de volta a Auberdine|r
     .zone Darkshore >>|cRXP_WARN_Se você não conseguir fazer isso, volte para Auberdine|r
     .zoneskip Teldrassil << Warrior
@@ -5664,7 +5664,7 @@ step << NightElf Rogue
     #completewith next
     .goto Ironforge,55.491,47.751
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Grif Trovino|r
-    .fly Menethil >> Voe para Terras do Interior
+    .fly Menethil >> Voe para Pantanal
     .zoneskip Ironforge,1
     .cooldown item,6948,<0
     .dungeon !DM
@@ -5832,7 +5832,7 @@ step << Dwarf Hunter
     #xprate <1.59
     .goto Teldrassil,58.39,94.01
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Vesprystus|r
-    .fp Teldrassil >> Aprenda a rota de voo para Teldrassil
+    .fp Teldrassil >> Pegue a rota de voo de Teldrassil
     .target Vesprystus
 step << Dwarf Hunter
     #xprate <1.59
@@ -5894,7 +5894,7 @@ step << Druid
     #xprate <1.59
     #optional
 	#completewith MoongladeTrain
-	.cast 18960 >> Lance Teleporte: Clareira da Lua
+	.cast 18960 >> Use Teleporte: Clareira da Lua
 	.zoneskip Moonglade
 step << Druid
     #xprate <1.5
@@ -6138,7 +6138,7 @@ step << NightElf
     .goto Ironforge,17.089,83.373,-1
     .zone Ironforge >>Use o recurso de auto-destravamento do personagem unstuck para pular para Altaforja. Você precisará deslogar no local, depois acessar o menu de ajuda em outro personagem (alternativamente, cole o link de destravamento abaixo no navegador), role até autoatendimento. Clique em destravar no seu personagem e mova-se. Se não conseguir se destravar, ignore esta etapa e nade ao longo das montanhas até Cerro Oeste
     .link https://www.youtube.com/watch?v=oVoxsr4zcg4 >> Clique aqui para ver o vídeo de referência
-    .link https://us.battle.net/support/en/help/product/wow/197/834/solution >> Clique aqui para o link de desbloqueio
+    .link https://us.battle.net/support/en/help/product/wow/197/834/solution >> Clique aqui para acessar o link de desbloqueio
     .subzoneskip 809 --IF Gates
     .subzoneskip 2257 --Deeprun Tram
     .zoneskip Elwynn Forest
@@ -6470,7 +6470,7 @@ step << skip --logout skip !Mage !Priest
     #completewith DeeprunDM
     #optional
     .goto 1455,56.207,46.844
-    .goto 1455,76.414,51.226,20 >>|cRXP_WARN_Salte no topo da Cabeça do Grifo. Execute um Logout Pular desconectando e reconectando|r
+    .goto 1455,76.414,51.226,20 >>|cRXP_WARN_Pule sobre a Cabeça do Grifo. Faça um Pulo de Logout saindo e entrando novamente.|r
     .zoneskip Elwynn Forest
     .zoneskip Stormwind City
     .zoneskip Westfall
@@ -6508,8 +6508,8 @@ step
     #xprate >1.59 << !Hunter
     #optional << NightElf
     #completewith ShoniAccept
-    >>|cRXP_WARN_Aumente seu Nível de|r |T135966:0|t[Primeiros Socorros] |cRXP_WARN_e|r |T133971:0|t[Culinária] |cRXP_WARN_se necessário enquanto estiver no Tram|r
-    >>|cRXP_WARN_Você precisará que seu|r |T135966:0|t[Primeiros Socorros] |cRXP_WARN_chegue a 80+ para uma missão mais tarde|r << Rogue !Dwarf
+    >>|cRXP_WARN_Suba seu|r |T135966:0|t[Primeiros Socorros] |cRXP_WARN_e|r |T133971:0|t[Culinária] |cRXP_WARN_se necessário enquanto estiver no bonde|r
+    >>|cRXP_WARN_Você precisará do seu|r |T135966:0|t[Primeiros Socorros] |cRXP_WARN_ser 80+ para uma missão mais tarde|r << Rogue !Dwarf
     .zone Stormwind City >> Pegue o Metrô Correfundo para Ventobravo
     .zoneskip Wetlands << NightElf
     .zoneskip Elwynn Forest
@@ -7094,7 +7094,7 @@ step
     #completewith next
     .goto Redridge Mountains,30.59,59.42
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Ariena Penafúria|r
-    .fp Redridge Mountains >> Aprenda a rota de voo para Montanhas Cristarrubra << !Human !Warlock
+    .fp Redridge Mountains >> Pegue o ponto de voo das Montanhas Cristarrubra << !Human !Warlock
     .fly Westfall >> Voe para Cerro Oeste
     .target Ariena Stormfeather
     .dungeon DM
@@ -7138,10 +7138,10 @@ step << Rogue
     #xprate >1.59
     #optional
     #completewith TowerKey
-    +|cRXP_WARN_==PRESTE ATENÇÃO NA PRÓXIMA SEÇÃO==|r
+    +|cRXP_WARN_==PRESTE ATENÇÃO À PRÓXIMA SEÇÃO==|r
     >>Pressione Escape, depois vá em -> Opções -> Controles
     >>Marque "Ativar Tecla de Interação" e vincule a opção "Interagir com o Alvo" a uma tecla
-    >>|cRXP_WARN_Além disso, recomenda-se ativar as Placas de Nome de Inimigos (Tecla Padrão: V) para ver inimigos atrás de alguns cantos da torre|r
+    >>|cRXP_WARN_Além disso, é recomendável ativar as placas de nome dos inimigos (tecla padrão: V), pois isso permite ver os inimigos atrás de alguns cantos dentro da torre.|r
     .dungeon DM
 step << Rogue
     #xprate >1.59
@@ -7186,7 +7186,7 @@ step << Rogue
     >>Saia manualmente de [Furtividade]|cRXP_WARN_, depois pressione sua tecla de atalho "Interagir com Alvo" para abrir o |cRXP_PICK_Baú da Floresta do Crepúsculo|r. Saqueie-o para obter |cRXP_LOOT_Diário de Filipe Pinel|r |r
     >>OBS.: Sua [Furtividade] vai parar de funcionar temporariamente após saquear |cRXP_LOOT_Diário de Filipe Pinel|r
     >>|cRXP_WARN_Esteja preparado para correr se você não matar as |cRXP_ENEMY_Sentinelas da Torre Défias|r no 2º andar. Elas provavelmente vão te manter em aggro permanente (mas sem te atacar) quando você estiver em cima da estante pois é um ponto de evade|r
-    >>Se você tiver uma [Adaga] na bolsa ou equipada, você pode usar [Emboscada] |cRXP_WARN_nos |cRXP_ENEMY_Patrulheiros da Torre Défias|r e nas |cRXP_ENEMY_Sentinelas da Torre Défias|r lá dentro para matá-los instantaneamente. Esteja pronto para correr depois de matar a primeira |cRXP_ENEMY_Sentinela da Torre Défias|r e lembre-se você pode levar golpes vindos de cima. É mais lento, mas MUITO mais seguro|r
+    >>|cRXP_WARN_Se você tiver um|r |T135641:0|t[Adaga] |cRXP_WARN_nas suas bolsas ou equipado, você pode lançar|r |T132282:0|t[Emboscada] |cRXP_WARN_no |cRXP_ENEMY_Patrulheiros da Torre Défias|r e |cRXP_ENEMY_Sentinelas da Torre Défias|r lá dentro para matá-los instantaneamente. Prepare-se para correr depois de matar o primeiro |cRXP_ENEMY_Sentinela da Torre Défias|r e lembre-se de que você pode ser atingido de cima. É mais lento, mas MUITO mais seguro|r
     >>|cRXP_WARN_Tome cuidado, pois |cRXP_ENEMY_Parasita Défias Mal Formado|r e |cRXP_ENEMY_Parasita Défias|r podem ficar na entrada da torre, caso você precise sair correndo dela|r
     .complete 2359,1 --Collect Klaven Mortwake's Journal (x1)
     .link https://www.youtube.com/watch?v=5sIew15IcG0 >> Clique AQUI para o guia em vídeo
@@ -7292,7 +7292,7 @@ step
     #label KlavenFinish
     .goto Stormwind City,75.78,59.84
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Mestre Mathias Shaw|r
-    >>|cRXP_WARN_Lembre-se de reequipar sua arma principal se você trocou para um|r |T135641:0|t[Dagger] |cRXP_WARN_antes|r << Rogue
+    >>|cRXP_WARN_Lembre-se|r de re-equipar sua arma principal se você trocou para uma |T135641:0|t[Adaga] |cRXP_WARN_anteriormente|r << Rogue
     .turnin 135 >> Entregue A Irmandade Défias
     .accept 141 >> Aceitar A Irmandade Défias
     .turnin 2359 >> Entregue A Torre de Klaven << Rogue
@@ -7366,7 +7366,7 @@ step
 step
     #xprate >1.59 << !Hunter
     .goto Westfall,42.56,71.71
-    >>Escolte o |cRXP_FRIENDLY_Traidor Défias|r para Minas Mortas
+    >>Escolte o |cRXP_FRIENDLY_Traidor Défias|r até as Minas Mortas
     >>|cRXP_WARN_Fique sempre ao lado do |cRXP_FRIENDLY_Traidor Défias|r. Esteja pronto para enfrentar |cRXP_ENEMY_Pilhadores Défias|r e |cRXP_ENEMY_Saqueadores Défias|r ao chegar a Arroio da Lua|r
     .complete 155,1 -- Escort The Defias Traitor to discover where VanCleef is hiding (1)
     .target The Defias Traitor
@@ -7957,7 +7957,7 @@ step << Druid
     #xprate >1.59
     #optional
     #completewith next
-	.cast 18960 >> Lance Teleporte: Clareira da Lua
+	.cast 18960 >> Use Teleporte: Clareira da Lua
 	.zoneskip Moonglade
 step << Druid
     #xprate >1.59
@@ -7983,7 +7983,7 @@ step << NightElf
     #optional
     #label DeeprunDMNoFP1
     #completewith NEIFFP
-    >>|cRXP_WARN_Aumente seu Nível de|r |T135966:0|t[Primeiros Socorros] |cRXP_WARN_e|r |T133971:0|t[Culinária] |cRXP_WARN_se necessário enquanto estiver no Tram|r
+    >>|cRXP_WARN_Suba seu|r |T135966:0|t[Primeiros Socorros] |cRXP_WARN_e|r |T133971:0|t[Culinária] |cRXP_WARN_se necessário enquanto estiver no bonde|r
     .zone Ironforge >> Pegue o Deeprun Tram para Ironforge
     .zoneskip Ironforge
     .dungeon DM
@@ -8277,14 +8277,14 @@ step << !Hunter NightElf
 step << !Hunter NightElf
     #xprate <1.59
     .goto Loch Modan,33.938,50.954
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Thorgrum|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Thorgrum Borrelson|r
     .fp Thelsamar >> Pegue a rota de voo de Thelsamar
     .target Thorgrum Borrelson
 step << !Hunter NightElf
     #xprate <1.59
     .goto Loch Modan,21.30,68.60,40,0
     .goto Loch Modan,19.11,62.11,25,0
-    .goto Dun Morogh,86.04,51.05,20 >> Viagem para Dun Morogh
+    .goto Dun Morogh,86.04,51.05,20 >> Vá para Dun Morogh
     .zoneskip Ironforge
     .zoneskip Dun Morogh
 step << !Hunter NightElf
@@ -8573,7 +8573,7 @@ step << Gnome Warlock
 .dungeon DM
     .goto Westfall,56.55,52.64
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Thor|r
-    .fly Redridge >> Voe para Redridge
+    .fly Redridge >> Voe para as Montanhas Cristarrubra
     .target Thor
 step << !Human
 #xprate >1.49 << Dwarf/Gnome
@@ -8730,7 +8730,7 @@ step
 step
 .dungeon DM
     .goto Westfall,42.56,71.71
-    >>Escolte o |cRXP_FRIENDLY_Traidor Défias|r para Minas Mortas
+    >>Escolte o |cRXP_FRIENDLY_Traidor Défias|r até as Minas Mortas
     >>|cRXP_WARN_fique ao lado de |cRXP_FRIENDLY_Traidor Défias|r o tempo todo! esteja pronto para lutar |cRXP_ENEMY_Défias|r ao chegar em Moonbrook|r
     .complete 155,1 -- Escort The Defias Traitor to discover where VanCleef is hiding (1)
     .target The Defias Traitor
@@ -9332,7 +9332,7 @@ step
 step
     #label orcs
     >>Mate |cRXP_ENEMY_Brutos Rocha Negra|r e |cRXP_ENEMY_Vanguardeiros Rocha Negra|r. Saqueie-os em busca de seus |cRXP_LOOT_Machados|r
-	>>|cRXP_WARN_Cuidado, os |cRXP_ENEMY_Blackrock Outrunners|r lançarão |T132149:0|t[Rede] em você|r
+	>>|cRXP_WARN_Tenha cuidado, os |cRXP_ENEMY_Blackrock Outrunners|r lançarão |T132149:0|t[Rede] em você|r
     .goto Redridge Mountains,74.00,79.00,60,0
     .goto Redridge Mountains,76.18,83.39,60,0
     .goto Redridge Mountains,77.80,68.50,60,0
@@ -9450,7 +9450,7 @@ step << Rogue
     .isOnQuest 2360
     .goto Redridge Mountains,30.59,59.42
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Ariena Penafúria|r
-    .fp Redridge Mountains >> Aprenda a rota de voo para Montanhas Cristarrubra << !Human
+    .fp Redridge Mountains >> Pegue o ponto de voo das Montanhas Cristarrubra << !Human
     .fly Westfall >> Voe para Cerro Oeste
     .target Ariena Stormfeather
 step
@@ -9459,8 +9459,8 @@ step
     .goto Redridge Mountains,30.59,59.42
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Ariena Penafúria|r
 	.target Ariena Stormfeather
-    .fp Redridge Mountains >> Aprenda a rota de voo para Montanhas Cristarrubra << !Human !Warlock
-    .fly Stormwind >> Voe para a Cidade de Ventobravo
+    .fp Redridge Mountains >> Pegue o ponto de voo das Montanhas Cristarrubra << !Human !Warlock
+    .fly Stormwind >> Voe para Ventobravo
 step << Rogue
 .dungeon !DM
     #ah
@@ -9671,10 +9671,10 @@ step << !Dwarf Rogue
 step << Rogue
     #optional
     #completewith TowerKey
-    +|cRXP_WARN_==PRESTE ATENÇÃO NA PRÓXIMA SEÇÃO==|r
+    +|cRXP_WARN_==PRESTE ATENÇÃO À PRÓXIMA SEÇÃO==|r
     >>Pressione Escape, depois vá em -> Opções -> Controles
     >>Marque "Ativar Tecla de Interação" e vincule a opção "Interagir com o Alvo" a uma tecla
-    >>|cRXP_WARN_Além disso, recomenda-se ativar as Placas de Nome de Inimigos (Tecla Padrão: V) para ver inimigos atrás de alguns cantos da torre|r
+    >>|cRXP_WARN_Além disso, é recomendável ativar as placas de nome dos inimigos (tecla padrão: V), pois isso permite ver os inimigos atrás de alguns cantos dentro da torre.|r
 step << Rogue
     .goto Westfall,68.50,70.08
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Agente Marta Hari|r
@@ -9711,7 +9711,7 @@ step << Rogue
     >>Saia manualmente de [Furtividade]|cRXP_WARN_, depois pressione sua tecla de atalho "Interagir com Alvo" para abrir o |cRXP_PICK_Baú da Floresta do Crepúsculo|r. Saqueie-o para obter |cRXP_LOOT_Diário de Filipe Pinel|r |r
     >>OBS.: Sua [Furtividade] vai parar de funcionar temporariamente após saquear |cRXP_LOOT_Diário de Filipe Pinel|r
     >>|cRXP_WARN_Esteja preparado para correr se você não matar as |cRXP_ENEMY_Sentinelas da Torre Défias|r no 2º andar. Elas provavelmente vão te manter em aggro permanente (mas sem te atacar) quando você estiver em cima da estante pois é um ponto de evade|r
-    >>Se você tiver uma [Adaga] na bolsa ou equipada, você pode usar [Emboscada] |cRXP_WARN_nos |cRXP_ENEMY_Patrulheiros da Torre Défias|r e nas |cRXP_ENEMY_Sentinelas da Torre Défias|r lá dentro para matá-los instantaneamente. Esteja pronto para correr depois de matar a primeira |cRXP_ENEMY_Sentinela da Torre Défias|r e lembre-se você pode levar golpes vindos de cima. É mais lento, mas MUITO mais seguro|r
+    >>|cRXP_WARN_Se você tiver um|r |T135641:0|t[Adaga] |cRXP_WARN_nas suas bolsas ou equipado, você pode lançar|r |T132282:0|t[Emboscada] |cRXP_WARN_no |cRXP_ENEMY_Patrulheiros da Torre Défias|r e |cRXP_ENEMY_Sentinelas da Torre Défias|r lá dentro para matá-los instantaneamente. Prepare-se para correr depois de matar o primeiro |cRXP_ENEMY_Sentinela da Torre Défias|r e lembre-se de que você pode ser atingido de cima. É mais lento, mas MUITO mais seguro|r
     >>|cRXP_WARN_Tome cuidado, pois |cRXP_ENEMY_Parasita Défias Mal Formado|r e |cRXP_ENEMY_Parasita Défias|r podem ficar na entrada da torre, caso você precise sair correndo dela|r
     .complete 2359,1 --Collect Klaven Mortwake's Journal (x1)
     .link https://www.youtube.com/watch?v=5sIew15IcG0 >> Clique AQUI para o guia em vídeo
@@ -9797,7 +9797,7 @@ step << Rogue
     #requires AntiVenomEnd2 << Rogue
     .goto StormwindClassic,75.78,59.84
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Mestre Mathias Shaw|r
-    >>|cRXP_WARN_Lembre-se de reequipar sua arma principal se você trocou para um|r |T135641:0|t[Dagger] |cRXP_WARN_antes|r << Rogue
+    >>|cRXP_WARN_Lembre-se|r de re-equipar sua arma principal se você trocou para uma |T135641:0|t[Adaga] |cRXP_WARN_anteriormente|r << Rogue
     .turnin 2359 >> Entregue A Torre de Klaven
     .target Master Mathias Shaw
 
@@ -9838,7 +9838,7 @@ step
     .goto StormwindClassic,66.30,62.30,-1
 	.goto Redridge Mountains,6.7,72.4,-1
     .zone Redridge Mountains >>Vá para Redridge
-    .fly Redridge >> Voe para Redridge
+    .fly Redridge >> Voe para as Montanhas Cristarrubra
     >>|cRXP_WARN_se você está em Goldshire será mais rápido voar de Ventobravo|r
 	>>|cRXP_WARN_se você está na Torre de Azora simplesmente corra para Redridge|r
 step
@@ -10355,7 +10355,7 @@ step
     .turnin 970 >> Entregue A Torre de Althalaxx
 step
     .goto Ashenvale,31.89,22.53
-    .xp 20 >> Suba até o nível 20
+    .xp 20 >> Mate inimigos até o nível 20
 step
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Orendil Folharga|r
 	.target Orendil Broadleaf
@@ -10427,10 +10427,10 @@ step
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Shindrell Fogofugaz|r
 	.target Shindrell Swiftfire
     .goto Ashenvale,34.67,48.83
-    .accept 1008 >> Aceite A Zoram Strand
+    .accept 1008 >> Aceite The Zoram Strand
 step
     #xprate <1.59
-	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com a |cRXP_FRIENDLY_Sentinela Tenysil|r
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Sentinela Tenysil|r
 	.target Sentinel Thenysil
     .goto Ashenvale,34.89,49.79
     .accept 1070 >> Aceite a missão “Em Guarda” na Cordilheira das Torres de Pedra
@@ -10439,14 +10439,14 @@ step
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Faldreas Goeth'Shael|r
 	.target Faldreas Goeth'Shael
     .goto Ashenvale,35.76,49.10
-    .accept 1056 >> Aceite Jornada ao Pico Petrel
+    .accept 1056 >> Aceite A jornada para o Morro das Torres de Pedra
 step
     #xprate <1.59
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_a Raene Correlobos|r
 	.target Raene Wolfrunner
     .goto Ashenvale,36.61,49.58
     .accept 991 >> Aceite a Purificação de Raene
-    .accept 1054 >> Aceite Expurgo a Ameaça
+    .accept 1054 >> Aceite Contendo a ameaça
 step
     #label HCHunterNoHS --hidden step for #include
 step << !Dwarf/!Hunter
@@ -10468,7 +10468,7 @@ step
     .goto Ashenvale,37.36,51.79
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Pelturas Lunalva|r
 	.target Pelturas Whitemoon
-    .turnin 1020 >> Entregue A Cura de Orendil
+    .turnin 1020 >> Entregue Cura de Orendil
     .timer 24,RP da Cura de Orendil
     .accept 1033 >> Aceite A Lágrima de Eluna
 step << Hunter
@@ -10480,7 +10480,7 @@ step << Hunter
 step
     #xprate <1.59
     #completewith ElunesTear
-    >>Guarde até 6 |cRXP_LOOT_Pernas de Aranha Pegajosa|r saqueadas das |cRXP_ENEMY_Aranhas|r na área. Você precisará delas mais tarde para uma missão.
+    >>Guarde até 6 |cRXP_LOOT_Pernas de Aranha Pegajosa|r saqueadas das |cRXP_ENEMY_Aranhas|r na área. Você precisará delas mais tarde para uma missão
     .collect 2251,6,93,1 -- Gooey Spider Legs
 step
     #xprate <1.59
@@ -10535,7 +10535,7 @@ step
     #xprate <1.59
     #sticky
     #completewith StatuetteStart
-    >>Guarde até 6 |cRXP_LOOT_Pernas de Aranha Pegajosa|r saqueadas das |cRXP_ENEMY_Aranhas|r na área. Você precisará delas mais tarde para uma missão.
+    >>Guarde até 6 |cRXP_LOOT_Pernas de Aranha Pegajosa|r saqueadas das |cRXP_ENEMY_Aranhas|r na área. Você precisará delas mais tarde para uma missão
     .collect 2251,6,93,1 -- Gooey Spider Legs
 step
     #sticky
@@ -10626,7 +10626,7 @@ step
     #xprate <1.59
     #sticky
     #completewith SoulGemStart
-    >>Guarde até 6 |cRXP_LOOT_Pernas de Aranha Pegajosa|r saqueadas das |cRXP_ENEMY_Aranhas|r na área. Você precisará delas mais tarde para uma missão.
+    >>Guarde até 6 |cRXP_LOOT_Pernas de Aranha Pegajosa|r saqueadas das |cRXP_ENEMY_Aranhas|r na área. Você precisará delas mais tarde para uma missão
     .collect 2251,6,93,1 -- Gooey Spider Legs
 step
     #sticky
@@ -10808,7 +10808,7 @@ RXPGuides.RegisterGuide([[
 step << Druid
     #xprate <1.59
 	#completewith next
-	.cast 18960 >> Lance Teleporte: Clareira da Lua
+	.cast 18960 >> Use Teleporte: Clareira da Lua
 	.zoneskip Moonglade
 step << Druid
     #xprate <1.59
@@ -11347,7 +11347,7 @@ step
 step
     #xprate <1.59
     .goto Ashenvale,31.89,22.53
-    .xp 20 >> Suba até o nível 20
+    .xp 20 >> Mate inimigos até o nível 20
 step
     .goto Ashenvale,26.43,38.59
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Orendil Folharga|r
@@ -11398,26 +11398,26 @@ step
     #label TZS
     .goto Ashenvale,34.67,48.83
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Shindrell Fogofugaz|r
-    .accept 1008 >> Aceite A Zoram Strand
+    .accept 1008 >> Aceite The Zoram Strand
     .target Shindrell Swiftfire
 step
     #xprate <1.59
     .goto Ashenvale,34.89,49.79
-	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com a |cRXP_FRIENDLY_Sentinela Tenysil|r
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Sentinela Tenysil|r
     .accept 1070 >> Aceite a missão “Em Guarda” na Cordilheira das Torres de Pedra
     .target Sentinel Thenysil
 step
     #xprate <1.59
     .goto Ashenvale,35.76,49.10
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Faldreas Goeth'Shael|r
-    .accept 1056 >> Aceite Jornada ao Pico Petrel
+    .accept 1056 >> Aceite A jornada para o Morro das Torres de Pedra
     .target Faldreas Goeth'Shael
 step
     #xprate <1.59
     .goto Ashenvale,36.61,49.58
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_a Raene Correlobos|r
     .accept 991 >> Aceite a Purificação de Raene
-    .accept 1054 >> Aceite Expurgo a Ameaça
+    .accept 1054 >> Aceite Contendo a ameaça
     .target Raene Wolfrunner
 step << !Warlock
     #xprate <1.59
@@ -11430,7 +11430,7 @@ step
     .goto Ashenvale,37.36,51.79
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Pelturas Lunalva|r
 	.target Pelturas Whitemoon
-    .turnin 1020 >> Entregue A Cura de Orendil
+    .turnin 1020 >> Entregue Cura de Orendil
     .timer 24,RP da Cura de Orendil
     .accept 1033 >> Aceite A Lágrima de Eluna
 ]])

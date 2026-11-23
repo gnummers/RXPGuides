@@ -45,7 +45,7 @@ step << Warrior/Shaman
 step << Warrior
     .goto Mulgore,44.02,76.14
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Harutt|r
-    .train 6673 >>Treine |T132333:0|t[Brado de Batalha]
+    .train 6673 >>Aprenda |T132333:0|t[Brado de Batalha]
     .target Harutt Thunderhorn
 step << Shaman
     .goto Mulgore,45.01,75.95
@@ -225,7 +225,7 @@ step << Druid
     .goto Mulgore,45.09,75.93
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Gart|r
     .turnin 3094 >>Entregue Bilhete verdejante
-    .train 8921 >>Treine |T136096:0|t[Fogo Lunar]
+    .train 8921 >>Aprenda |T136096:0|t[Fogo Lunar]
     .target Gart Mistrunner
 step << Shaman
     .goto Mulgore,44.73,76.18
@@ -420,7 +420,7 @@ step << Warrior
 step
     .goto Mulgore,38.51,81.54
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Antur|r
-    .accept 1656 >>Aceite Uma Tarefa Inacabada
+    .accept 1656 >>Aceite Serviço pela metade
     .target Antur Fallow
 ]])
 
@@ -479,7 +479,7 @@ step << Shaman/Druid
 step << Warrior
     .goto Mulgore,45.66,58.60
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Mahnott Ferida Aberta|r
-    .vendor >> Lixo de vendedor. Venda sua arma se ela render dinheiro suficiente para uma |T133053:0|t[Marreta de Madeira] (7s 1c). Volte depois se ainda não tiver o suficiente
+    .vendor >> Venda os lixos. Venda sua arma se ela lhe der dinheiro suficiente para uma |T133053:0|t[Marreta de Madeira] (7p 1c). Você voltará depois se ainda não tiver o suficiente
     .target Mahnott Roughwound
     .itemStat 16,QUALITY,<7
     .itemStat 16,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<4.9
@@ -703,7 +703,7 @@ step << Shaman/Druid
 step << Warrior
     .goto Mulgore,45.66,58.60
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Mahnott Ferida Aberta|r
-    .vendor >> Lixo de vendedor. Venda sua arma se ela render dinheiro suficiente para uma |T133053:0|t[Marreta de Madeira] (7s 1c). Volte depois se ainda não tiver o suficiente
+    .vendor >> Venda os lixos. Venda sua arma se ela lhe der dinheiro suficiente para uma |T133053:0|t[Marreta de Madeira] (7p 1c). Você voltará depois se ainda não tiver o suficiente
     .target Mahnott Roughwound
     .itemStat 16,QUALITY,<7
     .itemStat 16,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<4.9
@@ -872,7 +872,7 @@ step << Shaman/Druid
 step << Warrior
     .goto Mulgore,45.66,58.60
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Mahnott Ferida Aberta|r
-    .vendor >> Lixo de vendedor. Venda sua arma se ela render dinheiro suficiente para uma |T133053:0|t[Marreta de Madeira] (7s 1c). Volte depois se ainda não tiver o suficiente
+    .vendor >> Venda os lixos. Venda sua arma se ela lhe der dinheiro suficiente para uma |T133053:0|t[Marreta de Madeira] (7p 1c). Você voltará depois se ainda não tiver o suficiente
     .target Mahnott Roughwound
     .itemStat 16,QUALITY,<7
     .itemStat 16,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<4.9
@@ -1330,7 +1330,7 @@ step << Shaman
 step << Hunter
     .goto Mulgore,47.81,55.69
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Yaw Crina Cortante|r
-    .accept 6061 >>Aceite Adestramento da Fera - Missão
+    .accept 6061 >>Aceite Domando a Fera
     .trainer >>Treine suas magias de classe
     .target Yaw Sharpmane
 step << Druid
@@ -1358,7 +1358,7 @@ step << Hunter
     .goto Mulgore,47.81,55.69
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Yaw Crina Cortante|r
     .turnin 6061 >>Entregue Domando a fera
-    .accept 6087 >>Aceite Adestramento da Fera - Missão
+    .accept 6087 >>Aceite Domando a Fera
     .target Yaw Sharpmane
 step << Hunter
     #loop
@@ -1374,7 +1374,7 @@ step << Hunter
     .goto Mulgore,47.81,55.69
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Yaw Crina Cortante|r
     .turnin 6087 >>Entregue Domando a fera
-    .accept 6088 >>Aceite Adestramento da Fera - Missão
+    .accept 6088 >>Aceite Domando a Fera
     .target Yaw Sharpmane
 step << Hunter
     #loop
@@ -1572,7 +1572,7 @@ step << Hunter/Druid
 step << Hunter
 	.goto Thunder Bluff,57.4,89.4
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Holto Chifre Troante|r
-	.turnin 6089 >> Entregue Treinamento da Fera - Missão
+	.turnin 6089 >> Entregue Treinando a fera
     .target Holt Thunderhorn
 step << Hunter
     .goto Thunder Bluff,54.08,84.08
@@ -1769,7 +1769,7 @@ step << Tauren Hunter
 step << Shaman
     .goto The Barrens,55.86,19.95
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Kranal|r
-    .turnin 2984 >>Entregue Call of Fogo
+    .turnin 2984 >>Entregue Call of Fogo - Missão - Missão
     .accept 1524 >>Aceite Clamor do Fogo
     .target Kranal Fiss
 step << Shaman
@@ -1788,13 +1788,13 @@ step << Shaman
     .goto Durotar,38.05,57.79,8,0
     .goto Durotar,38.93,57.54,8,0
     .goto Durotar,39.19,57.90,8,0
-    .goto Durotar,39.16,58.56,10 >> Siga o caminho montanha acima até |cRXP_FRIENDLY_Telf|r
+    .goto Durotar,39.16,58.56,10 >> Suba pela trilha da montanha até |cRXP_FRIENDLY_Telf Joolam|r
     >>|cRXP_WARN_Tome cuidado para não cair da montanha, pois o caminho é muito estreito. Você pode morrer se cair|r
 step << Shaman
     #label CallofFire2
     .goto Durotar,38.52,58.93
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Telf|r
-    .turnin 1524 >>Entregue Call of Fogo
+    .turnin 1524 >>Entregue Call of Fogo - Missão - Missão
     .accept 1525 >>Aceite Clamor do Fogo
     .target Telf Joolam
 step << Shaman
@@ -1844,7 +1844,7 @@ step
     #label FurlScornbrow
     .goto Durotar,49.89,40.39
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Férrano Escarnecenho|r
-    .accept 791 >>Aceite Carregar Seu Peso
+    .accept 791 >>Aceite Carregue suas tralhas
     .target Furl Scornbrow
 step
     .goto Durotar,51.51,41.64
@@ -1970,7 +1970,7 @@ step
     .accept 817 >>Aceite Presa prática
     .target +Vel'rin Fang
     .goto Durotar,55.95,73.93
-    .accept 818 >>Aceite Um Espírito Solvente
+    .accept 818 >>Aceite Um espírito solvente
     .target +Master Vornal
     .goto Durotar,55.94,74.40
     .accept 808 >>Aceite O Crânio de Minshina
@@ -2184,14 +2184,14 @@ step
 	.goto Durotar,41.64,38.27,50,0
 	.goto Durotar,41.94,40.46,50,0
 	.goto Durotar,43.30,40.40,50,0
-    >>Mate os |cRXP_ENEMY_Razormane Dustrunners|r e os |cRXP_ENEMY_Razormane Battleguards|r
+    >>Mate |cRXP_ENEMY_Levanta-poeira Crinavalha|r e |cRXP_ENEMY_Guardas de Batalha Crinavalha|r
     .complete 837,3 --Razormane Dustrunner (4)
     .mob +Razormane Dustrunner
     .complete 837,4 --Razormane Battleguard (4)
     .mob +Razormane Battleguard
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com|r |cRXP_FRIENDLY_Torka|r, |cRXP_FRIENDLY_Orgnil|r e |cRXP_FRIENDLY_Gar'Thok|r
-    .turnin 815 >>Entregue Quebre Alguns Ovos
+    .turnin 815 >>Entregue Quebrar alguns ovos
     .target +Cook Torka
     .goto Durotar,51.12,42.46
     .turnin 823 >>Entregue Apresente-se a Orgnil
@@ -2207,7 +2207,7 @@ step
     .group
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com|r |cRXP_FRIENDLY_Torka|r, |cRXP_FRIENDLY_Orgnil|r e |cRXP_FRIENDLY_Gar'Thok|r
-    .turnin 815 >>Entregue Quebre Alguns Ovos
+    .turnin 815 >>Entregue Quebrar alguns ovos
     .target +Cook Torka
     .goto Durotar,51.12,42.46
     .turnin 823 >>Entregue Apresente-se a Orgnil
@@ -2228,7 +2228,7 @@ step << Hunter
 step
     .goto Durotar,51.51,41.64
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com o |cRXP_FRIENDLY_Estalajadeiro Grosk|r
-    .turnin 2161 >>Entregue O Fardo do Peão
+    .turnin 2161 >>Entregue O fardo de um peão
     .target Innkeeper Grosk
 step
     .goto Durotar,54.39,42.18
@@ -2347,7 +2347,7 @@ step
 step
     #completewith next
     .goto Durotar,41.66,25.68,20 >>Pule para dentro do Desfiladeiro do Trovão << !Hunter !Warlock
-    .cast 2641 >>|cRXP_WARN_Lance|r |T136095:0|t[Dispensar Ajudante] |cRXP_WARN_e então pule para Trovão Serra|r << Hunter
+    .cast 2641 >>|cRXP_WARN_Use|r |T136095:0|t[Dispensar Ajudante] |cRXP_WARN_e depois pule para dentro do Desfiladeiro do Trovão|r << Hunter
     +|cRXP_WARN_Dispense seu diabrete e depois pule para Serra do Trovão|r << Warlock
     .group
 step
@@ -2409,7 +2409,7 @@ step
     .group
 step
     .goto Durotar,52.24,43.15
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com Orgnil|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Orgnil Chaganalma|r
     .turnin 806 >>Entregue Tempestades sombrias
     .accept 828 >>Aceite Margoz
     .target Orgnil Soulscar
@@ -2417,7 +2417,7 @@ step
     .group
 step
     .goto Durotar,52.24,43.15
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com Orgnil|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Orgnil Chaganalma|r
     .accept 828 >>Aceite Margoz
     .target Orgnil Soulscar
     .isQuestTurnedIn 806
@@ -2724,7 +2724,7 @@ step << Shaman
     #label CallofFire3
     .goto Durotar,38.52,58.93
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Telf|r
-    .turnin 1525 >>Entregue Call of Fogo
+    .turnin 1525 >>Entregue Call of Fogo - Missão - Missão
     .accept 1526 >>Aceite Clamor do Fogo
     .target Telf Joolam
 step << Shaman
@@ -2740,7 +2740,7 @@ step << Shaman
 step << Shaman
     .goto Durotar,38.96,58.22
     >>Clique no |cRXP_PICK_Braseiro|r no chão
-    .turnin 1526 >>Entregue Call of Fogo
+    .turnin 1526 >>Entregue Call of Fogo - Missão - Missão
     .accept 1527 >>Aceite Clamor do Fogo
 step << Shaman
     #completewith next
@@ -2769,7 +2769,7 @@ step
     .isQuestComplete 816
 step
     #label FarWatchPost
-    .goto The Barrens,62.26,19.38,40 >> Vá para Far Vigiar Post
+    .goto The Barrens,62.26,19.38,40 >> Vá para o Posto Remoto
     .zoneskip The Barrens
 step
     #label Conscript
@@ -2797,7 +2797,7 @@ step
 step << Shaman
     .goto The Barrens,55.86,19.95
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Kranal|r
-    .turnin 1527 >>Entregue Call of Fogo
+    .turnin 1527 >>Entregue Call of Fogo - Missão - Missão
     .target Kranal Fiss
 step << Shaman
     .goto The Barrens,55.78,20.00

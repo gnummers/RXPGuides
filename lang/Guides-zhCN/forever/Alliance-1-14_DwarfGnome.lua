@@ -213,7 +213,7 @@ step << Warlock
     #softcore
     #label BeginningsHS
     #completewith BeginningsEnd
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     >>|cRXP_WARN_确保当你死亡时，你所在的子区域是寒脊山谷！否则你将被传送到卡拉诺斯墓地|r
     .target 灵魂医者
 step << Warlock
@@ -446,7 +446,7 @@ step
 step << !Paladin !Warlock !Hunter !Shaman
     #softcore
     #completewith next
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
 step
     #hardcore << !Paladin !Warlock !Hunter !Shaman
@@ -701,7 +701,7 @@ step
     #softcore
     #completewith next
     >>|cRXP_WARN_请确保你的区域不是寒脊山小径|r
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
 step
     .goto 1426/0,-498.400,-5648.400
@@ -965,7 +965,7 @@ step
     .target 罗斯洛·鲁治
 step << Warrior/Paladin/Rogue
     #optional
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_罗斯洛·鲁治|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_罗斯洛·鲁治|r 对话
     >>|cRXP_BUY_购买一个|r |T134708:0|t[矿工锄]>>|cRXP_BUY_。如果买不起就跳过这一步|r
     .collect 2901,1 --Mining Pick (1)
     .goto 1426/0,-664.55,-5499.710
@@ -1055,7 +1055,7 @@ step
     .mob +Young Wendigo
     .complete 98321,1 --|8/8 Flintfire's Shipment
 step
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
     .subzoneskip 136,1
 step
@@ -1330,7 +1330,7 @@ step
 step
     #softcore
     #completewith next
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
 step
     .goto 1426/0,-501.400,-5643.900
@@ -1410,7 +1410,7 @@ step << Hunter
     .trainer >> 训练你的职业技能
 step
     .goto 1426/0,-504.05,-5596.27
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t在外面与 |cRXP_FRIENDLY_拉格纳·雷酒|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与外面的 |cRXP_FRIENDLY_拉格纳·雷酒|r 对话
     .turnin 384 >> 交任务 啤酒烤猪排
     .target 拉格纳·雷酒
 
@@ -1650,7 +1650,7 @@ step << !Hunter
     .xp 9 >> 刷怪升级到 9 级
 step
     #completewith next
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
     .subzoneskip 2102
 step
@@ -2331,7 +2331,7 @@ step << !Hunter
     .cooldown item,6948,>2,1
 step << Hunter
     #completewith flyIF
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .subzoneskip 2101 -- stoutlager inn
     .subzoneskip 144 -- thelsamar
     .target 灵魂医者
@@ -2586,7 +2586,7 @@ step << !Hunter skip
     #label TramCook1
     #completewith TramEnd
     >>|cRXP_WARN_地铁到站时：|r
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Stormwind City
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -2600,7 +2600,7 @@ step << !Hunter skip
     #label TramCook2
     #completewith TramEnd
     >>|cRXP_WARN_地铁到站时：|r
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Stormwind City
     .itemcount 769,<1 --Chunk of Boar Meat (<1)
@@ -2614,7 +2614,7 @@ step << !Hunter skip
     #label TramCook3
     #completewith TramEnd
     >>|cRXP_WARN_地铁到站时：|r
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Stormwind City
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -2833,7 +2833,7 @@ step << skip
     .target 威廉·匹斯特
     .goto 1429/0,31.92,-9460.38
     .accept 60 >> 接受任务 狗头人的蜡烛
-step << Mage/Rogue
+step << Mage/Rogue/Priest
     #completewith next
     .goto 1429/0,12.52,-9479.85,9 >> 前往旅店楼上
 step << Mage
@@ -2847,6 +2847,11 @@ step << Rogue
     .target 科瑞恩·塞尔留斯
     .goto 1429/0,12.69,-9465.75
     .trainer >> 训练你的职业技能
+step << Priest
+    .goto 1429/0,33.14,-9460.75
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_女牧师洁塞塔|r 对话
+    .trainer >> 训练你的职业技能
+    .target 女牧师洁塞塔
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_雷米|r 对话
     .target 雷米
@@ -2865,7 +2870,7 @@ step << Paladin
     .trainer >> 训练你的职业技能
     .target 威尔海姆修士
 step << Warlock
-    >>点击 |cRXP_PICK_通缉布告|r
+    >>点击 |cRXP_PICK_通缉告示|r
     .accept 176 >> 接受任务 通缉：霍格
     .goto 1429/0,683.40,-9667.93
     .target 瑞尼尔副队长
@@ -2902,6 +2907,35 @@ step
     .accept 88 >> 接受任务 公主必须死！
     .target 斯通菲尔德妈妈
     .goto 1429/0,332.43,-9895.01--c:Elwynn Forest,34.660,84.483
+step
+    .goto 1429/0,-869.87,-9768.10
+    >>击杀 |cRXP_ENEMY_公主|r。并拾取她的 |cRXP_LOOT_项圈|r
+    >>|cRXP_ENEMY_公主|r |cRXP_WARN_会与她的 |r猪类随从|cRXP_ENEMY_ 一起仇恨你|r
+    >>|cRXP_ENEMY_公主|r |cRXP_WARN_还会施放|r |T132368:0|t[冲锋]|cRXP_WARN_，造成高额伤害|r
+    >>|cRXP_WARN_在与 |r公主|cRXP_ENEMY_ 交战前，先积攒至 100 点怒气|r << Warrior
+    >>|cRXP_WARN_确保 |T136205:0|t[闪避] |cRXP_WARN_已准备就绪。如果你觉得吃力，可以利用围栏并使用投掷武器卡路径来拖延时间|r << Rogue
+    >>|cRXP_WARN_准备好使用|r |T134830:0|t[次级治疗药水]
+    .link https://www.youtube.com/watch?v=GRrXOV-UvD4 >> |cRXP_WARN_点击此处查看视频参考|r << !Warrior
+    .complete 88,1 --Collect Brass Collar (x1)
+    .mob 公主
+step << Warlock
+    .isOnQuest 147
+    .goto 1429/0,-932.35,-9806.53
+    >>击杀 |cRXP_ENEMY_苏伦娜·凯尔东|r，拾取她的 |cRXP_LOOT_项圈|r
+    >>击杀 |cRXP_ENEMY_收货人莫根|r，拾取他掉落的 |cRXP_LOOT_收藏者之戒|r
+    >>|cRXP_WARN_集中火力快速击杀 |cRXP_ENEMY_苏伦娜·凯尔东|r|r
+    >>|cRXP_WARN_持续对 |r收货者摩根|cRXP_WARN_ 施放 |cRXP_ENEMY_|T136183:0|t[恐惧]|r|r
+    .complete 1688,1 --Surena's Choker (1)
+    .mob 苏伦娜·凯尔东
+    .complete 147,1 -- The Collector's Ring (1)
+    .mob 收货人莫根
+step << Warlock
+    .goto 1429/0,-932.35,-9806.53
+    >>击杀 |cRXP_ENEMY_苏伦娜·凯尔东|r，拾取她的 |cRXP_LOOT_项圈|r
+    >>|cRXP_WARN_集中火力快速击杀 |cRXP_ENEMY_苏伦娜·凯尔东|r|r
+    >>|cRXP_WARN_持续对 |r收货者摩根|cRXP_WARN_ 施放 |cRXP_ENEMY_|T136183:0|t[恐惧]|r|r
+    .complete 1688,1 --Surena's Choker (1)
+    .mob 苏伦娜·凯尔东
 
 --
 step << skip
@@ -3129,35 +3163,6 @@ step
     .mob 觅食的灰狼
     .complete 52,2 --Kill Young Forest Bear (x5)
     .mob 森林熊幼崽
-step << Warlock
-    .isOnQuest 147
-    .goto 1429/0,-932.35,-9806.53
-    >>击杀 |cRXP_ENEMY_苏伦娜·凯尔东|r，拾取她的 |cRXP_LOOT_项圈|r
-    >>击杀 |cRXP_ENEMY_收货人莫根|r，拾取他掉落的 |cRXP_LOOT_收藏者之戒|r
-    >>|cRXP_WARN_集中火力快速击杀 |cRXP_ENEMY_苏伦娜·凯尔东|r|r
-    >>|cRXP_WARN_持续对 |r收货者摩根|cRXP_WARN_ 施放 |cRXP_ENEMY_|T136183:0|t[恐惧]|r|r
-    .complete 1688,1 --Surena's Choker (1)
-    .mob 苏伦娜·凯尔东
-    .complete 147,1 -- The Collector's Ring (1)
-    .mob 收货人莫根
-step << Warlock
-    .goto 1429/0,-932.35,-9806.53
-    >>击杀 |cRXP_ENEMY_苏伦娜·凯尔东|r，拾取她的 |cRXP_LOOT_项圈|r
-    >>|cRXP_WARN_集中火力快速击杀 |cRXP_ENEMY_苏伦娜·凯尔东|r|r
-    >>|cRXP_WARN_持续对 |r收货者摩根|cRXP_WARN_ 施放 |cRXP_ENEMY_|T136183:0|t[恐惧]|r|r
-    .complete 1688,1 --Surena's Choker (1)
-    .mob 苏伦娜·凯尔东
-step
-    .goto 1429/0,-869.87,-9768.10
-    >>击杀 |cRXP_ENEMY_公主|r。并拾取她的 |cRXP_LOOT_项圈|r
-    >>|cRXP_ENEMY_公主|r |cRXP_WARN_会与她的 |r猪类随从|cRXP_ENEMY_ 一起仇恨你|r
-    >>|cRXP_ENEMY_公主|r |cRXP_WARN_还会施放|r |T132368:0|t[冲锋]|cRXP_WARN_，造成高额伤害|r
-    >>|cRXP_WARN_在与 |r公主|cRXP_ENEMY_ 交战前，先积攒至 100 点怒气|r << Warrior
-    >>|cRXP_WARN_确保 |T136205:0|t[闪避] |cRXP_WARN_已准备就绪。如果你觉得吃力，可以利用围栏并使用投掷武器卡路径来拖延时间|r << Rogue
-    >>|cRXP_WARN_准备好使用|r |T134830:0|t[次级治疗药水]
-    .link https://www.youtube.com/watch?v=GRrXOV-UvD4 >> |cRXP_WARN_点击此处查看视频参考|r << !Warrior
-    .complete 88,1 --Collect Brass Collar (x1)
-    .mob 公主
 step
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_卫兵托马斯|r 对话
     .target 卫兵托马斯
@@ -3264,7 +3269,7 @@ step << Warlock
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_黑暗缚灵者加科因|r 对话
     .target 黑暗缚灵者加科因
     .goto 1453/0,1041.54,-8983.29
-    .turnin 1689 >> 交任务誓缚
+    .turnin 1689 >> 交任务 誓缚
 step << Warlock
     #softcore
     .deathskip >> |cRXP_WARN_通过使用|r |T136126:0|t[生命分流] |cRXP_WARN_减少血量并站在你旁边的营火上自杀，然后在灵魂医者处复活|r
@@ -3406,7 +3411,7 @@ step
     .target 格里安·斯托曼
     .goto 1436/0,1045.12,-10508.80
     .accept 12 >> 接受任务 西部荒野人民军
-step
+step << skip
     #era
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_丹努文队长|r 对话
     .target Captain Danuvin
@@ -3682,7 +3687,6 @@ step
 step
     .goto 1432/0,-3146.73,-4837.02
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_诺里克·洛克塞恩|r 对话
-    >>|cRXP_WARN_确保在|T1387609:0|t[雪罐] 10分钟计时结束前交掉此任务|r
     .turnin 86667 >> 交任务 困于风雪
     .target Norric Lochthane
 step << Shaman
@@ -4196,7 +4200,7 @@ step << skip --logout skip << Mage/Priest
     #optional
     #completewith Deeprun
     .goto 1455/0,-931.89,-4611.84--c:1455,27.611,8.074
-    .goto 1455/0,-1317.74,-4839.51,20 >>|cRXP_WARN_跳到|cRXP_FRIENDLY_彬克|r上方的柱子上，然后稍微往东走到箭头位置。调整角色位置直到看起来像漂浮状态，然后通过登出再登入执行登出跳过|r--c:1455,76.414,51.226
+    .goto 1455/0,-1317.74,-4839.51,20 >>|cRXP_WARN_跳到|cRXP_FRIENDLY_宾克|r上方的柱子顶端，然后向她的东边稍微走一点，走到箭头指示的位置。调整你的角色位置，直到看起来像是在悬空漂浮，然后通过下线并重新上线来执行下线跳过操作|r--c:1455,76.414,51.226
 step << Dwarf Rogue/Gnome Rogue
     #season 0,1
     #optional
@@ -4279,7 +4283,7 @@ step << skip
     #label WestfallTramCook1
     #completewith WestfallTramEnd
     >>|cRXP_WARN_地铁到站时：|r
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Stormwind City
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -4293,7 +4297,7 @@ step << skip
     #label WestfallTramCook2
     #completewith WestfallTramEnd
     >>|cRXP_WARN_地铁到站时：|r
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Stormwind City
     .itemcount 769,<1 --Chunk of Boar Meat (<1)
@@ -4307,7 +4311,7 @@ step << skip
     #label WestfallTramCook3
     #completewith WestfallTramEnd
     >>|cRXP_WARN_地铁到站时：|r
-    .cast 818 >>|cRXP_WARN_在你的法术书常规标签下创建一个|r |T135805:0|t[基础篝火] |cRXP_WARN_|r
+    .cast 818 >>|cRXP_WARN_在你的法术书，通用选项卡中|r |cRXP_WARN_创建一个|r |T135805:0|t[基础篝火]
     .usespell 818
     .zoneskip Stormwind City
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -4754,7 +4758,6 @@ step
 step
     .goto 1432/0,-3146.73,-4837.02
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_诺里克·洛克塞恩|r 对话
-    >>|cRXP_WARN_确保在|T1387609:0|t[雪罐] 10分钟计时结束前交掉此任务|r
     .turnin 86667 >> 交任务 困于风雪
     .target Norric Lochthane
 step
@@ -4834,7 +4837,7 @@ step
 step
     #softcore
     #completewith next
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
 step
     .goto 1432/0,-3019.02,-5369.40,8,0

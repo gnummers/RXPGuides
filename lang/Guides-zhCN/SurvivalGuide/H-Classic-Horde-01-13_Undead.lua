@@ -38,7 +38,7 @@ step << Warrior/Warlock/Priest/Mage
     .goto Tirisfal Glades,29.18,68.94,40,0 << Priest/Mage
     .goto Tirisfal Glades,29.10,67.66,40,0 << Priest/Mage
     .goto Tirisfal Glades,30.19,65.32,40,0 << Priest/Mage
-    +|cRXP_WARN_击杀 |cRXP_ENEMY_食腐狼幼崽|r 和 |cRXP_ENEMY_夜行蝙蝠|r，拾取它们的掉落，直到你拥有价值60铜币的可出售物品（包括你的护甲）|r << Mage
+    +|cRXP_WARN_击杀 |cRXP_ENEMY_食腐狼幼崽|r 和 |cRXP_ENEMY_夜行蝙蝠|r。拾取它们的掉落，直到你拥有价值60铜币的可出售物品（包括你的护甲）|r << Mage
     +|cRXP_WARN_击杀 |cRXP_ENEMY_食腐狼幼崽|r 和 |cRXP_ENEMY_夜行蝙蝠|r，拾取它们的掉落，直到你拥有价值50铜币的可出售物品（包括你的护甲）|r << Priest
     +|cRXP_WARN_击杀 |cRXP_ENEMY_食腐狼幼崽|r 和 |cRXP_ENEMY_夜行蝙蝠|r，拾取它们的掉落，直到你拥有价值10铜币的可出售物品（包括你的护甲）|r << Warrior/Warlock
     .mob 食腐狼幼崽
@@ -137,7 +137,7 @@ step << Warlock
     .mob 断骨骷髅
 step << Warlock
     #completewith next
-    +|cRXP_WARN_击杀 |cRXP_ENEMY_无脑的僵尸|r 和 |cRXP_ENEMY_悲惨的僵尸|r。拾取它们的掉落物，直到你获得价值 25 铜币的可出售物品(包括你的护甲)|r
+    +|cRXP_WARN_击杀 |cRXP_ENEMY_无脑的僵尸|r 和 |cRXP_ENEMY_悲惨的僵尸|r，拾取它们的掉落物，直到你获得价值 25 铜币的可出售物品(包括你的护甲)|r
     .mob 无脑的僵尸
     .mob Wretched Zombie
     .money >0.0025
@@ -152,7 +152,7 @@ step << Warlock
 step << Warlock
     .goto Tirisfal Glades,31.35,66.21,10,0
     .goto Tirisfal Glades,30.98,66.41
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_温雅|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_温雅|r 对话
     .turnin 1470 >>交任务 控制小鬼
     .target 温雅·玛山德
 step << Warlock
@@ -2518,7 +2518,7 @@ step << Warlock/Mage/Priest
     .goto Undercity,64.20,49.60
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_拍卖师雷克尔|r 对话
     >>|cRXP_BUY_从拍卖行购买六个|r |T134339:0|t[变色的狼心] |cRXP_BUY_|r
-    >>|cRXP_WARN_如果你愿意，可以跳过这一步，这只能节省一点点时间|r
+    >>|cRXP_WARN_如果你愿意的话可以跳过，这只是个小捷径|r
     .collect 3164,6,429,1 --Collect Discolored Worg Heart (x6)
     .target 拍卖师雷克尔
     .zoneskip Undercity,1
@@ -2614,7 +2614,7 @@ step << Rogue
     .goto Undercity,64.20,49.60
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_拍卖师雷克尔|r 对话
     >>|cRXP_BUY_从拍卖行购买六个|r |T134339:0|t[变色的狼心] |cRXP_BUY_|r
-    >>|cRXP_WARN_如果你愿意，可以跳过这一步，这只能节省一点点时间|r
+    >>|cRXP_WARN_如果你愿意的话可以跳过，这只是个小捷径|r
     .collect 3164,6,429,1 --Collect Discolored Worg Heart (x6)
     .target 拍卖师雷克尔
     .zoneskip Undercity,1
@@ -2689,7 +2689,7 @@ step << Warlock
 step << Warlock
     .goto Undercity,85.04,25.97
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_凯伦丁|r 对话
-    .turnin 1471 >>交任务誓缚
+    .turnin 1471 >>交任务 誓缚
     .target 凯伦丁·哈加尔
 step << skip --Warlock
     .goto Undercity,84.86,20.34
@@ -3665,7 +3665,7 @@ step
     .goto Undercity,64.20,49.60
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_拍卖师雷克尔|r 对话
     >>|cRXP_BUY_从拍卖行购买六个|r |T134339:0|t[变色的狼心] |cRXP_BUY_|r
-    >>|cRXP_WARN_如果你愿意，可以跳过这一步，这只能节省一点点时间|r
+    >>|cRXP_WARN_如果你愿意的话可以跳过，这只是个小捷径|r
     .collect 3164,6,429,1 --Collect Discolored Worg Heart (x6)
     .target 拍卖师雷克尔
     .zoneskip Undercity,1

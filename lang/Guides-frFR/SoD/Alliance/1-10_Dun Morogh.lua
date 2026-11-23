@@ -287,7 +287,7 @@ step << Priest/Mage/Warlock
     .goto 1426,21.813,72.584,0
     .goto 1426,19.578,72.086,0
     .goto 1426,20.627,70.415,0
-    >>Tuez les|cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
+    >>Tuez les |cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
     .complete 170,1 --Kill Rockjaw Trogg (x6)
     .complete 170,2 --Kill Burly Rockjaw Trogg (x6)
     .mob Rockjaw Trogg
@@ -484,7 +484,7 @@ step
     .goto 1426,21.813,72.584,0
     .goto 1426,19.578,72.086,0
     .goto 1426,20.627,70.415,0
-    >>Tuez les|cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
+    >>Tuez les |cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
     .complete 170,1 --Kill Rockjaw Trogg (x6)
     .complete 170,2 --Kill Burly Rockjaw Trogg (x6)
     .mob Rockjaw Trogg
@@ -510,7 +510,7 @@ step << Paladin/Warlock/Hunter
     .goto 1426,31.138,74.048,50,0
     .goto 1426,30.077,74.479,50,0
     .goto 1426,29.280,75.500,50,0
-    >>Tuez les|cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
+    >>Tuez les |cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
     .complete 170,1 --Kill Rockjaw Trogg (x6)
     .complete 170,2 --Kill Burly Rockjaw Trogg (x6)
     .mob Rockjaw Trogg
@@ -677,7 +677,7 @@ step << !Paladin !Warlock !Hunter
     .waypoint 1426,25.920,74.571,55,0
     .waypoint 1426,28.812,76.397,55,0
     .waypoint 1426,29.303,77.337,55,0
-    >>Tuez les|cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
+    >>Tuez les |cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
     .complete 170,1 --Kill Rockjaw Trogg (x6)
     .complete 170,2 --Kill Burly Rockjaw Trogg (x6)
     .mob Rockjaw Trogg
@@ -1346,7 +1346,7 @@ step
     .accept 313 >> Acceptez la quête L'antre Gris
     .target +Pilot Stonegear
 step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Beldin Steelgrill|r et |cRXP_FRIENDLY_Loslor Rudge|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Beldin Steelgrill|r et à |cRXP_FRIENDLY_Loslor Rudge|r
     .turnin 400 >> Rendez la quête Des outils pour Grillacier
     .goto Dun Morogh,50.443,49.092
     .target +Beldin Steelgrill
@@ -1770,7 +1770,7 @@ step << Rogue
     .goto 1426,25.540,45.374,55,0
     .goto 1426,25.950,43.930,55,0
     >>Utilisez le |T133644:0|t[Vol à la tire] sur les |cRXP_ENEMY_Gnomes lépreux|r. Récupérez le |T134269:0|t[|cRXP_LOOT_Morceau inférieur droit de carte]|r
-    >>Vous devez être en [Camouflage] pour utiliser votre [Vol à la tire]
+    >>Vous devez être en [Camouflage] pour utiliser [Vol à la tire]
     .collect 208218,1 -- Bottom-Right Map Piece (1)
     .mob Leper Gnome
     .train 398196,1
@@ -1797,7 +1797,7 @@ step
     .waypoint 1426,23.373,51.385,30,0
     .waypoint 1426,23.568,50.924,30,0
     .waypoint 1426,24.301,50.898,30,0
-    >>Tuez |cRXP_ENEMY_Frostmane Headhunters|r à l'intérieur de la grotte
+    >>Tuez les|cRXP_ENEMY_Frostmane Headhunters|r à l'intérieur de la grotte
     .complete 287,1 --Kill Frostmane Headhunter (x5)
     .mob Frostmane Headhunter
 step << Rogue
@@ -1816,7 +1816,7 @@ step << Rogue
     .waypoint 1426,24.301,50.898,30,0
     #completewith ShimmerweedCollect
     >>Utilisez |T133644:0|t[Vol à la tire] sur les |cRXP_ENEMY_Trolls Crins-de-givre|r. Récupérez le |T134327:0|t[|cRXP_LOOT_Morceau supérieur droit de carte|r]
-    >>Vous devez être en [Camouflage] pour utiliser votre [Vol à la tire]
+    >>Vous devez être en [Camouflage] pour utiliser [Vol à la tire]
     .collect 208213,1 -- Top-Right Map Piece (1)
     .mob Frostmane Seer
     .mob Frostmane Headhunter
@@ -1967,7 +1967,7 @@ step << Warrior
 step << Warrior
     #optional
     #completewith Dirt
-    +Équipez les [Couteau de lancer perçant]
+    +Équipez le [Couteau de lancer perçant]
     .use 3107
     .itemcount 3107,1
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<6.3

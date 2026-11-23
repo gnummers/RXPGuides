@@ -1117,7 +1117,7 @@ step << Warlock
     .turnin 239 >> 交任务 西泉要塞
     .accept 11 >> 接受任务 悬赏河爪豺狼人
     .goto Elwynn Forest,24.234,74.450
-    >>点击 |cRXP_PICK_通缉布告|r
+    >>点击 |cRXP_PICK_通缉告示|r
     .accept 176 >> 接受任务 通缉：霍格
     .goto Elwynn Forest,24.548,74.672
     .target 瑞尼尔副队长
@@ -1127,7 +1127,7 @@ step
     .turnin 239 >> 交任务 西泉要塞
     .accept 11 >> 接受任务 悬赏河爪豺狼人
     .goto Elwynn Forest,24.234,74.450
-    >>点击 |cRXP_PICK_通缉布告|r
+    >>点击 |cRXP_PICK_通缉告示|r
     .accept 176 >> 接受任务 通缉：霍格
     .goto Elwynn Forest,24.548,74.672
     .target 瑞尼尔副队长
@@ -1289,7 +1289,7 @@ step
 step
     #softcore
     #completewith next
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
 step
     .goto Westfall,56.327,47.520
@@ -1510,10 +1510,10 @@ step << Warlock
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_黑暗缚灵者加科因|r 对话
     .target 黑暗缚灵者加科因
     .goto StormwindClassic,25.25,78.59
-    .turnin 1689 >> 交任务誓缚
+    .turnin 1689 >> 交任务 誓缚
 step << Human
     .goto StormwindClassic,74.312,47.240
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_奥斯瑞克·斯图恩|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与|cRXP_FRIENDLY_奥斯瑞克·斯图恩|r 对话
     .turnin 6281 >> 交任务 前往暴风城
     .target 奥斯瑞克·斯图恩
     .accept 6261 >> 接受任务 杜加尔·朗德瑞克

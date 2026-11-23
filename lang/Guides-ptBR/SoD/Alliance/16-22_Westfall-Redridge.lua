@@ -305,7 +305,7 @@ step
 step << !Warlock
     .goto Redridge Mountains,30.590,59.410
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Ariena Penafúria|r
-    .fp Redridge Mountains >> Aprenda a rota de voo para Montanhas Cristarrubra
+    .fp Redridge Mountains >> Pegue o ponto de voo das Montanhas Cristarrubra
     .target Ariena Stormfeather
 step << !Human
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Vervo Obom|r
@@ -455,7 +455,7 @@ step
 step
     .goto Westfall,56.55,52.64
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Thor|r
-    .fly Redridge >> Voe para Redridge
+    .fly Redridge >> Voe para as Montanhas Cristarrubra
     .target Thor
 
 ]])
@@ -525,7 +525,7 @@ step
     .accept 129 >> Aceite Um Almoço Grátis
 step << !Rogue
     .goto Redridge Mountains,27.0,44.8
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tConverse com |cRXP_FRIENDLY_Estalajadeira Briana|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Estalajadeira Briana|r
     .target Innkeeper Brianna
     .home >> Defina sua Pedra de Regresso para Vila Plácida
     .isQuestAvailable 20
@@ -748,14 +748,14 @@ step
 step << Human
     .dungeon !DM
     .cooldown item,6948,>120,1
-    .hs >> Use sua Pedra de Retorno em Lakeshire
+    .hs >> Lar para Lakeshire
     .zoneskip Redridge Mountains
 step << Human
 #optional
 .dungeon !DM
     .goto StormwindClassic,66.277,62.137
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Dungar Tragolongo|r
-    .fly Redridge >> Voe para Redridge
+    .fly Redridge >> Voe para as Montanhas Cristarrubra
     .target Dungar Longdrink
     .zoneskip Redridge Mountains
 step
@@ -974,7 +974,7 @@ step
 step
 .dungeon DM
     .goto Westfall,42.56,71.71
-    >>Escolte o |cRXP_FRIENDLY_Traidor Défias|r para Minas Mortas
+    >>Escolte o |cRXP_FRIENDLY_Traidor Défias|r até as Minas Mortas
     >>|cRXP_WARN_fique ao lado de |cRXP_FRIENDLY_Traidor Défias|r o tempo todo! esteja pronto para lutar |cRXP_ENEMY_Défias|r ao chegar em Moonbrook|r
     .complete 155,1 -- Escort The Defias Traitor to discover where VanCleef is hiding (1)
     .target The Defias Traitor
@@ -994,10 +994,10 @@ step
 step << Rogue
     #optional
     #completewith TowerKey
-    +|cRXP_WARN_==PRESTE ATENÇÃO NA PRÓXIMA SEÇÃO==|r
+    +|cRXP_WARN_==PRESTE ATENÇÃO À PRÓXIMA SEÇÃO==|r
     >>Pressione Escape, depois vá em -> Opções -> Controles
     >>Marque "Ativar Tecla de Interação" e vincule a opção "Interagir com o Alvo" a uma tecla
-    >>|cRXP_WARN_Além disso, recomenda-se ativar as Placas de Nome de Inimigos (Tecla Padrão: V) para ver inimigos atrás de alguns cantos da torre|r
+    >>|cRXP_WARN_Além disso, é recomendável ativar as placas de nome dos inimigos (tecla padrão: V), pois isso permite ver os inimigos atrás de alguns cantos dentro da torre.|r
 step << Rogue
     .goto Westfall,68.50,70.08
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Agente Marta Hari|r
@@ -1034,7 +1034,7 @@ step << Rogue
     >>Saia manualmente de [Furtividade]|cRXP_WARN_, depois pressione sua tecla de atalho "Interagir com Alvo" para abrir o |cRXP_PICK_Baú da Floresta do Crepúsculo|r. Saqueie-o para obter |cRXP_LOOT_Diário de Filipe Pinel|r |r
     >>OBS.: Sua [Furtividade] vai parar de funcionar temporariamente após saquear |cRXP_LOOT_Diário de Filipe Pinel|r
     >>|cRXP_WARN_Esteja preparado para correr se você não matar as |cRXP_ENEMY_Sentinelas da Torre Défias|r no 2º andar. Elas provavelmente vão te manter em aggro permanente (mas sem te atacar) quando você estiver em cima da estante pois é um ponto de evade|r
-    >>Se você tiver uma [Adaga] na bolsa ou equipada, você pode usar [Emboscada] |cRXP_WARN_nos |cRXP_ENEMY_Patrulheiros da Torre Défias|r e nas |cRXP_ENEMY_Sentinelas da Torre Défias|r lá dentro para matá-los instantaneamente. Esteja pronto para correr depois de matar a primeira |cRXP_ENEMY_Sentinela da Torre Défias|r e lembre-se você pode levar golpes vindos de cima. É mais lento, mas MUITO mais seguro|r
+    >>|cRXP_WARN_Se você tiver um|r |T135641:0|t[Adaga] |cRXP_WARN_nas suas bolsas ou equipado, você pode lançar|r |T132282:0|t[Emboscada] |cRXP_WARN_no |cRXP_ENEMY_Patrulheiros da Torre Défias|r e |cRXP_ENEMY_Sentinelas da Torre Défias|r lá dentro para matá-los instantaneamente. Prepare-se para correr depois de matar o primeiro |cRXP_ENEMY_Sentinela da Torre Défias|r e lembre-se de que você pode ser atingido de cima. É mais lento, mas MUITO mais seguro|r
     >>|cRXP_WARN_Tome cuidado, pois |cRXP_ENEMY_Parasita Défias Mal Formado|r e |cRXP_ENEMY_Parasita Défias|r podem ficar na entrada da torre, caso você precise sair correndo dela|r
     .complete 2359,1 --Collect Klaven Mortwake's Journal (x1)
     .link https://www.youtube.com/watch?v=5sIew15IcG0 >> Clique AQUI para o guia em vídeo
@@ -1120,7 +1120,7 @@ step << Rogue
     #requires AntiVenomEnd2 << Rogue
     .goto StormwindClassic,75.78,59.84
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Mestre Mathias Shaw|r
-    >>|cRXP_WARN_Lembre-se de reequipar sua arma principal se você trocou para um|r |T135641:0|t[Dagger] |cRXP_WARN_antes|r << Rogue
+    >>|cRXP_WARN_Lembre-se|r de re-equipar sua arma principal se você trocou para uma |T135641:0|t[Adaga] |cRXP_WARN_anteriormente|r << Rogue
     .turnin 2359 >> Entregue A Torre de Klaven
     .turnin 135 >> Entregue A Irmandade Défias
     .target Master Mathias Shaw
@@ -1244,7 +1244,7 @@ step
     .dungeon DM
     .goto StormwindClassic,66.277,62.137
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Dungar Tragolongo|r
-    .fly Redridge >> Voe para Redridge
+    .fly Redridge >> Voe para as Montanhas Cristarrubra
     .target Dungar Longdrink
     .zoneskip Redridge Mountains
 
@@ -1288,7 +1288,7 @@ step << Warlock
 step
     #loop
     >>Mate |cRXP_ENEMY_Brutos Rocha Negra|r e |cRXP_ENEMY_Vanguardeiros Rocha Negra|r. Saqueie-os em busca de seus |cRXP_LOOT_Machados|r
-	>>|cRXP_WARN_Cuidado, os |cRXP_ENEMY_Blackrock Outrunners|r lançarão |T132149:0|t[Rede] em você|r
+	>>|cRXP_WARN_Tenha cuidado, os |cRXP_ENEMY_Blackrock Outrunners|r lançarão |T132149:0|t[Rede] em você|r
     .goto Redridge Mountains,74.00,79.00,60,0
     .goto Redridge Mountains,76.18,83.39,60,0
     .goto Redridge Mountains,77.80,68.50,60,0
@@ -1366,11 +1366,11 @@ step
     .goto Redridge Mountains,30.59,59.42
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Ariena Penafúria|r
 	.target Ariena Stormfeather
-    .fly Stormwind >> Voe para a Cidade de Ventobravo
+    .fly Stormwind >> Voe para Ventobravo
 step << !Mage/Paladin/Warlock
     .goto StormwindClassic,52.623,65.701
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Estalajadeira Cristine|r
-    .home >> Defina sua Pedra de Retorno na Cidade de Ventobravo
+    .home >> Defina sua Pedra de Regresso para a Cidade de Ventobravo
     .target Innkeeper Allison
 step << Mage
     .goto Stormwind City,39.681,79.538

@@ -160,7 +160,7 @@ step << Warlock
     .cast 688 >>|cRXP_WARN_Wirkt|r |T136218:0|t[Wichtel beschwören]
 step << Priest
     #completewith next
-    +|cRXP_WARN_Sammelt euren|r |T132889:0|t[Leinenstoff]|cRXP_WARN_. Damit könnt ihr später einen Zauberstab herstellen|r
+    +|cRXP_WARN_Behaltet euren|r |T132889:0|t[Leinenstoff]|cRXP_WARN_. Damit könnt ihr später einen Zauberstab herstellen|r
 step
     #label Zombies
     #requires Piercing << Warlock/Mage
@@ -992,8 +992,8 @@ step
     .goto 1420/0,244.81,2269.19
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Gastwirtin Renee|r
     .vendor >>|cRXP_BUY_Kauft so viel|r |T132815:0|t[Eiskalte Milch] |cRXP_BUY_von ihr, wie ihr könnt|r << Mage/Priest/Paladin
-    .vendor >>|cRXP_BUY_Kauft so viel|r |T134532:0|t[Rot-speckled Mushrooms] |cRXP_BUY_von ihr, wie ihr könnt|r << Warrior/Rogue
-    .vendor >>|cRXP_BUY_Kauft so viel|r |T132815:0|t[Eiskalte Milch] |cRXP_BUY_und|r |T134532:0|t[Rot-speckled Mushrooms] |cRXP_BUY_von ihr, wie ihr könnt|r << Warlock
+    .vendor >>|cRXP_BUY_Kauft so viele|r |T134532:0|t[Rotgetupfte Pilze] |cRXP_BUY_von ihr, wie ihr könnt|r << Warrior/Rogue
+    .vendor >>|cRXP_BUY_Kauft so viel|r |T132815:0|t[Eiskalte Milch] |cRXP_BUY_und|r |T134532:0|t[Rotgetupfte Pilze] |cRXP_BUY_von ihr, wie ihr könnt|r << Warlock
     .money <0.0125
     .target Innkeeper Renee
 step
@@ -1006,7 +1006,7 @@ step
 step
     .goto 1420/0,77.200,2026.700
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Shelene Rhobart|r
-    .accept 97558 >>Akzeptiert die Quest Hides for the Forsaken
+    .accept 97558 >>Akzeptiert die Quest Häute, Bälge, Membranen
     .target Shelene Rhobart
 step
     .goto 1420/0,346.94,2258.950
@@ -1062,7 +1062,7 @@ step
     .goto 1420/0,496.96,2256.54,0
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Gordo|r
     >>|cRXP_WARN_Er ist eine Abscheulichkeit, welches die Straße nach Brill patrouilliert.|r
-    >>|cRXP_WARN_Wählt aus "Ich benötige einen Bericht für Exekutor Zygand|r"
+    >>|cRXP_WARN_Wählt „Ich benötige einen Bericht für Exekutor Zygand" aus|r
     .complete 99141,3 --|1/1 Gordo's Report
     .target Gordo
     --.gossipoption 142737
@@ -1187,7 +1187,7 @@ step
 step
     .goto 1420/0,403.300,2287.700
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Todeswache Dillinger|r
-    >>|cRXP_WARN_Wählt aus "Ich benötige einen Bericht für Exekutor Zygand|r"
+    >>|cRXP_WARN_Wählt „Ich benötige einen Bericht für Exekutor Zygand" aus|r
     .turnin 404 >>Gebt die Quest Eine eitrige Aufgabe ab
     .accept 426 >>Akzeptiert die Quest Die überrannte Mühle
     .complete 99141,1 --|1/1 Dillinger's Report
@@ -1302,7 +1302,7 @@ step << Mage/Priest/Warlock
     .goto 1420/0,244.81,2269.19
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Gastwirtin Renee|r
     .vendor >>|cRXP_BUY_Kauft so viel|r |T132815:0|t[Eiskalte Milch] |cRXP_BUY_von ihr, wie ihr könnt|r << Mage/Priest
-    .vendor >>|cRXP_BUY_Kauft so viel|r |T132815:0|t[Eiskalte Milch] |cRXP_BUY_und|r |T134532:0|t[Rot-speckled Mushrooms] |cRXP_BUY_von ihr, wie ihr könnt|r << Warlock
+    .vendor >>|cRXP_BUY_Kauft so viel|r |T132815:0|t[Eiskalte Milch] |cRXP_BUY_und|r |T134532:0|t[Rotgetupfte Pilze] |cRXP_BUY_von ihr, wie ihr könnt|r << Warlock
     .money <0.0125
     .target Innkeeper Renee
 step
@@ -1819,7 +1819,7 @@ step << skip --Rogue/Warrior
 step
     .goto 1420/0,76.000,2026.900
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Shelene Rhobart|r
-    .turnin 97558 >>Gebt die Quest Häute für die Forsaken ab
+    .turnin 97558 >>Gebt die Quest Häute, Bälge, Membranen ab
     .target Shelene Rhobart
 step
     .goto 1420/0,74.00,2022.47
@@ -2063,7 +2063,7 @@ step << Paladin
     .target Shari Stilwell
 step << Warlock
     #completewith next
-    .goto 1420/0,240.75,1877.57,20 >> Betrete Unterstadt
+    .goto 1420/0,240.75,1877.57,20 >> Betrete Undercity
     .zoneskip Undercity
 step << Warlock
     #completewith next
@@ -2072,7 +2072,7 @@ step << Warlock
     .goto 1458/0,240.68,1706.97,10,0
     .goto 1458/0,241.06,1660.12,10,0
     .goto 1458/0,257.08,1623.38,10,0
-    .goto 1458/0,244.51,1598.73,15 >> Nehmt den Aufzug hinab nach Unterstadt
+    .goto 1458/0,244.51,1598.73,15 >> Nehmt den Aufzug hinab nach Undercity
 step << Warlock
     .goto 1458/0,57.05,1711.77
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Carendin|r im Magierviertel
@@ -2094,7 +2094,7 @@ step << Warlock
     .goto 1458/0,610.42,1684.44,35,0
     .goto 1458/0,663.19,1600.46,35,0
     .goto 1420/0,724.25,1682.66,50,0
-    .zone Tirisfal Glades >> Verlasst die Unterstadt durch die Kanalisation
+    .zone Tirisfal Glades >> Verlasst Undercity durch die Abwasserkanäle
     .zoneskip Tirisfal Glades
 step << Warlock
     #completewith next
@@ -2135,7 +2135,7 @@ step << !Priest
     .goto 1458/0,476.49,1632.15,10,0
     .goto 1458/0,439.08,1627.02,10,0
     .goto 1458/0,435.05,1598.86,10,0
-    .zone Undercity >> Reist nach Unterstadt durch die Kanalisation
+    .zone Undercity >> Reist nach Undercity durch die Abwasserkanäle
     .zoneskip Undercity
 step << Rogue
     .goto 1458/0,323.57,1668.50
@@ -2298,7 +2298,7 @@ step << Paladin
     #label UCHome
     .goto 1458/0,223.31,1634.96
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Norman|r
-    .home >> Setzt euren Ruhestein in Unterstadt
+    .home >> Setzt euren Ruhestein in Undercity
     .target Innkeeper Norman
     .bindlocation 1497
 step
@@ -2308,11 +2308,11 @@ step << skip
     .goto 1458/0,59.07,1747.75
     .goto 1458/0,221.78,1780.14,30 >>|cRXP_WARN_Führt einen Logout-Skip durch: Positioniert den Character von Euch auf der höchsten Stelle der niedrigsten Treppenstufe, bis er zu schweben scheint. Meldet euch dann ab und wieder an|r
     .link https://www.youtube.com/watch?v=-Bi95bCN8dM >> |cRXP_WARN_KLICKT HIER für ein Beispiel|r
-    >>|cRXP_WARN_Falls ihr das nicht könnt, lauft einfach normal aus der Unterstadt|r
+    >>|cRXP_WARN_Falls ihr das nicht könnt, lauft einfach normal aus Undercity hinaus|r
 step << !Priest
     #completewith AtWarS
     .goto 1420/0,235.32,1883.89
-    .zone Tirisfal Glades >> Verlasst Unterstadt
+    .zone Tirisfal Glades >> Verlasst Undercity
     .zoneskip Tirisfal Glades
 step << Undead Rogue
     #sticky
@@ -2879,9 +2879,31 @@ step << !Paladin
     .turnin 356 >>Gebt die Quest Patrouille zur Rückendeckung ab
     .target Deathguard Linnea
 step << !Paladin
+    .goto 1420/0,73.800,2022.300
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Todeswache Linnea::1495|r
+    >>|cRXP_WARN_Dies ist eine Vorquest für "Der Zorn von Rath'mael"|r
+    .turnin 356 >>Gebt die Quest Patrouille zur Rückendeckung ab
+    .target Deathguard Linnea::1495
+    .accept 99156 >>Akzeptiert die Quest Patrouille zur Rückendeckung
+    .dungeon ROL
+step << !Paladin
+    .goto 1420/0,-765.200,2518.700
+    >>Tötet |cRXP_ENEMY_Reißer|r |cRXP_WARN_(level 13 elite)|r. Plündert ihn für |T134339:0|t[|cRXP_LOOT_Reißers Herz|r]
+    >>|cRXP_WARN_Dies ist eine Vorquest für "Der Zorn von Rath'mael"|r
+    .complete 99156,1 --|1/1 Riptear's Heart
+    .mob Riptear
+    .dungeon ROL
+step << !Paladin
+    .goto 1420/0,74.200,2022.400
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Todeswache Linnea::1495|r
+    >>|cRXP_WARN_Dies ist eine Vorquest für "Der Zorn von Rath'mael"|r
+    .turnin 99156 >>Gebt die Quest Patrouille zur Rückendeckung ab
+    .target Deathguard Linnea::1495
+    .dungeon ROL
+step << !Paladin
     #label EnterUC2
     #completewith Glix
-    .goto 1420/0,240.75,1877.57,20 >> Betrete Unterstadt
+    .goto 1420/0,240.75,1877.57,20 >> Betrete Undercity
     .zoneskip Undercity
 step << !Paladin
     #completewith Glix
@@ -2890,16 +2912,16 @@ step << !Paladin
     .goto 1458/0,240.68,1706.97,10,0
     .goto 1458/0,241.06,1660.12,10,0
     .goto 1458/0,257.08,1623.38,10,0
-    .goto 1458/0,244.51,1598.73,15 >> Nehmt den Aufzug hinab nach Unterstadt
+    .goto 1458/0,244.51,1598.73,15 >> Nehmt den Aufzug hinab nach Undercity
 step << !Paladin
     .goto 1458/0,223.31,1634.96
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Norman|r
-    .home >> Setzt euren Ruhestein in Unterstadt
+    .home >> Setzt euren Ruhestein in Undercity
     .target Innkeeper Norman
     .bindlocation 1497
 step << Paladin
     #completewith Glix
-    .hs >> Benutzt euren Ruhestein nach Unterstadt
+    .hs >> Benutzt euren Ruhestein nach Undercity
     .cooldown item,6948,>0,1
     .bindlocation 1497,1
     .zoneskip Undercity
@@ -2918,6 +2940,7 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Glix Xizzix|r
     .turnin 98545 >>Gebt die Quest Leonids Brief ab
     .target Glix Xizzix
+    .isOnQuest 98545
 step << Rogue
     #ssf
     .goto 1458/0,133.71,1561.730
@@ -3153,13 +3176,35 @@ step << Paladin
 step << Paladin
     #completewith
     .goto 1420/0,235.32,1883.89
-    .zone Tirisfal Glades >> Verlasst Unterstadt
+    .zone Tirisfal Glades >> Verlasst Undercity
     .zoneskip Tirisfal Glades
 step << Paladin
     .goto 1420/0,74.00,2022.47
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Linnea|r
     .turnin 356 >>Gebt die Quest Patrouille zur Rückendeckung ab
     .target Deathguard Linnea
+step << Paladin
+    .goto 1420/0,73.800,2022.300
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Todeswache Linnea::1495|r
+    >>|cRXP_WARN_Dies ist eine Vorquest für "Der Zorn von Rath'mael"|r
+    .turnin 356 >>Gebt die Quest Patrouille zur Rückendeckung ab
+    .target Deathguard Linnea::1495
+    .accept 99156 >>Akzeptiert die Quest Patrouille zur Rückendeckung
+    .dungeon ROL
+step << Paladin
+    .goto 1420/0,-765.200,2518.700
+    >>Tötet |cRXP_ENEMY_Reißer|r |cRXP_WARN_(level 13 elite)|r. Plündert ihn für |T134339:0|t[|cRXP_LOOT_Reißers Herz|r]
+    >>|cRXP_WARN_Dies ist eine Vorquest für "Der Zorn von Rath'mael"|r
+    .complete 99156,1 --|1/1 Riptear's Heart
+    .mob Riptear
+    .dungeon ROL
+step << Paladin
+    .goto 1420/0,74.200,2022.400
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Todeswache Linnea::1495|r
+    >>|cRXP_WARN_Dies ist eine Vorquest für "Der Zorn von Rath'mael"|r
+    .turnin 99156 >>Gebt die Quest Patrouille zur Rückendeckung ab
+    .target Deathguard Linnea::1495
+    .dungeon ROL
 step << Paladin
     .goto 1420/0,311.600,2251.000
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Shari Stilwell|r
@@ -3270,7 +3315,7 @@ step << !Paladin
     .goto 1458/0,610.42,1684.44,35,0
     .goto 1458/0,663.19,1600.46,35,0
     .goto 1420/0,724.25,1682.66,50,0
-    .zone Tirisfal Glades >> Verlasst die Unterstadt durch die Kanalisation
+    .zone Tirisfal Glades >> Verlasst Undercity durch die Abwasserkanäle
 step
     #label Entersilverpine
     .goto 1420/0,629.36,1553.42
@@ -3444,7 +3489,7 @@ step
     .target High Executor Hadrec
 step << Mage/Priest/Warlock
     .goto 1421/0,1626.100,511.500
-    >>Sammelt das |cRXP_PICK_Glowing Buch|r vom Boden
+    >>Sammelt das |cRXP_PICK_Glitzernde Buch|r auf dem Boden
     .collect 210177,1,79096,1 --Ataeric: On Arcane Curiosities
     --Other classes won't be nearby turnin in UC, probably not worth since it's only 160xp
 step
@@ -3795,7 +3840,7 @@ step
     .goto 1421/0,1625.94,522.31
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Hadrec|r in der Gruft
     .turnin 439 >>Gebt die Quest Auf den Spuren der Moderfelle ab
-    .accept 440 >>Akzeptiert die Quest Der gravierte Läuten
+    .accept 440 >>Akzeptiert die Quest Der gravierte Ring
     .target High Executor Hadrec
 step
     #completewith next
@@ -3851,7 +3896,7 @@ step
 step
     .goto 1421/0,1579.600,461.700
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Tabitha Heartweaver::250686|r
-    .accept 92401 >>Akzeptiert die Quest Eine erschrockene Anfrage
+    .accept 92401 >>Akzeptiert die Quest Eine verängstigte Bitte
     .target Tabitha Heartweaver::250686
     .xp <15,1
     .dungeon ROL
@@ -3859,20 +3904,20 @@ step
     .goto 1421/0,1533.96,474.43
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Karos|r
     .turnin 6321 >>Gebt die Quest Nachschub für das Grabmal ab << Undead
-    .accept 6323 >>Akzeptiert die Quest Flug nach Unterstadt << Undead
+    .accept 6323 >>Akzeptiert die Quest Flug nach Undercity << Undead
     .fp Sepulcher >> Erlernt die Flugroute am Grabmal << !Undead
-    .fly Undercity >> Fliegt nach Unterstadt << !Undead
+    .fly Undercity >> Fliegt nach Undercity << !Undead
     .target Karos Razok
     .zoneskip Undercity
 step << Undead
-    .hs >> Benutzt euren Ruhestein nach Unterstadt
+    .hs >> Benutzt euren Ruhestein nach Undercity
     .use 6948
     .zoneskip Undercity
     .bindlocation 1497,1
 step << Undead
     .goto 1458/0,283.37,1610.32
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Gordon|r
-    .turnin 6323 >> Gebt die Quest Flug nach Unterstadt ab
+    .turnin 6323 >> Gebt die Quest Flug nach Undercity ab
     .accept 6322 >> Akzeptiert die Quest Michael Garrett
     .target Gordon Wendham
 step << Rogue
@@ -3993,7 +4038,7 @@ step
     .goto 1458/0,371.68,1370.64,15,0--c:1458,52.275,79.254
     .goto 1458/0,381.23,1366.35,15,0--c:1458,51.279,79.923
     .goto 1458/0,396.45,1372.88,15,0--c:1458,49.693,78.903
-    .goto 1458/0,413.16,1390.37,15 >>Reist zum Apothecarium--c:1458,47.951,76.171
+    .goto 1458/0,413.16,1390.37,15 >>Reist zum Apothekarium--c:1458,47.951,76.171
 step
     .goto 1458/0,426.100,1403.600
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Doctor Martin Felben|r
@@ -4009,6 +4054,18 @@ step
     .accept 1358 >> Akzeptiert die Quest Probe für Helbrim
     .target +Apothecary Zinge
     .goto 1458/0,391.97,1442.87
+    .dungeon !ROL
+step
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprecht mit |cRXP_FRIENDLY_Faranell|r und |cRXP_FRIENDLY_Zinge|r im Apothekarium
+    .turnin 447 >>Gebt die Quest Rezept für den Tod ab
+    .accept 450 >>Akzeptiert die Quest Rezept für den Tod
+    .target +Master Apothecary Faranell
+    .goto 1458/0,404.63,1434.67
+    .turnin 1359 >> Gebt die Quest Zinges Lieferung ab
+    .accept 1358 >> Akzeptiert die Quest Probe für Helbrim
+    .target +Apothecary Zinge
+    .goto 1458/0,391.97,1442.87
+    .dungeon ROL
 step
     .goto 1458/0,334.02,1262.17--c:Undercity,56.2,96.2
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tSprich mit |cRXP_FRIENDLY_Varimathras|r
@@ -4150,7 +4207,7 @@ step << Undead Rogue
 step << Undead
     #completewith next
     .goto 1420/0,235.32,1883.89,50,0
-    .zone Tirisfal Glades >> Verlasst Unterstadt
+    .zone Tirisfal Glades >> Verlasst Undercity
     .zoneskip Tirisfal Glades
 step << Undead
     #label ZeptoDurotar
@@ -4220,7 +4277,7 @@ step << Undead/Skyborne
 step << Undead/Skyborne
     #completewith Gazzuz
     >>Tötet |cRXP_ENEMY_Burning Blade Orks|r. Plündert sie für |cRXP_LOOT_Insignien des Lieutenants|r
-    >>|cRXP_WARN_Das ist eine Vor-Quest für RFC mit niedriger Fallquote|r
+    >>|cRXP_WARN_Das ist eine Vorquest für Ragefireabgrund (RFC). Sie hat eine niedrige Drop-Rate|r
     .complete 5726,1 --Lieutenant's Insignia (1)
     .mob Burning Blade Fanatic
     .mob Burning Blade Apprentice
@@ -4230,9 +4287,9 @@ step << Undead/Skyborne
     .goto 1411/1,-4701.42,1455.83
     >>Tötet |cRXP_ENEMY_Gazz'uz|r. Plündert ihn für |T134085:0|t[|cRXP_LOOT_Auge des brennenden Schatten|r]
     >>|cRXP_WARN_Benutzt |T134085:0|t[|cRXP_LOOT_Auge des brennenden Schatten|r] um die Quest zu starten|r
-    >>|cRXP_WARN_Benutzt LoS (Sichtlinie), um |cRXP_ENEMY_Gazz'uz|r seine Schattenblitze zu vermeiden|r
+    >>|cRXP_WARN_Benutzt LoS (Line of Sight/Sichtlinie), um die Schattenblitze von |cRXP_ENEMY_Gazz'uz|r zu vermeiden|r
     >>|cRXP_WARN_Ihr könnt zu Gewässern innerhalb der Höhle fliehen um dem|r Leerwandler|cRXP_ENEMY_ nach dem Töten von|r |cRXP_WARN_Gazz'uz|r |cRXP_ENEMY_zu entkommen|r
-    >>|cRXP_WARN_Seid vorsichtig, er ist schwierig. Ihr könnt diese Quest überspringen, falls erforderlich|r
+    >>|cRXP_WARN_Seid vorsichtig, da er schwierig ist. Ihr könnt diese Quest überspringen, falls nötig|r
     .collect 4903,1,832,1 --Collect Eye of Burning Shadow
     .accept 832 >>Akzeptiert die Quest Brennende Schatten
     .use 4903
@@ -4252,7 +4309,7 @@ step << Undead/Skyborne
     .goto 1411/1,-4684.50,1466.06,15,0
     .goto 1411/1,-4805.59,1495.67,15,0
     >>Tötet |cRXP_ENEMY_Burning Blade Orks|r. Plündert sie für |cRXP_LOOT_Insignien des Lieutenants|r
-    >>|cRXP_WARN_Das ist eine Vor-Quest für RFC mit niedriger Fallquote|r
+    >>|cRXP_WARN_Das ist eine Vorquest für Ragefireabgrund (RFC). Sie hat eine niedrige Drop-Rate|r
     .complete 5726,1 --Lieutenant's Insignia (1)
     .mob Burning Blade Fanatic
     .mob Burning Blade Apprentice

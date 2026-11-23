@@ -49,8 +49,10 @@ RXPFrame.ScrollFrame = ScrollFrame
 RXPFrame.ScrollChild = ScrollChild
 RXPFrame.MenuFrame = MenuFrame
 
-function RXPFrame:UpdateVisuals()
-    if addon.v2:IsGuideWindowEnabled() then
+RXPFrame.UpdateTheme = addon.ui.v2.UpdateTheme
+
+function RXPFrame:UpdateSubTheme()
+    if addon.v2:IsEnabled() then
         addon.v2.events:Trigger("GuideWindowRefresh", "visuals")
         return
     end
@@ -58,13 +60,6 @@ function RXPFrame:UpdateVisuals()
     BottomFrame:ClearBackdrop()
     BottomFrame:SetBackdrop(RXPFrame.backdrop.edge)
     BottomFrame:SetBackdropColor(unpack(addon.colors.background))
-
-    if RXPFrame.activeItemFrame then
-        RXPFrame.activeItemFrame:ClearBackdrop()
-        RXPFrame.activeItemFrame:SetBackdrop(RXPFrame.backdrop.edge)
-        RXPFrame.activeItemFrame:SetBackdropColor(
-            unpack(addon.colors.background))
-    end
 
     GuideName:ClearBackdrop()
     GuideName:SetBackdrop(RXPFrame.backdrop.guideName)
@@ -75,7 +70,7 @@ function RXPFrame:UpdateVisuals()
     Footer.bg:SetTexture(addon.GetV1Texture("rxp-banner"))
 
     GuideName.bg:SetTexture(addon.GetV1Texture("rxp-banner"))
-    GuideName.icon:SetTexture(addon.GetV1Texture("rxp_logo-64"))
+    GuideName.icon:SetTexture(addon.GetV1Texture("rxp_logo-64"), nil, nil, "TRILINEAR")
     GuideName.classIcon:SetTexture(addon.GetV1Texture(class))
     Footer.cog:SetNormalTexture(addon.GetV1Texture("rxp_cog-32"))
     RXPFrame.UpdateScrollBar()
@@ -85,22 +80,24 @@ function addon.ReloadStep()
     addon.SetStep(addon.GetGuideProgress())
 end
 
-function addon.RenderFrame(themeUpdate,isLoading)
-    addon:LoadActiveTheme()
+function addon.NextStep()
+    RXP.SetStep(RXPCData.currentStep + 1)
+end
 
-    -- TODO better handle themes
-    addon.colors = addon.activeTheme
+function addon:UpdateTheme(skipMenu, skipGuideReload)
+    self:LoadActiveTheme()
 
-    --TODO: Add UpdateVisuals function to every frame under enabledFrames
-    for _,frame in pairs(addon.enabledFrames) do
-        if frame.UpdateVisuals then
-            frame:UpdateVisuals(true)
-        end
-    end
-    if not themeUpdate then
+    RXPFrame:UpdateTheme()
+    self.arrowFrame:UpdateTheme()
+    if self.activeItemWindow then self.activeItemWindow:UpdateTheme() end
+    self.UpdateItemFrame()
+    self.targeting:UpdateTheme()
+    if self.tracker then self.tracker:UpdateTheme() end
+
+    if not skipMenu then
         RXPFrame.GenerateMenuTable()
     end
-    if addon.currentGuide and not isLoading then
+    if addon.currentGuide and not skipGuideReload then
         addon:ReloadGuide(true)
     end
 end
@@ -144,7 +141,7 @@ RXPFrame.backdrop.bottom = {
 }
 
 function addon.SetupGuideWindow()
-    if addon.v2:IsGuideWindowEnabled() then return end
+    if addon.v2:IsEnabled() then return end
 
     -- These were in-line, but now rely on settings
 
@@ -173,7 +170,7 @@ function addon.SetupGuideWindow()
     Footer:SetBackdropColor(unpack(addon.colors.background))
     Footer.bg:SetTexture(addon.GetV1Texture("rxp-banner"))
 
-    GuideName.icon:SetTexture(addon.GetV1Texture("rxp_logo-64"))
+    GuideName.icon:SetTexture(addon.GetV1Texture("rxp_logo-64"), nil, nil, "TRILINEAR")
 
     GuideName.classIcon:SetTexture(addon.GetV1Texture(class))
     Footer.cog:SetNormalTexture(addon.GetV1Texture("rxp_cog-32"))
@@ -351,7 +348,7 @@ function addon.v2:UpdateActiveStepEventWatchers(steps)
 end
 
 local function SetStepFrameAnchor()
-    if addon.v2:IsGuideWindowEnabled() then
+    if addon.v2:IsEnabled() then
         addon.v2:SetActiveStepsFrameAnchor()
         return
     end
@@ -433,7 +430,7 @@ local stepPos = {}
 
 local lastScrollValue
 function BottomFrame:StepScroll(n)
-    if addon.v2:IsGuideWindowEnabled() then return end
+    if addon.v2:IsEnabled() then return end
 
     local value
     local step = addon.currentGuide.steps[n]
@@ -578,7 +575,7 @@ function addon.RegisterGeneratedSteps()
 
     addon:ScheduleTask(addon.ProcessGeneratedSteps, CheckStepCompletion, true)
     addon.UpdateMap()
-    if addon.v2:IsGuideWindowEnabled() then
+    if addon.v2:IsEnabled() then
         addon.v2.events:Trigger("GuideStepsChanged")
     end
 end
@@ -737,7 +734,7 @@ function addon.UpdateStepCompletion()
                 step.active = nil
             elseif step.index >= currentStep then
                 step.completed = true
-                if addon.v2:IsGuideWindowEnabled() then
+                if addon.v2:IsEnabled() then
                     addon.v2.events:Trigger("GuideStepsChanged")
                 else
                     RXPFrame.BottomFrame.UpdateFrame(nil, step.index)
@@ -823,7 +820,7 @@ function addon.SetStep(n, n2, loopback)
     table.wipe(addon.activeMacros)
     addon.inventoryManager:OpenItems(nil, true)
 
-    local useV2GuideWindow = addon.v2:IsGuideWindowEnabled()
+    local useV2GuideWindow = addon.v2:IsEnabled()
     if useV2GuideWindow then
         local playerState = addon.v2.state.player[addon.player.name]
         if playerState and playerState.childContainer then
@@ -842,25 +839,32 @@ function addon.SetStep(n, n2, loopback)
     for i = 1, n - 1 do
         local step = guide.steps[i]
         if step.sticky then
-            local req = guide.labels[step.requires]
-            if step.requires and req then
-                local requiredSteps = {}
-                req = guide.steps[req]
-                while req and req.requires and not RXPCData.stepSkip[req.index] and
-                    not req.active do
-                    if requiredSteps[req] then
-                        addon.comms.PrettyPrint('ERROR: Step requirement loop at steps %d and %d',
-                              step.index or 0, req.index or 0)
-                        break
+
+            local reqFulfilled = true
+            for requires in string.gmatch(step.requires or "","%s*([^;]+)%s*") do
+                local req = guide.labels[requires]
+                if req then
+                    local requiredSteps = {}
+                    req = guide.steps[req]
+                    while req and req.requires and not RXPCData.stepSkip[req.index] and
+                        not req.active do
+                        if requiredSteps[req] then
+                            addon.comms.PrettyPrint('ERROR: Step requirement loop at steps %d and %d',
+                                step.index or 0, req.index or 0)
+                            break
+                        end
+                        requiredSteps[req] = true
+                        req = guide.steps[guide.labels[req.requires:gmatch("^([^;]+)%s*")]]
                     end
-                    requiredSteps[req] = true
-                    req = guide.steps[guide.labels[req.requires]]
                 end
+                reqFulfilled = reqFulfilled and not (req and
+                                        (req.active or
+                                            (req.sticky and
+                                                not RXPCData.stepSkip[req.index])))
             end
-            step.reqFulfilled = not (req and
-                                    (req.active or
-                                        (req.sticky and
-                                            not RXPCData.stepSkip[req.index])))
+
+            step.reqFulfilled = reqFulfilled
+
             if not RXPCData.stepSkip[i] and step.reqFulfilled and level >=
                 step.level then
                 tinsert(activeSteps, step)
@@ -873,17 +877,27 @@ function addon.SetStep(n, n2, loopback)
 
     local lastTip = addon.currentTip
     local step = guide.steps[n]
-    local req = step.requires and guide.labels[step.requires] and
-                    guide.steps[guide.labels[step.requires]]
+
+    local reqFulfilled = true
+    if step.requires then
+        for requires in string.gmatch(step.requires,"%s*([^;]+)%s*") do
+
+        local req = guide.labels[requires] and
+                        guide.steps[guide.labels[requires]]
+
+            reqFulfilled = reqFulfilled and not (req and #activeSteps > 0 and (req.active or not (req.reqFulfilled)))
+        end
+    end
+
     if step.completed and n < #guide.steps then
         return addon.SetStep(n + 1)
     elseif step and not step.completed and
-        not (req and #activeSteps > 0 and (req.active or not (req.reqFulfilled))) and
+        reqFulfilled and
         level >= step.level then
         step.completed = false
         addon.settings.ReplaceColors(step)
         tinsert(activeSteps, step)
-        if not addon.v2:IsGuideWindowEnabled() then ScrollChild.framePool[n]:SetAlpha(1) end
+        if not addon.v2:IsEnabled() then ScrollChild.framePool[n]:SetAlpha(1) end
         step.active = true
         scrollHeight = n
         if step.tipWindow then
@@ -927,21 +941,6 @@ function addon.SetStep(n, n2, loopback)
 
         for _, step in ipairs(activeSteps) do
             if step.tip then addon.currentTip = step end
-            if step.activeItems then
-                for k, v in pairs(step.activeItems) do
-                    addon.activeItems[k] = v
-                end
-            end
-            if step.activeSpells then
-                for k, v in pairs(step.activeSpells) do
-                    addon.activeSpells[k] = v
-                end
-            end
-            if step.activeMacros then
-                for k, v in pairs(step.activeMacros) do
-                    addon.activeMacros[k] = v
-                end
-            end
             for _, element in ipairs(step.elements or {}) do
                 AddTargets(element.unitscan, stepUnitscan)
                 AddTargets(element.mobs, stepMobs)
@@ -964,6 +963,24 @@ function addon.SetStep(n, n2, loopback)
         end
 
         addon.v2.events:Trigger("UpdateActiveSteps", activeSteps, addon.player.name)
+        -- UpdateActiveSteps binds the directives that populate these tables.
+        for _, step in ipairs(activeSteps) do
+            if step.activeItems then
+                for k, v in pairs(step.activeItems) do
+                    addon.activeItems[k] = v
+                end
+            end
+            if step.activeSpells then
+                for k, v in pairs(step.activeSpells) do
+                    addon.activeSpells[k] = v
+                end
+            end
+            if step.activeMacros then
+                for k, v in pairs(step.activeMacros) do
+                    addon.activeMacros[k] = v
+                end
+            end
+        end
         addon.v2.events:Trigger("GuideStepsChanged")
         addon.UpdateItemFrame()
         addon.updateSteps = true
@@ -996,7 +1013,6 @@ function addon.SetStep(n, n2, loopback)
             -- stepframe:SetBackdropBorderColor(0.1,0.5,0.1)
             stepframe.elements = {}
 
-            -- addon.CreateActiveItemFrame(stepframe)
         end
         if step.tip then
             --stepframe:SetParent(UIParent)
@@ -1232,7 +1248,7 @@ function CurrentStepFrame.UpdateText()
     local guide = addon.currentGuide
     if not guide then return end
 
-    if addon.v2:IsGuideWindowEnabled() then
+    if addon.v2:IsEnabled() then
         addon.v2.events:Trigger("UpdateActiveSteps", activeSteps, addon.player.name)
         CurrentStepFrame:SetHeight(0)
         CurrentStepFrame:Hide()
@@ -1818,7 +1834,7 @@ end
 
 function addon:LoadGuide(guide, OnLoad)
     addon.loadNextStep = false
-    local useV2GuideWindow = addon.v2:IsGuideWindowEnabled()
+    local useV2GuideWindow = addon.v2:IsEnabled()
     addon.SaveGuideProgress(addon.currentGuide, addon.GetGuideProgress())
 
     if not guide or guide.internal or guide.disabled or not guide.empty and not addon.IsGuideActive(guide) and
@@ -1846,14 +1862,9 @@ function addon:LoadGuide(guide, OnLoad)
         guide.softcore = true
     end
     if guide.hardcore then
-        if not addon.settings.profile.hardcore then
-            addon.settings.profile.hardcore = true
-            addon.RenderFrame(true,true)
-        end
-        --addon.settings.profile.season = 0
+        addon.settings.profile.hardcore = true
     elseif guide.softcore and addon.settings.profile.hardcore then
-            addon.settings.profile.hardcore = false
-            addon.RenderFrame(true,true)
+        addon.settings.profile.hardcore = false
     end
 
     if not useV2GuideWindow and addon.settings.profile.frameHeight then
@@ -1882,24 +1893,11 @@ function addon:LoadGuide(guide, OnLoad)
     table.wipe(addon.stepUpdateList)
     addon.updateTipWindow = false
     addon.currentGuide = nil
-    local renderFrame
-
-    if guide.hardcore and addon.game == "CLASSIC" and not addon.settings.profile.hardcore then
-        addon.settings.profile.hardcore = true
-        renderFrame = true
-    end
-
-    --TODO: add better theme handling
-    if guide.theme and addon:UsesDefaultTheme() then
-        renderFrame = true
-    end
-
-    if renderFrame then
-        addon.RenderFrame()
-    end
 
     addon.currentGuide = addon.ProcessGuideTable(guide)
     guide = addon.currentGuide
+
+    addon:UpdateTheme(true, true)
 
     if #guide.steps == 0 then
         return addon:LoadGuide(addon.emptyGuide)
@@ -1934,7 +1932,7 @@ function addon:LoadGuide(guide, OnLoad)
     RXPCData.currentGuideName = guide.name
     RXPCData.currentGuideGroup = guide.group
 
-    if useV2GuideWindow and addon.v2:IsGuideWindowEnabled() then
+    if useV2GuideWindow and addon.v2:IsEnabled() then
         local guideWindow = addon.v2:GetGuideWindow()
 
         if guideWindow then
@@ -2144,7 +2142,7 @@ function addon:ReloadGuide(keepStep)
 end
 
 function BottomFrame.UpdateFrame(self, stepn, startFrom, skip)
-    if addon.v2:IsGuideWindowEnabled() then return end
+    if addon.v2:IsEnabled() then return end
 
     local level = UnitLevel("player")
     local currentStep = addon.GetGuideProgress()
@@ -2679,8 +2677,7 @@ function RXPFrame:GenerateMenuTable(menu)
         end
     })
 
-    if addon.ui.v2.configurator.IsSupportedClient() and not addon.currentGuide and
-        not addon.ui.v2.configurator:IsShown() then
+    if addon.ui.v2.configurator.IsSupportedClient() and not addon.ui.v2.configurator:IsShown() then
         tinsert(menuList, {
             text = L("Run Guide Configurator"),
             notCheckable = 1,
@@ -2706,7 +2703,7 @@ function RXPFrame:GenerateMenuTable(menu)
                 text = L("Leveling report"),
                 notCheckable = 1,
                 func = function()
-                    addon.tracker:ShowReport(_G.CharacterFrame)
+                    addon.tracker:ShowReport()
                 end
             })
         end
@@ -2978,7 +2975,7 @@ function addon.v2:GetActiveStepsFrame(player)
         return
     end
 
-    if player == addon.player.name and not addon.v2:IsGuideWindowEnabled() then
+    if player == addon.player.name and not addon.v2:IsEnabled() then
         return
     end
 
@@ -2995,7 +2992,7 @@ function addon.v2:GetActiveStepsFrame(player)
         childContainer = stepFrame
 
         stepFrame.IsFeatureEnabled = function()
-            return addon.v2:IsGuideWindowEnabled(), false
+            return addon.v2:IsEnabled(), false
         end
     else
         stepFrame = self:GetActivePartyStepsFrame()
@@ -3089,16 +3086,9 @@ function addon.v2:UpdateActiveStepTheme()
     partyFrame:UpdateTheme({
         hideBackground = addon.settings.profile.activePartyStepsV2HideBackground,
         scale = addon.settings.profile.activePartyStepsV2WindowScale,
+        updateChildren = true,
     })
-
-    for player, data in pairs(self.state.player) do
-        if player ~= addon.player.name and data.childContainer and
-            data.childContainer.UpdateTheme then
-            data.childContainer:UpdateTheme({updateChildren = true})
-        end
-    end
-
-    self:RefreshActivePartyTabs()
+    partyFrame:RefreshActiveContent()
 end
 
 -- hiddentext only hides a step in the main guide list; optional steps still
@@ -3497,7 +3487,7 @@ function addon.v2:UpdateActiveStepsFrame(steps, questId)
         end
     end
 
-    if not addon.v2:IsGuideWindowEnabled() then
+    if not addon.v2:IsEnabled() then
         self:ClearActiveStepEventWatchers()
 
         return

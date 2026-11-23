@@ -72,6 +72,7 @@ local classColor = _G.RAID_CLASS_COLORS[select(2, UnitClass("player"))]
 themes['DarkMode'] = {
     name = 'DarkMode',
     background = {14 / 255, 14 / 255, 14 / 255, 255 / 255},
+    borderColor = {32 / 255, 32 / 255, 32 / 255, 1},
     bottomFrameBG = {19 / 255, 19 / 255, 19 / 255, 255 / 255},
     bottomFrameHighlight = {classColor.r, classColor.g, classColor.b, 128 / 255},
     displayName = L("DarkMode"),
@@ -145,7 +146,7 @@ end
 local function GetDefaultTheme()
     local guideTheme = addon.currentGuide and addon.currentGuide.theme
 
-    if addon.v2:IsGuideWindowEnabled() then
+    if addon.v2:IsEnabled() then
         if guideTheme and addon.v2.themes[guideTheme] then
             return addon.v2.themes[guideTheme]
         elseif RXPCData.GA and addon.v2.themes['RXP Gold'] then
@@ -175,8 +176,10 @@ function addon:UsesDefaultTheme()
 end
 
 function addon:LoadActiveTheme()
+    if self.activeTheme and not self.settings.profile.enableThemeLiveReload then return self.activeTheme end
+
     local applicableTheme = addon.settings.profile.activeTheme
-    local v2Enabled = addon.v2:IsGuideWindowEnabled()
+    local v2Enabled = addon.v2:IsEnabled()
     local useDefaultTheme = self:UsesDefaultTheme()
 
     if applicableTheme == 'Default' then
@@ -239,20 +242,15 @@ end
 function addon:ReloadTheme()
     if not self.settings.profile.enableThemeLiveReload then return end
 
-    self.RenderFrame('themeReload')
-    self.v2:ConvertThemes()
-    self.SetupArrow()
+    self:RegisterTheme(CopyTable(self.settings.profile.customTheme))
+    if not self.v2:IsEnabled() then self.v2:ConvertThemes() end
+    self:UpdateTheme(true)
 
-    if self.v2:IsGuideWindowEnabled() then
+    if self.v2:IsEnabled() then
         self.v2:UpdateGuideWindow()
         self.v2:GetGuideWindow():UpdateTheme({})
+
         self.v2:UpdateActiveStepTheme()
-
-        if self.activeItemFrame then self.activeItemFrame:UpdateVisuals() end
-
-        if self.targeting and self.targeting.activeTargetFrame then
-            self.targeting.activeTargetFrame:UpdateVisuals()
-        end
     end
 
     if self.guideImporter then self.guideImporter:UpdateTheme() end
@@ -261,7 +259,7 @@ end
 
 function addon:GetThemeOptions()
     local themeOptions = {}
-    local selectedThemes = addon.v2:IsGuideWindowEnabled() and addon.v2.themes or themes
+    local selectedThemes = addon.v2:IsEnabled() and addon.v2.themes or themes
 
     for k, t in pairs(selectedThemes) do
         if themeApplies(t.applicable) then
@@ -298,7 +296,7 @@ function addon:RegisterTheme(theme)
 
     themes[theme.name] = theme
 
-    if self.v2:IsGuideWindowEnabled() then self.v2:ConvertThemes() end
+    if self.v2:IsEnabled() then self.v2:ConvertThemes() end
 end
 
 function addon.GetV1Texture(name)
@@ -315,7 +313,7 @@ end
 
 function addon:ImportCustomThemes()
     -- Register empty custom theme
-    self:RegisterTheme(addon.settings.profile.customTheme)
+    self:RegisterTheme(CopyTable(self.settings.profile.customTheme))
 
     if not _G.RXPGuides_Themes then return end
 
@@ -333,7 +331,7 @@ addon.v2.themes['RXP Blue V2'] = {
     displayName = "RXP Blue V2",
     name = 'RXP Blue',
     version = 2,
-    applicable = function() return addon.v2:IsGuideWindowEnabled() end,
+    applicable = function() return addon.v2:IsEnabled() end,
     font = _G.GameFontNormal:GetFont(),
     mapPins = {26 / 255, 28 / 255, 48 / 255, 0.95}, -- #1A1C30F2
     headerTexture = {
@@ -392,7 +390,7 @@ addon.v2.themes['RXP Blue V2'] = {
 }
 
 function addon.v2:ConvertThemes()
-    local convertedBorderColors = {"common", "commonEdge", "inactivePartyTab", "activeStepCheckboxChecked"}
+    local convertedBorderColors = {"common", "inactivePartyTab", "activeStepCheckboxChecked"}
     local convertedTextColors = {"common", "title", "inactivePartyTab"}
 
     local baseTheme = self.themes['RXP Blue V2']
@@ -431,9 +429,13 @@ function addon.v2:ConvertThemes()
 
                 backgroundColors.common = CopyTable(source.background)
                 backgroundColors.inactivePartyTab = CopyTable(source.bottomFrameBG)
+                backgroundColors.guideSelector = CopyTable(source.bottomFrameBG)
+                backgroundColors.guideWindow = CopyTable(source.background)
+                backgroundColors.scrollbar = CopyTable(source.bottomFrameBG)
                 backgroundColors.activeStepCheckbox = CopyTable(source.background)
                 backgroundColors.activeStepCheckboxChecked = CopyTable(source.mapPins)
                 for _, key in ipairs(convertedBorderColors) do borderColors[key] = edgeColor end
+                borderColors.commonEdge = source.borderColor and CopyTable(source.borderColor) or edgeColor
                 for _, key in ipairs(convertedTextColors) do textColor[key] = CopyTable(source.textColor) end
                 converted.mapPins = CopyTable(backgroundColors.common)
 
@@ -444,18 +446,9 @@ function addon.v2:ConvertThemes()
 end
 
 function addon.v2:GetTheme()
-    local profile = addon.settings and addon.settings.profile
-    local name = profile and profile.activeTheme
-    local defaultTheme = GetDefaultTheme()
-    local fallbackTheme = defaultTheme
-
-    if not fallbackTheme.backgroundColors then
-        fallbackTheme = self.themes[defaultTheme.name] or self.themes['RXP Blue V2']
-    end
-
-    self.activeTheme = addon:UsesDefaultTheme() and fallbackTheme or self.themes[name] or fallbackTheme
-
-    return self.activeTheme
+    if not addon.activeTheme then return self.themes['RXP Blue V2'] end
+    if addon.activeTheme.backgroundColors then return addon.activeTheme end
+    return self.themes[addon.activeTheme.name] or self.themes['RXP Blue V2']
 end
 
 function addon.v2:GetAuctionHouseTheme()

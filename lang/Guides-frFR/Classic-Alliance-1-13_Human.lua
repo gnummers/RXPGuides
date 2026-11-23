@@ -174,7 +174,7 @@ step << Warrior
     .vendor >> Vendez tout ce dont nous n'avez pas besoin
     .target +Brother Danil
     .goto Elwynn Forest,47.486,41.566
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Llane Beshere|r en bas des escaliers à l'intérieur
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Llane Beshere|r en bas des escaliers
     .train 6673 >>Apprenez [Cri de guerre]
     .target +Llane Beshere
     .goto Elwynn Forest,50.242,42.287
@@ -413,7 +413,7 @@ step << Warrior
     #xprate >1.59
     #season 0,1
     .goto Elwynn Forest,50.242,42.287
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Llane Beshere|r en bas des escaliers à l'intérieur
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Llane Beshere|r en bas des escaliers
     .turnin 3100 >> Rendez la quête Lettre simple
     .trainer >> Apprenez vos sorts de classe
     .target Llane Beshere
@@ -421,7 +421,7 @@ step << Warrior
     #xprate >1.59
     #season 2
     .goto Elwynn Forest,50.242,42.287
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Llane Beshere|r en bas des escaliers à l'intérieur
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Llane Beshere|r en bas des escaliers
     .turnin 3100 >> Rendez la quête Lettre simple
     .accept 77616 >> Acceptez la quête La Rune perdue << Human
     .trainer >> Apprenez vos sorts de classe
@@ -574,7 +574,7 @@ step << Warrior
     #xprate <1.59
     #season 0,1
     .goto Elwynn Forest,50.242,42.287
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Llane Beshere|r en bas des escaliers à l'intérieur
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Llane Beshere|r en bas des escaliers
     .turnin 3100 >> Rendez la quête Lettre simple
     .trainer >> Apprenez vos sorts de classe
     .target Llane Beshere
@@ -1032,7 +1032,7 @@ step << Rogue
     #season 2
     .goto 1429,57.518,48.253
     >>Utilisez |T133644:0|t[Vol à la tire] sur |cRXP_ENEMY_Garrick Ladétrousse|r pour la |T134331:0|t[Note de Cutty]
-    >>Vous devez être en [Camouflage] pour utiliser votre [Vol à la tire]
+    >>Vous devez être en [Camouflage] pour utiliser [Vol à la tire]
     .collect 203723,1 -- Cutty's Note (1)
     .mob Garrick Padfoot
     .train 400094,1
@@ -1380,7 +1380,7 @@ step
     .target Remy "Two Times"
 step << Priest
     .goto Elwynn Forest,48.148,68.046
-    >>Lancez [Soins inférieurs (Rang 2)] et [Mot de pouvoir : Robustesse] sur le |cRXP_FRIENDLY_Guard Roberts|r
+    >>Lancez [Soins inférieurs (Rang 2)] et [Mot de pouvoir : Robustesse] sur |cRXP_FRIENDLY_Guard Roberts|r
     .complete 5624,1 --Heal and fortify Guard Roberts
     .target Guard Roberts
 step
@@ -2489,7 +2489,7 @@ step << !Paladin
     >>|cRXP_WARN_Faites attention car les |cRXP_ENEMY_Murloc Foragers|r vont lancer|r [Boire une potion mineure] qui les soignera de 61-68 points de vie
     >>Lancez [Rénovation] et [Mot de pouvoir : Bouclier] |cRXP_WARN_puis remontez votre barre de mana à fond. Engagez les 2 |cRXP_ENEMY_Murlocs|r devant les huttes, écartez-vous, tuez-en un rapidement. Enfuyez-vous après en avoir tué un, puis tuez l'autre|r << Priest
     >>Engagez les 2 |cRXP_ENEMY_Murlocs|r devant les huttes, sortez et lancez [Métamorphone] sur l'un des deux avant de tuer l'autre. Tuez celui qui est Métamorphosé ensuite << Mage
-    >>Maintenez 100 points de Rage. Engagez les 2 |cRXP_ENEMY_Murlocs|r devant les huttes, sortez et maintenez [Brise-genou] sur l'un des deux en tuant l'autre. Utilisez le [Sac de billes] sur celui que vous tuez. Enfuyez-vous de celui que vous avez semé avec [Brise-genou] après avoir tué le premier << Warrior
+    >>Gardez 100 points de rage. Engagez les 2 |cRXP_ENEMY_Murlocs|r devant les huttes, écartez-vous et maintenez [Brise-genou] sur l'un des deux avant de tuer l'autre. Utilisez le [Sac de billes] sur celui que vous tuez. Enfuyez-vous de celui que vous avez ralenti après avoir tué le premier << Warrior
     >>Engagez les 2 |cRXP_ENEMY_Murlocs|r devant les huttes, écartez-vous et concentrez-vous sur l'un des deux. Utilisez [Évasion] une fois qu'ils vous attaquent tous les deux. C'est une bonne opportunité pour utiliser votre [Sac de billes]. Enfuyez-vous après avoir tué le premier << Rogue
     >>Engagez les 2  |cRXP_ENEMY_Murlocs|r devant les huttes, sortez et maintenez [Peur] sur l'un d'entre eux en boucle, en essayant de maintenir vos DoTs sur les deux << Warlock
     .turnin 45 >> Rendez la quête La destinée de Rolf
@@ -2674,7 +2674,7 @@ step << Rogue
     .goto Elwynn Forest,70.8,79.8,60,0
     .goto Elwynn Forest,89.2,78.8
     >>Utilisez|T133644:0|t[Vol à la tire] sur les |cRXP_ENEMY_Défias|r. Récupérez le |T134327:0|t[|cRXP_LOOT_Morceau supérieur gauche de carte]|r
-    >>Vous devez être en [Camouflage] pour utiliser votre [Vol à la tire]
+    >>Vous devez être en [Camouflage] pour utiliser [Vol à la tire]
     >>|cRXP_WARN_Note: Celui-ci peut aussi se trouver sur un autre membre des |cRXP_ENEMY_Défias|r dans la Forêt d'Elwynn|r
     .collect 203785,1 -- Top-Left Map Piece (1)
     .mob Defias Bandit
@@ -3407,7 +3407,7 @@ step
     .isQuestAvailable 6181 << Human
 step
     .goto Westfall,52.86,53.71
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Innkeeper Heather|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Aubergiste Heather|r
     >>|cRXP_BUY_Achetez-lui jusqu'à 20|r |T133918:0|t[Lutjans à longue mâchoire] |cRXP_BUY_. Cette nourriture de niveau 5 est peu coûteuse|r
     .collect 4592,20,314,1 --Longjaw Mud Snapper (20)
 	.target Innkeeper Heather
@@ -3426,7 +3426,7 @@ step << skip --Rogue
     .goto Westfall,50.81,47.15,50,0
     .goto Westfall,51.093,54.642
     >>Utilisez le|T133644:0|t[Vol à la tire] sur l' |cRXP_ENEMY_Eclaireur défias|r pour la |T134419:0|t[|cRXP_FRIENDLY_Rune de Coup de sabre|r]
-    >>Vous devez être en [Camouflage] pour utiliser votre [Vol à la tire]
+    >>Vous devez être en [Camouflage] pour utiliser [Vol à la tire]
     >>|cRXP_WARN_Il y a une très grande chance que le|r |T133644:0|t[Vol à la tire] |cRXP_WARN_échoue car votre niveau est trop bas. Si c'est le cas, passez cette étape et volez vers Stormwind. Vous la terminerez bientôt au Loch Modan|r
     >>|cRXP_WARN_N'engagez PAS l' |cRXP_ENEMY_Éclaireur défias|r sinon il utilisera|r |T132331:0|t[Disparition] |cRXP_WARN_et disparaîtra pour 3-5 minutes. Assurez-vous d'utiliser|r |T132320:0|t[Camouflage] |cRXP_WARN_au plus tôt!|r
     >>|cRXP_WARN_L' |cRXP_ENEMY_Éclaireur défias|r peut apparaître sur les collines|r
@@ -3533,7 +3533,7 @@ step << Rogue
 step << Rogue
     #optional
     #completewith Continue
-    +Équipez les [Couteau de lancer perçant]
+    +Équipez le [Couteau de lancer perçant]
     .use 3107
     .itemcount 3107,1
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<6.3
@@ -4168,7 +4168,7 @@ step
     >>Vous avez besoin de 50 en [Cuisine] pour une quête au Bois de la Pénombre plus tard
     >>|T133971:0|t[Cuisiner] les objets suivants:
     >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Morceau de viande de sanglier]|r en [Viande de sanglier rôtie]
-    >>|T133971:0|t[Cuisinez] les |cRXP_LOOT_[Stringy Wolf Meat]|r en [Viande de loup grillée]
+    >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Viande de loup maigre]|r en [Viande de loup grillée]
     .usespell 2550
     .zoneskip Ironforge
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -4181,7 +4181,7 @@ step
     #label TramCook5
     #completewith TramEnd
     >>Vous avez besoin de 50 en [Cuisine] pour une quête au Bois de la Pénombre plus tard
-    >>|T133971:0|t[Cuisinez] les |cRXP_LOOT_[Stringy Wolf Meat]|r en [Viande de loup grillée]
+    >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Viande de loup maigre]|r en [Viande de loup grillée]
     .usespell 2550
     .zoneskip Ironforge
     .itemcount 769,<1 --Chunk of Boar Meat (<1)
@@ -4415,7 +4415,7 @@ step << Warrior
 step << Warrior
     #optional
     #completewith Rudra
-    +Équipez les [Couteau de lancer perçant]
+    +Équipez le [Couteau de lancer perçant]
     .use 3107
     .itemcount 3107,1
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<6.3
@@ -4686,7 +4686,7 @@ step << Warrior/Rogue
     #optional
     #requires Dirt
     #completewith VagashEnd
-    +Équipez les [Couteau de lancer perçant]
+    +Équipez le [Couteau de lancer perçant]
     .use 3107
     .itemcount 3107,1
     .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<6.3
@@ -4956,7 +4956,7 @@ step
     .target Gothor Brumn
 step
     .goto Loch Modan,24.764,18.397
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Mountaineer Stormpike|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Mountaineer Stormpike|r
     >>|cRXP_WARN_N'acceptez pas encore la quête La mission de Foudrepique|r
     .turnin 353 >> Rendez la quête Livraison pour Foudrepique
     .accept 307 >> Acceptez la quête Bas les pattes !
@@ -5305,7 +5305,7 @@ step << Human
     #xprate <1.59
     #label StormpikeDelivery
     .goto Loch Modan,24.77,18.40
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Mountaineer Stormpike|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Mountaineer Stormpike|r
     .turnin 307 >> Rendez la quête Bas les pattes !
     .turnin 1339 >> Rendez la quête La mission du Montagnard Foudrepique
     .accept 1338 >> Acceptez la quête La mission de Foudrepique
@@ -5315,7 +5315,7 @@ step << Human
     #xprate >1.59
     #label StormpikeDelivery
     .goto Loch Modan,24.77,18.40
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Mountaineer Stormpike|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez au |cRXP_FRIENDLY_Mountaineer Stormpike|r
     .turnin 307 >> Rendez la quête Bas les pattes !
     .turnin 1339 >> Rendez la quête La mission du Montagnard Foudrepique
     .accept 1338 >> Acceptez la quête La mission de Foudrepique << Mage/Warlock/Rogue
@@ -6042,7 +6042,7 @@ step << Warlock
     #xprate >1.49
     .goto Ironforge,51.1,8.7,15,0
     .goto Ironforge,50.343,5.657
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Eglantine|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Briarthorn|r
     .trainer >> Apprenez vos sorts de classe
     .target Briarthorn
 step << Gnome Rogue/Dwarf Rogue
@@ -6318,7 +6318,7 @@ step
     >>Vous avez besoin de 50 en [Cuisine] pour une quête au Bois de la Pénombre plus tard
     >>|T133971:0|t[Cuisiner] les objets suivants:
     >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Morceau de viande de sanglier]|r en [Viande de sanglier rôtie]
-    >>|T133971:0|t[Cuisinez] les |cRXP_LOOT_[Stringy Wolf Meat]|r en [Viande de loup grillée]
+    >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Viande de loup maigre]|r en [Viande de loup grillée]
     .usespell 2550
     .zoneskip Darkshore
     .itemcount 769,1 --Chunk of Boar Meat (1+)
@@ -6332,7 +6332,7 @@ step
     #label DarkshoreCook5
     #completewith DarkshoreBoat
     >>Vous avez besoin de 50 en [Cuisine] pour une quête au Bois de la Pénombre plus tard
-    >>|T133971:0|t[Cuisinez] les |cRXP_LOOT_[Stringy Wolf Meat]|r en [Viande de loup grillée]
+    >>|T133971:0|t[Cuisiner] les |cRXP_LOOT_[Viande de loup maigre]|r en [Viande de loup grillée]
     .usespell 2550
     .zoneskip Darkshore
     .itemcount 769,<1 --Chunk of Boar Meat (<1)

@@ -362,7 +362,7 @@ step << Shaman
 step << Shaman
     #completewith next
     #requires Rock
-    .cast 8202 >>|cRXP_WARN_使用|r |T134743:0|t[大地灵契]
+    .cast 8202 >>|cRXP_WARN_使用 |T134743:0|t[大地显形图腾]|r
     .use 6635
 step << Shaman
     .goto Mulgore,53.74,80.15
@@ -2610,7 +2610,7 @@ step << Hunter
     .target 哈纳什
 step << Hunter
     .goto Orgrimmar,81.17,18.69
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_与|r |cRXP_FRIENDLY_森度吉安|r|cRXP_BUY_交谈。从他那里购买一把|r |T135499:0|t[多层弯弓] |cRXP_BUY_|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|T135499:0|t|cRXP_BUY_与|r |cRXP_FRIENDLY_森度吉安|r|cRXP_BUY_交谈。从他那里购买一把|r |T135499:0|t|T135499:0|t[多层弯弓] |cRXP_BUY_|r
     .collect 2507,1,813,1 --Collect Laminated Recurve Bow (1)
     .money <0.1751
     .itemStat 18,QUALITY,<7
@@ -3008,7 +3008,7 @@ step
     .isQuestAvailable 812
 step << Hunter
     .goto Orgrimmar,81.17,18.69
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_与|r |cRXP_FRIENDLY_森度吉安|r|cRXP_BUY_交谈。从他那里购买一把|r |T135499:0|t[多层弯弓] |cRXP_BUY_|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|T135499:0|t|cRXP_BUY_与|r |cRXP_FRIENDLY_森度吉安|r|cRXP_BUY_交谈。从他那里购买一把|r |T135499:0|t|T135499:0|t[多层弯弓] |cRXP_BUY_|r
     .collect 2507,1,398,1 --Collect Laminated Recurve Bow (1)
     .money <0.1751
     .itemStat 18,QUALITY,<7
@@ -3227,7 +3227,7 @@ step
     .goto Undercity,64.20,49.60
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_拍卖师雷克尔|r 对话
     >>|cRXP_BUY_从拍卖行购买六个|r |T134339:0|t[变色的狼心] |cRXP_BUY_|r
-    >>|cRXP_WARN_如果你愿意，可以跳过这一步，这只能节省一点点时间|r
+    >>|cRXP_WARN_如果你愿意的话可以跳过，这只是个小捷径|r
     .collect 3164,6,429,1 --Collect Discolored Worg Heart (x6)
     .target 拍卖师雷克尔
     .zoneskip Undercity,1

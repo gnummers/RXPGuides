@@ -376,7 +376,7 @@ step << Warrior
     .turnin 77655 >> Entregue A Runa Perdida << Dwarf
     .accept 77656 >> Aceite A Runa Perdida << Gnome
     .turnin 77656 >> Entregue A Runa Perdida << Gnome
-    .train 6673 >>Treine |T132333:0|t[Brado de Batalha]
+    .train 6673 >>Aprenda |T132333:0|t[Brado de Batalha]
     .target Thran Khorman
 step << Rogue
     #season 2
@@ -575,7 +575,7 @@ step << Hunter
     .goto 1426,25.861,78.197,0
     .goto 1426,23.716,80.257,0
     .goto 1426,20.671,75.838,0
-    .xp 4 >> Farme até o nível 4
+    .xp 4 >> Mate inimigos até atingir o nível 4
 step << Warlock
 #season 2
 #completewith next
@@ -938,7 +938,7 @@ step << Mage
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Marryk Nurribit|r dentro
     .turnin 3114 >> Entregue Glyphic Memorandum << Gnome
     .train 1459 >> Aprenda |T135932:0|t[Inteligência Arcana]
-    .train 116 >> Treine |T135846:0|t[Seta de Gelo]
+    .train 116 >> Aprenda |T135846:0|t[Seta de Gelo]
     .target Marryk Nurribit
 step << Mage
     #xprate <1.59
@@ -948,7 +948,7 @@ step << Mage
     .turnin 3114 >> Entregue Glyphic Memorandum << Gnome
     .accept 77667 >> Aceite Pesquisa de Feitiços << Gnome
     .train 1459 >> Aprenda |T135932:0|t[Inteligência Arcana]
-    .train 116 >> Treine |T135846:0|t[Seta de Gelo]
+    .train 116 >> Aprenda |T135846:0|t[Seta de Gelo]
     .target Marryk Nurribit
 step << Gnome Mage
     #xprate <1.59
@@ -1856,7 +1856,7 @@ step << Hunter
     .goto Dun Morogh,45.810,53.039
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Grif Selvacuore|r
     .trainer >> Treine suas magias de classe
-    .accept 6064 >>Aceite Adestramento da Fera - Missão << Dwarf
+    .accept 6064 >>Aceite Domando a Fera << Dwarf
     .target Grif Wildheart
 step << Dwarf Hunter
     .goto Dun Morogh,48.3,56.9
@@ -1868,7 +1868,7 @@ step << Dwarf Hunter
     .goto Dun Morogh,45.810,53.039
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Grif Selvacuore|r
     .turnin 6064 >>Entregue Domando a fera
-    .accept 6084 >>Aceite Adestramento da Fera - Missão
+    .accept 6084 >>Aceite Domando a Fera
     .target Grif Wildheart
 step << Dwarf Hunter
     .goto Dun Morogh,49.4,59.4
@@ -1880,7 +1880,7 @@ step << Dwarf Hunter
     .goto Dun Morogh,45.810,53.039
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Grif Selvacuore|r
     .turnin 6084 >>Entregue Domando a fera
-    .accept 6085 >>Aceite Adestramento da Fera - Missão
+    .accept 6085 >>Aceite Domando a Fera
     .target Grif Wildheart
 step << Dwarf Hunter
     .goto Dun Morogh,50.4,59.7

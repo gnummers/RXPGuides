@@ -756,7 +756,7 @@ step << !Paladin !Warlock !Hunter
     #requires Grelin << Rogue
     #completewith next
     >|cRXP_WARN_>Make sure you will have two silver after vendoring to be able to train level 4 spells|r << Warrior
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
 step
     #hardcore << !Paladin !Warlock !Hunter
@@ -1488,7 +1488,7 @@ step << Mage
 step << Warrior/Paladin/Rogue
     #optional
     .goto Dun Morogh,50.084,49.420
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_罗斯洛·鲁治|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_罗斯洛·鲁治|r 对话
     >>|cRXP_BUY_从他那里|r|cRXP_BUY_购买一把|r |T134708:0|t[矿工锄]
     .collect 2901,1 --Mining Pick (1)
     .target 罗斯洛·鲁治
@@ -1514,7 +1514,7 @@ step
     .itemcount 2886,6 --Crag Boar Rib (6)
 step
     .goto Dun Morogh,46.825,52.361
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t在外面与 |cRXP_FRIENDLY_拉格纳·雷酒|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与外面的 |cRXP_FRIENDLY_拉格纳·雷酒|r 对话
     .turnin 384 >> 交任务 啤酒烤猪排
     .target 拉格纳·雷酒
     .isQuestComplete 384
@@ -1840,7 +1840,7 @@ step
     .target 旅店老板贝尔姆
 step
     .goto Dun Morogh,46.825,52.361
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t在外面与 |cRXP_FRIENDLY_拉格纳·雷酒|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与外面的 |cRXP_FRIENDLY_拉格纳·雷酒|r 对话
     .turnin 384 >> 交任务 啤酒烤猪排
     .target 拉格纳·雷酒
     .isQuestComplete 384

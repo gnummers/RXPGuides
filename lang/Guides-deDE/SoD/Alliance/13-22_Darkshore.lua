@@ -1915,7 +1915,7 @@ step << !sod/Warrior/Rogue/Priest
     #optional
     #completewith next
     .goto 1439,36.806,44.137,8,0
-    .goto 1439,35.743,43.710,12 >> Kehrt zu |cRXP_FRIENDLY_Cerellean Whiteclaw|r auf dem Dock zurück
+    .goto 1439,35.743,43.710,12 >> Kehrt zum |cRXP_FRIENDLY_Cerellean Whiteclaw|r auf dem Dock zurück
 step << !sod/Warrior/Rogue/Priest
     #optional
     .goto 1439,35.743,43.710
@@ -3091,7 +3091,7 @@ step << !Warrior !Rogue !Priest
     #completewith next
     #season 2
     .goto 1439,36.806,44.137,8,0
-    .goto 1439,35.743,43.710,12 >> Kehrt zu |cRXP_FRIENDLY_Cerellean Whiteclaw|r auf dem Dock zurück
+    .goto 1439,35.743,43.710,12 >> Kehrt zum |cRXP_FRIENDLY_Cerellean Whiteclaw|r auf dem Dock zurück
 step << !Warrior !Rogue !Priest
     #optional
     #season 2
@@ -4123,7 +4123,7 @@ step << Warrior
 step << Warrior
     #season 2
     #sticky
-    >>|cRXP_WARN_Begleitet |cRXP_FRIENDLY_Kerlonian|r zu Maestras Posten im Eschental|r
+    >>|cRXP_WARN_Begleitet |cRXP_FRIENDLY_Kerlonian|r zu Maestras Posten in Ashenvale|r
     .use 13536 >> |cRXP_WARN_Benutzt das|r |T134229:0|t[|cRXP_LOOT_Horn der Erweckung|r] |cRXP_WARN_wenn |cRXP_FRIENDLY_Kerlonian|r neben euch einschläft|r
     >>|cRXP_WARN_Vermeidet es so weit wie möglich, auf der Hauptstraße zu laufen. Feinde spawnen nur, wenn ihr auf der Straße seid|r
     .complete 5321,2
@@ -4143,7 +4143,7 @@ step << Warrior
 step << Warrior
     #season 2
     #completewith towersod
-    .zone Ashenvale >> Reist südlich ins Eschental
+    .zone Ashenvale >> Reist südlich nach Ashenvale
     .goto Ashenvale,29.7,13.6
 step << Warrior
     #season 2
@@ -4239,12 +4239,12 @@ step << Druid
 step << Druid
 #season 2
     #completewith towersod
-    .zone Ashenvale >> Reist südlich ins Eschental
+    .zone Ashenvale >> Reist südlich nach Ashenvale
     .goto Ashenvale,29.7,13.6
 step << Druid
 #season 2
     .goto Ashenvale,27.26,35.58
-    >>|cRXP_WARN_Begleitet |cRXP_FRIENDLY_Kerlonian|r zu Maestras Posten im Eschental|r
+    >>|cRXP_WARN_Begleitet |cRXP_FRIENDLY_Kerlonian|r zu Maestras Posten in Ashenvale|r
     .use 13536 >> |cRXP_WARN_Benutzt das|r |T134229:0|t[|cRXP_LOOT_Horn der Erweckung|r] |cRXP_WARN_wenn |cRXP_FRIENDLY_Kerlonian|r neben euch einschläft|r
     >>|cRXP_WARN_Vermeidet es so weit wie möglich, auf der Hauptstraße zu laufen. Feinde spawnen nur, wenn ihr auf der Straße seid|r
     .complete 5321,2
@@ -6071,7 +6071,7 @@ step << Mage
     .goto 1453,38.035,81.729,6,0
     .goto 1453,37.550,82.500,10,0
     >>Besteigt den Magierturm. Geht durch das grüne Portal
-    .goto Stormwind City,39.681,79.538,15 >>Reist in Richtung |cRXP_FRIENDLY_Larimaine Purdue|r
+    .goto Stormwind City,39.681,79.538,15 >>Reisen in Richtung |cRXP_FRIENDLY_Larimaine Purdue|r
     .dungeon DM
 step << Mage
     #xprate >1.59

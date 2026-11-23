@@ -83,7 +83,7 @@ step << Warlock
     .goto Dun Morogh,30.087,71.563
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Adlin Pridedrift|r
     .vendor >> Vendez tout ce dont nous n'avez pas besoin
-    >>|cRXP_BUY_Achetez 15|r [Eau de source]|cRXP_BUY_. Tuez des |cRXP_ENEMY_Ragged Young Wolves|r supplémentaires su vous n'avez pas assez d'argent|r
+    >>|cRXP_BUY_Achetez 15|r [Eau de source]|cRXP_BUY_. Tuez des |cRXP_ENEMY_Ragged Young Wolves|r supplémentaire si vous n'avez pas assez d'argent|r
     .collect 159,15 --Collect Refreshing Spring Water (x15)
     .target Adlin Pridedrift
 step << Warlock
@@ -111,7 +111,7 @@ step << Priest/Mage
     .goto Dun Morogh,30.087,71.563
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Adlin Pridedrift|r
     .vendor >> Vendez tout ce dont nous n'avez pas besoin
-    >>|cRXP_BUY_Achetez 15|r [Eau de source]|cRXP_BUY_. Tuez des |cRXP_ENEMY_Ragged Young Wolves|r supplémentaires su vous n'avez pas assez d'argent|r
+    >>|cRXP_BUY_Achetez 15|r [Eau de source]|cRXP_BUY_. Tuez des |cRXP_ENEMY_Ragged Young Wolves|r supplémentaire si vous n'avez pas assez d'argent|r
     .collect 159,15 --Collect Refreshing Spring Water (x15)
     .target Adlin Pridedrift
 step << Paladin/Warrior
@@ -143,7 +143,7 @@ step << !Warlock
 step
     #era
     #completewith Rockjaw
-    >>Tuez les|cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
+    >>Tuez les |cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
     .complete 170,1 --Kill Rockjaw Trogg (x6)
     .mob +Rockjaw Trogg
     .complete 170,2 --Kill Burly Rockjaw Trogg (x6)
@@ -191,7 +191,7 @@ step << Paladin/Mage/Warlock/Hunter
 step << Paladin/Mage/Warlock/Hunter
     #era
     .goto Dun Morogh,31.37,75.63
-    >>Tuez les|cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
+    >>Tuez les |cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
     .complete 170,1 --Kill Rockjaw Trogg (x6)
     .mob +Rockjaw Trogg
     .complete 170,2 --Kill Burly Rockjaw Trogg (x6)
@@ -257,7 +257,7 @@ step << Mage/Warlock
 step << !Paladin !Mage !Warlock !Hunter
     #era
     #completewith next
-    >>Tuez les|cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
+    >>Tuez les |cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
     .complete 170,1 --Kill Rockjaw Trogg (x6)
     .mob +Rockjaw Trogg
     .complete 170,2 --Kill Burly Rockjaw Trogg (x6)
@@ -285,7 +285,7 @@ step << !Paladin !Mage !Warlock !Hunter
 step << !Paladin !Mage
     #label TrollTroggs
     .goto Dun Morogh,28.7,77.5
-    >>Tuez les|cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
+    >>Tuez les |cRXP_ENEMY_Rockjaw Troggs|r et les |cRXP_ENEMY_Burly Rockjaw Troggs|r
     .complete 170,1 --Kill Rockjaw Trogg (x6)
     .mob +Rockjaw Trogg
     .complete 170,2 --Kill Burly Rockjaw Trogg (x6)
@@ -1545,7 +1545,7 @@ step
     .goto Ironforge,39.550,57.490
     .turnin 291 >> Rendez la quête Les rapports
 step << Warrior
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Buliwyf Stonehand|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Buliwyf Main-de-pierre|r
     >>|cRXP_WARN_Équipez maintenant le|r |T133052:0|t[|cRXP_FRIENDLY_Marteau des Frigères|r] |cRXP_WARN_si vous ne l'aviez pas fait avant|r
     .target Buliwyf Stonehand
     .goto Ironforge,61.181,89.514
@@ -2761,7 +2761,7 @@ step << Warlock
     #hardcore
     .goto Ironforge,51.1,8.7,15,0
     .goto Ironforge,50.343,5.657
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Eglantine|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tParlez à |cRXP_FRIENDLY_Briarthorn|r
     .trainer >> Apprenez vos sorts de classe
     .target Briarthorn
 step << Warlock

@@ -2,6 +2,7 @@ if GetLocale() ~= "zhCN" then return end
 RXPGuides.RegisterGuide([[
 #classic
 #tbc
+#forever
 
 << Alliance
 #group RestedXP 终局指南
@@ -345,6 +346,7 @@ RXPGuides.RegisterGuide([[
 << Horde
 #group RestedXP 终局指南
 #subgroup 开门任务
+#forever
 #name 奥妮克希亚开门任务（部落）
 #guideKind attunement
 #guideIcon rxp-icon-ony
@@ -883,6 +885,7 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 #tbc
+#forever
 
 #group RestedXP 终局指南
 #subgroup 钥匙
@@ -974,6 +977,7 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 #tbc
+#forever
 
 << Alliance
 #group RestedXP 终局指南
@@ -1007,7 +1011,7 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_信使考雷·落锤|r 对话
     >>|cRXP_FRIENDLY_信使考雷·落锤|r |cRXP_WARN_在整个铁炉堡巡逻|r
     >>|cRXP_WARN_此任务也可在|r |cFFfa9602暴风城|r |cRXP_WARN_或者|r |cFFfa9602达纳苏斯|r 接取
-    .acceptmultiple 5091,5090,5066 >> 接受任务战斗的号角：瘟疫之地！
+    .acceptmultiple 5091,5090,5066 >> 接受任务 战斗的号角：瘟疫之地！
     .unitscan Courier Hammerfall --IF
     .unitscan Herald Moonstalker --DARN
     .unitscan Crier Goodman --SW
@@ -1233,6 +1237,7 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 #tbc
+#forever
 
 << Horde
 #group RestedXP 终局指南
@@ -1263,7 +1268,7 @@ step
     .goto Undercity,66.07,54.64,50,0
     .goto Undercity,70.81,51.49,50,0
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与|cRXP_FRIENDLY_预言者巴萨扎德|r 对话
-    .acceptmultiple 5093,5094,5095 >>接受任务战斗的号角：瘟疫之地！
+    .acceptmultiple 5093,5094,5095 >>接受任务 战斗的号角：瘟疫之地！
     >>|cRXP_WARN_此任务也可在|r |cFFfa9602奥格瑞玛|r |cRXP_WARN_或者|r |cFFfa9602雷霆崖|r 接取
     .unitscan 公告员高拉克 --ORG
     .unitscan Harbinger Balthazadd --UC
@@ -1491,6 +1496,7 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 #tbc
+#forever
 
 #group RestedXP 终局指南
 #subgroup 钥匙
@@ -1555,6 +1561,7 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 #tbc
+#forever
 
 #group RestedXP 终局指南
 #subgroup 钥匙

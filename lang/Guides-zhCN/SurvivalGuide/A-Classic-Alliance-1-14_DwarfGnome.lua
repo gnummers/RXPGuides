@@ -52,7 +52,7 @@ step << Warlock
     .target 德南·弗卡特
 step << Warlock
     .goto Dun Morogh,28.650,66.145
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_阿拉玛尔·格里姆|r对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_阿拉玛尔·格里姆|r 对话
     .train 348 >> 学习 |T135817:0|t[献祭]
     .accept 1599 >> 接受任务 开端
     .target 阿拉玛尔·格里姆
@@ -102,7 +102,7 @@ step << Warlock
     #completewith next
     .hs >> 炉石返回寒脊山谷
 step << Warlock
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_阿拉玛尔·格里姆|r对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_阿拉玛尔·格里姆|r 对话
     .goto Dun Morogh,28.650,66.145
     .turnin 1599 >> 交任务 开端
     .turnin 3115 >> 交任务 被污染的备忘录 << Gnome Warlock
@@ -229,7 +229,7 @@ step << Gnome Mage
     .turnin 3114 >> 交任务 雕文备忘录
     .trainer >> 训练你的职业技能
 step << Warlock
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_阿拉玛尔·格里姆|r对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_阿拉玛尔·格里姆|r 对话
     .target 阿拉玛尔·格里姆
     .goto Dun Morogh,28.650,66.145
     .trainer >> 训练你的腐蚀术
@@ -596,14 +596,14 @@ step
     .turnin 400 >> 交任务 贝尔丁的工具
 step
     #label BoarMeat44
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_罗斯洛·鲁治|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_罗斯洛·鲁治|r 对话
     .target 罗斯洛·鲁治
     .goto Dun Morogh,50.084,49.420
     .accept 5541 >> 接受任务 海格纳的弹药
 step << Warrior/Paladin/Rogue
     #completewith next
     .money <0.0091
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_罗斯洛·鲁治|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_罗斯洛·鲁治|r 对话
     .goto Dun Morogh,50.084,49.420
     >>|cRXP_BUY_购买一把|r |T134708:0|t[矿工锄] |cRXP_BUY_如果你学习了|r |T136241:0|t[锻造]
     .collect 2901,1
@@ -967,7 +967,7 @@ step
 step
     .goto Dun Morogh,47.377,52.523
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_旅店老板贝尔姆|r 对话，NPC在里面
-    >>|cRXP_BUY_从他那里购买一杯|r |T132800:0|t[狂想麦酒] |cRXP_BUY_和一杯|r |T132800:0|t[雷霆麦酒]
+    >>|cRXP_BUY_从他那里购买1杯|r |T132800:0|t[狂想麦酒] |cRXP_BUY_和1杯|r |T132800:0|t[雷霆麦酒]
     .complete 384,2 --Collect Rhapsody Malt (x1)
     .collect 2686,1,311 --Collect Thunder Ale (x1)
     .target 旅店老板贝尔姆
@@ -984,7 +984,7 @@ step
     .turnin 310 >> 交任务 针锋相对
     .accept 311 >> 接受任务 向马莱斯回报
 step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t在外面与 |cRXP_FRIENDLY_拉格纳·雷酒|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与外面的 |cRXP_FRIENDLY_拉格纳·雷酒|r 对话
     .target 拉格纳·雷酒
     .goto Dun Morogh,46.825,52.361
     .turnin 384 >> 交任务 啤酒烤猪排
@@ -2080,13 +2080,13 @@ step << Warlock
     >>在你回到 |cRXP_FRIENDLY_黑暗缚灵者加科因|r 的路上，用生命分流回蓝
     .target 黑暗缚灵者加科因
     .goto StormwindClassic,25.2,78.5
-    .turnin 1689 >> 交任务誓缚
+    .turnin 1689 >> 交任务 誓缚
 step << Warlock
     #hardcore
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_黑暗缚灵者加科因|r 对话
     .target 黑暗缚灵者加科因
     .goto StormwindClassic,25.25,78.59
-    .turnin 1689 >> 交任务誓缚
+    .turnin 1689 >> 交任务 誓缚
 step << Warlock
     #softcore
     #completewith next
@@ -2163,7 +2163,7 @@ step << Warlock
     .turnin 239 >> 交任务 西泉要塞
     .accept 11 >> 接受任务 悬赏河爪豺狼人
     .goto Elwynn Forest,24.234,74.450
-    >>点击 |cRXP_PICK_通缉布告|r
+    >>点击 |cRXP_PICK_通缉告示|r
     .accept 176 >> 接受任务 通缉：霍格
     .goto Elwynn Forest,24.548,74.672
     .target 瑞尼尔副队长
@@ -2173,7 +2173,7 @@ step
     .turnin 239 >> 交任务 西泉要塞
     .accept 11 >> 接受任务 悬赏河爪豺狼人
     .goto Elwynn Forest,24.234,74.450
-    >>点击 |cRXP_PICK_通缉布告|r
+    >>点击 |cRXP_PICK_通缉告示|r
     .accept 176 >> 接受任务 通缉：霍格
     .goto Elwynn Forest,24.548,74.672
     .target 瑞尼尔副队长
@@ -2413,7 +2413,7 @@ step << Dwarf Paladin
     .goto Ironforge,25.27,1.53,9,0
     .goto Ironforge,24.35,11.90,10,0
     .goto Ironforge,27.628,12.183
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 在楼上与 |cRXP_FRIENDLY_蒂萨·热炉|r 交谈
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 在楼上与 |cRXP_FRIENDLY_蒂萨·热炉|r 对话
     .target 蒂萨·热炉
     .turnin 1778 >>交任务圣洁之书
     .accept 1779 >>接受任务圣洁之书

@@ -512,7 +512,7 @@ step
     >>|cRXP_WARN_在等待米奈希尔港的船只时，提升你的|r|T135966:0|t[急救]|cRXP_WARN_等级|r
 step
     .goto Wetlands,9.490,59.694
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_谢尔雷·布隆迪尔|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_谢尔雷·布隆迪尔|r 对话
     .fp Menethil Harbor >> 获取米奈希尔港的飞行路径
     .target 谢尔雷·布隆迪尔
 step

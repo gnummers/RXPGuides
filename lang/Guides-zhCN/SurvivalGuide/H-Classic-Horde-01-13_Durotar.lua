@@ -1026,7 +1026,7 @@ step << Shaman
 step << Shaman
     #completewith next
     #requires Shrine
-    .cast 8202 >>|cRXP_WARN_使用|r |T134743:0|t[大地灵契]
+    .cast 8202 >>|cRXP_WARN_使用 |T134743:0|t[大地显形图腾]|r
     .use 6635
 step << Shaman
     #label CallOE1
@@ -4249,7 +4249,7 @@ step << Warlock
 step << Warlock
     .goto Undercity,85.04,25.97
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_凯伦丁|r 对话
-    .turnin 1471 >>交任务誓缚
+    .turnin 1471 >>交任务 誓缚
     .target 凯伦丁·哈加尔
     .isQuestAvailable 1504
 step << skip --Warlock

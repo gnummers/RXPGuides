@@ -169,7 +169,7 @@ step
 step << !NightElf
     .goto StormwindClassic,66.27,62.12
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Dungar Tragolongo|r
-    .fly Redridge >> Voe para Redridge
+    .fly Redridge >> Voe para as Montanhas Cristarrubra
     .target Dungar Longdrink
 step << NightElf
     #label ExitSW
@@ -267,7 +267,7 @@ step
 step
     .goto Westfall,56.55,52.64
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Thor|r
-    .fly Stormwind >> Voe para a Cidade de Ventobravo
+    .fly Stormwind >> Voe para Ventobravo
     .target Thor
 step
     .goto StormwindClassic,63.982,75.338
@@ -351,7 +351,7 @@ step
     .target The Defias Traitor
 step
     .goto Westfall,42.56,71.71
-    >>Escolte o |cRXP_FRIENDLY_Traidor Défias|r para Minas Mortas
+    >>Escolte o |cRXP_FRIENDLY_Traidor Défias|r até as Minas Mortas
     >>|cRXP_WARN_fique ao lado de |cRXP_FRIENDLY_Traidor Défias|r o tempo todo! esteja pronto para lutar |cRXP_ENEMY_Défias|r ao chegar em Moonbrook|r
     .complete 155,1 -- Escort The Defias Traitor to discover where VanCleef is hiding (1)
     .target The Defias Traitor
@@ -566,7 +566,7 @@ step
     .goto Westfall,56.55,52.64
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Thor|r
     >>Voe para Redridge se você ainda está em Cerro Oeste
-    .fly Redridge >> Voe para Redridge
+    .fly Redridge >> Voe para as Montanhas Cristarrubra
     .target Thor
     .zoneskip Westfall,1
 step
@@ -635,7 +635,7 @@ step
 step
     .goto StormwindClassic,66.27,62.12,-1
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Dungar Tragolongo|r
-    .fly Redridge >> Voe para Redridge
+    .fly Redridge >> Voe para as Montanhas Cristarrubra
     .target Dungar Longdrink
     .zoneskip Stormwind City,1
 step
@@ -804,7 +804,7 @@ step
     .goto Redridge Mountains,30.59,59.42
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Ariena Penafúria|r
 	.target Ariena Stormfeather
-    .fly Stormwind >> Voe para a Cidade de Ventobravo
+    .fly Stormwind >> Voe para Ventobravo
 step << Warlock
     #completewith next
     .goto StormwindClassic,29.2,74.0,20,0
@@ -1010,7 +1010,7 @@ step
     .goto StormwindClassic,66.27,62.12,-1
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Dungar Tragolongo|r
     >>Voe para Redridge se você está em Ventobravo
-    .fly Redridge >> Voe para Redridge
+    .fly Redridge >> Voe para as Montanhas Cristarrubra
     .target Dungar Longdrink
     .zoneskip Stormwind City,1
 step
@@ -1176,10 +1176,10 @@ step << Rogue
     #hardcore
     #optional
     #completewith TowerKey
-    +|cRXP_WARN_==PRESTE ATENÇÃO NA PRÓXIMA SEÇÃO==|r
+    +|cRXP_WARN_==PRESTE ATENÇÃO À PRÓXIMA SEÇÃO==|r
     >>Pressione Escape, depois vá em -> Opções -> Controles
     >>Marque "Ativar Tecla de Interação" e vincule a opção "Interagir com o Alvo" a uma tecla
-    >>|cRXP_WARN_Além disso, recomenda-se ativar as Placas de Nome de Inimigos (Tecla Padrão: V) para ver inimigos atrás de alguns cantos da torre|r
+    >>|cRXP_WARN_Além disso, é recomendável ativar as placas de nome dos inimigos (tecla padrão: V), pois isso permite ver os inimigos atrás de alguns cantos dentro da torre.|r
     .train 1856,3 -- skips step if not 22/doesnt have Vanish
 step << Rogue
     #hardcore
@@ -1240,7 +1240,7 @@ step << Rogue
     >>Saia manualmente de [Furtividade]|cRXP_WARN_, depois pressione sua tecla de atalho "Interagir com Alvo" para abrir o |cRXP_PICK_Baú da Floresta do Crepúsculo|r. Saqueie-o para obter |cRXP_LOOT_Diário de Filipe Pinel|r |r
     >>OBS.: Sua [Furtividade] vai parar de funcionar temporariamente após saquear |cRXP_LOOT_Diário de Filipe Pinel|r
     >>|cRXP_WARN_Esteja preparado para correr se você não matar as |cRXP_ENEMY_Sentinelas da Torre Défias|r no 2º andar. Elas provavelmente vão te manter em aggro permanente (mas sem te atacar) quando você estiver em cima da estante pois é um ponto de evade|r
-    >>Se você tiver uma [Adaga] na bolsa ou equipada, você pode usar [Emboscada] |cRXP_WARN_nos |cRXP_ENEMY_Patrulheiros da Torre Défias|r e nas |cRXP_ENEMY_Sentinelas da Torre Défias|r lá dentro para matá-los instantaneamente. Esteja pronto para correr depois de matar a primeira |cRXP_ENEMY_Sentinela da Torre Défias|r e lembre-se você pode levar golpes vindos de cima. É mais lento, mas MUITO mais seguro|r
+    >>|cRXP_WARN_Se você tiver um|r |T135641:0|t[Adaga] |cRXP_WARN_nas suas bolsas ou equipado, você pode lançar|r |T132282:0|t[Emboscada] |cRXP_WARN_no |cRXP_ENEMY_Patrulheiros da Torre Défias|r e |cRXP_ENEMY_Sentinelas da Torre Défias|r lá dentro para matá-los instantaneamente. Prepare-se para correr depois de matar o primeiro |cRXP_ENEMY_Sentinela da Torre Défias|r e lembre-se de que você pode ser atingido de cima. É mais lento, mas MUITO mais seguro|r
     >>|cRXP_WARN_Tome cuidado, pois |cRXP_ENEMY_Parasita Défias Mal Formado|r e |cRXP_ENEMY_Parasita Défias|r podem ficar na entrada da torre, caso você precise sair correndo dela|r
     .complete 2359,1 --Collect Klaven Mortwake's Journal (x1)
     .link https://www.youtube.com/watch?v=5sIew15IcG0 >> Clique AQUI para o guia em vídeo
@@ -1355,7 +1355,7 @@ step << Rogue
     #requires AntiVenomEnd2 << Rogue
     .goto StormwindClassic,75.78,59.84
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tFale com |cRXP_FRIENDLY_Mestre Mathias Shaw|r
-    >>|cRXP_WARN_Lembre-se de reequipar sua arma principal se você trocou para um|r |T135641:0|t[Dagger] |cRXP_WARN_antes|r << Rogue
+    >>|cRXP_WARN_Lembre-se|r de re-equipar sua arma principal se você trocou para uma |T135641:0|t[Adaga] |cRXP_WARN_anteriormente|r << Rogue
     .turnin 2359 >> Entregue A Torre de Klaven
     .target Master Mathias Shaw
     .isQuestComplete 2359

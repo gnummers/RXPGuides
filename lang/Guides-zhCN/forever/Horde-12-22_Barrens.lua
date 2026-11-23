@@ -73,7 +73,7 @@ step << skip --!Tauren
     #softcore
     #completewith ThievesPickup
     .goto 1413/1,-2516.71,-590.71
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .xp >15,1
 step << skip --!Tauren
     #softcore
@@ -1874,7 +1874,7 @@ step << Warlock
     .xp >18,1
 step << Warlock
     .goto 1454/1,-4347.4,1836.57
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 库古尔|cRXP_FRIENDLY_ 对话，购买 |T133738:0|t[火焰箭典籍(等级 3)]|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 库古尔|cRXP_FRIENDLY_ 对话，并购买 |T133738:0|t[火焰箭典籍(等级 3)]|r
     .collect 16316,1,896,1 --Grimoire of Firebolt (Rank 3) (1)
     .target 库古尔
     .xp <18,1
@@ -1932,7 +1932,7 @@ step
     .goto 1413/1,-2672.76,-544.77
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_图加|r 对话
     .turnin 870 >>交任务  遗忘之池
-    .accept 877 >>接受任务死水绿洲
+    .accept 877 >>接受任务 死水绿洲
     .target 图加·符文图腾
 step
     #label EcheyakeePickup
@@ -2038,7 +2038,7 @@ step
     .target 斯布特瓦夫
 step
     .goto 1413/1,-3796.55,-985.28
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_Dizzywig|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_迪兹维格|r 对话
     .turnin 896 >> 交任务  矿工的宝贝
     .target 码头管理员迪兹维格
     .isQuestComplete 896
@@ -2251,7 +2251,7 @@ step
 step
     .goto 1413/1,-1891.48,-2391.93
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_碎牙|r 对话
-    .accept 878 >>接受任务野猪人的内战
+    .accept 878 >>接受任务 野猪人的内战
     .target 碎牙
 step
     #completewith Xroadsturnins2
@@ -2535,8 +2535,8 @@ step
     #map Stonetalon Mountains
     #label StonetalonPickups
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_希雷斯|r 和 |cRXP_FRIENDLY_玛卡巴|r 对话
-    .turnin 1061 >> 交任务石爪之灵
-    .accept 1062 >> 接受任务 地精侵略者
+    .turnin 1061 >> 交任务  石爪之灵
+    .accept 1062 >> 接受任务地精侵略者
     .target 希雷斯·碎石
     .goto 1413/1,-950.10,-271.14
     .accept 6548 >> 接受任务 为我的村庄复仇
@@ -2549,8 +2549,8 @@ step
     #label StonetalonPickups
     .goto 1413/1,-950.10,-271.14
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_希雷斯|r 对话
-    .turnin 1061 >> 交任务石爪之灵
-    .accept 1062 >> 接受任务 地精侵略者
+    .turnin 1061 >> 交任务  石爪之灵
+    .accept 1062 >> 接受任务地精侵略者
     .target 希雷斯·碎石
 ]])
 
@@ -2734,7 +2734,7 @@ step
     .goto 1442/1,365.16,878.250
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_其兹|r 对话
     .turnin 1483 >> 交任务  菲兹克斯
-    .accept 1093 >> 接受任务超级收割机6000
+    .accept 1093 >> 接受任务 超级收割机6000
     .target 菲兹克斯
 step
     #completewith Windshear
@@ -2826,7 +2826,7 @@ step << Shaman
     .xp <20,1
 step << Rogue
     .goto 1442/1,402.76,1231.88
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_与|r |cRXP_FRIENDLY_维尼克斯|r |cRXP_BUY_交谈。购买一把|r |T135324:0|t[长剑] |cRXP_BUY_从他那里|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_与|r |cRXP_FRIENDLY_维尼克斯|r |cRXP_BUY_对话。从他那里|r|cRXP_BUY_购买一把|r |T135324:0|t[长剑]
     .collect 923,1,899,1 --Collect Longsword (1)
     .money <0.8743
     .target 维尼克斯
@@ -2961,7 +2961,7 @@ step
     #label JornSkyseerTurnin
     .goto 1413/1,-1921.88,-2383.15
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_乔恩·星眼|r 对话
-    .turnin 3261 >>交任务  乔恩·星眼
+    .turnin 3261 >>交任务  [DEPRECATED in 4.x] 乔恩·星眼
     .accept 882 >>接受任务 伊沙姆哈尔
     .target 乔恩·星眼
 step
@@ -3196,7 +3196,7 @@ step
     .target 斯布特瓦夫
 step
     .goto 1413/1,-3720.300,-920.000
-    >>点击 |cRXP_PICK_通缉布告|r
+    >>点击 |cRXP_PICK_通缉告示|r
     .accept 92706 >>接受任务 通缉：布鲁兹
     .group << Rogue/Warrior
 step
@@ -3245,7 +3245,7 @@ step << Warrior
 step << Rogue/Hunter/Warrior/Shaman/Druid
     #optional
     #completewith FlytoXroads
-    +|cRXP_WARN_装备 |T132603:0|t[|r野狼护腕|cRXP_FRIENDLY_]|r
+    +|cRXP_WARN_装备|r |T132603:0|t[|cRXP_FRIENDLY_野狼护腕|r]
     .use 4794
     .itemcount 4794,1
     .itemStat 9,ITEM_MOD_ARMOR_SHORT,<37
@@ -3304,7 +3304,7 @@ step
 step
     #label XroadsHS2
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_曼科里克|r 和 |cRXP_FRIENDLY_图加|r 对话
-    .turnin 899 >>交任务复仇的怒火
+    .turnin 899 >>交任务  复仇的怒火
     .turnin 95774 >>交任务 她的名字叫奥格拉
     .target 曼科里克
     .goto 1413/1,-2641.35,-521.12
@@ -3355,7 +3355,7 @@ step << Warlock
     .target 甘鲁尔·血眼
 step << Warlock
     .goto 1454/1,-4347.4,1836.57
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 库古尔|cRXP_FRIENDLY_ 对话，购买 |T133738:0|t[折磨典籍(等级 2)]|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 库古尔|cRXP_FRIENDLY_ 对话，并购买 |T133738:0|t[折磨典籍(等级 2)]|r
     .collect 16346,1,1507,1 --Grimoire of Torment (Rank 2)
     .target 库古尔
 step << Warlock
@@ -3376,7 +3376,7 @@ step << Warlock
     .goto 1454/1,-4199.99,1717.49
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_赞卡沙|r 对话
     .turnin 1508 >>交任务  盲眼卡祖尔
-    .accept 1509 >>接受任务 多格兰的消息
+    .accept 1509 >>接受任务多格兰的消息
     .target 赞卡沙
 step << Warlock
     #completewith TurninDogran
@@ -3389,8 +3389,8 @@ step << Warlock
     #label TurninDogran
     .goto 1413/1,-2639.32,-436.00
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_加兹罗格|r 对话
-    .turnin 1509 >>交任务  多格兰的消息
-    .accept 1510 >>接受任务 多格兰的消息
+    .turnin 1509 >>交任务多格兰的消息
+    .accept 1510 >>接受任务多格兰的消息
     .target 加兹罗格
 step << Shaman
     #completewith CallofWater01
@@ -3844,7 +3844,7 @@ step
 step
     .goto 1456/1,-303.83,-1048.66
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_哈缪尔|r 对话
-    .turnin 1489 >> 交任务  哈缪尔·符文图腾
+    .turnin 1489 >> 交任务哈缪尔·符文图腾
     .accept 1490 >> 接受任务 纳拉·蛮鬃
     .target 大德鲁伊哈缪尔·符文图腾
 step
@@ -3856,7 +3856,7 @@ step << Druid
     .goto 1456/1,-281.59,-1039.61
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_图拉克|r 对话
     .trainer >>训练你的职业技能
-    .accept 27 >>接受任务必修的课程
+    .accept 27 >>接受任务 必修的课程
     .accept 98340 >>接受任务 巨豹之灵
     .target 图拉克·符文图腾
 step << Druid
@@ -3885,7 +3885,7 @@ step << Druid
 step << Druid
     .goto 1450/1,-2224.25,7874.290
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_塔加里|r 对话
-    .turnin 28 >> 交任务 湖中试炼
+    .turnin 28 >> 交任务湖中试炼
     .accept 30 >> 接受任务 海狮试炼
     .target 塔加里
 step << Druid !Skyborne
@@ -4255,7 +4255,7 @@ step << Hunter
 step << !Hunter
     #softcore
     #completewith next
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
 step << !Hunter
     #hardcore
     #completewith next
@@ -4360,8 +4360,8 @@ step
 step << Warlock
     .goto 1442/1,-331.21,-181.00
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_肯兹格拉|r 对话
-    .turnin 1510 >>交任务  多格兰的消息
-    .accept 1511 >>接受任务肯兹格拉的伤药
+    .turnin 1510 >>交任务多格兰的消息
+    .accept 1511 >>接受任务 肯兹格拉的伤药
     .target 肯兹格拉
 step
     #label BloodFeedersTI
@@ -4834,7 +4834,7 @@ step << !Warlock
 step << Warlock
     .goto 1413/1,-1898.58,-2391.93
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_劳格玛|r 对话
-    .turnin 1511 >>交任务肯兹格拉的伤药
+    .turnin 1511 >>交任务  肯兹格拉的伤药
     .accept 1515 >>接受任务多格兰之囚
     .target 步兵劳格玛
 step << Warlock
@@ -4868,7 +4868,7 @@ step << Warlock
 step << Warlock
     .goto 1454/1,-4357.36,1850.41
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_甘鲁尔|r 对话
-    .turnin 1513 >>交任务誓缚
+    .turnin 1513 >>交任务 誓缚
     .target 甘鲁尔·血眼
 step << Warlock
     .goto 1454/1,-4362.55,1834.70
@@ -5041,7 +5041,7 @@ step << skip --Rogue/Druid
 step << Rogue/Druid
     #softcore
     #completewith next
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
 step << Rogue/Druid
     #softcore
     .goto 1413/1,-2595.75,-437.35
@@ -5131,6 +5131,7 @@ step << skip
     .accept 2841 >>接受任务设备之战
     .target 诺格
 step
+    #completewith next
     .goto 1454/1,-4739.57,2036.84
     .gossipoption 95758 >>与|cRXP_FRIENDLY_索维克|r 对话
     .isNotOnQuest 2842
@@ -5138,7 +5139,7 @@ step
 step
     .goto 1454/1,-4739.57,2036.84
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_索维克|r 对话
-    -->>|cRXP_WARN_You are required to have Rig Wars in your quest log to accept this quest|r
+    >>|cRXP_WARN_请注意！你需要先听完他的对话，之后会自动接受任务|r
     .accept 2842 >>接受任务主工程师斯库提
     .target 索维克
 step << skip --Rogue

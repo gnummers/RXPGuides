@@ -86,7 +86,7 @@ step << Hunter/Warrior
 step << Hunter/Warrior
     .goto 1438/1,1034.89,10711.58
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_埃沃隆|r 对话
-    .turnin 4495 >> 交任务  好朋友
+    .turnin 4495 >> 交任务 好朋友
     .target 埃沃隆
     .accept 3519 >> 接受任务 需要帮助的朋友
 step << Hunter/Warrior
@@ -110,8 +110,8 @@ step << !Priest !Rogue
     #requires balance1
 	.goto 1438/1,826.03,10328.97
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_管理员伊尔萨莱恩|r 对话
-    .turnin 456,1 >> 交任务 自然的平衡 << Hunter
-    .turnin 456 >> 交任务 自然的平衡 << !Hunter
+    .turnin 456,1 >> 交任务  自然的平衡 << Hunter
+    .turnin 456 >> 交任务  自然的平衡 << !Hunter
     .target 管理员伊尔萨莱恩
     .accept 457 >> 接受任务 自然的平衡
 	.accept 3116 >> 接受任务 简易符记 << Warrior
@@ -127,7 +127,7 @@ step << !Hunter !Druid !Warrior
 step << !Hunter !Druid !Warrior
     .goto 1438/1,1034.89,10711.58
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_埃沃隆|r 对话
-    .turnin 4495 >> 交任务  好朋友
+    .turnin 4495 >> 交任务 好朋友
     .target 埃沃隆
     .accept 3519 >> 接受任务 需要帮助的朋友
 step << !Hunter !Druid !Warrior
@@ -145,7 +145,7 @@ step << Priest/Rogue
     #requires balance1
 	.goto 1438/1,826.03,10328.97
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_管理员伊尔萨莱恩|r 对话
-    .turnin 456 >> 交任务 自然的平衡
+    .turnin 456 >> 交任务  自然的平衡
     .accept 457 >> 接受任务 自然的平衡
     .target 管理员伊尔萨莱恩
 	.accept 3119 >> 接受任务 神圣符记 << Priest
@@ -169,7 +169,7 @@ step << Druid
 step << Druid
     .goto 1438/1,1034.89,10711.58
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_埃沃隆|r 对话
-    .turnin 4495 >> 交任务  好朋友
+    .turnin 4495 >> 交任务 好朋友
     .target 埃沃隆
     .accept 3519 >> 接受任务 需要帮助的朋友
 step << Druid
@@ -227,7 +227,7 @@ step << Druid
     >>爬上奥达希尔之树
     .target 玛丹特·硬木
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_玛丹特·硬木|r 对话
-	.turnin 3120 >> 交任务 绿色符记
+	.turnin 3120 >> 交任务  绿色符记
 	.train 8921 >>学习 |T136096:0|t[月火术]
 step << Hunter
     .goto 1438/1,871.6,10440.83,25,0
@@ -392,7 +392,7 @@ step << Hunter/Druid
     .goto 1438/1,826.03,10328.97
     .target 管理员伊尔萨莱恩
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_管理员伊尔萨莱恩|r 对话
-    .turnin 457,2 >> 交任务 自然的平衡
+    .turnin 457,2 >> 交任务  自然的平衡
 step
     #requires vial1
     .goto 1438/1,871.6,10440.83,25,0
@@ -434,7 +434,7 @@ step
     .goto 1438/1,826.03,10328.97
     .target 管理员伊尔萨莱恩
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_管理员伊尔萨莱恩|r 对话
-    .turnin 457,2 >> 交任务 自然的平衡
+    .turnin 457,2 >> 交任务  自然的平衡
     .isQuestComplete 457
 step
     .goto 1438/1,700.57,10214.33
@@ -768,7 +768,7 @@ step
     #label zenn
     .goto 1438/1,440.85,9845.23
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_盖洛拉斯·塔文斯伦|r 对话
-    .turnin 475 >> 交任务 烦恼之风
+    .turnin 475 >> 交任务  烦恼之风
     .target 盖洛拉斯·塔文斯伦
     .accept 476 >> 接受任务 瘤背熊怪的堕落
 step
@@ -1282,7 +1282,7 @@ step << Priest/Druid
     .target 塔隆凯·捷根
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|在树顶上与 |cRXP_FRIENDLY_塔隆凯·捷根|r 对话
     .turnin 932 >> 交任务  扭曲的仇恨
-    .turnin 2459 >> 交任务 噬梦者菲罗斯塔
+    .turnin 2459 >> 交任务  噬梦者菲罗斯塔
 step
     #optional
     #completewith Ambushers
@@ -1372,7 +1372,7 @@ step
 step << Druid/Priest
     .goto 1438/1,1864.47,10663.80
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_哨兵阿瑞尼亚·碎云|r 对话
-    .turnin 937 >> 交任务 神谕林地
+    .turnin 937 >> 交任务  神谕林地
     .accept 98392 >> 接受任务 林地潜伏的黑暗
     .target 哨兵阿瑞尼亚·碎云
 step << Druid/Priest
@@ -1436,7 +1436,7 @@ step << Hunter
 	#requires harpies
     .goto 1438/1,1863.46,10665.16
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_哨兵阿瑞尼亚·碎云|r 对话
-    .turnin 937 >> 交任务 神谕林地
+    .turnin 937 >> 交任务  神谕林地
     .target 哨兵阿瑞尼亚·碎云
 step << !Rogue
     #softcore
@@ -1561,7 +1561,7 @@ step << !Rogue
     #requires xp10
     .goto 1457/1,2534.29,10085.60
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_雷利亚·绿树|r 对话
-    .turnin 922 >> 交任务 雷利亚·绿树
+    .turnin 922 >> 交任务  雷利亚·绿树
     .target 雷利亚·绿树
     .accept 923 >> 接受任务 青苔之瘤
 step << Druid NightElf/Priest NightElf
@@ -1672,7 +1672,7 @@ step
     .target 塔隆凯·捷根
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|在树顶上与 |cRXP_FRIENDLY_塔隆凯·捷根|r 对话
     .turnin 932 >> 交任务  扭曲的仇恨
-    .turnin 2459 >> 交任务 噬梦者菲罗斯塔
+    .turnin 2459 >> 交任务  噬梦者菲罗斯塔
 step
     >>击杀 |cRXP_ENEMY_夜刃豹|r。拾取它们的 |cRXP_LOOT_牙齿|r 和 |cRXP_LOOT_毛皮|r
     >>击杀 |cRXP_ENEMY_巨翼枭|r。拾取他们的 |cRXP_LOOT_乱羽|r
@@ -1995,7 +1995,7 @@ step << Rogue
 step << Rogue
     .goto 1457/1,2534.29,10085.60
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_雷利亚·绿树|r 对话
-    .turnin 922 >> 交任务 雷利亚·绿树
+    .turnin 922 >> 交任务  雷利亚·绿树
     .target 雷利亚·绿树
     .accept 923 >> 接受任务 青苔之瘤
 step << Rogue
@@ -2091,7 +2091,7 @@ step
     #label TeldrassilEnd
     .goto 1438/1,1864.47,10663.80
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_哨兵阿瑞尼亚·碎云|r 对话
-    .turnin 937 >> 交任务 神谕林地
+    .turnin 937 >> 交任务  神谕林地
     .accept 98392 >> 接受任务 林地潜伏的黑暗
     .target 哨兵阿瑞尼亚·碎云
 step

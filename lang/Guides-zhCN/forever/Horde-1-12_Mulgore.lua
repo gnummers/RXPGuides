@@ -410,7 +410,7 @@ step << Shaman
 step << Shaman
     #completewith next
     #requires Rock
-    .cast 8202 >>|cRXP_WARN_使用|r |T134743:0|t[大地灵契]
+    .cast 8202 >>|cRXP_WARN_使用 |T134743:0|t[大地显形图腾]|r
     .use 6635
 step << Shaman
     .goto 1412/1,-712.98,-3018.05--c:Mulgore,53.74,80.15
@@ -489,7 +489,7 @@ RXPGuides.RegisterGuide([[
 step
 	#softcore
 	#completewith BloodhoofHome
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
 step
 	#hardcore
 	#completewith BloodhoofHome
@@ -1032,7 +1032,7 @@ step << Tauren
 step
     #softcore
 	#completewith Escort1
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
 step << Hunter
     #softcore
     .goto 1412/1,-408.32,-2180.30--c:Mulgore,47.81,55.69
@@ -1116,7 +1116,7 @@ step
 step
     #softcore
 	#completewith Thunderhorn
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
 step
     #hardcore
     #completewith Thunderhorn
@@ -1948,7 +1948,7 @@ step
 step << skip -- Tauren
     #softcore
 	#completewith Thunderhorn2
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
 step << Tauren
     --#hardcore
     #completewith Thunderhorn2
@@ -2257,7 +2257,7 @@ step
     .goto 1456/1,44.58,-1263.32,0--c:Thunder Bluff,45.23,59.40
     .goto 1456/1,94.89,-1210.30--c:Thunder Bluff,40.41,51.78
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_拍卖师斯塔比|r 对话
-    >>|cRXP_BUY_从拍卖行购买1条|r |T133894:0|t[新鲜的美味小鱼] |cRXP_BUY_|r
+    >>|cRXP_BUY_从拍卖行购买1条|r |T133894:0|t|T133894:0|t[新鲜的美味小鱼] |cRXP_BUY_|r
     .collect 6291,1,76240,1 --Raw Brilliant Smallfish (1)
     .target Auctioneer Stampi
 step

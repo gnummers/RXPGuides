@@ -24,7 +24,7 @@ step
     #completewith next
     .goto 1420/0,1675.90,1645.00,8,0
     .goto 1420/0,1665.51,1645.00,8,0
-    .goto 1420/0,1667.77,1679.04,10 >> 跑出地穴，朝 |cRXP_FRIENDLY_摩尔多|r 的方向前进
+    .goto 1420/0,1667.77,1679.04,10 >> 从地穴跑出来，朝 |cRXP_FRIENDLY_摩尔多|r 方向前进
 step
     .goto 1420/0,1667.77,1679.04
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_莫多|r 对话
@@ -38,7 +38,7 @@ step << Warrior/Warlock/Priest/Mage
     .goto 1420/0,1714.76,1760.68,40,0 << Priest/Mage
     .goto 1420/0,1718.38,1799.24,40,0 << Priest/Mage
     .goto 1420/0,1669.12,1869.73,40,0 << Priest/Mage
-    +|cRXP_WARN_击杀 |cRXP_ENEMY_食腐狼幼崽|r 和 |cRXP_ENEMY_夜行蝙蝠|r，拾取它们的掉落，直到你拥有价值60铜币的可出售物品（包括你的护甲）|r << Mage
+    +|cRXP_WARN_击杀 |cRXP_ENEMY_食腐狼幼崽|r 和 |cRXP_ENEMY_夜行蝙蝠|r。拾取它们的掉落，直到你拥有价值60铜币的可出售物品（包括你的护甲）|r << Mage
     +|cRXP_WARN_击杀 |cRXP_ENEMY_食腐狼幼崽|r 和 |cRXP_ENEMY_夜行蝙蝠|r，拾取它们的掉落，直到你拥有价值50铜币的可出售物品（包括你的护甲）|r << Priest
     +|cRXP_WARN_击杀 |cRXP_ENEMY_食腐狼幼崽|r 和 |cRXP_ENEMY_夜行蝙蝠|r，拾取它们的掉落，直到你拥有价值10铜币的可出售物品（包括你的护甲）|r << Warrior/Warlock
     .mob 食腐狼幼崽
@@ -137,7 +137,7 @@ step << Warlock
     .mob 断骨骷髅
 step << Warlock
     #completewith next
-    +|cRXP_WARN_击杀 |cRXP_ENEMY_无脑的僵尸|r 和 |cRXP_ENEMY_悲惨的僵尸|r。拾取它们的掉落物，直到你获得价值 25 铜币的可出售物品(包括你的护甲)|r
+    +|cRXP_WARN_击杀 |cRXP_ENEMY_无脑的僵尸|r 和 |cRXP_ENEMY_悲惨的僵尸|r，拾取它们的掉落物，直到你获得价值 25 铜币的可出售物品(包括你的护甲)|r
     .mob 无脑的僵尸
     .mob Wretched Zombie
     .money >0.0025
@@ -152,7 +152,7 @@ step << Warlock
 step << Warlock
     .goto 1420/0,1616.71,1842.92,10,0
     .goto 1420/0,1633.42,1836.90
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_温雅|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 与 |cRXP_FRIENDLY_温雅|r 对话
     .turnin 1470 >>交任务 控制小鬼
     .target 温雅·玛山德
 step << Warlock
@@ -453,7 +453,7 @@ step << Rogue
 step << Rogue/Warrior/Paladin
     .goto 1420/0,1577.100,1854.600
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_沃尔特·梅森|r 在楼上对话
-    >>|cRXP_BUY_购买一把|r |T134708:0|t[矿工锄] |cRXP_BUY_从他|r |cRXP_BUY_那里|r
+    >>|cRXP_BUY_从他那里购买一把|r |T134708:0|t[矿工锄] |cRXP_BUY_|r |cRXP_BUY_|r
     .train 2575 >> 学习 |T136248:0|t[采矿]
     .collect 2901,1,792,1 --Mining Pick (1)
     >>|cRXP_WARN_这将使你能够从矿点中获得|r |T135232:0|t|cRXP_LOOT_[劣质的石头]|r|cRXP_WARN_，从而制作|r |T135248:0|t[磨刀石]|cRXP_WARN_(使武器伤害 +2，持续 30 分钟)|r
@@ -540,7 +540,7 @@ step
 step
     #softcore
     #completewith Scavenging
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
 step << Warlock
     #softcore
@@ -623,7 +623,7 @@ step
 step
     #softcore
     #completewith next
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .target 灵魂医者
 step
     .goto 1420/0,1624.84,1876.96
@@ -815,7 +815,7 @@ step
     --too many .mobs, will cause clutter
 step << Rogue
     .goto 1420/0,270.12,2253.23
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_与|r |cRXP_FRIENDLY_温特斯夫人|r |cRXP_BUY_对话并|r|cRXP_BUY_从她那里购买一把|r |T135421:0|t[增重飞斧]
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_与|r |cRXP_FRIENDLY_温特斯夫人|r |cRXP_BUY_对话，并|r|cRXP_BUY_从她那里购买一把|r |T135421:0|t[增重飞斧]
     .collect 3131,200,786,1 --Weighted Throwing Axe (200)
     .target 温特斯夫人
     .itemStat 18,QUALITY,<7
@@ -1650,7 +1650,7 @@ step
 step << skip
     #softcore
     #completewith Brill3
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
 step
     .goto 1420/0,244.36,2262.26
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_库勒曼|r 对话
@@ -1940,7 +1940,7 @@ step
 step
     #softcore
     #completewith FoodandWater2
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
     .xp <10,1
 step
     #softcore
@@ -2180,7 +2180,7 @@ step << Warlock
 step << Warlock
     .goto 1458/0,57.34,1711.71
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_凯伦丁|r 对话
-    .turnin 1471 >>交任务誓缚
+    .turnin 1471 >>交任务 誓缚
     .target 凯伦丁·哈加尔
 step << Warrior
     #ssf
@@ -2759,7 +2759,7 @@ step
 step << skip
     #softcore
     #completewith next
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
 step
     .goto 1420/0,2037.100,2416.800
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_破坏者希尔达|r 对话
@@ -2878,25 +2878,25 @@ step << !Paladin
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_林奈|r 对话
     .turnin 356 >>交任务 巡查后方
     .target Deathguard Linnea
-step
+step << !Paladin
     .goto 1420/0,73.800,2022.300
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_Deathguard Linnea::1495|r 对话
-    >>|cRXP_WARN_这是"The 愤怒 of Rath'mael"的前置任务|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_亡灵卫兵林奈::1495|r对话
+    >>|cRXP_WARN_这是"愤怒的拉斯玛尔"的前置任务|r
     .turnin 356 >>交任务 巡查后方
     .target Deathguard Linnea::1495
     .accept 99156 >>接受任务 巡查后方
     .dungeon ROL
-step
+step << !Paladin
     .goto 1420/0,-765.200,2518.700
-    >>杀死 |cRXP_ENEMY_Riptear|r |cRXP_WARN_(level 13 elite)|r。获得战利品 |T134339:0|t[|cRXP_LOOT_Riptear's Heart|r]
-    >>|cRXP_WARN_这是"The 愤怒 of Rath'mael"的前置任务|r
+    >>击杀|cRXP_ENEMY_撕裂者|r |cRXP_WARN_（13级精英）|r。拾取|T134339:0|t[|cRXP_LOOT_撕裂者的心脏|r]
+    >>|cRXP_WARN_这是"愤怒的拉斯玛尔"的前置任务|r
     .complete 99156,1 --|1/1 Riptear's Heart
     .mob Riptear
     .dungeon ROL
-step
+step << !Paladin
     .goto 1420/0,74.200,2022.400
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_Deathguard Linnea::1495|r 对话
-    >>|cRXP_WARN_这是"The 愤怒 of Rath'mael"的前置任务|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_亡灵卫兵林奈::1495|r对话
+    >>|cRXP_WARN_这是"愤怒的拉斯玛尔"的前置任务|r
     .turnin 99156 >>交任务 巡查后方
     .target Deathguard Linnea::1495
     .dungeon ROL
@@ -2940,6 +2940,7 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_格利克斯·希基克斯|r 对话
     .turnin 98545 >>交任务 列奥尼德的信
     .target Glix Xizzix
+    .isOnQuest 98545
 step << Rogue
     #ssf
     .goto 1458/0,133.71,1561.730
@@ -3003,7 +3004,7 @@ step
     .goto 1458/0,224.300,1648.200
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_拍卖师凯恩|r 对话
     >>|cRXP_BUY_从拍卖行|r |cRXP_BUY_购买三个|r |T133884:0|t[鱼人的眼球]
-    >>|cRXP_WARN_如果你愿意，可以跳过这一步，这只能节省一点点时间|r
+    >>|cRXP_WARN_如果你愿意的话可以跳过，这只是个小捷径|r
     .collect 730,3,91920,1 --Collect Murloc Eyes (x3)
     .target Auctioneer Cain
 step << Mage
@@ -3166,7 +3167,7 @@ step << Paladin
     .goto 1458/0,365.30,1304.41,10 >>进入皇室区--c:Undercity,52.94,89.60
 step << Paladin
     .goto 1458/0,316.200,1290.600
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_希尔瓦娜斯·风行者|r 对话
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_希尔瓦娜斯·风行者|r对话
     .turnin 95803 >>交任务 善意的信物
     .target Lady Sylvanas Windrunner
 
@@ -3182,6 +3183,28 @@ step << Paladin
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_林奈|r 对话
     .turnin 356 >>交任务 巡查后方
     .target Deathguard Linnea
+step << Paladin
+    .goto 1420/0,73.800,2022.300
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_Deathguard Linnea::1495|r 对话
+    >>|cRXP_WARN_这是"The 愤怒 of Rath'mael"的前置任务|r
+    .turnin 356 >>交任务 巡查后方
+    .target Deathguard Linnea::1495
+    .accept 99156 >>接受任务 巡查后方
+    .dungeon ROL
+step << Paladin
+    .goto 1420/0,-765.200,2518.700
+    >>杀死 |cRXP_ENEMY_Riptear|r |cRXP_WARN_(13级精英怪)|r。拾取他的 |T134339:0|t[|cRXP_LOOT_Riptear's Heart|r]
+    >>|cRXP_WARN_这是"The 愤怒 of Rath'mael"的前置任务|r
+    .complete 99156,1 --|1/1 Riptear's Heart
+    .mob Riptear
+    .dungeon ROL
+step << Paladin
+    .goto 1420/0,74.200,2022.400
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_Deathguard Linnea::1495|r 对话
+    >>|cRXP_WARN_这是"The 愤怒 of Rath'mael"的前置任务|r
+    .turnin 99156 >>交任务 巡查后方
+    .target Deathguard Linnea::1495
+    .dungeon ROL
 step << Paladin
     .goto 1420/0,311.600,2251.000
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_莎莉·斯迪威尔|r 对话
@@ -3405,7 +3428,7 @@ step
 step << skip
     #softcore
     #completewith ProveyourWorth
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
 step
     --#hardcore
     #completewith next
@@ -3637,7 +3660,7 @@ step
 step << skip
     #softcore
     #completewith ArugalTurnin
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
 step
     --#hardcore
     #completewith next
@@ -3853,7 +3876,7 @@ step
 step
     #softcore
     #completewith next
-    .deathskip >> 死掉并在|cRXP_FRIENDLY_灵魂医者|r 处复生
+    .deathskip >> 死亡并在 |cRXP_FRIENDLY_灵魂医者|r 处重生
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_奥利斯特|r 和 |cRXP_FRIENDLY_达拉尔|r 对话
     .turnin 478 >>交任务 地图与符记
@@ -4031,6 +4054,18 @@ step
     .accept 1358 >> 接受任务 给赫布瑞姆的样本
     .target +Apothecary Zinge
     .goto 1458/0,391.97,1442.87
+    .dungeon !ROL
+step
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t 在炼金区与 |cRXP_FRIENDLY_大药剂师法拉尼尔|r 和 |cRXP_FRIENDLY_药剂师金格|r 对话
+    .turnin 447 >>交任务 致命的配方
+    .accept 450 >>接受任务 致命的配方
+    .target +Master Apothecary Faranell
+    .goto 1458/0,404.63,1434.67
+    .turnin 1359 >> 交任务 给金格的货物
+    .accept 1358 >> 接受任务 给赫布瑞姆的样本
+    .target +Apothecary Zinge
+    .goto 1458/0,391.97,1442.87
+    .dungeon ROL
 step
     .goto 1458/0,334.02,1262.17--c:Undercity,56.2,96.2
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t与 |cRXP_FRIENDLY_瓦里玛萨斯|r 对话
